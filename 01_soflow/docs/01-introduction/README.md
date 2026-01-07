@@ -4,6 +4,9 @@
 
 *Why do we need one-step generation? What problem does SoFlow solve?*
 
+[![Paper](https://img.shields.io/badge/arXiv-2512.15657-b31b1b.svg)](https://arxiv.org/pdf/2512.15657)
+[![GitHub](https://img.shields.io/badge/GitHub-01__soflow-black.svg)](https://github.com/Gaurav14cs17/GenAI/tree/main/01_soflow)
+
 </div>
 
 ---
@@ -129,6 +132,17 @@ The SoFlow framework combines two training objectives:
 2. **Consistency Loss** — Ensure self-consistency
 
 Together, they train a model that generates in **one step**!
+
+---
+
+## 🚀 Try It Yourself
+
+Run SoFlow in your browser with Google Colab:
+
+| Notebook | Link |
+|:--------:|:----:|
+| **Training** | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/01_soflow/notebooks/SoFlow_Training.ipynb) |
+| **Inference** | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/01_soflow/notebooks/SoFlow_Inference.ipynb) |
 
 ---
 

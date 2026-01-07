@@ -7,7 +7,7 @@
 **Solution Flow Models for One-Step Generative Modeling**
 
 [![Paper](https://img.shields.io/badge/arXiv-2512.15657-b31b1b.svg)](https://arxiv.org/pdf/2512.15657)
-[![GitHub](https://img.shields.io/badge/GitHub-Gaurav14cs17%2FGenAI-black.svg)](https://github.com/Gaurav14cs17/GenAI)
+[![GitHub](https://img.shields.io/badge/GitHub-Gaurav14cs17%2FGenAI-black.svg)](https://github.com/Gaurav14cs17/GenAI/tree/main/01_soflow)
 
 *Generate high-quality images in just ONE step — no more waiting for 1000 denoising iterations!*
 
@@ -123,19 +123,24 @@ image = model(noise, t=1, s=0)
 ## 🏗️ Project Structure
 
 ```
-docs/
-├── 📄 README.md              ← You are here!
-├── 🖼️ overview.svg
-│
-├── 📁 01-introduction/       ← Start here!
-├── 📁 02-flow-matching/
-├── 📁 03-solution-function/
-├── 📁 04-training/
-├── 📁 05-proofs/
-├── 📁 06-cfg/
-├── 📁 07-architecture/
-├── 📁 08-comparison/
-└── 📁 09-diffusion/
+01_soflow/
+├── 📚 docs/
+│   ├── 📄 README.md              ← You are here!
+│   ├── 🖼️ overview.svg
+│   │
+│   ├── 📁 01-introduction/       ← Start here!
+│   ├── 📁 02-flow-matching/
+│   ├── 📁 03-solution-function/
+│   ├── 📁 04-training/
+│   ├── 📁 05-proofs/
+│   ├── 📁 06-cfg/
+│   ├── 📁 07-architecture/
+│   ├── 📁 08-comparison/
+│   └── 📁 09-diffusion/
+├── 📦 soflow/                    # Main package
+├── 🔧 scripts/                   # Training & sampling scripts
+├── 📓 notebooks/                 # Colab notebooks
+└── ⚙️ configs/                   # Configuration files
 ```
 
 ---
@@ -155,15 +160,15 @@ Run SoFlow directly in your browser — no setup required!
 
 | Notebook | Description | Link |
 |:--------:|-------------|:----:|
-| **Training** | Train SoFlow on CIFAR-10 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/notebooks/SoFlow_Training.ipynb) |
-| **Inference** | Generate images with trained model | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/notebooks/SoFlow_Inference.ipynb) |
+| **Training** | Train SoFlow on CIFAR-10 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/01_soflow/notebooks/SoFlow_Training.ipynb) |
+| **Inference** | Generate images with trained model | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/01_soflow/notebooks/SoFlow_Inference.ipynb) |
 
 ---
 
 ## 📖 Citation
 
 ```bibtex
-@article{soflow2024,
+@article{luo2024soflow,
   title={SoFlow: Solution Flow Models for One-Step Generative Modeling},
   author={Luo, Tianze and Yuan, Haotian and Liu, Zhuang},
   journal={arXiv preprint arXiv:2512.15657},
@@ -177,6 +182,6 @@ Run SoFlow directly in your browser — no setup required!
 
 **[📖 Start Reading →](./01-introduction/README.md)**
 
-*Made with ❤️ for the ML community*
+*Made with ❤️ by [Gaurav](https://github.com/Gaurav14cs17) for the ML community*
 
 </div>

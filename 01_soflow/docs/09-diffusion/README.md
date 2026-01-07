@@ -201,6 +201,14 @@ SoFlow gives you **diffusion-quality results** at **1000× the speed**.
 
 You've completed the SoFlow documentation!
 
+### 🚀 Ready to Try?
+
+| Resource | Link |
+|:--------:|:----:|
+| **Training Notebook** | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/01_soflow/notebooks/SoFlow_Training.ipynb) |
+| **Inference Notebook** | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/01_soflow/notebooks/SoFlow_Inference.ipynb) |
+| **Source Code** | [GitHub](https://github.com/Gaurav14cs17/GenAI/tree/main/01_soflow) |
+
 <div align="center">
 
 **[← Chapter 8: Comparisons](../08-comparison/README.md)** | **[🏠 Back to Index](../README.md)**
@@ -217,6 +225,6 @@ You've completed the SoFlow documentation!
 
 **Thank you for reading!** 🙏
 
-*Made with ❤️ for the ML community*
+*Made with ❤️ by [Gaurav](https://github.com/Gaurav14cs17) for the ML community*
 
 </div>

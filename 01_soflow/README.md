@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Paper](https://img.shields.io/badge/arXiv-2512.15657-b31b1b.svg)](https://arxiv.org/abs/2512.15657)
-[![GitHub](https://img.shields.io/badge/GitHub-Gaurav14cs17%2FGenAI-black.svg)](https://github.com/Gaurav14cs17/GenAI)
+[![GitHub](https://img.shields.io/badge/GitHub-Gaurav14cs17%2FGenAI-black.svg)](https://github.com/Gaurav14cs17/GenAI/tree/main/01_soflow)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 **One-Step Image Generation | No JVP | State-of-the-Art FID**
@@ -18,8 +18,8 @@ Run SoFlow instantly in your browser — no setup required!
 
 | Notebook | Description | Open |
 |:--------:|-------------|:----:|
-| **🎓 Training** | Train SoFlow on CIFAR-10 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/notebooks/SoFlow_Training.ipynb) |
-| **🎨 Inference** | Generate images (one-step!) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/notebooks/SoFlow_Inference.ipynb) |
+| **🎓 Training** | Train SoFlow on CIFAR-10 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/01_soflow/notebooks/SoFlow_Training.ipynb) |
+| **🎨 Inference** | Generate images (one-step!) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Gaurav14cs17/GenAI/blob/main/01_soflow/notebooks/SoFlow_Inference.ipynb) |
 
 ---
 
@@ -66,9 +66,18 @@ The core idea is to learn a **solution function** `f_θ(x_t, t, s)` that maps a 
 ## 🛠️ Installation
 
 ```bash
+# Clone the full GenAI repository
 git clone https://github.com/Gaurav14cs17/GenAI.git
-cd GenAI
+cd GenAI/01_soflow
+
+# Install dependencies
 pip install -r requirements.txt
+```
+
+**Or install directly as a package:**
+
+```bash
+pip install -e .
 ```
 
 ---
@@ -76,42 +85,48 @@ pip install -r requirements.txt
 ## 📁 Project Structure
 
 ```
-GenAI/
+01_soflow/
 ├── 📓 notebooks/              # Colab notebooks
-│   ├── SoFlow_Training.ipynb
-│   └── SoFlow_Inference.ipynb
+│   ├── SoFlow_Training.ipynb  # Train on CIFAR-10
+│   └── SoFlow_Inference.ipynb # Generate images
 ├── 📚 docs/                   # Documentation
 │   ├── README.md              # Documentation index
-│   ├── 01-introduction/
-│   ├── 02-flow-matching/
-│   ├── ... (9 chapters)
-│   └── 09-diffusion/
+│   ├── 01-introduction/       # Chapter 1: Why SoFlow?
+│   ├── 02-flow-matching/      # Chapter 2: Flow Matching basics
+│   ├── 03-solution-function/  # Chapter 3: Solution function
+│   ├── 04-training/           # Chapter 4: Training objectives
+│   ├── 05-proofs/             # Chapter 5: Mathematical proofs
+│   ├── 06-cfg/                # Chapter 6: Classifier-Free Guidance
+│   ├── 07-architecture/       # Chapter 7: DiT architecture
+│   ├── 08-comparison/         # Chapter 8: vs Other methods
+│   └── 09-diffusion/          # Chapter 9: vs Diffusion models
 ├── ⚙️ configs/                # Hydra configuration files
 │   ├── config.yaml
-│   ├── model/
-│   └── training/
+│   ├── model/                 # Model configs (dit_b, dit_l, dit_xl)
+│   └── training/              # Training configs (imagenet256)
 ├── 📦 soflow/                 # Main package
 │   ├── models/
 │   │   ├── dit.py             # Diffusion Transformer
 │   │   ├── soflow.py          # SoFlow wrapper
-│   │   └── layers.py          # Custom layers
+│   │   └── layers.py          # Custom layers (AdaLN, etc.)
 │   ├── losses/
-│   │   ├── flow_matching.py
-│   │   ├── consistency.py
-│   │   └── combined.py
+│   │   ├── flow_matching.py   # Flow Matching loss
+│   │   ├── consistency.py     # Solution Consistency loss
+│   │   └── combined.py        # Combined SoFlow loss
 │   ├── utils/
-│   │   ├── scheduler.py
-│   │   ├── ema.py
-│   │   └── visualization.py
+│   │   ├── scheduler.py       # Training schedules
+│   │   ├── ema.py             # Exponential Moving Average
+│   │   └── visualization.py   # Visualization utilities
 │   └── data/
-│       ├── cifar10.py
-│       └── imagenet.py
+│       ├── cifar10.py         # CIFAR-10 dataloader
+│       └── imagenet.py        # ImageNet dataloader
 ├── 🔧 scripts/
-│   ├── train.py
-│   ├── sample.py
-│   └── evaluate.py
+│   ├── train.py               # Training script
+│   ├── sample.py              # Sampling script
+│   └── evaluate.py            # Evaluation script
 ├── requirements.txt
-└── README.md
+├── setup.py
+└── README.md                  # This file
 ```
 
 ---
@@ -212,5 +227,9 @@ MIT License - see [LICENSE](LICENSE) for details.
 <div align="center">
 
 **Made with ❤️ by [Gaurav](https://github.com/Gaurav14cs17)**
+
+⭐ Star this repo if you find it helpful!
+
+[Report Bug](https://github.com/Gaurav14cs17/GenAI/issues) · [Request Feature](https://github.com/Gaurav14cs17/GenAI/issues)
 
 </div>
