@@ -1,0 +1,22 @@
+# SoFlow Configuration
+# Main configuration file for training Solution Flow Models
+
+defaults:
+  - _self_
+  - model: dit_b
+  - training: imagenet256
+
+# Experiment settings
+experiment:
+  name: soflow_training
+  seed: 42
+  output_dir: ./outputs
+  
+# Logging
+logging:
+  log_every: 100
+  save_every: 10000
+  sample_every: 5000
+  use_wandb: false
+  wandb_project: soflow
+
