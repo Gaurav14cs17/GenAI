@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 320">
+  <defs>
+    <linearGradient id="discBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="convGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6c5ce7"/>
+      <stop offset="100%" style="stop-color:#a29bfe"/>
+    </linearGradient>
+    <linearGradient id="sigmoidGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="100%" style="stop-color:#ee5a5a"/>
+    </linearGradient>
+    <linearGradient id="linearGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00b894"/>
+      <stop offset="100%" style="stop-color:#55efc4"/>
+    </linearGradient>
+    <filter id="discGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="320" fill="url(#discBg)" rx="12"/>
+  
+  <!-- Title -->
+  <text x="350" y="35" text-anchor="middle" fill="#a29bfe" font-family="JetBrains Mono, monospace" font-size="18" font-weight="bold">LSGAN DISCRIMINATOR</text>
+  
+  <!-- Subtitle -->
+  <text x="350" y="55" text-anchor="middle" fill="#808090" font-family="JetBrains Mono, monospace" font-size="12">Same as DCGAN discriminator EXCEPT final layer</text>
+  
+  <!-- Main content box -->
+  <rect x="30" y="70" width="640" height="235" fill="none" stroke="#4a4a6a" stroke-width="1" rx="8" opacity="0.5"/>
+  
+  <!-- DCGAN Pipeline -->
+  <text x="50" y="100" fill="#a0a0c0" font-family="JetBrains Mono, monospace" font-size="14" font-weight="bold">DCGAN:</text>
+  
+  <!-- Conv blocks -->
+  <rect x="130" y="85" width="70" height="35" fill="url(#convGrad)" rx="4" filter="url(#discGlow)"/>
+  <text x="165" y="107" text-anchor="middle" fill="white" font-family="JetBrains Mono, monospace" font-size="11">Conv</text>
+  
+  <text x="215" y="107" fill="#808090" font-family="JetBrains Mono, monospace" font-size="16">→</text>
+  
+  <text x="240" y="107" fill="#808090" font-family="JetBrains Mono, monospace" font-size="14">...</text>
+  
+  <text x="270" y="107" fill="#808090" font-family="JetBrains Mono, monospace" font-size="16">→</text>
+  
+  <rect x="290" y="85" width="70" height="35" fill="url(#convGrad)" rx="4" filter="url(#discGlow)"/>
+  <text x="325" y="107" text-anchor="middle" fill="white" font-family="JetBrains Mono, monospace" font-size="11">Conv</text>
+  
+  <text x="375" y="107" fill="#808090" font-family="JetBrains Mono, monospace" font-size="16">→</text>
+  
+  <!-- Sigmoid (crossed out) -->
+  <rect x="400" y="85" width="90" height="35" fill="url(#sigmoidGrad)" rx="4" opacity="0.6"/>
+  <text x="445" y="107" text-anchor="middle" fill="white" font-family="JetBrains Mono, monospace" font-size="11">Sigmoid</text>
+  <line x1="400" y1="85" x2="490" y2="120" stroke="#ff0000" stroke-width="3"/>
+  <line x1="400" y1="120" x2="490" y2="85" stroke="#ff0000" stroke-width="3"/>
+  
+  <text x="505" y="107" fill="#808090" font-family="JetBrains Mono, monospace" font-size="16">→</text>
+  
+  <text x="570" y="107" fill="#ff6b6b" font-family="JetBrains Mono, monospace" font-size="12">∈ [0, 1]</text>
+  
+  <!-- Divider -->
+  <line x1="50" y1="140" x2="650" y2="140" stroke="#4a4a6a" stroke-width="1" stroke-dasharray="8,4"/>
+  
+  <!-- LSGAN Pipeline -->
+  <text x="50" y="175" fill="#4ecdc4" font-family="JetBrains Mono, monospace" font-size="14" font-weight="bold">LSGAN:</text>
+  
+  <!-- Conv blocks -->
+  <rect x="130" y="160" width="70" height="35" fill="url(#convGrad)" rx="4" filter="url(#discGlow)"/>
+  <text x="165" y="182" text-anchor="middle" fill="white" font-family="JetBrains Mono, monospace" font-size="11">Conv</text>
+  
+  <text x="215" y="182" fill="#808090" font-family="JetBrains Mono, monospace" font-size="16">→</text>
+  
+  <text x="240" y="182" fill="#808090" font-family="JetBrains Mono, monospace" font-size="14">...</text>
+  
+  <text x="270" y="182" fill="#808090" font-family="JetBrains Mono, monospace" font-size="16">→</text>
+  
+  <rect x="290" y="160" width="70" height="35" fill="url(#convGrad)" rx="4" filter="url(#discGlow)"/>
+  <text x="325" y="182" text-anchor="middle" fill="white" font-family="JetBrains Mono, monospace" font-size="11">Conv</text>
+  
+  <text x="375" y="182" fill="#808090" font-family="JetBrains Mono, monospace" font-size="16">→</text>
+  
+  <!-- Linear (highlighted) -->
+  <rect x="400" y="160" width="90" height="35" fill="url(#linearGrad)" rx="4" filter="url(#discGlow)"/>
+  <text x="445" y="182" text-anchor="middle" fill="white" font-family="JetBrains Mono, monospace" font-size="11" font-weight="bold">Linear</text>
+  
+  <text x="505" y="182" fill="#808090" font-family="JetBrains Mono, monospace" font-size="16">→</text>
+  
+  <text x="570" y="182" fill="#4ecdc4" font-family="JetBrains Mono, monospace" font-size="12">∈ ℝ</text>
+  
+  <!-- Highlight box for Linear -->
+  <rect x="395" y="155" width="100" height="45" fill="none" stroke="#00b894" stroke-width="2" rx="6" stroke-dasharray="4,2"/>
+  
+  <!-- Key difference callout -->
+  <rect x="380" y="210" width="260" height="80" fill="#1a3a2a" rx="8" stroke="#4ecdc4" stroke-width="2"/>
+  <text x="400" y="235" fill="#4ecdc4" font-family="JetBrains Mono, monospace" font-size="13" font-weight="bold">⚠️ No activation!</text>
+  <text x="400" y="258" fill="#e0e0e0" font-family="JetBrains Mono, monospace" font-size="11">Output is unbounded</text>
+  <text x="400" y="278" fill="#ffd93d" font-family="JetBrains Mono, monospace" font-size="11">→ Enables MSE loss</text>
+  
+  <!-- Comparison note -->
+  <rect x="50" y="210" width="310" height="80" fill="#2a2a4a" rx="8" opacity="0.6"/>
+  <text x="70" y="235" fill="#ffd93d" font-family="JetBrains Mono, monospace" font-size="12">💡 Why this matters:</text>
+  <text x="70" y="258" fill="#a0a0c0" font-family="JetBrains Mono, monospace" font-size="10">• No sigmoid → No saturation</text>
+  <text x="70" y="278" fill="#a0a0c0" font-family="JetBrains Mono, monospace" font-size="10">• MSE loss works on unbounded outputs</text>
+</svg>
+

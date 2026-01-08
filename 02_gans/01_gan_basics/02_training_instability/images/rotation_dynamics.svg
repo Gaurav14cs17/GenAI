@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="rotateGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444"/>
+      <stop offset="50%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#EF4444"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="200" y="25" font-family="system-ui, sans-serif" font-size="14" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Non-Convergence: Rotation Around Equilibrium</text>
+  
+  <!-- Axes -->
+  <line x1="50" y1="250" x2="350" y2="250" stroke="#475569" stroke-width="2"/>
+  <line x1="200" y1="260" x2="200" y2="60" stroke="#475569" stroke-width="2"/>
+  <polygon points="350,250 340,245 340,255" fill="#475569"/>
+  <polygon points="200,60 195,70 205,70" fill="#475569"/>
+  
+  <text x="360" y="255" font-family="system-ui, sans-serif" font-size="12" fill="#94A3B8">x</text>
+  <text x="205" y="55" font-family="system-ui, sans-serif" font-size="12" fill="#94A3B8">y</text>
+  
+  <!-- Rotation circle -->
+  <circle cx="200" cy="155" r="70" fill="none" stroke="url(#rotateGrad)" stroke-width="3" stroke-dasharray="8,4"/>
+  
+  <!-- Center point (equilibrium) -->
+  <circle cx="200" cy="155" r="5" fill="#10B981"/>
+  <text x="220" y="150" font-family="system-ui, sans-serif" font-size="10" fill="#10B981">Equilibrium</text>
+  
+  <!-- Rotating points on the circle -->
+  <circle cx="270" cy="155" r="6" fill="#EF4444"/>
+  <circle cx="200" cy="85" r="6" fill="#F59E0B"/>
+  <circle cx="130" cy="155" r="6" fill="#8B5CF6"/>
+  <circle cx="200" cy="225" r="6" fill="#3B82F6"/>
+  
+  <!-- Arrows showing rotation direction -->
+  <path d="M 265 125 A 50 50 0 0 1 230 95" stroke="#EF4444" stroke-width="2" fill="none"/>
+  <polygon points="230,95 235,105 225,102" fill="#EF4444"/>
+  
+  <!-- Rotation symbol -->
+  <text x="200" y="160" font-family="system-ui, sans-serif" font-size="20" fill="#F59E0B" text-anchor="middle">🔄</text>
+  
+  <!-- Annotation -->
+  <rect x="250" y="200" width="130" height="50" rx="6" fill="#1E293B" stroke="#EF4444" stroke-width="1"/>
+  <text x="315" y="220" font-family="system-ui, sans-serif" font-size="9" fill="#EF4444" text-anchor="middle" font-weight="bold">Never Converges!</text>
+  <text x="315" y="238" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle">Iterates rotate forever</text>
+</svg>
+

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs>
+    <linearGradient id="bgComp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3c72;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a5298;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="300" fill="url(#bgComp)"/>
+  
+  <text x="400" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="bold">
+    GAN Core Components
+  </text>
+  
+  <!-- Generator Section -->
+  <g transform="translate(50, 60)">
+    <rect width="300" height="200" rx="10" fill="#667eea" opacity="0.3"/>
+    <rect x="10" y="10" width="280" height="40" rx="5" fill="#667eea"/>
+    <text x="150" y="37" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+      GENERATOR G
+    </text>
+    
+    <text x="20" y="75" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">
+      📥 Input: z ∈ ℝᵈ (latent vector)
+    </text>
+    <text x="20" y="100" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">
+      📤 Output: G(z) ∈ 𝒳 (fake sample)
+    </text>
+    <text x="20" y="130" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">
+      🎯 Goal: Fool discriminator
+    </text>
+    <text x="20" y="160" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">
+      Architecture: TransConv layers
+    </text>
+    <text x="20" y="180" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">
+      Activation: ReLU + Tanh (output)
+    </text>
+  </g>
+  
+  <!-- Discriminator Section -->
+  <g transform="translate(450, 60)">
+    <rect width="300" height="200" rx="10" fill="#f093fb" opacity="0.3"/>
+    <rect x="10" y="10" width="280" height="40" rx="5" fill="#f093fb"/>
+    <text x="150" y="37" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+      DISCRIMINATOR D
+    </text>
+    
+    <text x="20" y="75" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">
+      📥 Input: x ∈ 𝒳 (any sample)
+    </text>
+    <text x="20" y="100" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">
+      📤 Output: D(x) ∈ [0,1] (prob)
+    </text>
+    <text x="20" y="130" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">
+      🎯 Goal: Detect fakes
+    </text>
+    <text x="20" y="160" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">
+      Architecture: Conv layers
+    </text>
+    <text x="20" y="180" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">
+      Activation: LeakyReLU + Sigmoid
+    </text>
+  </g>
+  
+  <!-- Arrow between -->
+  <path d="M 360 160 L 440 160" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowW)"/>
+  <text x="400" y="145" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">
+    adversarial
+  </text>
+  <defs>
+    <marker id="arrowW" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ffffff"/>
+    </marker>
+  </defs>
+</svg>
+
+

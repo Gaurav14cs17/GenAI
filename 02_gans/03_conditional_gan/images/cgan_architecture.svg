@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320">
+  <defs>
+    <linearGradient id="bgCGAN" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#16213e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="condGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="320" fill="url(#bgCGAN)"/>
+  
+  <text x="400" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="bold">
+    Conditional GAN Architecture
+  </text>
+  <text x="400" y="55" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="12">
+    Control what you generate with conditioning information
+  </text>
+  
+  <!-- Noise z -->
+  <g transform="translate(50, 100)">
+    <circle cx="30" cy="40" r="25" fill="#4facfe"/>
+    <text x="30" y="45" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">z</text>
+    <text x="30" y="85" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="10">Noise</text>
+  </g>
+  
+  <!-- Condition y (to G) -->
+  <g transform="translate(50, 180)">
+    <rect x="5" y="0" width="50" height="40" rx="5" fill="url(#condGrad)"/>
+    <text x="30" y="25" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">y</text>
+    <text x="30" y="60" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="10">Condition</text>
+    <text x="30" y="75" text-anchor="middle" fill="#f093fb" font-family="Arial, sans-serif" font-size="9">"cat"</text>
+  </g>
+  
+  <!-- Generator -->
+  <g transform="translate(180, 100)">
+    <rect x="0" y="0" width="150" height="140" rx="15" fill="#43e97b" opacity="0.8"/>
+    <text x="75" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">GENERATOR</text>
+    <text x="75" y="60" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">G(z, y)</text>
+    
+    <!-- Concatenation visual -->
+    <rect x="20" y="75" width="30" height="20" rx="3" fill="#4facfe" opacity="0.8"/>
+    <text x="35" y="89" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="8">z</text>
+    <rect x="55" y="75" width="30" height="20" rx="3" fill="#f093fb" opacity="0.8"/>
+    <text x="70" y="89" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="8">y</text>
+    <text x="95" y="89" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">→</text>
+    <rect x="100" y="75" width="30" height="20" rx="3" fill="#ffffff" opacity="0.3"/>
+    
+    <text x="75" y="120" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">Concatenate inputs</text>
+  </g>
+  
+  <!-- Generated Image -->
+  <g transform="translate(380, 120)">
+    <rect x="0" y="0" width="80" height="100" rx="10" fill="#43e97b" opacity="0.6"/>
+    <text x="40" y="55" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Cat</text>
+    <text x="40" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">Image</text>
+  </g>
+  
+  <!-- Discriminator -->
+  <g transform="translate(520, 100)">
+    <rect x="0" y="0" width="150" height="140" rx="15" fill="#f5576c" opacity="0.8"/>
+    <text x="75" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">DISCRIMINATOR</text>
+    <text x="75" y="60" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">D(x, y)</text>
+    
+    <!-- Inputs visual -->
+    <rect x="20" y="75" width="30" height="20" rx="3" fill="#43e97b" opacity="0.8"/>
+    <text x="35" y="89" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="8">x</text>
+    <rect x="55" y="75" width="30" height="20" rx="3" fill="#f093fb" opacity="0.8"/>
+    <text x="70" y="89" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="8">y</text>
+    <text x="95" y="89" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">→</text>
+    <rect x="100" y="75" width="30" height="20" rx="3" fill="#ffffff" opacity="0.3"/>
+    
+    <text x="75" y="120" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">Match condition?</text>
+  </g>
+  
+  <!-- Output -->
+  <g transform="translate(720, 150)">
+    <circle cx="25" cy="25" r="20" fill="#ffd700"/>
+    <text x="25" y="30" text-anchor="middle" fill="#1a1a2e" font-family="Arial, sans-serif" font-size="12" font-weight="bold">?</text>
+    <text x="25" y="65" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="9">Real cat</text>
+    <text x="25" y="78" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="9">or fake?</text>
+  </g>
+  
+  <!-- Condition y (to D) -->
+  <g transform="translate(560, 250)">
+    <rect x="5" y="0" width="50" height="30" rx="5" fill="url(#condGrad)"/>
+    <text x="30" y="20" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="10" font-weight="bold">y</text>
+  </g>
+  <path d="M 585 250 L 585 245" stroke="#f093fb" stroke-width="2" marker-end="url(#arrCGAN)"/>
+  
+  <!-- Arrows -->
+  <path d="M 85 140 L 170 140" stroke="#4facfe" stroke-width="2" marker-end="url(#arrCGAN)"/>
+  <path d="M 85 200 L 170 200" stroke="#f093fb" stroke-width="2" marker-end="url(#arrCGAN)"/>
+  <path d="M 340 170 L 370 170" stroke="#ffffff" stroke-width="2" marker-end="url(#arrCGAN)"/>
+  <path d="M 470 170 L 510 170" stroke="#ffffff" stroke-width="2" marker-end="url(#arrCGAN)"/>
+  <path d="M 680 170 L 695 170" stroke="#ffffff" stroke-width="2" marker-end="url(#arrCGAN)"/>
+  
+  <defs>
+    <marker id="arrCGAN" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#ffffff"/>
+    </marker>
+  </defs>
+  
+  <!-- Key insight -->
+  <rect x="200" y="275" width="400" height="35" rx="5" fill="#f093fb" opacity="0.2"/>
+  <text x="400" y="297" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">
+    Both G and D receive condition y → Controllable generation!
+  </text>
+</svg>
+
+

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs>
+    <linearGradient id="bgTI" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#200122;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6f0000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="300" fill="url(#bgTI)"/>
+  
+  <text x="400" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="bold">
+    Training Instability in GANs
+  </text>
+  <text x="400" y="55" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="12">
+    The chaos of adversarial optimization
+  </text>
+  
+  <!-- Loss curves showing instability -->
+  <g transform="translate(100, 80)">
+    <!-- Background -->
+    <rect width="600" height="180" rx="10" fill="#000000" opacity="0.3"/>
+    
+    <!-- Grid -->
+    <line x1="50" y1="150" x2="550" y2="150" stroke="#ffffff" opacity="0.3"/>
+    <line x1="50" y1="100" x2="550" y2="100" stroke="#ffffff" opacity="0.2"/>
+    <line x1="50" y1="50" x2="550" y2="50" stroke="#ffffff" opacity="0.2"/>
+    
+    <!-- Unstable D loss (oscillating) -->
+    <path d="M 50 100 
+             Q 80 40, 110 120 
+             Q 140 30, 170 110 
+             Q 200 50, 230 90 
+             Q 260 20, 290 130 
+             Q 320 40, 350 100 
+             Q 380 60, 410 85
+             Q 440 30, 470 110
+             Q 500 50, 530 80" 
+          stroke="#f5576c" stroke-width="2.5" fill="none"/>
+    <text x="540" y="75" fill="#f5576c" font-family="Arial, sans-serif" font-size="11">D loss 📉</text>
+    
+    <!-- Unstable G loss (oscillating differently) -->
+    <path d="M 50 90 
+             Q 80 130, 110 60 
+             Q 140 140, 170 70 
+             Q 200 120, 230 80 
+             Q 260 150, 290 50 
+             Q 320 130, 350 85 
+             Q 380 110, 410 95
+             Q 440 140, 470 70
+             Q 500 120, 530 100" 
+          stroke="#43e97b" stroke-width="2.5" fill="none"/>
+    <text x="540" y="105" fill="#43e97b" font-family="Arial, sans-serif" font-size="11">G loss 📈</text>
+    
+    <!-- Labels -->
+    <text x="50" y="170" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">0</text>
+    <text x="300" y="170" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">Iterations</text>
+    <text x="530" y="170" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">N</text>
+    
+    <!-- Warning indicators -->
+    <circle cx="290" cy="130" r="8" fill="#ff0000" opacity="0.5"/>
+    <text x="290" y="134" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">!</text>
+  </g>
+  
+  <text x="400" y="280" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="13">
+    ⚠️ Wild oscillations = Training instability
+  </text>
+</svg>
+
+

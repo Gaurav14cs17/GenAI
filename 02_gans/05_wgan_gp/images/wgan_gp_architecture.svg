@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320">
+  <defs>
+    <linearGradient id="bgWGANGP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#302b63;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#24243e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11998e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38ef7d;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="320" fill="url(#bgWGANGP)"/>
+  
+  <text x="400" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="bold">
+    WGAN with Gradient Penalty
+  </text>
+  <text x="400" y="55" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="12">
+    Elegant enforcement of Lipschitz constraint
+  </text>
+  
+  <!-- Real data -->
+  <g transform="translate(80, 100)">
+    <circle cx="30" cy="40" r="25" fill="#43e97b"/>
+    <text x="30" y="45" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Real</text>
+    <text x="30" y="85" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="9">x</text>
+  </g>
+  
+  <!-- Fake data -->
+  <g transform="translate(80, 180)">
+    <circle cx="30" cy="40" r="25" fill="#f5576c"/>
+    <text x="30" y="45" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Fake</text>
+    <text x="30" y="85" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="9">G(z)</text>
+  </g>
+  
+  <!-- Interpolation zone -->
+  <g transform="translate(180, 120)">
+    <rect x="0" y="0" width="120" height="100" rx="10" fill="url(#gpGrad)" opacity="0.6"/>
+    <text x="60" y="25" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="bold">INTERPOLATE</text>
+    <text x="60" y="50" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">x̂ = εx + (1-ε)G(z)</text>
+    <text x="60" y="75" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">ε ~ U(0,1)</text>
+  </g>
+  
+  <!-- Critic -->
+  <g transform="translate(380, 110)">
+    <rect x="0" y="0" width="140" height="120" rx="15" fill="#f5af19" opacity="0.9"/>
+    <text x="70" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">CRITIC</text>
+    <text x="70" y="60" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">f(x̂) → ℝ</text>
+    <text x="70" y="85" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">Compute ∇f(x̂)</text>
+    <text x="70" y="105" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">No BatchNorm!</text>
+  </g>
+  
+  <!-- Gradient Penalty -->
+  <g transform="translate(580, 100)">
+    <rect x="0" y="0" width="180" height="140" rx="10" fill="#ffffff" opacity="0.1"/>
+    <text x="90" y="25" text-anchor="middle" fill="#38ef7d" font-family="Arial, sans-serif" font-size="12" font-weight="bold">GRADIENT PENALTY</text>
+    <text x="90" y="55" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">GP = λ·(||∇f(x̂)|| - 1)²</text>
+    <text x="90" y="85" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="11">λ = 10</text>
+    <text x="90" y="115" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="10">Pushes gradient to 1</text>
+    <text x="90" y="130" text-anchor="middle" fill="#43e97b" font-family="Arial, sans-serif" font-size="10">→ 1-Lipschitz!</text>
+  </g>
+  
+  <!-- Arrows -->
+  <path d="M 135 140 L 175 155" stroke="#43e97b" stroke-width="2"/>
+  <path d="M 135 220 L 175 185" stroke="#f5576c" stroke-width="2"/>
+  <path d="M 310 170 L 370 170" stroke="#ffffff" stroke-width="2" marker-end="url(#arrGP)"/>
+  <path d="M 530 170 L 570 170" stroke="#ffffff" stroke-width="2" marker-end="url(#arrGP)"/>
+  
+  <defs>
+    <marker id="arrGP" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#ffffff"/>
+    </marker>
+  </defs>
+  
+  <!-- Loss formula -->
+  <rect x="150" y="265" width="500" height="45" rx="5" fill="#ffffff" opacity="0.1"/>
+  <text x="400" y="285" text-anchor="middle" fill="#ffffff" font-family="Georgia, serif" font-size="12" font-style="italic">
+    L_critic = 𝔼[f(fake)] - 𝔼[f(real)] + λ·𝔼[(||∇f(x̂)|| - 1)²]
+  </text>
+  <text x="400" y="302" text-anchor="middle" fill="#43e97b" font-family="Arial, sans-serif" font-size="10">
+    ✅ No weight clipping! ✅ Full model capacity! ✅ Stable training!
+  </text>
+</svg>
+
+

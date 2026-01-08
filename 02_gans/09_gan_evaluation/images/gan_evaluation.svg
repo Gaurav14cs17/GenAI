@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs>
+    <linearGradient id="bgEval" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#302b63;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#24243e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="300" fill="url(#bgEval)"/>
+  
+  <text x="400" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="bold">
+    GAN Evaluation Metrics
+  </text>
+  <text x="400" y="55" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="12">
+    Measuring Quality and Diversity of Generated Samples
+  </text>
+  
+  <!-- IS -->
+  <g transform="translate(80, 80)">
+    <rect x="0" y="0" width="180" height="100" rx="10" fill="#e74c3c" opacity="0.7"/>
+    <text x="90" y="30" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Inception Score</text>
+    <text x="90" y="55" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">exp(H(y) - H(y|x))</text>
+    <text x="90" y="80" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="10">Quality + Diversity</text>
+    <text x="90" y="95" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="10">Higher is better ↑</text>
+  </g>
+  
+  <!-- FID -->
+  <g transform="translate(310, 80)">
+    <rect x="0" y="0" width="180" height="100" rx="10" fill="#3498db" opacity="0.7"/>
+    <text x="90" y="30" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">FID</text>
+    <text x="90" y="55" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">||μ_r - μ_g||² + Tr(...)</text>
+    <text x="90" y="80" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="10">Distribution Distance</text>
+    <text x="90" y="95" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="10">Lower is better ↓</text>
+  </g>
+  
+  <!-- Precision/Recall -->
+  <g transform="translate(540, 80)">
+    <rect x="0" y="0" width="180" height="100" rx="10" fill="#2ecc71" opacity="0.7"/>
+    <text x="90" y="30" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Precision/Recall</text>
+    <text x="90" y="55" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">Quality vs Diversity</text>
+    <text x="90" y="80" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="10">Decomposed metrics</text>
+    <text x="90" y="95" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="10">Both higher is better ↑</text>
+  </g>
+  
+  <!-- Feature extractor -->
+  <g transform="translate(250, 200)">
+    <rect x="0" y="0" width="300" height="70" rx="10" fill="#9b59b6" opacity="0.5"/>
+    <text x="150" y="25" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">
+      Inception-v3 Feature Extractor
+    </text>
+    <text x="150" y="45" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">
+      All metrics use learned features (2048-dim)
+    </text>
+    <text x="150" y="60" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="9">
+      Captures semantic content, correlates with perception
+    </text>
+  </g>
+  
+  <!-- Arrows to feature extractor -->
+  <path d="M 170 185 L 250 210" stroke="#9b59b6" stroke-width="2"/>
+  <path d="M 400 185 L 400 195" stroke="#9b59b6" stroke-width="2"/>
+  <path d="M 630 185 L 550 210" stroke="#9b59b6" stroke-width="2"/>
+</svg>
+
+

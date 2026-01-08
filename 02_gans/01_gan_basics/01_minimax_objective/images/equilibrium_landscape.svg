@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320">
+  <defs>
+    <linearGradient id="eqBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <radialGradient id="globalOpt" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00b894"/>
+      <stop offset="100%" style="stop-color:#00b894;stop-opacity:0.3"/>
+    </radialGradient>
+    <radialGradient id="localOpt" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fdcb6e"/>
+      <stop offset="100%" style="stop-color:#fdcb6e;stop-opacity:0.3"/>
+    </radialGradient>
+    <filter id="eqGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="600" height="320" fill="url(#eqBg)" rx="12"/>
+  
+  <text x="300" y="32" text-anchor="middle" fill="#a29bfe" font-family="JetBrains Mono, monospace" font-size="16" font-weight="bold">EQUILIBRIUM LANDSCAPE</text>
+  
+  <rect x="30" y="50" width="540" height="255" fill="none" stroke="#4a4a6a" stroke-width="1" rx="8" opacity="0.5"/>
+  
+  <!-- Global Optimum -->
+  <circle cx="300" cy="110" r="35" fill="url(#globalOpt)" filter="url(#eqGlow)"/>
+  <text x="300" y="105" text-anchor="middle" fill="white" font-family="JetBrains Mono, monospace" font-size="10">🎯 Global</text>
+  <text x="300" y="120" text-anchor="middle" fill="white" font-family="JetBrains Mono, monospace" font-size="9">p_g = p_data</text>
+  
+  <!-- Local Equilibria -->
+  <circle cx="120" cy="180" r="25" fill="url(#localOpt)" opacity="0.7"/>
+  <text x="120" y="185" text-anchor="middle" fill="#1a1a2e" font-family="JetBrains Mono, monospace" font-size="9">Local</text>
+  
+  <circle cx="200" cy="220" r="20" fill="url(#localOpt)" opacity="0.6"/>
+  <text x="200" y="224" text-anchor="middle" fill="#1a1a2e" font-family="JetBrains Mono, monospace" font-size="8">Local</text>
+  
+  <circle cx="400" cy="190" r="22" fill="url(#localOpt)" opacity="0.7"/>
+  <text x="400" y="194" text-anchor="middle" fill="#1a1a2e" font-family="JetBrains Mono, monospace" font-size="8">Local</text>
+  
+  <circle cx="480" cy="160" r="18" fill="url(#localOpt)" opacity="0.5"/>
+  <text x="480" y="164" text-anchor="middle" fill="#1a1a2e" font-family="JetBrains Mono, monospace" font-size="7">Local</text>
+  
+  <!-- Warning boxes -->
+  <rect x="50" y="250" width="230" height="45" fill="#2a2a4a" rx="6" stroke="#fdcb6e"/>
+  <text x="60" y="270" fill="#fdcb6e" font-family="JetBrains Mono, monospace" font-size="10">⚠️ Local Equilibria:</text>
+  <text x="70" y="286" fill="#a0a0c0" font-family="JetBrains Mono, monospace" font-size="9">• Mode collapse points</text>
+  
+  <rect x="320" y="250" width="230" height="45" fill="#2a2a4a" rx="6" stroke="#ff6b6b"/>
+  <text x="330" y="270" fill="#ff6b6b" font-family="JetBrains Mono, monospace" font-size="10">❌ Problem:</text>
+  <text x="340" y="286" fill="#a0a0c0" font-family="JetBrains Mono, monospace" font-size="9">NNs have MANY local equilibria</text>
+</svg>
+

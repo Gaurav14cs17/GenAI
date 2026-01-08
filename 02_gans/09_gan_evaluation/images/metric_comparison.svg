@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="evalBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="600" height="400" fill="url(#evalBg)" rx="12"/>
+  
+  <text x="300" y="32" text-anchor="middle" fill="#4ecdc4" font-family="JetBrains Mono, monospace" font-size="16" font-weight="bold">METRIC COMPARISON</text>
+  
+  <rect x="30" y="50" width="540" height="335" fill="none" stroke="#4a4a6a" stroke-width="1" rx="8" opacity="0.5"/>
+  
+  <!-- FID Section -->
+  <rect x="50" y="70" width="500" height="85" fill="#1a3a3a" rx="8" stroke="#4ecdc4"/>
+  <text x="70" y="95" fill="#4ecdc4" font-family="JetBrains Mono, monospace" font-size="14" font-weight="bold">FID</text>
+  <text x="120" y="95" fill="#a0a0c0" font-family="JetBrains Mono, monospace" font-size="12">— Most widely used</text>
+  <text x="80" y="115" fill="#00b894" font-family="JetBrains Mono, monospace" font-size="11">✓ Correlates with quality</text>
+  <text x="80" y="133" fill="#00b894" font-family="JetBrains Mono, monospace" font-size="11">✓ Uses real data reference</text>
+  <text x="300" y="115" fill="#ff6b6b" font-family="JetBrains Mono, monospace" font-size="11">✗ Needs many samples</text>
+  
+  <!-- IS Section -->
+  <rect x="50" y="165" width="500" height="85" fill="#3a3a1a" rx="8" stroke="#fdcb6e"/>
+  <text x="70" y="190" fill="#fdcb6e" font-family="JetBrains Mono, monospace" font-size="14" font-weight="bold">IS</text>
+  <text x="100" y="190" fill="#a0a0c0" font-family="JetBrains Mono, monospace" font-size="12">— Original metric</text>
+  <text x="80" y="210" fill="#00b894" font-family="JetBrains Mono, monospace" font-size="11">✓ Quick to compute</text>
+  <text x="80" y="228" fill="#ff6b6b" font-family="JetBrains Mono, monospace" font-size="11">✗ No real data reference</text>
+  <text x="300" y="228" fill="#ff6b6b" font-family="JetBrains Mono, monospace" font-size="11">✗ ImageNet bias</text>
+  
+  <!-- P&R Section -->
+  <rect x="50" y="260" width="500" height="85" fill="#2a1a3a" rx="8" stroke="#a29bfe"/>
+  <text x="70" y="285" fill="#a29bfe" font-family="JetBrains Mono, monospace" font-size="14" font-weight="bold">P&amp;R</text>
+  <text x="110" y="285" fill="#a0a0c0" font-family="JetBrains Mono, monospace" font-size="12">— Quality-diversity split</text>
+  <text x="80" y="305" fill="#00b894" font-family="JetBrains Mono, monospace" font-size="11">✓ Interpretable</text>
+  <text x="80" y="323" fill="#00b894" font-family="JetBrains Mono, monospace" font-size="11">✓ Reveals failure modes</text>
+  <text x="300" y="323" fill="#ff6b6b" font-family="JetBrains Mono, monospace" font-size="11">✗ Computational cost</text>
+  
+  <!-- Legend -->
+  <rect x="400" y="70" width="130" height="40" fill="#2a2a4a" rx="4"/>
+  <text x="420" y="87" fill="#00b894" font-family="JetBrains Mono, monospace" font-size="10">✓ = Advantage</text>
+  <text x="420" y="103" fill="#ff6b6b" font-family="JetBrains Mono, monospace" font-size="10">✗ = Limitation</text>
+</svg>
+

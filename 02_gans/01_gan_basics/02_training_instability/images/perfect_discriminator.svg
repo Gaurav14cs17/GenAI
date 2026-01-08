@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220">
+  <defs>
+    <linearGradient id="bgPD" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="600" height="220" fill="url(#bgPD)"/>
+  
+  <text x="300" y="25" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    The Perfect Discriminator Problem
+  </text>
+  
+  <!-- Two separate manifolds -->
+  <g transform="translate(50, 50)">
+    <!-- Real data manifold -->
+    <ellipse cx="120" cy="80" rx="80" ry="50" fill="#43e97b" opacity="0.3" stroke="#43e97b" stroke-width="2"/>
+    <text x="120" y="75" text-anchor="middle" fill="#43e97b" font-family="Arial, sans-serif" font-size="12">p_data</text>
+    <text x="120" y="92" text-anchor="middle" fill="#43e97b" font-family="Arial, sans-serif" font-size="10">D(x) = 1</text>
+    
+    <!-- Fake data manifold (separate!) -->
+    <ellipse cx="380" cy="80" rx="80" ry="50" fill="#f5576c" opacity="0.3" stroke="#f5576c" stroke-width="2"/>
+    <text x="380" y="75" text-anchor="middle" fill="#f5576c" font-family="Arial, sans-serif" font-size="12">p_g</text>
+    <text x="380" y="92" text-anchor="middle" fill="#f5576c" font-family="Arial, sans-serif" font-size="10">D(x) = 0</text>
+    
+    <!-- Gap between them -->
+    <text x="250" y="85" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="20">⚠️</text>
+    <text x="250" y="105" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="10">No overlap!</text>
+  </g>
+  
+  <!-- Result box -->
+  <rect x="100" y="165" width="400" height="45" rx="5" fill="#ff0000" opacity="0.2"/>
+  <text x="300" y="185" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">
+    Result: ∇G = 0 (No gradient to improve G!)
+  </text>
+  <text x="300" y="202" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="10">
+    JS divergence = log(2) regardless of distance
+  </text>
+</svg>
+
+

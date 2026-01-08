@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180">
+  <defs>
+    <linearGradient id="bgInterp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#232526;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#414345;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="interpLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#43e97b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="600" height="180" fill="url(#bgInterp)"/>
+  
+  <text x="300" y="25" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">
+    Sampling Interpolated Points for Gradient Penalty
+  </text>
+  
+  <!-- Real point -->
+  <g transform="translate(80, 70)">
+    <circle cx="30" cy="30" r="20" fill="#43e97b"/>
+    <text x="30" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="bold">x</text>
+    <text x="30" y="70" text-anchor="middle" fill="#43e97b" font-family="Arial, sans-serif" font-size="9">Real</text>
+  </g>
+  
+  <!-- Interpolation line -->
+  <line x1="130" y1="100" x2="440" y2="100" stroke="url(#interpLine)" stroke-width="4"/>
+  
+  <!-- Interpolated points -->
+  <circle cx="200" cy="100" r="8" fill="#ffffff" opacity="0.5"/>
+  <circle cx="270" cy="100" r="10" fill="#ffd700"/>
+  <text x="270" y="75" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="10">x̂</text>
+  <circle cx="340" cy="100" r="8" fill="#ffffff" opacity="0.5"/>
+  <circle cx="400" cy="100" r="8" fill="#ffffff" opacity="0.5"/>
+  
+  <!-- Fake point -->
+  <g transform="translate(460, 70)">
+    <circle cx="30" cy="30" r="20" fill="#f5576c"/>
+    <text x="30" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="10" font-weight="bold">G(z)</text>
+    <text x="30" y="70" text-anchor="middle" fill="#f5576c" font-family="Arial, sans-serif" font-size="9">Fake</text>
+  </g>
+  
+  <!-- Formula -->
+  <text x="300" y="150" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="12">
+    x̂ = ε·x_real + (1-ε)·x_fake, where ε ~ U(0,1)
+  </text>
+  <text x="300" y="168" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="10">
+    Gradient penalty computed at these interpolated points
+  </text>
+</svg>
+
+

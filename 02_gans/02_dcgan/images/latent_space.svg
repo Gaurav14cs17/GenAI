@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200">
+  <defs>
+    <linearGradient id="bgLS" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#302b63;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="interpGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="700" height="200" fill="url(#bgLS)"/>
+  
+  <text x="350" y="25" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    Latent Space Interpolation
+  </text>
+  
+  <!-- Start point z1 -->
+  <g transform="translate(50, 70)">
+    <circle cx="30" cy="30" r="25" fill="#667eea"/>
+    <text x="30" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">z₁</text>
+    <text x="30" y="80" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="10">Face A</text>
+  </g>
+  
+  <!-- Interpolation path -->
+  <rect x="120" y="85" width="460" height="30" rx="15" fill="url(#interpGrad)" opacity="0.6"/>
+  
+  <!-- Intermediate points -->
+  <circle cx="180" cy="100" r="12" fill="#ffffff" opacity="0.5"/>
+  <circle cx="270" cy="100" r="12" fill="#ffffff" opacity="0.5"/>
+  <circle cx="350" cy="100" r="14" fill="#ffffff" opacity="0.7"/>
+  <circle cx="430" cy="100" r="12" fill="#ffffff" opacity="0.5"/>
+  <circle cx="520" cy="100" r="12" fill="#ffffff" opacity="0.5"/>
+  
+  <!-- End point z2 -->
+  <g transform="translate(600, 70)">
+    <circle cx="30" cy="30" r="25" fill="#f093fb"/>
+    <text x="30" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">z₂</text>
+    <text x="30" y="80" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="10">Face B</text>
+  </g>
+  
+  <!-- Formula -->
+  <text x="350" y="160" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="12">
+    z_λ = (1-λ)z₁ + λz₂ → Smooth transition between faces!
+  </text>
+  
+  <!-- Lambda labels -->
+  <text x="80" y="145" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="9">λ=0</text>
+  <text x="350" y="145" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="9">λ=0.5</text>
+  <text x="630" y="145" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="9">λ=1</text>
+</svg>
+
+

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 250">
+  <defs>
+    <linearGradient id="bgMCV" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="700" height="250" fill="url(#bgMCV)"/>
+  
+  <text x="350" y="25" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    Real Distribution vs Mode-Collapsed Output
+  </text>
+  
+  <!-- Real distribution (multi-modal) -->
+  <g transform="translate(50, 50)">
+    <text x="125" y="0" text-anchor="middle" fill="#43e97b" font-family="Arial, sans-serif" font-size="12">Real Data (p_data)</text>
+    <rect x="0" y="10" width="250" height="150" rx="5" fill="#000000" opacity="0.3"/>
+    
+    <!-- Multiple modes as gaussians -->
+    <ellipse cx="50" cy="85" rx="30" ry="40" fill="#43e97b" opacity="0.5"/>
+    <ellipse cx="125" cy="85" rx="30" ry="40" fill="#43e97b" opacity="0.5"/>
+    <ellipse cx="200" cy="85" rx="30" ry="40" fill="#43e97b" opacity="0.5"/>
+    
+    <text x="50" y="140" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">Mode 1</text>
+    <text x="125" y="140" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">Mode 2</text>
+    <text x="200" y="140" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">Mode 3</text>
+  </g>
+  
+  <!-- Collapsed output -->
+  <g transform="translate(400, 50)">
+    <text x="125" y="0" text-anchor="middle" fill="#f5576c" font-family="Arial, sans-serif" font-size="12">Generated (p_g) - Collapsed!</text>
+    <rect x="0" y="10" width="250" height="150" rx="5" fill="#000000" opacity="0.3"/>
+    
+    <!-- Only one mode -->
+    <ellipse cx="125" cy="85" rx="35" ry="50" fill="#f5576c" opacity="0.7"/>
+    
+    <text x="50" y="85" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="9" opacity="0.3">❌</text>
+    <text x="200" y="85" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="9" opacity="0.3">❌</text>
+    <text x="125" y="140" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">Only Mode 2!</text>
+  </g>
+  
+  <text x="350" y="230" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="12">
+    Generator ignores Modes 1 and 3 → Missing diversity
+  </text>
+</svg>
+
+
