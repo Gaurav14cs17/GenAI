@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 240">
+  <defs>
+    <linearGradient id="standardGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444"/>
+      <stop offset="100%" style="stop-color:#F97316"/>
+    </linearGradient>
+    <linearGradient id="flashGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#3B82F6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="750" height="240" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="375" y="25" font-family="system-ui, sans-serif" font-size="16" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Flash Attention: Memory-Efficient Attention</text>
+  
+  <!-- Standard Attention -->
+  <rect x="40" y="50" width="300" height="150" rx="10" fill="#1E293B" stroke="#EF4444" stroke-width="2"/>
+  <text x="190" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#EF4444" text-anchor="middle" font-weight="bold">Standard Attention</text>
+  
+  <!-- Memory blocks (large) -->
+  <rect x="60" y="95" width="100" height="80" rx="4" fill="url(#standardGrad)" opacity="0.7"/>
+  <text x="110" y="140" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle">QKᵀ</text>
+  <text x="110" y="155" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle">N×N</text>
+  
+  <rect x="180" y="95" width="100" height="80" rx="4" fill="url(#standardGrad)" opacity="0.7"/>
+  <text x="230" y="140" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle">Attn</text>
+  <text x="230" y="155" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle">N×N</text>
+  
+  <text x="190" y="188" font-family="system-ui, sans-serif" font-size="9" fill="#F87171" text-anchor="middle">O(N²) Memory 😰</text>
+  
+  <!-- Flash Attention -->
+  <rect x="410" y="50" width="300" height="150" rx="10" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+  <text x="560" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#10B981" text-anchor="middle" font-weight="bold">Flash Attention</text>
+  
+  <!-- Tiled computation (small blocks) -->
+  <g>
+    <rect x="430" y="95" width="25" height="25" rx="2" fill="url(#flashGrad)"/>
+    <rect x="460" y="95" width="25" height="25" rx="2" fill="url(#flashGrad)" opacity="0.3"/>
+    <rect x="490" y="95" width="25" height="25" rx="2" fill="url(#flashGrad)" opacity="0.3"/>
+    <rect x="430" y="125" width="25" height="25" rx="2" fill="url(#flashGrad)" opacity="0.3"/>
+    <rect x="460" y="125" width="25" height="25" rx="2" fill="url(#flashGrad)"/>
+    <rect x="490" y="125" width="25" height="25" rx="2" fill="url(#flashGrad)" opacity="0.3"/>
+    <rect x="430" y="155" width="25" height="25" rx="2" fill="url(#flashGrad)" opacity="0.3"/>
+    <rect x="460" y="155" width="25" height="25" rx="2" fill="url(#flashGrad)" opacity="0.3"/>
+    <rect x="490" y="155" width="25" height="25" rx="2" fill="url(#flashGrad)"/>
+  </g>
+  
+  <text x="475" y="195" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle">Tiled blocks</text>
+  
+  <!-- Arrow showing data flow -->
+  <text x="570" y="120" font-family="system-ui, sans-serif" font-size="20" fill="#64748B">→</text>
+  
+  <!-- SRAM usage -->
+  <rect x="600" y="95" width="90" height="80" rx="6" fill="#10B981" opacity="0.3"/>
+  <rect x="600" y="155" width="90" height="20" rx="4" fill="#10B981"/>
+  <text x="645" y="135" font-family="system-ui, sans-serif" font-size="9" fill="#10B981" text-anchor="middle">SRAM</text>
+  <text x="645" y="150" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle">(fast)</text>
+  
+  <text x="560" y="188" font-family="system-ui, sans-serif" font-size="9" fill="#34D399" text-anchor="middle">O(N) Memory 🚀</text>
+  
+  <!-- Bottom comparison -->
+  <rect x="200" y="210" width="350" height="25" rx="5" fill="#1E293B"/>
+  <text x="375" y="228" font-family="system-ui, sans-serif" font-size="10" fill="#F1F5F9" text-anchor="middle">2-4× faster • 5-20× less memory • Same result!</text>
+</svg>
+

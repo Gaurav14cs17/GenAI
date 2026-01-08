@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#0a1a2a"/>
+      <stop offset="100%" style="stop-color:#1a0a2a"/>
+    </linearGradient>
+    
+    <linearGradient id="slowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    
+    <linearGradient id="fastGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    
+    <linearGradient id="speedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="50%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  </pattern>
+  <rect width="900" height="500" fill="url(#grid)"/>
+  
+  <!-- Title -->
+  <text x="450" y="45" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" fill="white" filter="url(#glow)">
+    Inference Optimization
+  </text>
+  <text x="450" y="75" text-anchor="middle" font-family="system-ui" font-size="14" fill="rgba(255,255,255,0.6)">
+    From 60 seconds to 100 milliseconds
+  </text>
+  
+  <!-- Speed Timeline -->
+  <g transform="translate(450, 200)">
+    <!-- Timeline bar -->
+    <rect x="-350" y="-5" width="700" height="10" rx="5" fill="url(#speedGrad)" opacity="0.3"/>
+    
+    <!-- DDPM (1000 steps) -->
+    <g transform="translate(-320, 0)">
+      <circle r="15" fill="url(#slowGrad)" filter="url(#shadow)"/>
+      <text y="40" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#f87171">DDPM</text>
+      <text y="55" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">1000 steps</text>
+      <text y="70" text-anchor="middle" font-family="monospace" font-size="11" fill="#ef4444">~60s</text>
+    </g>
+    
+    <!-- DDIM (50 steps) -->
+    <g transform="translate(-160, 0)">
+      <circle r="15" fill="#f97316" filter="url(#shadow)"/>
+      <text y="40" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#fb923c">DDIM</text>
+      <text y="55" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">50 steps</text>
+      <text y="70" text-anchor="middle" font-family="monospace" font-size="11" fill="#f97316">~3s</text>
+    </g>
+    
+    <!-- DPM++ (20 steps) -->
+    <g transform="translate(0, 0)">
+      <circle r="15" fill="#eab308" filter="url(#shadow)"/>
+      <text y="40" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#fbbf24">DPM++</text>
+      <text y="55" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">20 steps</text>
+      <text y="70" text-anchor="middle" font-family="monospace" font-size="11" fill="#eab308">~1.2s</text>
+    </g>
+    
+    <!-- LCM (4 steps) -->
+    <g transform="translate(160, 0)">
+      <circle r="15" fill="#84cc16" filter="url(#shadow)"/>
+      <text y="40" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#a3e635">LCM</text>
+      <text y="55" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">4 steps</text>
+      <text y="70" text-anchor="middle" font-family="monospace" font-size="11" fill="#84cc16">~0.3s</text>
+    </g>
+    
+    <!-- Turbo (1 step) -->
+    <g transform="translate(320, 0)">
+      <circle r="15" fill="url(#fastGrad)" filter="url(#shadow)"/>
+      <text y="40" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#4ade80">Turbo</text>
+      <text y="55" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">1 step</text>
+      <text y="70" text-anchor="middle" font-family="monospace" font-size="11" fill="#22c55e">~0.1s</text>
+    </g>
+    
+    <!-- Speedup labels -->
+    <text x="-320" y="-35" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.4)">1×</text>
+    <text x="-160" y="-35" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.4)">20×</text>
+    <text x="0" y="-35" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.4)">50×</text>
+    <text x="160" y="-35" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.4)">200×</text>
+    <text x="320" y="-35" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.4)">600×</text>
+  </g>
+  
+  <!-- Optimization Techniques -->
+  <g transform="translate(450, 360)">
+    <rect x="-380" y="-50" width="760" height="100" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    
+    <!-- Categories -->
+    <g transform="translate(-280, -10)">
+      <rect x="-60" y="-25" width="120" height="60" rx="8" fill="rgba(102,126,234,0.2)" stroke="#667eea"/>
+      <text y="-5" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#a5b4fc">Fast Samplers</text>
+      <text y="12" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">DDIM, DPM++</text>
+      <text y="25" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">Euler, Heun</text>
+    </g>
+    
+    <g transform="translate(-90, -10)">
+      <rect x="-60" y="-25" width="120" height="60" rx="8" fill="rgba(240,147,251,0.2)" stroke="#f093fb"/>
+      <text y="-5" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fda4af">Distillation</text>
+      <text y="12" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">LCM, Turbo</text>
+      <text y="25" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">Lightning</text>
+    </g>
+    
+    <g transform="translate(100, -10)">
+      <rect x="-60" y="-25" width="120" height="60" rx="8" fill="rgba(67,233,123,0.2)" stroke="#43e97b"/>
+      <text y="-5" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#86efac">Compilation</text>
+      <text y="12" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">TensorRT</text>
+      <text y="25" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">torch.compile</text>
+    </g>
+    
+    <g transform="translate(290, -10)">
+      <rect x="-60" y="-25" width="120" height="60" rx="8" fill="rgba(251,191,36,0.2)" stroke="#fbbf24"/>
+      <text y="-5" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fde047">Quantization</text>
+      <text y="12" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">INT8, INT4</text>
+      <text y="25" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">BitsAndBytes</text>
+    </g>
+  </g>
+  
+  <!-- Stats -->
+  <g transform="translate(450, 460)">
+    <g transform="translate(-280, 0)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="22" font-weight="700" fill="#22c55e">600×</text>
+      <text y="18" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Max Speedup</text>
+    </g>
+    
+    <g transform="translate(-90, 0)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="22" font-weight="700" fill="#667eea">&lt;100ms</text>
+      <text y="18" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Real-time</text>
+    </g>
+    
+    <g transform="translate(100, 0)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="22" font-weight="700" fill="#f093fb">50%</text>
+      <text y="18" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Memory Saved</text>
+    </g>
+    
+    <g transform="translate(290, 0)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="22" font-weight="700" fill="#fbbf24">160+</text>
+      <text y="18" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Images/sec</text>
+    </g>
+  </g>
+</svg>

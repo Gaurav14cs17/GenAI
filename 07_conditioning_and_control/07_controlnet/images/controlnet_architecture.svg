@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs>
+    <linearGradient id="unetGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+    <linearGradient id="controlGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="300" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="400" y="25" font-family="system-ui, sans-serif" font-size="16" fill="#F1F5F9" text-anchor="middle" font-weight="bold">ControlNet Architecture</text>
+  
+  <!-- Control Input -->
+  <rect x="40" y="110" width="80" height="80" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="2"/>
+  <text x="80" y="145" font-family="system-ui, sans-serif" font-size="11" fill="#F59E0B" text-anchor="middle" font-weight="bold">Control</text>
+  <text x="80" y="165" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Edge/Pose</text>
+  <text x="80" y="180" font-family="system-ui, sans-serif" font-size="16" fill="#F59E0B" text-anchor="middle">🎨</text>
+  
+  <!-- ControlNet Branch (Trainable Copy) -->
+  <rect x="160" y="60" width="280" height="130" rx="12" fill="url(#controlGrad2)" opacity="0.2"/>
+  <rect x="160" y="60" width="280" height="130" rx="12" fill="none" stroke="#10B981" stroke-width="2"/>
+  <text x="300" y="85" font-family="system-ui, sans-serif" font-size="12" fill="#10B981" text-anchor="middle" font-weight="bold">ControlNet (Trainable Copy)</text>
+  
+  <!-- ControlNet blocks -->
+  <rect x="180" y="100" width="60" height="40" rx="4" fill="#10B981"/>
+  <text x="210" y="125" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle">Enc 1</text>
+  
+  <rect x="250" y="100" width="60" height="40" rx="4" fill="#10B981"/>
+  <text x="280" y="125" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle">Enc 2</text>
+  
+  <rect x="320" y="100" width="60" height="40" rx="4" fill="#10B981"/>
+  <text x="350" y="125" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle">Mid</text>
+  
+  <rect x="390" y="100" width="40" height="40" rx="4" fill="#10B981"/>
+  <text x="410" y="125" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle">...</text>
+  
+  <!-- Zero Conv annotations -->
+  <text x="300" y="170" font-family="system-ui, sans-serif" font-size="9" fill="#34D399" text-anchor="middle">Zero Convolutions → Safe training start</text>
+  
+  <!-- Main U-Net (Locked) -->
+  <rect x="160" y="210" width="280" height="70" rx="12" fill="url(#unetGrad)" opacity="0.2"/>
+  <rect x="160" y="210" width="280" height="70" rx="12" fill="none" stroke="#3B82F6" stroke-width="2"/>
+  <text x="300" y="235" font-family="system-ui, sans-serif" font-size="12" fill="#3B82F6" text-anchor="middle" font-weight="bold">Stable Diffusion U-Net (Locked 🔒)</text>
+  <text x="300" y="255" font-family="system-ui, sans-serif" font-size="9" fill="#60A5FA" text-anchor="middle">Original pretrained weights unchanged</text>
+  
+  <!-- Connection arrows -->
+  <line x1="125" y1="150" x2="155" y2="130" stroke="#F59E0B" stroke-width="2"/>
+  <polygon points="155,130 148,133 151,140" fill="#F59E0B"/>
+  
+  <!-- Feature addition arrows -->
+  <line x1="210" y1="145" x2="210" y2="205" stroke="#10B981" stroke-width="2" stroke-dasharray="4,2"/>
+  <polygon points="210,205 205,198 215,198" fill="#10B981"/>
+  <text x="225" y="175" font-family="system-ui, sans-serif" font-size="8" fill="#10B981">+ add</text>
+  
+  <line x1="280" y1="145" x2="280" y2="205" stroke="#10B981" stroke-width="2" stroke-dasharray="4,2"/>
+  <polygon points="280,205 275,198 285,198" fill="#10B981"/>
+  
+  <line x1="350" y1="145" x2="350" y2="205" stroke="#10B981" stroke-width="2" stroke-dasharray="4,2"/>
+  <polygon points="350,205 345,198 355,198" fill="#10B981"/>
+  
+  <!-- Output -->
+  <rect x="480" y="200" width="100" height="90" rx="10" fill="#1E293B" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="530" y="235" font-family="system-ui, sans-serif" font-size="11" fill="#8B5CF6" text-anchor="middle" font-weight="bold">Output</text>
+  <text x="530" y="255" font-family="system-ui, sans-serif" font-size="16" fill="#8B5CF6" text-anchor="middle">🎨</text>
+  <text x="530" y="280" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle">Controlled!</text>
+  
+  <line x1="445" y1="245" x2="475" y2="245" stroke="#64748B" stroke-width="2"/>
+  <polygon points="475,245 468,240 468,250" fill="#64748B"/>
+  
+  <!-- Noise input -->
+  <rect x="480" y="60" width="100" height="60" rx="8" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+  <text x="530" y="90" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">Noisy Latent</text>
+  <text x="530" y="108" font-family="system-ui, sans-serif" font-size="9" fill="#64748B" text-anchor="middle">+ Text prompt</text>
+  
+  <line x1="530" y1="125" x2="530" y2="195" stroke="#64748B" stroke-width="2"/>
+  <polygon points="530,195 525,188 535,188" fill="#64748B"/>
+  
+  <!-- Key insight -->
+  <rect x="600" y="130" width="180" height="60" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+  <text x="690" y="155" font-family="system-ui, sans-serif" font-size="9" fill="#F59E0B" text-anchor="middle" font-weight="bold">Key Insight</text>
+  <text x="690" y="175" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle">Only train copy → preserves</text>
+  <text x="690" y="188" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle">original model quality!</text>
+</svg>

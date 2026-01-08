@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker>
+    <linearGradient id="bgGrad8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    
+    <linearGradient id="noiseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    
+    <linearGradient id="cleanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad8)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="system-ui" font-size="18" font-weight="600" fill="white">
+    Sampling Methods: DDPM vs DDIM vs DPM++
+  </text>
+  
+  <!-- DDPM Path (Many small steps) -->
+  <g transform="translate(100, 120)">
+    <text y="-20" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#f87171">DDPM (1000 steps)</text>
+    
+    <!-- Start (noise) -->
+    <circle cx="0" cy="80" r="25" fill="url(#noiseGrad)" opacity="0.8"/>
+    <text x="0" y="85" text-anchor="middle" font-family="system-ui" font-size="9" fill="white">x_T</text>
+    
+    <!-- Many small steps -->
+    <g stroke="#f87171" stroke-width="1" fill="none" opacity="0.5">
+      <path d="M 25 80 C 35 78, 45 82, 55 78"/>
+      <path d="M 55 78 C 65 76, 75 80, 85 76"/>
+      <path d="M 85 76 C 95 74, 105 78, 115 74"/>
+      <path d="M 115 74 C 125 72, 135 76, 145 72"/>
+      <path d="M 145 72 C 155 70, 165 74, 175 70"/>
+      <path d="M 175 70 C 185 68, 195 72, 205 68"/>
+      <path d="M 205 68 C 215 66, 225 70, 235 66"/>
+      <path d="M 235 66 C 245 64, 255 68, 265 64"/>
+      <path d="M 265 64 C 275 62, 285 66, 295 62"/>
+      <path d="M 295 62 C 305 60, 315 64, 325 60"/>
+    </g>
+    
+    <!-- Dots indicating many steps -->
+    <text x="175" y="95" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">···1000 tiny steps···</text>
+    
+    <!-- End (clean) -->
+    <circle cx="350" cy="60" r="25" fill="url(#cleanGrad)" opacity="0.8"/>
+    <text x="350" y="65" text-anchor="middle" font-family="system-ui" font-size="9" fill="white">x_0</text>
+    
+    <!-- Time label -->
+    <text x="175" y="130" text-anchor="middle" font-family="monospace" font-size="10" fill="#f87171">~60 seconds</text>
+  </g>
+  
+  <!-- DDIM Path (Larger steps) -->
+  <g transform="translate(100, 230)">
+    <text y="-20" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#3b82f6">DDIM (50 steps)</text>
+    
+    <!-- Start -->
+    <circle cx="0" cy="80" r="25" fill="url(#noiseGrad)" opacity="0.8"/>
+    <text x="0" y="85" text-anchor="middle" font-family="system-ui" font-size="9" fill="white">x_T</text>
+    
+    <!-- Larger steps -->
+    <g stroke="#3b82f6" stroke-width="2" fill="none">
+      <path d="M 25 80 L 95 70" marker-end="url(#arrow)"/>
+      <path d="M 95 70 L 165 62"/>
+      <path d="M 165 62 L 235 56"/>
+      <path d="M 235 56 L 295 52"/>
+      <path d="M 295 52 L 325 50"/>
+    </g>
+    
+    <!-- Step markers -->
+    <circle cx="95" cy="70" r="4" fill="#3b82f6"/>
+    <circle cx="165" cy="62" r="4" fill="#3b82f6"/>
+    <circle cx="235" cy="56" r="4" fill="#3b82f6"/>
+    <circle cx="295" cy="52" r="4" fill="#3b82f6"/>
+    
+    <text x="175" y="95" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">50 deterministic steps</text>
+    
+    <!-- End -->
+    <circle cx="350" cy="50" r="25" fill="url(#cleanGrad)" opacity="0.8"/>
+    <text x="350" y="55" text-anchor="middle" font-family="system-ui" font-size="9" fill="white">x_0</text>
+    
+    <text x="175" y="130" text-anchor="middle" font-family="monospace" font-size="10" fill="#3b82f6">~3 seconds</text>
+  </g>
+  
+  <!-- DPM++ Path (Even larger steps) -->
+  <g transform="translate(100, 340)">
+    <text y="-20" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#22c55e">DPM++ (20 steps)</text>
+    
+    <!-- Start -->
+    <circle cx="0" cy="30" r="25" fill="url(#noiseGrad)" opacity="0.8"/>
+    <text x="0" y="35" text-anchor="middle" font-family="system-ui" font-size="9" fill="white">x_T</text>
+    
+    <!-- Larger, curved steps (higher order solver) -->
+    <g stroke="#22c55e" stroke-width="3" fill="none">
+      <path d="M 25 30 Q 90 20, 140 18"/>
+      <path d="M 140 18 Q 200 12, 250 10"/>
+      <path d="M 250 10 Q 290 8, 325 8"/>
+    </g>
+    
+    <!-- Step markers -->
+    <circle cx="140" cy="18" r="5" fill="#22c55e"/>
+    <circle cx="250" cy="10" r="5" fill="#22c55e"/>
+    
+    <text x="175" y="50" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">20 high-order steps</text>
+    
+    <!-- End -->
+    <circle cx="350" cy="8" r="25" fill="url(#cleanGrad)" opacity="0.8"/>
+    <text x="350" y="13" text-anchor="middle" font-family="system-ui" font-size="9" fill="white">x_0</text>
+  </g>
+  
+  <!-- Formula box -->
+  <g transform="translate(620, 200)">
+    <rect x="-130" y="-130" width="260" height="260" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    <text y="-105" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="rgba(255,255,255,0.8)">Key Insight</text>
+    
+    <text y="-70" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.6)">DDPM: Stochastic</text>
+    <text y="-50" text-anchor="middle" font-family="monospace" font-size="9" fill="#f87171">x_{t-1} = f(x_t) + σ·z</text>
+    
+    <text y="-15" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.6)">DDIM: Deterministic</text>
+    <text y="5" text-anchor="middle" font-family="monospace" font-size="9" fill="#3b82f6">x_{t-1} = f(x_t)</text>
+    
+    <text y="40" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.6)">DPM++: High-order ODE</text>
+    <text y="60" text-anchor="middle" font-family="monospace" font-size="9" fill="#22c55e">2nd/3rd order solver</text>
+    
+    <!-- Result -->
+    <rect x="-100" y="85" width="200" height="35" rx="6" fill="rgba(34,197,94,0.2)" stroke="#22c55e"/>
+    <text y="108" text-anchor="middle" font-family="system-ui" font-size="11" fill="#4ade80">Same quality, 50× faster!</text>
+  </g>
+</svg>
+

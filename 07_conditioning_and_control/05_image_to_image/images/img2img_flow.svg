@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 280">
+  <defs>
+    <linearGradient id="vaeEncGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+    <linearGradient id="clipGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#EAB308"/>
+    </linearGradient>
+    <linearGradient id="unetGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#EC4899"/>
+    </linearGradient>
+    <linearGradient id="vaeDecGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="280" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="300" y="22" font-family="system-ui, sans-serif" font-size="13" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Image-to-Image Pipeline</text>
+  
+  <!-- Input Image -->
+  <rect x="40" y="50" width="80" height="50" rx="6" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="80" y="75" font-family="system-ui, sans-serif" font-size="14" fill="#94A3B8" text-anchor="middle">🖼️</text>
+  <text x="80" y="90" font-family="system-ui, sans-serif" font-size="7" fill="#64748B" text-anchor="middle">Input</text>
+  
+  <!-- Text Prompt -->
+  <rect x="200" y="50" width="100" height="30" rx="5" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+  <text x="250" y="70" font-family="system-ui, sans-serif" font-size="8" fill="#F59E0B" text-anchor="middle">"prompt..."</text>
+  
+  <!-- VAE Encode -->
+  <rect x="40" y="120" width="80" height="40" rx="6" fill="url(#vaeEncGrad3)"/>
+  <text x="80" y="145" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">VAE Enc</text>
+  
+  <!-- Arrow from image to VAE -->
+  <line x1="80" y1="105" x2="80" y2="115" stroke="#64748B" stroke-width="2"/>
+  <polygon points="80,115 75,108 85,108" fill="#64748B"/>
+  
+  <!-- Text Encoder -->
+  <rect x="200" y="100" width="100" height="40" rx="6" fill="url(#clipGrad2)"/>
+  <text x="250" y="122" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">CLIP Encoder</text>
+  
+  <!-- Arrow from text to CLIP -->
+  <line x1="250" y1="85" x2="250" y2="95" stroke="#64748B" stroke-width="2"/>
+  <polygon points="250,95 245,88 255,88" fill="#64748B"/>
+  
+  <!-- Add Noise -->
+  <rect x="40" y="180" width="80" height="40" rx="6" fill="#EF4444"/>
+  <text x="80" y="202" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">Add Noise</text>
+  <text x="80" y="215" font-family="system-ui, sans-serif" font-size="7" fill="#FECACA" text-anchor="middle">(to t)</text>
+  
+  <!-- Arrow from VAE to noise -->
+  <line x1="80" y1="165" x2="80" y2="175" stroke="#64748B" stroke-width="2"/>
+  <polygon points="80,175 75,168 85,168" fill="#64748B"/>
+  
+  <!-- U-Net -->
+  <rect x="200" y="160" width="200" height="70" rx="10" fill="url(#unetGrad3)"/>
+  <text x="300" y="190" font-family="system-ui, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">U-Net Denoising</text>
+  <text x="300" y="210" font-family="system-ui, sans-serif" font-size="9" fill="#F5D0FE" text-anchor="middle">+ CFG Loop</text>
+  
+  <!-- Arrows into U-Net -->
+  <line x1="125" y1="200" x2="195" y2="200" stroke="#64748B" stroke-width="2"/>
+  <polygon points="195,200 188,195 188,205" fill="#64748B"/>
+  
+  <line x1="250" y1="145" x2="250" y2="155" stroke="#64748B" stroke-width="2"/>
+  <polygon points="250,155 245,148 255,148" fill="#64748B"/>
+  
+  <!-- Denoised Latent -->
+  <rect x="440" y="170" width="80" height="50" rx="6" fill="#1E293B" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="480" y="195" font-family="system-ui, sans-serif" font-size="8" fill="#A78BFA" text-anchor="middle" font-weight="bold">Denoised</text>
+  <text x="480" y="210" font-family="system-ui, sans-serif" font-size="7" fill="#94A3B8" text-anchor="middle">Latent</text>
+  
+  <!-- Arrow from U-Net to denoised -->
+  <line x1="405" y1="195" x2="435" y2="195" stroke="#64748B" stroke-width="2"/>
+  <polygon points="435,195 428,190 428,200" fill="#64748B"/>
+  
+  <!-- VAE Decode -->
+  <rect x="440" y="50" width="80" height="40" rx="6" fill="url(#vaeDecGrad3)"/>
+  <text x="480" y="75" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">VAE Dec</text>
+  
+  <!-- Arrow from denoised to VAE -->
+  <line x1="480" y1="165" x2="480" y2="95" stroke="#64748B" stroke-width="2"/>
+  <polygon points="480,95 475,102 485,102" fill="#64748B"/>
+  
+  <!-- Output Image -->
+  <rect x="540" y="40" width="50" height="60" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+  <text x="565" y="70" font-family="system-ui, sans-serif" font-size="18" fill="#10B981" text-anchor="middle">🎨</text>
+  <text x="565" y="90" font-family="system-ui, sans-serif" font-size="7" fill="#64748B" text-anchor="middle">Output</text>
+  
+  <!-- Arrow from VAE to output -->
+  <line x1="525" y1="70" x2="535" y2="70" stroke="#64748B" stroke-width="2"/>
+  <polygon points="535,70 528,65 528,75" fill="#64748B"/>
+</svg>
+

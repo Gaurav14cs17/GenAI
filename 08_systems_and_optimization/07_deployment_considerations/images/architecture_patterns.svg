@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker>
+    <linearGradient id="bgGrad10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    
+    <linearGradient id="syncGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    
+    <linearGradient id="asyncGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#6d28d9"/>
+    </linearGradient>
+    
+    <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#be185d"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="450" fill="url(#bgGrad10)"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="system-ui" font-size="18" font-weight="600" fill="white">
+    Architecture Patterns for AI Deployment
+  </text>
+  
+  <!-- Pattern 1: Synchronous -->
+  <g transform="translate(160, 200)">
+    <rect x="-130" y="-100" width="260" height="220" rx="12" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="2"/>
+    <text y="-115" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#60a5fa">Synchronous API</text>
+    
+    <!-- Request flow -->
+    <g transform="translate(0, -50)">
+      <!-- Client -->
+      <rect x="-100" y="-20" width="60" height="40" rx="4" fill="rgba(59,130,246,0.3)"/>
+      <text x="-70" y="5" text-anchor="middle" font-family="system-ui" font-size="9" fill="white">Client</text>
+      
+      <!-- Arrow -->
+      <path d="M -35 0 L -5 0" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow)"/>
+      
+      <!-- Server -->
+      <rect x="0" y="-20" width="60" height="40" rx="4" fill="url(#syncGrad2)"/>
+      <text x="30" y="5" text-anchor="middle" font-family="system-ui" font-size="9" fill="white">Server</text>
+      
+      <!-- GPU -->
+      <path d="M 65 0 L 95 0" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow)"/>
+      <rect x="100" y="-20" width="30" height="40" rx="4" fill="#22c55e"/>
+      <text x="115" y="5" text-anchor="middle" font-family="system-ui" font-size="7" fill="white">GPU</text>
+    </g>
+    
+    <!-- Wait indicator -->
+    <g transform="translate(0, 20)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Client waits...</text>
+      <rect x="-50" y="10" width="100" height="8" rx="4" fill="rgba(59,130,246,0.3)"/>
+      <rect x="-50" y="10" width="60" height="8" rx="4" fill="#60a5fa">
+        <animate attributeName="width" values="0;100;0" dur="3s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    
+    <!-- Characteristics -->
+    <g transform="translate(0, 70)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="9" fill="#4ade80">✓ Simple</text>
+      <text y="15" text-anchor="middle" font-family="system-ui" font-size="9" fill="#4ade80">✓ Low latency</text>
+      <text y="30" text-anchor="middle" font-family="system-ui" font-size="9" fill="#f87171">✗ Blocks resources</text>
+    </g>
+  </g>
+  
+  <!-- Pattern 2: Async Queue -->
+  <g transform="translate(450, 200)">
+    <rect x="-130" y="-100" width="260" height="220" rx="12" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="2"/>
+    <text y="-115" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#a78bfa">Async Queue</text>
+    
+    <!-- Request flow -->
+    <g transform="translate(0, -50)">
+      <!-- Client -->
+      <rect x="-100" y="-20" width="45" height="40" rx="4" fill="rgba(139,92,246,0.3)"/>
+      <text x="-78" y="5" text-anchor="middle" font-family="system-ui" font-size="8" fill="white">Client</text>
+      
+      <!-- API -->
+      <path d="M -50 0 L -30 0" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect x="-25" y="-20" width="45" height="40" rx="4" fill="url(#asyncGrad)"/>
+      <text x="-2" y="5" text-anchor="middle" font-family="system-ui" font-size="8" fill="white">API</text>
+      
+      <!-- Queue -->
+      <path d="M 25 0 L 45 0" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect x="50" y="-20" width="30" height="40" rx="4" fill="#fbbf24"/>
+      <text x="65" y="5" text-anchor="middle" font-family="system-ui" font-size="7" fill="white">Q</text>
+      
+      <!-- Worker -->
+      <path d="M 85 0 L 100 0" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect x="105" y="-20" width="30" height="40" rx="4" fill="#22c55e"/>
+      <text x="120" y="5" text-anchor="middle" font-family="system-ui" font-size="7" fill="white">GPU</text>
+    </g>
+    
+    <!-- Job ID return -->
+    <g transform="translate(0, 20)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Returns job_id immediately</text>
+      <path d="M -25 15 L -70 15" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="-50" y="30" text-anchor="middle" font-family="monospace" font-size="8" fill="#a78bfa">{"id": "abc123"}</text>
+    </g>
+    
+    <!-- Characteristics -->
+    <g transform="translate(0, 70)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="9" fill="#4ade80">✓ Scalable</text>
+      <text y="15" text-anchor="middle" font-family="system-ui" font-size="9" fill="#4ade80">✓ Non-blocking</text>
+      <text y="30" text-anchor="middle" font-family="system-ui" font-size="9" fill="#f87171">✗ Polling needed</text>
+    </g>
+  </g>
+  
+  <!-- Pattern 3: Streaming -->
+  <g transform="translate(740, 200)">
+    <rect x="-130" y="-100" width="260" height="220" rx="12" fill="rgba(236,72,153,0.1)" stroke="#ec4899" stroke-width="2"/>
+    <text y="-115" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#f472b6">WebSocket Streaming</text>
+    
+    <!-- Bidirectional connection -->
+    <g transform="translate(0, -50)">
+      <!-- Client -->
+      <rect x="-100" y="-20" width="60" height="40" rx="4" fill="rgba(236,72,153,0.3)"/>
+      <text x="-70" y="5" text-anchor="middle" font-family="system-ui" font-size="9" fill="white">Client</text>
+      
+      <!-- Bidirectional arrow -->
+      <line x1="-35" y1="-5" x2="5" y2="-5" stroke="#f472b6" stroke-width="2"/>
+      <line x1="-35" y1="5" x2="5" y2="5" stroke="#f472b6" stroke-width="2"/>
+      <polygon points="5,-5 10,0 5,5" fill="#f472b6"/>
+      <polygon points="-35,-5 -40,0 -35,5" fill="#f472b6"/>
+      
+      <!-- Server + GPU -->
+      <rect x="10" y="-20" width="80" height="40" rx="4" fill="url(#streamGrad)"/>
+      <text x="50" y="0" text-anchor="middle" font-family="system-ui" font-size="8" fill="white">Server</text>
+      <text x="50" y="12" text-anchor="middle" font-family="system-ui" font-size="7" fill="rgba(255,255,255,0.7)">+ GPU</text>
+    </g>
+    
+    <!-- Progress updates -->
+    <g transform="translate(0, 20)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Real-time progress</text>
+      
+      <!-- Progress frames -->
+      <g transform="translate(-50, 15)">
+        <rect x="0" y="0" width="25" height="20" rx="2" fill="rgba(236,72,153,0.3)"/>
+        <rect x="30" y="0" width="25" height="20" rx="2" fill="rgba(236,72,153,0.5)"/>
+        <rect x="60" y="0" width="25" height="20" rx="2" fill="rgba(236,72,153,0.7)"/>
+        <rect x="90" y="0" width="25" height="20" rx="2" fill="#ec4899"/>
+      </g>
+    </g>
+    
+    <!-- Characteristics -->
+    <g transform="translate(0, 70)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="9" fill="#4ade80">✓ Real-time updates</text>
+      <text y="15" text-anchor="middle" font-family="system-ui" font-size="9" fill="#4ade80">✓ Great UX</text>
+      <text y="30" text-anchor="middle" font-family="system-ui" font-size="9" fill="#f87171">✗ More complex</text>
+    </g>
+  </g>
+  
+  <!-- Use case guide -->
+  <g transform="translate(450, 400)">
+    <rect x="-400" y="-25" width="800" height="50" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    <text y="5" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+      <tspan fill="#60a5fa">Sync:</tspan> &lt;100 req/min  |  
+      <tspan fill="#a78bfa">Async Queue:</tspan> High volume, batch processing  |  
+      <tspan fill="#f472b6">WebSocket:</tspan> Real-time user feedback
+    </text>
+  </g>
+</svg>
+

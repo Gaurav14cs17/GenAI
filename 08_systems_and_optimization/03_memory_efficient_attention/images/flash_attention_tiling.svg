@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    
+    <linearGradient id="queryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    
+    <linearGradient id="keyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    
+    <linearGradient id="valueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    
+    <linearGradient id="sramGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa709a"/>
+      <stop offset="100%" style="stop-color:#fee140"/>
+    </linearGradient>
+    
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    
+    <marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.5)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad2)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="system-ui" font-size="20" font-weight="600" fill="white">
+    Flash Attention: Tiling Algorithm
+  </text>
+  <text x="400" y="55" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">
+    Process attention in SRAM-sized tiles to avoid O(N²) HBM reads
+  </text>
+  
+  <!-- HBM (Main GPU Memory) -->
+  <g transform="translate(100, 180)">
+    <rect x="-80" y="-80" width="160" height="240" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+    <text y="-90" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="rgba(255,255,255,0.7)">HBM (GPU Memory)</text>
+    <text y="-75" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.4)">~80GB, slow</text>
+    
+    <!-- Q Matrix -->
+    <g transform="translate(0, -40)">
+      <rect x="-60" y="-25" width="120" height="50" rx="6" fill="rgba(240,147,251,0.2)" stroke="#f093fb" stroke-width="1.5"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#f5a3ff">Q</text>
+      <text y="18" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">[N × d]</text>
+    </g>
+    
+    <!-- K Matrix -->
+    <g transform="translate(0, 35)">
+      <rect x="-60" y="-25" width="120" height="50" rx="6" fill="rgba(79,172,254,0.2)" stroke="#4facfe" stroke-width="1.5"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#7fccff">K</text>
+      <text y="18" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">[N × d]</text>
+    </g>
+    
+    <!-- V Matrix -->
+    <g transform="translate(0, 110)">
+      <rect x="-60" y="-25" width="120" height="50" rx="6" fill="rgba(67,233,123,0.2)" stroke="#43e97b" stroke-width="1.5"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#6fff9e">V</text>
+      <text y="18" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">[N × d]</text>
+    </g>
+  </g>
+  
+  <!-- Arrows from HBM to SRAM -->
+  <g stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none" marker-end="url(#arrow2)">
+    <path d="M 200 120 C 280 120, 300 150, 340 150"/>
+    <path d="M 200 180 C 280 180, 300 180, 340 180"/>
+    <path d="M 200 240 C 280 240, 300 210, 340 210"/>
+  </g>
+  <text x="270" y="145" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">Load tiles</text>
+  
+  <!-- SRAM (Fast on-chip memory) -->
+  <g transform="translate(400, 180)">
+    <rect x="-50" y="-90" width="100" height="180" rx="10" fill="rgba(250,112,154,0.15)" stroke="url(#sramGrad)" stroke-width="2"/>
+    <text y="-100" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#fee140">SRAM</text>
+    <text y="-85" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.4)">~20MB, fast</text>
+    
+    <!-- Q tile -->
+    <g transform="translate(0, -50)">
+      <rect x="-35" y="-20" width="70" height="40" rx="4" fill="url(#queryGrad)" opacity="0.8"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="10" fill="white">Q[i]</text>
+    </g>
+    
+    <!-- K tile -->
+    <g transform="translate(0, 10)">
+      <rect x="-35" y="-20" width="70" height="40" rx="4" fill="url(#keyGrad)" opacity="0.8"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="10" fill="white">K[j]</text>
+    </g>
+    
+    <!-- V tile -->
+    <g transform="translate(0, 70)">
+      <rect x="-35" y="-20" width="70" height="40" rx="4" fill="url(#valueGrad)" opacity="0.8"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="10" fill="white">V[j]</text>
+    </g>
+  </g>
+  
+  <!-- Computation -->
+  <g transform="translate(550, 180)">
+    <rect x="-50" y="-90" width="100" height="180" rx="10" fill="rgba(102,126,234,0.15)" stroke="#667eea" stroke-width="2"/>
+    <text y="-100" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#a5b4fc">Compute</text>
+    
+    <!-- Computation steps -->
+    <text y="-55" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.7)">S = Q[i]·K[j]ᵀ</text>
+    <text y="-35" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.7)">P = softmax(S)</text>
+    <text y="-15" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.7)">O += P·V[j]</text>
+    
+    <!-- Online softmax update -->
+    <rect x="-45" y="5" width="90" height="70" rx="4" fill="rgba(255,255,255,0.05)"/>
+    <text y="25" text-anchor="middle" font-family="system-ui" font-size="8" fill="#fee140">Online Softmax:</text>
+    <text y="40" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)">m_new = max(m, m̃)</text>
+    <text y="52" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)">ℓ_new = eᵐ⁻ᵐ'·ℓ + ...</text>
+    <text y="64" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)">O = rescale(O)</text>
+  </g>
+  
+  <!-- Arrow to compute -->
+  <path d="M 460 180 L 490 180" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+  
+  <!-- Output -->
+  <g transform="translate(700, 180)">
+    <rect x="-50" y="-50" width="100" height="100" rx="10" fill="rgba(67,233,123,0.15)" stroke="#43e97b" stroke-width="2"/>
+    <text y="-60" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#86efac">Output</text>
+    
+    <rect x="-35" y="-25" width="70" height="50" rx="4" fill="url(#valueGrad)" opacity="0.6"/>
+    <text y="5" text-anchor="middle" font-family="system-ui" font-size="10" fill="white">O[i]</text>
+    <text y="40" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">[N × d]</text>
+  </g>
+  
+  <!-- Arrow to output -->
+  <path d="M 610 180 L 640 180" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+  
+  <!-- Loop indicator -->
+  <g transform="translate(400, 340)">
+    <rect x="-180" y="-25" width="360" height="50" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    <text y="-5" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+      for each query block i: for each key/value block j:
+    </text>
+    <text y="15" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">
+      Load tiles → Compute in SRAM → Accumulate output → Next tile
+    </text>
+  </g>
+  
+  <!-- Key insight -->
+  <g transform="translate(400, 410)">
+    <text y="0" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fee140">
+      Key Insight: Never materialize full N×N attention matrix!
+    </text>
+    <text y="18" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">
+      Only tile-sized (Br × Bc) blocks in fast SRAM at any time
+    </text>
+  </g>
+</svg>
+

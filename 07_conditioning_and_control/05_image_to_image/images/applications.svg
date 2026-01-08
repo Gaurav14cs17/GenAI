@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0a09"/>
+      <stop offset="100%" style="stop-color:#1c1917"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="900" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui" font-size="22" font-weight="700" fill="white" filter="url(#glow)">
+    🎨 Image-to-Image Applications
+  </text>
+  
+  <!-- Application Cards Grid -->
+  <g transform="translate(0, 70)">
+    
+    <!-- Style Transfer -->
+    <g transform="translate(120, 80)">
+      <rect x="-90" y="-60" width="180" height="130" rx="12" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#fb923c">🎭 Style Transfer</text>
+      <g transform="translate(0, 10)">
+        <rect x="-65" y="-25" width="50" height="40" rx="4" fill="rgba(249,115,22,0.2)"/>
+        <text x="-40" y="0" text-anchor="middle" font-size="18">📷</text>
+        <text x="-5" y="0" text-anchor="middle" fill="#f97316" font-size="16">→</text>
+        <rect x="15" y="-25" width="50" height="40" rx="4" fill="rgba(249,115,22,0.3)"/>
+        <text x="40" y="0" text-anchor="middle" font-size="18">🎨</text>
+      </g>
+      <text y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.6)">Photo → Van Gogh style</text>
+    </g>
+    
+    <!-- Image Variations -->
+    <g transform="translate(340, 80)">
+      <rect x="-90" y="-60" width="180" height="130" rx="12" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#a78bfa">🔄 Variations</text>
+      <g transform="translate(0, 10)">
+        <rect x="-30" y="-25" width="60" height="40" rx="4" fill="rgba(139,92,246,0.2)"/>
+        <text x="0" y="0" text-anchor="middle" font-size="18">🐱</text>
+        <text x="-60" y="-5" text-anchor="middle" font-size="14">🐱</text>
+        <text x="60" y="-5" text-anchor="middle" font-size="14">🐱</text>
+        <text x="-45" y="20" text-anchor="middle" font-size="12">🐱</text>
+        <text x="45" y="20" text-anchor="middle" font-size="12">🐱</text>
+      </g>
+      <text y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.6)">Generate similar images</text>
+    </g>
+    
+    <!-- Enhancement -->
+    <g transform="translate(560, 80)">
+      <rect x="-90" y="-60" width="180" height="130" rx="12" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#34d399">✨ Enhancement</text>
+      <g transform="translate(0, 10)">
+        <rect x="-65" y="-25" width="50" height="40" rx="4" fill="rgba(16,185,129,0.15)"/>
+        <text x="-40" y="0" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.4)">🌫️</text>
+        <text x="-5" y="0" text-anchor="middle" fill="#10b981" font-size="16">→</text>
+        <rect x="15" y="-25" width="50" height="40" rx="4" fill="rgba(16,185,129,0.3)"/>
+        <text x="40" y="0" text-anchor="middle" font-size="16">🌄</text>
+      </g>
+      <text y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.6)">Low → High quality</text>
+    </g>
+    
+    <!-- Concept Art -->
+    <g transform="translate(780, 80)">
+      <rect x="-90" y="-60" width="180" height="130" rx="12" fill="rgba(236,72,153,0.1)" stroke="#ec4899" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#f472b6">🎮 Concept Art</text>
+      <g transform="translate(0, 10)">
+        <rect x="-65" y="-25" width="50" height="40" rx="4" fill="rgba(236,72,153,0.2)"/>
+        <text x="-40" y="0" text-anchor="middle" font-size="14">✏️</text>
+        <text x="-5" y="0" text-anchor="middle" fill="#ec4899" font-size="16">→</text>
+        <rect x="15" y="-25" width="50" height="40" rx="4" fill="rgba(236,72,153,0.3)"/>
+        <text x="40" y="0" text-anchor="middle" font-size="16">🎪</text>
+      </g>
+      <text y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.6)">Sketch → Rendered</text>
+    </g>
+    
+    <!-- Second Row -->
+    <!-- Colorization -->
+    <g transform="translate(230, 230)">
+      <rect x="-90" y="-60" width="180" height="130" rx="12" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#60a5fa">🌈 Colorization</text>
+      <g transform="translate(0, 10)">
+        <rect x="-65" y="-25" width="50" height="40" rx="4" fill="rgba(120,120,120,0.3)"/>
+        <text x="-40" y="0" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.5)">⬜</text>
+        <text x="-5" y="0" text-anchor="middle" fill="#3b82f6" font-size="16">→</text>
+        <rect x="15" y="-25" width="50" height="40" rx="4" fill="rgba(59,130,246,0.3)"/>
+        <text x="40" y="0" text-anchor="middle" font-size="16">🌅</text>
+      </g>
+      <text y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.6)">B&amp;W → Color</text>
+    </g>
+    
+    <!-- Super Resolution -->
+    <g transform="translate(450, 230)">
+      <rect x="-90" y="-60" width="180" height="130" rx="12" fill="rgba(234,179,8,0.1)" stroke="#eab308" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#facc15">🔍 Super Resolution</text>
+      <g transform="translate(0, 10)">
+        <rect x="-65" y="-25" width="35" height="30" rx="2" fill="rgba(234,179,8,0.2)"/>
+        <text x="-47" y="0" text-anchor="middle" font-size="10">64²</text>
+        <text x="-15" y="0" text-anchor="middle" fill="#eab308" font-size="16">→</text>
+        <rect x="5" y="-30" width="60" height="50" rx="4" fill="rgba(234,179,8,0.3)"/>
+        <text x="35" y="0" text-anchor="middle" font-size="12">1024²</text>
+      </g>
+      <text y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.6)">Upscale + enhance</text>
+    </g>
+    
+    <!-- Scene Reconstruction -->
+    <g transform="translate(670, 230)">
+      <rect x="-90" y="-60" width="180" height="130" rx="12" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#22d3ee">🏗️ Scene Editing</text>
+      <g transform="translate(0, 10)">
+        <rect x="-65" y="-25" width="50" height="40" rx="4" fill="rgba(6,182,212,0.2)"/>
+        <text x="-40" y="0" text-anchor="middle" font-size="16">🌇</text>
+        <text x="-5" y="0" text-anchor="middle" fill="#06b6d4" font-size="16">→</text>
+        <rect x="15" y="-25" width="50" height="40" rx="4" fill="rgba(6,182,212,0.3)"/>
+        <text x="40" y="0" text-anchor="middle" font-size="16">🌃</text>
+      </g>
+      <text y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.6)">Day → Night</text>
+    </g>
+  </g>
+</svg>
+

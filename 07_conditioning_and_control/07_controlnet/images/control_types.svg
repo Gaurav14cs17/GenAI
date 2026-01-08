@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0a09"/>
+      <stop offset="100%" style="stop-color:#1c1917"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="900" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="system-ui" font-size="22" font-weight="700" fill="white" filter="url(#glow)">
+    🎛️ ControlNet Conditioning Types
+  </text>
+  
+  <!-- Control Types Grid -->
+  <g transform="translate(0, 60)">
+    
+    <!-- Canny Edges -->
+    <g transform="translate(120, 80)">
+      <rect x="-85" y="-55" width="170" height="130" rx="10" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#f87171">✏️ Canny Edges</text>
+      <g transform="translate(0, 15)">
+        <rect x="-55" y="-30" width="50" height="50" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+        <!-- Edge lines -->
+        <path d="M -45,-15 L -30,-20 L -20,-10 L -15,5 L -25,15" fill="none" stroke="#f87171" stroke-width="2"/>
+        <text x="0" y="5" text-anchor="middle" fill="rgba(255,255,255,0.5)">→</text>
+        <rect x="10" y="-30" width="50" height="50" rx="4" fill="rgba(239,68,68,0.15)"/>
+        <text x="35" y="5" text-anchor="middle" font-size="18">🏠</text>
+      </g>
+      <text y="55" text-anchor="middle" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.5)">Sharp boundaries, architecture</text>
+    </g>
+    
+    <!-- Depth -->
+    <g transform="translate(320, 80)">
+      <rect x="-85" y="-55" width="170" height="130" rx="10" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#60a5fa">📏 Depth Map</text>
+      <g transform="translate(0, 15)">
+        <rect x="-55" y="-30" width="50" height="50" rx="4" fill="#0f172a"/>
+        <!-- Depth gradient -->
+        <rect x="-50" y="-25" width="15" height="40" rx="2" fill="#3b82f6"/>
+        <rect x="-33" y="-20" width="12" height="35" rx="2" fill="#60a5fa" opacity="0.7"/>
+        <rect x="-19" y="-15" width="10" height="30" rx="2" fill="#93c5fd" opacity="0.5"/>
+        <text x="0" y="5" text-anchor="middle" fill="rgba(255,255,255,0.5)">→</text>
+        <rect x="10" y="-30" width="50" height="50" rx="4" fill="rgba(59,130,246,0.15)"/>
+        <text x="35" y="5" text-anchor="middle" font-size="18">🏔️</text>
+      </g>
+      <text y="55" text-anchor="middle" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.5)">3D spatial relationships</text>
+    </g>
+    
+    <!-- Pose -->
+    <g transform="translate(520, 80)">
+      <rect x="-85" y="-55" width="170" height="130" rx="10" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#34d399">🏃 OpenPose</text>
+      <g transform="translate(0, 15)">
+        <rect x="-55" y="-30" width="50" height="50" rx="4" fill="#0f172a"/>
+        <!-- Stick figure -->
+        <circle cx="-30" cy="-15" r="5" fill="#10b981"/>
+        <line x1="-30" y1="-10" x2="-30" y2="5" stroke="#10b981" stroke-width="2"/>
+        <line x1="-30" y1="-5" x2="-40" y2="0" stroke="#10b981" stroke-width="2"/>
+        <line x1="-30" y1="-5" x2="-20" y2="0" stroke="#10b981" stroke-width="2"/>
+        <line x1="-30" y1="5" x2="-38" y2="15" stroke="#10b981" stroke-width="2"/>
+        <line x1="-30" y1="5" x2="-22" y2="15" stroke="#10b981" stroke-width="2"/>
+        <text x="0" y="5" text-anchor="middle" fill="rgba(255,255,255,0.5)">→</text>
+        <rect x="10" y="-30" width="50" height="50" rx="4" fill="rgba(16,185,129,0.15)"/>
+        <text x="35" y="5" text-anchor="middle" font-size="18">🧍</text>
+      </g>
+      <text y="55" text-anchor="middle" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.5)">Human pose control</text>
+    </g>
+    
+    <!-- Segmentation -->
+    <g transform="translate(720, 80)">
+      <rect x="-85" y="-55" width="170" height="130" rx="10" fill="rgba(168,85,247,0.1)" stroke="#a855f7" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#c084fc">🎨 Segmentation</text>
+      <g transform="translate(0, 15)">
+        <rect x="-55" y="-30" width="50" height="50" rx="4" fill="#0f172a"/>
+        <!-- Segmentation regions -->
+        <rect x="-50" y="-25" width="40" height="20" rx="2" fill="#ec4899"/>
+        <rect x="-50" y="-3" width="25" height="22" rx="2" fill="#8b5cf6"/>
+        <rect x="-23" y="-3" width="17" height="22" rx="2" fill="#06b6d4"/>
+        <text x="0" y="5" text-anchor="middle" fill="rgba(255,255,255,0.5)">→</text>
+        <rect x="10" y="-30" width="50" height="50" rx="4" fill="rgba(168,85,247,0.15)"/>
+        <text x="35" y="5" text-anchor="middle" font-size="16">🌳🏠</text>
+      </g>
+      <text y="55" text-anchor="middle" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.5)">Scene layout control</text>
+    </g>
+    
+    <!-- Second Row -->
+    
+    <!-- Normal Map -->
+    <g transform="translate(180, 240)">
+      <rect x="-85" y="-55" width="170" height="130" rx="10" fill="rgba(234,179,8,0.1)" stroke="#eab308" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#fbbf24">🔮 Normal Map</text>
+      <g transform="translate(0, 15)">
+        <rect x="-55" y="-30" width="50" height="50" rx="4" fill="#0f172a"/>
+        <!-- Normal colors (RGB) -->
+        <circle cx="-30" cy="-5" r="18" fill="url(#normalGrad)"/>
+        <defs>
+          <radialGradient id="normalGrad">
+            <stop offset="0%" style="stop-color:#8b5cf6"/>
+            <stop offset="50%" style="stop-color:#3b82f6"/>
+            <stop offset="100%" style="stop-color:#ef4444"/>
+          </radialGradient>
+        </defs>
+        <text x="0" y="5" text-anchor="middle" fill="rgba(255,255,255,0.5)">→</text>
+        <rect x="10" y="-30" width="50" height="50" rx="4" fill="rgba(234,179,8,0.15)"/>
+        <text x="35" y="5" text-anchor="middle" font-size="18">🪨</text>
+      </g>
+      <text y="55" text-anchor="middle" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.5)">Surface orientation, lighting</text>
+    </g>
+    
+    <!-- Scribble -->
+    <g transform="translate(420, 240)">
+      <rect x="-85" y="-55" width="170" height="130" rx="10" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#fb923c">✍️ Scribble</text>
+      <g transform="translate(0, 15)">
+        <rect x="-55" y="-30" width="50" height="50" rx="4" fill="#0f172a"/>
+        <!-- Scribble lines -->
+        <path d="M -45,-10 Q -30,-25 -20,-5 Q -15,10 -25,15" fill="none" stroke="#f97316" stroke-width="2"/>
+        <text x="0" y="5" text-anchor="middle" fill="rgba(255,255,255,0.5)">→</text>
+        <rect x="10" y="-30" width="50" height="50" rx="4" fill="rgba(249,115,22,0.15)"/>
+        <text x="35" y="5" text-anchor="middle" font-size="18">🐱</text>
+      </g>
+      <text y="55" text-anchor="middle" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.5)">Rough user-drawn guides</text>
+    </g>
+    
+    <!-- Soft Edge / HED -->
+    <g transform="translate(660, 240)">
+      <rect x="-85" y="-55" width="170" height="130" rx="10" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2"/>
+      <text y="-35" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#22d3ee">🌫️ Soft Edge (HED)</text>
+      <g transform="translate(0, 15)">
+        <rect x="-55" y="-30" width="50" height="50" rx="4" fill="#0f172a"/>
+        <!-- Soft edge -->
+        <path d="M -45,-10 Q -35,-20 -25,-10 Q -18,5 -25,15" fill="none" stroke="#06b6d4" stroke-width="4" opacity="0.5"/>
+        <path d="M -45,-10 Q -35,-20 -25,-10 Q -18,5 -25,15" fill="none" stroke="#22d3ee" stroke-width="1"/>
+        <text x="0" y="5" text-anchor="middle" fill="rgba(255,255,255,0.5)">→</text>
+        <rect x="10" y="-30" width="50" height="50" rx="4" fill="rgba(6,182,212,0.15)"/>
+        <text x="35" y="5" text-anchor="middle" font-size="18">🎨</text>
+      </g>
+      <text y="55" text-anchor="middle" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.5)">Artistic, softer boundaries</text>
+    </g>
+  </g>
+</svg>
+

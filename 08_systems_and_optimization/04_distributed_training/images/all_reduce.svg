@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180">
+  <defs>
+    <linearGradient id="gpuGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+    <linearGradient id="resultGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="180" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="300" y="25" font-family="system-ui, sans-serif" font-size="14" fill="#F1F5F9" text-anchor="middle" font-weight="bold">All-Reduce Operation</text>
+  
+  <!-- GPU boxes -->
+  <rect x="40" y="50" width="140" height="35" rx="6" fill="url(#gpuGrad)"/>
+  <text x="110" y="72" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">GPU 0: [g0₀, g0₁, g0₂]</text>
+  
+  <rect x="40" y="95" width="140" height="35" rx="6" fill="url(#gpuGrad)"/>
+  <text x="110" y="117" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">GPU 1: [g1₀, g1₁, g1₂]</text>
+  
+  <rect x="40" y="140" width="140" height="35" rx="6" fill="url(#gpuGrad)"/>
+  <text x="110" y="162" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">GPU 2: [g2₀, g2₁, g2₂]</text>
+  
+  <!-- Arrows -->
+  <line x1="185" y1="67" x2="250" y2="112" stroke="#64748B" stroke-width="2"/>
+  <line x1="185" y1="112" x2="250" y2="112" stroke="#64748B" stroke-width="2"/>
+  <line x1="185" y1="157" x2="250" y2="112" stroke="#64748B" stroke-width="2"/>
+  
+  <!-- All-Reduce box -->
+  <rect x="255" y="85" width="100" height="55" rx="8" fill="#8B5CF6"/>
+  <text x="305" y="108" font-family="system-ui, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">All-Reduce</text>
+  <text x="305" y="125" font-family="system-ui, sans-serif" font-size="9" fill="#E9D5FF" text-anchor="middle">Average</text>
+  
+  <!-- Arrow to result -->
+  <line x1="360" y1="112" x2="400" y2="112" stroke="#64748B" stroke-width="2"/>
+  <polygon points="400,112 393,107 393,117" fill="#64748B"/>
+  
+  <!-- Result box -->
+  <rect x="405" y="85" width="170" height="55" rx="8" fill="url(#resultGrad)"/>
+  <text x="490" y="108" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">[Σg₀/N, Σg₁/N, Σg₂/N]</text>
+  <text x="490" y="128" font-family="system-ui, sans-serif" font-size="9" fill="#D1FAE5" text-anchor="middle">Same on all GPUs!</text>
+</svg>
+

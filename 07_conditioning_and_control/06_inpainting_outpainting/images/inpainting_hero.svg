@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="inpaintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#be185d"/>
+    </linearGradient>
+    <linearGradient id="outpaintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="resultGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3"/>
+    </filter>
+    <pattern id="diagonal" patternUnits="userSpaceOnUse" width="8" height="8">
+      <path d="M-2,2 l4,-4 M0,8 l8,-8 M6,10 l4,-4" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.6)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="550" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="white" filter="url(#glow)">
+    Inpainting &amp; Outpainting
+  </text>
+  <text x="450" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">
+    Fill masked regions or extend image boundaries with AI
+  </text>
+  
+  <!-- INPAINTING Section -->
+  <g transform="translate(0, 100)">
+    <text x="225" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#f472b6">INPAINTING</text>
+    <text x="225" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Replace regions within an image</text>
+    
+    <!-- Original + Mask -->
+    <g transform="translate(100, 130)">
+      <rect x="-55" y="-55" width="110" height="110" rx="10" fill="#3b82f6" filter="url(#shadow)"/>
+      <!-- Person representation -->
+      <circle cx="0" cy="-20" r="18" fill="#93c5fd"/>
+      <ellipse cx="0" cy="25" rx="25" ry="30" fill="#93c5fd"/>
+      <!-- Mask overlay -->
+      <rect x="-25" y="-10" width="50" height="40" fill="url(#inpaintGrad)" opacity="0.8"/>
+      <rect x="-25" y="-10" width="50" height="40" fill="url(#diagonal)"/>
+      <text y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">Image + Mask</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 170 230 L 220 230" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Prompt -->
+    <g transform="translate(270, 180)">
+      <rect x="-40" y="-20" width="80" height="40" rx="6" fill="rgba(236,72,153,0.2)" stroke="#ec4899"/>
+      <text y="5" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#f9a8d4" font-style="italic">"red dress"</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 320 230 L 370 230" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Result -->
+    <g transform="translate(430, 230)">
+      <rect x="-55" y="-55" width="110" height="110" rx="10" fill="#3b82f6" filter="url(#shadow)"/>
+      <circle cx="0" cy="-20" r="18" fill="#93c5fd"/>
+      <!-- New dress -->
+      <ellipse cx="0" cy="25" rx="25" ry="30" fill="url(#inpaintGrad)"/>
+      <text y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#34d399">✓ Inpainted</text>
+    </g>
+  </g>
+  
+  <!-- OUTPAINTING Section -->
+  <g transform="translate(450, 100)">
+    <text x="225" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#a78bfa">OUTPAINTING</text>
+    <text x="225" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Extend image beyond boundaries</text>
+    
+    <!-- Original (small, centered) -->
+    <g transform="translate(100, 130)">
+      <rect x="-70" y="-55" width="140" height="110" rx="10" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="5,3"/>
+      <rect x="-35" y="-35" width="70" height="70" rx="6" fill="#8b5cf6" filter="url(#shadow)"/>
+      <text y="5" text-anchor="middle" font-size="24">🏔️</text>
+      <text y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">Original + Extended canvas</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 180 230 L 230 230" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Prompt -->
+    <g transform="translate(280, 180)">
+      <rect x="-50" y="-20" width="100" height="40" rx="6" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6"/>
+      <text y="5" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#c4b5fd" font-style="italic">"mountain range"</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 340 230 L 390 230" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Result (full extended) -->
+    <g transform="translate(470, 230)">
+      <rect x="-70" y="-55" width="140" height="110" rx="10" fill="url(#outpaintGrad)" filter="url(#shadow)"/>
+      <text y="5" text-anchor="middle" font-size="24">🏔️🏔️🏔️</text>
+      <text y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#34d399">✓ Outpainted</text>
+    </g>
+  </g>
+  
+  <!-- Technical details box -->
+  <g transform="translate(450, 420)">
+    <rect x="-400" y="-40" width="800" height="110" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    <text y="-15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="rgba(255,255,255,0.9)">How It Works</text>
+    
+    <!-- Inpainting formula -->
+    <g transform="translate(-200, 25)">
+      <text y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#f472b6">Inpainting Loss</text>
+      <text y="20" text-anchor="middle" font-family="serif" font-size="13" fill="rgba(255,255,255,0.8)">x̂ = m ⊙ x_known + (1-m) ⊙ x_generated</text>
+      <text y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.5)">m = binary mask, ⊙ = element-wise product</text>
+    </g>
+    
+    <!-- Outpainting note -->
+    <g transform="translate(200, 25)">
+      <text y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#a78bfa">Outpainting Strategy</text>
+      <text y="20" text-anchor="middle" font-family="serif" font-size="13" fill="rgba(255,255,255,0.8)">Pad canvas → Create edge mask → Generate</text>
+      <text y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.5)">Keep original centered, fill surroundings</text>
+    </g>
+  </g>
+</svg>
+

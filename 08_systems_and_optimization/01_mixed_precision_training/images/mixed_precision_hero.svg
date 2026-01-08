@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="fp32Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="fp16Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="bf16Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="speedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="50%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.6)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="white" filter="url(#glow)">
+    Mixed Precision Training
+  </text>
+  <text x="450" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">
+    2× speed, 50% memory with FP16/BF16
+  </text>
+  
+  <!-- Precision Format Comparison -->
+  <g transform="translate(170, 180)">
+    <!-- FP32 -->
+    <g transform="translate(0, 0)">
+      <rect x="-80" y="-50" width="160" height="100" rx="12" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+      <text y="-25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f87171">FP32</text>
+      <text y="-5" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.7)">32 bits</text>
+      
+      <!-- Bit visualization -->
+      <g transform="translate(0, 20)">
+        <rect x="-70" y="-10" width="20" height="20" rx="2" fill="#ef4444" opacity="0.9"/>
+        <text x="-60" y="5" text-anchor="middle" font-family="monospace" font-size="7" fill="white">1</text>
+        <rect x="-48" y="-10" width="50" height="20" rx="2" fill="#f87171"/>
+        <text x="-23" y="5" text-anchor="middle" font-family="monospace" font-size="7" fill="white">8 exp</text>
+        <rect x="4" y="-10" width="66" height="20" rx="2" fill="#fca5a5"/>
+        <text x="37" y="5" text-anchor="middle" font-family="monospace" font-size="7" fill="#7f1d1d">23 mantissa</text>
+      </g>
+    </g>
+  </g>
+  
+  <g transform="translate(450, 180)">
+    <!-- FP16 -->
+    <g transform="translate(0, 0)">
+      <rect x="-80" y="-50" width="160" height="100" rx="12" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="2" filter="url(#shadow)"/>
+      <text y="-25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#4ade80">FP16</text>
+      <text y="-5" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.7)">16 bits</text>
+      
+      <g transform="translate(0, 20)">
+        <rect x="-55" y="-10" width="15" height="20" rx="2" fill="#22c55e" opacity="0.9"/>
+        <text x="-47.5" y="5" text-anchor="middle" font-family="monospace" font-size="7" fill="white">1</text>
+        <rect x="-38" y="-10" width="35" height="20" rx="2" fill="#4ade80"/>
+        <text x="-20.5" y="5" text-anchor="middle" font-family="monospace" font-size="7" fill="white">5 exp</text>
+        <rect x="-1" y="-10" width="56" height="20" rx="2" fill="#86efac"/>
+        <text x="27" y="5" text-anchor="middle" font-family="monospace" font-size="7" fill="#14532d">10 mant</text>
+      </g>
+    </g>
+  </g>
+  
+  <g transform="translate(730, 180)">
+    <!-- BF16 -->
+    <g transform="translate(0, 0)">
+      <rect x="-80" y="-50" width="160" height="100" rx="12" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+      <text y="-25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#60a5fa">BF16</text>
+      <text y="-5" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.7)">16 bits</text>
+      
+      <g transform="translate(0, 20)">
+        <rect x="-55" y="-10" width="15" height="20" rx="2" fill="#3b82f6" opacity="0.9"/>
+        <text x="-47.5" y="5" text-anchor="middle" font-family="monospace" font-size="7" fill="white">1</text>
+        <rect x="-38" y="-10" width="50" height="20" rx="2" fill="#60a5fa"/>
+        <text x="-13" y="5" text-anchor="middle" font-family="monospace" font-size="7" fill="white">8 exp</text>
+        <rect x="14" y="-10" width="41" height="20" rx="2" fill="#93c5fd"/>
+        <text x="34.5" y="5" text-anchor="middle" font-family="monospace" font-size="7" fill="#1e3a8a">7 mant</text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Training Flow -->
+  <g transform="translate(450, 330)">
+    <rect x="-380" y="-40" width="760" height="80" rx="12" fill="rgba(168,85,247,0.1)" stroke="rgba(168,85,247,0.3)"/>
+    <text y="-18" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#c084fc">Mixed Precision Training Flow</text>
+    
+    <!-- Flow boxes -->
+    <g transform="translate(-280, 15)">
+      <rect x="-50" y="-18" width="100" height="36" rx="6" fill="url(#fp32Grad)"/>
+      <text y="5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">FP32 Weights</text>
+    </g>
+    
+    <path d="M -175 330 L -135 330" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)" transform="translate(0, -315)"/>
+    
+    <g transform="translate(-80, 15)">
+      <rect x="-50" y="-18" width="100" height="36" rx="6" fill="url(#fp16Grad)"/>
+      <text y="5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">FP16 Forward</text>
+    </g>
+    
+    <path d="M 25 330 L 65 330" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)" transform="translate(0, -315)"/>
+    
+    <g transform="translate(120, 15)">
+      <rect x="-50" y="-18" width="100" height="36" rx="6" fill="url(#fp16Grad)"/>
+      <text y="5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">FP16 Backward</text>
+    </g>
+    
+    <path d="M 225 330 L 265 330" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)" transform="translate(0, -315)"/>
+    
+    <g transform="translate(320, 15)">
+      <rect x="-50" y="-18" width="100" height="36" rx="6" fill="url(#fp32Grad)"/>
+      <text y="5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">FP32 Update</text>
+    </g>
+  </g>
+  
+  <!-- Benefits Section -->
+  <g transform="translate(450, 440)">
+    <rect x="-380" y="-30" width="760" height="60" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    
+    <g transform="translate(-250, 0)">
+      <text y="-5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#4ade80">⚡ 1.5-2× Speed</text>
+      <text y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.5)">Tensor Cores</text>
+    </g>
+    
+    <g transform="translate(0, 0)">
+      <text y="-5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#60a5fa">💾 50% Memory</text>
+      <text y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.5)">Activations + Gradients</text>
+    </g>
+    
+    <g transform="translate(250, 0)">
+      <text y="-5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#c084fc">🎯 Same Quality</text>
+      <text y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.5)">With Loss Scaling</text>
+    </g>
+  </g>
+</svg>
+

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29"/>
+      <stop offset="100%" style="stop-color:#302b63"/>
+    </linearGradient>
+    
+    <linearGradient id="frozenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    
+    <linearGradient id="trainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="system-ui" font-size="22" font-weight="700" fill="white">
+    ControlNet Architecture
+  </text>
+  
+  <!-- Frozen SD U-Net -->
+  <g transform="translate(200, 180)">
+    <rect x="-150" y="-100" width="300" height="180" rx="12" fill="rgba(102,126,234,0.1)" stroke="#667eea" stroke-width="2"/>
+    
+    <text y="-75" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#a5b4fc">
+      🔒 Frozen SD U-Net
+    </text>
+    
+    <!-- U-Net structure -->
+    <g transform="translate(-100, 0)">
+      <rect x="-30" y="-40" width="60" height="80" rx="4" fill="rgba(102,126,234,0.3)"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="10" fill="#a5b4fc">Encoder</text>
+    </g>
+    
+    <g transform="translate(0, 0)">
+      <rect x="-25" y="-25" width="50" height="50" rx="4" fill="rgba(102,126,234,0.4)"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="10" fill="#a5b4fc">Mid</text>
+    </g>
+    
+    <g transform="translate(100, 0)">
+      <rect x="-30" y="-40" width="60" height="80" rx="4" fill="rgba(102,126,234,0.3)"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="10" fill="#a5b4fc">Decoder</text>
+    </g>
+    
+    <!-- Skip connections -->
+    <path d="M -70,-30 Q 0,-60 70,-30" stroke="#667eea" stroke-width="1" fill="none" stroke-dasharray="4,2"/>
+    <path d="M -70,30 Q 0,60 70,30" stroke="#667eea" stroke-width="1" fill="none" stroke-dasharray="4,2"/>
+  </g>
+  
+  <!-- ControlNet Copy -->
+  <g transform="translate(550, 180)">
+    <rect x="-120" y="-100" width="240" height="180" rx="12" fill="rgba(67,233,123,0.1)" stroke="#43e97b" stroke-width="2"/>
+    
+    <text y="-75" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#86efac">
+      🔓 ControlNet (Trainable)
+    </text>
+    
+    <!-- ControlNet structure -->
+    <g transform="translate(-70, 0)">
+      <rect x="-30" y="-40" width="60" height="80" rx="4" fill="rgba(67,233,123,0.3)"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="10" fill="#86efac">Encoder</text>
+    </g>
+    
+    <g transform="translate(30, 0)">
+      <rect x="-25" y="-25" width="50" height="50" rx="4" fill="rgba(67,233,123,0.4)"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="10" fill="#86efac">Mid</text>
+    </g>
+    
+    <!-- Condition input -->
+    <g transform="translate(-70, 60)">
+      <rect x="-40" y="-15" width="80" height="30" rx="4" fill="rgba(254,202,87,0.3)" stroke="#feca57"/>
+      <text y="5" text-anchor="middle" font-family="system-ui" font-size="9" fill="#feca57">Control Signal</text>
+    </g>
+  </g>
+  
+  <!-- Zero Conv connections -->
+  <g stroke="#43e97b" stroke-width="2" fill="none">
+    <path d="M 380,140 L 300,140" marker-end="url(#arrow)"/>
+    <path d="M 430,180 L 330,180"/>
+    <path d="M 430,220 L 330,220"/>
+    
+    <!-- Zero conv labels -->
+    <rect x="340" y="165" width="70" height="18" rx="3" fill="rgba(67,233,123,0.2)"/>
+    <text x="375" y="178" text-anchor="middle" font-family="monospace" font-size="8" fill="#86efac">zero conv</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(400, 360)">
+    <rect x="-350" y="-20" width="700" height="50" rx="8" fill="rgba(0,0,0,0.3)"/>
+    
+    <text x="-300" y="10" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)">
+      Key: Zero convolutions start at 0 → no initial effect → stable training
+    </text>
+  </g>
+</svg>
+
