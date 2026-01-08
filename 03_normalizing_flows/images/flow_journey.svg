@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="25%" style="stop-color:#8b5cf6"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="75%" style="stop-color:#d946ef"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="200" fill="url(#bgGrad2)" rx="12"/>
+  
+  <!-- Progress path -->
+  <path d="M 80 100 L 720 100" stroke="#334155" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 80 100 L 720 100" stroke="url(#pathGrad)" stroke-width="4" stroke-linecap="round" stroke-dasharray="640" stroke-dashoffset="0">
+    <animate attributeName="stroke-dashoffset" from="640" to="0" dur="2s" fill="freeze"/>
+  </path>
+  
+  <!-- START label -->
+  <text x="80" y="40" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#64748b" text-anchor="middle">START</text>
+  <path d="M 80 45 L 80 70" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  
+  <!-- MASTERY label -->
+  <text x="720" y="40" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#64748b" text-anchor="middle">MASTERY</text>
+  <path d="M 720 45 L 720 70" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  
+  <!-- Step 1: Fundamentals -->
+  <rect x="50" y="75" width="100" height="50" rx="8" fill="#1e293b" stroke="#6366f1" stroke-width="2" filter="url(#shadow)"/>
+  <text x="100" y="97" font-family="JetBrains Mono, Consolas, monospace" font-size="11" font-weight="bold" fill="#a5b4fc" text-anchor="middle">Funda-</text>
+  <text x="100" y="112" font-family="JetBrains Mono, Consolas, monospace" font-size="11" font-weight="bold" fill="#a5b4fc" text-anchor="middle">mentals</text>
+  <text x="100" y="150" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Theory</text>
+  <text x="100" y="163" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Jacobian</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M 155 100 L 180 100" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Step 2: Planar & Radial -->
+  <rect x="185" y="75" width="100" height="50" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="235" y="97" font-family="JetBrains Mono, Consolas, monospace" font-size="11" font-weight="bold" fill="#c4b5fd" text-anchor="middle">Planar &amp;</text>
+  <text x="235" y="112" font-family="JetBrains Mono, Consolas, monospace" font-size="11" font-weight="bold" fill="#c4b5fd" text-anchor="middle">Radial</text>
+  <text x="235" y="150" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Simple</text>
+  <text x="235" y="163" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Flows</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M 290 100 L 315 100" stroke="#8b5cf6" stroke-width="2"/>
+  
+  <!-- Step 3: Coupling Layers -->
+  <rect x="320" y="75" width="100" height="50" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2" filter="url(#shadow)"/>
+  <text x="370" y="97" font-family="JetBrains Mono, Consolas, monospace" font-size="11" font-weight="bold" fill="#d8b4fe" text-anchor="middle">Coupling</text>
+  <text x="370" y="112" font-family="JetBrains Mono, Consolas, monospace" font-size="11" font-weight="bold" fill="#d8b4fe" text-anchor="middle">Layers</text>
+  <text x="370" y="150" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">The Key</text>
+  <text x="370" y="163" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Insight</text>
+  
+  <!-- Arrow 3 -->
+  <path d="M 425 100 L 450 100" stroke="#a855f7" stroke-width="2"/>
+  
+  <!-- Step 4: RealNVP -->
+  <rect x="455" y="75" width="100" height="50" rx="8" fill="#1e293b" stroke="#d946ef" stroke-width="2" filter="url(#shadow)"/>
+  <text x="505" y="105" font-family="JetBrains Mono, Consolas, monospace" font-size="12" font-weight="bold" fill="#f0abfc" text-anchor="middle">RealNVP</text>
+  <text x="505" y="150" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Multi-</text>
+  <text x="505" y="163" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Scale</text>
+  
+  <!-- Arrow 4 -->
+  <path d="M 560 100 L 585 100" stroke="#d946ef" stroke-width="2"/>
+  
+  <!-- Step 5: Glow -->
+  <rect x="590" y="75" width="100" height="50" rx="8" fill="#1e293b" stroke="#ec4899" stroke-width="2" filter="url(#shadow)"/>
+  <text x="640" y="105" font-family="JetBrains Mono, Consolas, monospace" font-size="12" font-weight="bold" fill="#f9a8d4" text-anchor="middle">Glow</text>
+  <text x="640" y="150" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Production</text>
+  <text x="640" y="163" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Ready</text>
+  
+  <!-- Connecting arrows on the main path -->
+  <polygon points="175,100 165,95 165,105" fill="#6366f1"/>
+  <polygon points="310,100 300,95 300,105" fill="#8b5cf6"/>
+  <polygon points="445,100 435,95 435,105" fill="#a855f7"/>
+  <polygon points="580,100 570,95 570,105" fill="#d946ef"/>
+  <polygon points="715,100 705,95 705,105" fill="#ec4899"/>
+</svg>
+

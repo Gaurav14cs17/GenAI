@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <filter id="glow1">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1100" height="620" fill="url(#bg1)"/>
+  
+  <!-- Title -->
+  <text x="550" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="32" font-weight="300" fill="white" letter-spacing="2">
+    SCORE MATCHING — Hyvärinen (2005)
+  </text>
+  <text x="550" y="70" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" fill="rgba(255,255,255,0.6)">
+    Learn ∇log p(x) from samples without knowing p(x) — Mathematical derivation
+  </text>
+  
+  <!-- Step 1: The Goal -->
+  <g transform="translate(200, 180)">
+    <rect x="-170" y="-80" width="340" height="160" rx="12" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.4)" stroke-width="1.5"/>
+    <text x="0" y="-55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#6366f1">① THE GOAL</text>
+    
+    <text x="0" y="-25" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Find θ that minimizes Fisher divergence:</text>
+    
+    <text x="0" y="8" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="white">
+      J(θ) = ½E<tspan baseline-shift="sub" font-size="12">p(x)</tspan>[||s<tspan baseline-shift="sub" font-size="12">θ</tspan>(x) − ∇<tspan baseline-shift="sub" font-size="12">x</tspan>log p(x)||²]
+    </text>
+    
+    <text x="0" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">
+      = ½E<tspan baseline-shift="sub" font-size="7">p</tspan>[||s<tspan baseline-shift="sub" font-size="7">θ</tspan>||² − 2s<tspan baseline-shift="sub" font-size="7">θ</tspan>·∇log p + ||∇log p||²]
+    </text>
+    
+    <text x="0" y="65" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#ef4444">
+      ⚠️ Problem: ∇log p(x) is unknown!
+    </text>
+  </g>
+  
+  <!-- Step 2: The Key Trick -->
+  <g transform="translate(550, 180)">
+    <rect x="-170" y="-80" width="340" height="160" rx="12" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.5)" stroke-width="2"/>
+    <text x="0" y="-55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#10b981">② HYVÄRINEN'S TRICK</text>
+    
+    <text x="0" y="-25" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Integration by parts on cross term:</text>
+    
+    <text x="0" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white">
+      E<tspan baseline-shift="sub" font-size="10">p</tspan>[s<tspan baseline-shift="sub" font-size="10">θ</tspan>(x)·∇<tspan baseline-shift="sub" font-size="10">x</tspan>log p(x)]
+    </text>
+    
+    <text x="0" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white">
+      = ∫ p(x) s<tspan baseline-shift="sub" font-size="10">θ</tspan>(x)·(∇p(x)/p(x)) dx
+    </text>
+    
+    <text x="0" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#10b981">
+      = −E<tspan baseline-shift="sub" font-size="10">p</tspan>[tr(∇<tspan baseline-shift="sub" font-size="10">x</tspan>s<tspan baseline-shift="sub" font-size="10">θ</tspan>(x))]
+    </text>
+  </g>
+  
+  <!-- Step 3: The Result -->
+  <g transform="translate(900, 180)">
+    <rect x="-170" y="-80" width="340" height="160" rx="12" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.4)" stroke-width="1.5"/>
+    <text x="0" y="-55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#f59e0b">③ FINAL OBJECTIVE</text>
+    
+    <text x="0" y="-25" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Equivalent loss (up to constant):</text>
+    
+    <rect x="-150" y="-10" width="300" height="50" rx="8" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.5)"/>
+    <text x="0" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="white" filter="url(#glow1)">
+      J̃(θ) = E<tspan baseline-shift="sub" font-size="11">p</tspan>[½||s<tspan baseline-shift="sub" font-size="11">θ</tspan>||² + tr(∇<tspan baseline-shift="sub" font-size="11">x</tspan>s<tspan baseline-shift="sub" font-size="11">θ</tspan>)]
+    </text>
+    
+    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#10b981">
+      ✓ Only requires samples from p(x)!
+    </text>
+  </g>
+  
+  <!-- Mathematical Proof Box -->
+  <g transform="translate(550, 380)">
+    <rect x="-480" y="-90" width="960" height="180" rx="15" fill="rgba(0,0,0,0.4)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+    
+    <text x="-430" y="-65" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#6366f1">📐 COMPLETE DERIVATION</text>
+    
+    <!-- Line 1 -->
+    <text x="-430" y="-35" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Expand the squared norm:</text>
+    <text x="-430" y="-12" font-family="Georgia, serif" font-size="13" fill="white">
+      J(θ) = ½E<tspan baseline-shift="sub" font-size="9">p</tspan>[||s<tspan baseline-shift="sub" font-size="9">θ</tspan>||² <tspan fill="#ef4444">− 2s<tspan baseline-shift="sub" font-size="9">θ</tspan>·∇log p</tspan> + ||∇log p||²]
+    </text>
+    
+    <!-- Line 2 -->
+    <text x="-430" y="18" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Integration by parts (key step):</text>
+    <text x="-430" y="41" font-family="Georgia, serif" font-size="12" fill="white">
+      ∫ p(x) s<tspan baseline-shift="sub" font-size="8">θ,i</tspan>(x) · ∂log p/∂x<tspan baseline-shift="sub" font-size="8">i</tspan> dx = ∫ s<tspan baseline-shift="sub" font-size="8">θ,i</tspan> · ∂p/∂x<tspan baseline-shift="sub" font-size="8">i</tspan> dx = <tspan fill="#10b981">−∫ p · ∂s<tspan baseline-shift="sub" font-size="8">θ,i</tspan>/∂x<tspan baseline-shift="sub" font-size="8">i</tspan> dx</tspan>
+    </text>
+    <text x="350" y="41" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.4)">(boundary term = 0)</text>
+    
+    <!-- Line 3 -->
+    <text x="-430" y="68" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Sum over dimensions:</text>
+    <text x="-430" y="91" font-family="Georgia, serif" font-size="12" fill="white">
+      E<tspan baseline-shift="sub" font-size="8">p</tspan>[s<tspan baseline-shift="sub" font-size="8">θ</tspan>·∇log p] = <tspan fill="#10b981">−E<tspan baseline-shift="sub" font-size="8">p</tspan>[Σ<tspan baseline-shift="sub" font-size="6">i</tspan> ∂s<tspan baseline-shift="sub" font-size="8">θ,i</tspan>/∂x<tspan baseline-shift="sub" font-size="8">i</tspan>] = −E<tspan baseline-shift="sub" font-size="8">p</tspan>[tr(∇<tspan baseline-shift="sub" font-size="8">x</tspan>s<tspan baseline-shift="sub" font-size="8">θ</tspan>)]</tspan>
+    </text>
+  </g>
+  
+  <!-- Component Explanation -->
+  <g transform="translate(280, 530)">
+    <rect x="-220" y="-35" width="440" height="70" rx="10" fill="rgba(16,185,129,0.06)" stroke="rgba(16,185,129,0.3)"/>
+    <text x="0" y="-12" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#10b981">SCORE NORM TERM: ½||s<tspan baseline-shift="sub" font-size="8">θ</tspan>||²</text>
+    <text x="0" y="10" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Prevents score from being arbitrarily large</text>
+    <text x="0" y="28" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Regularization effect on the model</text>
+  </g>
+  
+  <g transform="translate(820, 530)">
+    <rect x="-220" y="-35" width="440" height="70" rx="10" fill="rgba(245,158,11,0.06)" stroke="rgba(245,158,11,0.3)"/>
+    <text x="0" y="-12" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#f59e0b">JACOBIAN TRACE: tr(∇<tspan baseline-shift="sub" font-size="8">x</tspan>s<tspan baseline-shift="sub" font-size="8">θ</tspan>)</text>
+    <text x="0" y="10" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Sum of diagonal: Σᵢ ∂sᵢ/∂xᵢ</text>
+    <text x="0" y="28" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#ef4444">⚠️ O(d) backprops needed → use SSM!</text>
+  </g>
+</svg>

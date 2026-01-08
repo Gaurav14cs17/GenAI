@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 450">
+  <defs>
+    <linearGradient id="bgTW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#1a1a35"/>
+    </linearGradient>
+    <filter id="glowTW">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="950" height="450" fill="url(#bgTW)"/>
+  
+  <!-- Title -->
+  <text x="475" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="white">
+    🔮 Tweedie's Formula: Optimal Denoising
+  </text>
+  
+  <!-- Main formula -->
+  <g transform="translate(475, 120)">
+    <rect x="-380" y="-45" width="760" height="90" rx="15" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.5)" stroke-width="2"/>
+    
+    <text x="0" y="-10" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="white" filter="url(#glowTW)">
+      E[x | x̃] = x̃ + σ²∇<tspan baseline-shift="sub" font-size="18">x̃</tspan> log p(x̃)
+    </text>
+    
+    <text x="0" y="25" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="rgba(255,255,255,0.6)">
+      The optimal denoiser is the posterior mean, which uses the score function!
+    </text>
+  </g>
+  
+  <!-- Derivation -->
+  <g transform="translate(475, 280)">
+    <rect x="-420" y="-90" width="840" height="180" rx="15" fill="rgba(0,0,0,0.4)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+    
+    <text x="-370" y="-65" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#6366f1">📐 DERIVATION</text>
+    
+    <!-- Step 1 -->
+    <text x="-370" y="-35" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">1. Gaussian corruption:</text>
+    <text x="-150" y="-35" font-family="Georgia, serif" font-size="14" fill="white">
+      x̃ = x + σε,  ε ~ N(0, I)
+    </text>
+    
+    <!-- Step 2 -->
+    <text x="-370" y="-5" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">2. Conditional distribution:</text>
+    <text x="-150" y="-5" font-family="Georgia, serif" font-size="14" fill="white">
+      p(x̃|x) = N(x̃; x, σ²I)
+    </text>
+    
+    <!-- Step 3 -->
+    <text x="-370" y="25" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">3. Score of conditional:</text>
+    <text x="-150" y="25" font-family="Georgia, serif" font-size="14" fill="white">
+      ∇<tspan baseline-shift="sub" font-size="10">x̃</tspan> log p(x̃|x) = −(x̃ − x)/σ² = <tspan fill="#10b981">−ε/σ</tspan>
+    </text>
+    
+    <!-- Step 4 -->
+    <text x="-370" y="55" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">4. Posterior mean formula:</text>
+    <text x="-150" y="55" font-family="Georgia, serif" font-size="14" fill="white">
+      E[x|x̃] = x̃ + σ²·E<tspan baseline-shift="sub" font-size="10">p(x|x̃)</tspan>[∇<tspan baseline-shift="sub" font-size="10">x̃</tspan> log p(x̃|x)]
+    </text>
+    
+    <!-- Final result -->
+    <text x="-370" y="85" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">5. Since E[−ε/σ | x̃] = ∇log p(x̃):</text>
+    <text x="-150" y="85" font-family="Georgia, serif" font-size="14" fill="#10b981">
+      E[x|x̃] = x̃ + σ²∇<tspan baseline-shift="sub" font-size="10">x̃</tspan> log p(x̃)  ✓
+    </text>
+  </g>
+  
+  <!-- Key insight -->
+  <g transform="translate(475, 420)">
+    <rect x="-380" y="-25" width="760" height="45" rx="22" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.4)"/>
+    <text x="0" y="0" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="white">
+      <tspan fill="#f59e0b" font-weight="600">Implication:</tspan> Training to denoise (predict x from x̃) is equivalent to learning the score!  s(x̃) ≈ (E[x|x̃] − x̃)/σ²
+    </text>
+  </g>
+</svg>

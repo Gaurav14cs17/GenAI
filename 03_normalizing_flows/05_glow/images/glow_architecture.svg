@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="glowArchBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0c0c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="900" height="400" fill="url(#glowArchBg)"/>
+  
+  <text x="450" y="35" fill="#fff" font-family="Georgia, serif" font-size="20" text-anchor="middle" font-weight="bold">
+    Glow Flow Step Architecture
+  </text>
+  
+  <!-- One Flow Step -->
+  <g transform="translate(450, 180)">
+    <rect x="-380" y="-100" width="760" height="200" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="-360" y="-75" fill="#94a3b8" font-family="Georgia, serif" font-size="12" font-weight="bold">ONE FLOW STEP (×K per level)</text>
+    
+    <!-- Input -->
+    <g transform="translate(-300, 0)">
+      <rect x="-40" y="-45" width="80" height="90" rx="8" fill="#21262d" stroke="#64748b" stroke-width="1"/>
+      <text y="5" fill="#94a3b8" font-family="Georgia, serif" font-size="11" text-anchor="middle">Input h</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M -250,0 L -200,0" stroke="#64748b" stroke-width="2"/>
+    <polygon points="-200,-5 -190,0 -200,5" fill="#64748b"/>
+    
+    <!-- ActNorm -->
+    <g transform="translate(-130, 0)">
+      <rect x="-50" y="-55" width="100" height="110" rx="8" fill="#06b6d4" opacity="0.2"/>
+      <rect x="-50" y="-55" width="100" height="110" rx="8" fill="none" stroke="#06b6d4" stroke-width="2"/>
+      <text y="-30" fill="#06b6d4" font-family="Georgia, serif" font-size="12" text-anchor="middle" font-weight="bold">ActNorm</text>
+      <text y="-5" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">y = s ⊙ (x + b)</text>
+      <line x1="-40" y1="10" x2="40" y2="10" stroke="#475569"/>
+      <text y="30" fill="#64748b" font-family="Georgia, serif" font-size="9" text-anchor="middle">log|det| = Σlog|s|·h·w</text>
+      <text y="45" fill="#22d3ee" font-family="monospace" font-size="8" text-anchor="middle">Data-init: μ,σ</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M -70,0 L -20,0" stroke="#64748b" stroke-width="2"/>
+    <polygon points="-20,-5 -10,0 -20,5" fill="#64748b"/>
+    
+    <!-- 1x1 Conv -->
+    <g transform="translate(60, 0)">
+      <rect x="-60" y="-55" width="120" height="110" rx="8" fill="#8b5cf6" opacity="0.2"/>
+      <rect x="-60" y="-55" width="120" height="110" rx="8" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+      <text y="-30" fill="#8b5cf6" font-family="Georgia, serif" font-size="12" text-anchor="middle" font-weight="bold">Inv 1×1 Conv</text>
+      <text y="-5" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">y = Wx</text>
+      <line x1="-50" y1="10" x2="50" y2="10" stroke="#475569"/>
+      <text y="30" fill="#64748b" font-family="Georgia, serif" font-size="9" text-anchor="middle">W = PLU decomp</text>
+      <text y="45" fill="#22d3ee" font-family="monospace" font-size="8" text-anchor="middle">log|det| = Σlog|s|·h·w</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 130,0 L 180,0" stroke="#64748b" stroke-width="2"/>
+    <polygon points="180,-5 190,0 180,5" fill="#64748b"/>
+    
+    <!-- Affine Coupling -->
+    <g transform="translate(270, 0)">
+      <rect x="-70" y="-55" width="140" height="110" rx="8" fill="#ec4899" opacity="0.2"/>
+      <rect x="-70" y="-55" width="140" height="110" rx="8" fill="none" stroke="#ec4899" stroke-width="2"/>
+      <text y="-30" fill="#ec4899" font-family="Georgia, serif" font-size="12" text-anchor="middle" font-weight="bold">Affine Coupling</text>
+      <text y="-8" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">yₐ = xₐ</text>
+      <text y="8" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">yᵦ = xᵦ⊙exp(s) + t</text>
+      <line x1="-60" y1="20" x2="60" y2="20" stroke="#475569"/>
+      <text y="40" fill="#64748b" font-family="Georgia, serif" font-size="9" text-anchor="middle">log|det| = Σsᵢ</text>
+    </g>
+    
+    <!-- Output -->
+    <path d="M 350,0 L 380,0" stroke="#64748b" stroke-width="2"/>
+    <polygon points="380,-5 390,0 380,5" fill="#64748b"/>
+  </g>
+  
+  <!-- Multi-scale info -->
+  <g transform="translate(450, 340)">
+    <rect x="-380" y="-30" width="760" height="55" rx="8" fill="#1e293b" stroke="#475569"/>
+    <text y="-5" fill="#f1f5f9" font-family="Georgia, serif" font-size="12" text-anchor="middle" font-weight="bold">
+      Multi-Scale: Squeeze(H×W×C → H/2×W/2×4C) → K Flow Steps → Split(2C→z, 2C→next)
+    </text>
+    <text y="15" fill="#94a3b8" font-family="Georgia, serif" font-size="10" text-anchor="middle">
+      256×256 CelebA-HQ: 6 levels, K=32 steps per level | Bits/dim: 3.35 (CIFAR-10)
+    </text>
+  </g>
+</svg>
+
+

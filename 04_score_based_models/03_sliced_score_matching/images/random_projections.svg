@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 500">
+  <defs>
+    <linearGradient id="bgProj" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0d1a"/>
+      <stop offset="100%" style="stop-color:#1a1a35"/>
+    </linearGradient>
+    
+    <linearGradient id="projGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f5576c"/>
+      <stop offset="100%" style="stop-color:#f093fb"/>
+    </linearGradient>
+    
+    <linearGradient id="projGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    
+    <linearGradient id="projGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#feca57"/>
+      <stop offset="100%" style="stop-color:#ff6b6b"/>
+    </linearGradient>
+    
+    <linearGradient id="projGrad4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d9ff"/>
+      <stop offset="100%" style="stop-color:#667eea"/>
+    </linearGradient>
+    
+    <filter id="glowProj">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <marker id="arrowR" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f5576c"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#43e97b"/>
+    </marker>
+    <marker id="arrowY" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#feca57"/>
+    </marker>
+    <marker id="arrowB" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#00d9ff"/>
+    </marker>
+    <marker id="arrowW" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="white"/>
+    </marker>
+  </defs>
+  
+  <rect width="850" height="500" fill="url(#bgProj)"/>
+  
+  <!-- Title -->
+  <text x="425" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="700" fill="white" filter="url(#glowProj)">
+    Sliced Score Matching: Random Projections
+  </text>
+  <text x="425" y="68" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">
+    Instead of computing full Jacobian, project score to random 1D directions
+  </text>
+  
+  <!-- Central visualization -->
+  <g transform="translate(300, 280)">
+    <!-- Density contours -->
+    <ellipse cx="0" cy="0" rx="120" ry="80" fill="rgba(102,126,234,0.05)"/>
+    <ellipse cx="0" cy="0" rx="90" ry="60" fill="rgba(102,126,234,0.08)"/>
+    <ellipse cx="0" cy="0" rx="60" ry="40" fill="rgba(102,126,234,0.12)"/>
+    <ellipse cx="0" cy="0" rx="30" ry="20" fill="rgba(102,126,234,0.2)"/>
+    <circle cx="0" cy="0" r="8" fill="#764ba2" opacity="0.6"/>
+    
+    <!-- Sample point -->
+    <circle cx="70" cy="-30" r="8" fill="rgba(255,255,255,0.8)" stroke="white" stroke-width="2"/>
+    <text x="85" y="-35" font-family="system-ui" font-size="10" fill="white">x</text>
+    
+    <!-- Score vector (full) -->
+    <line x1="70" y1="-30" x2="25" y2="-8" stroke="white" stroke-width="2.5" marker-end="url(#arrowW)" opacity="0.9"/>
+    <text x="35" y="-30" font-family="Georgia, serif" font-size="10" fill="white">s(x)</text>
+    
+    <!-- Random projection directions -->
+    <g opacity="0.8">
+      <!-- v1: horizontal-ish -->
+      <line x1="-140" y1="20" x2="140" y2="20" stroke="#f5576c" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="150" y="25" font-family="system-ui" font-size="9" fill="#f5576c">v₁</text>
+      
+      <!-- v2: vertical-ish -->
+      <line x1="0" y1="-110" x2="0" y2="110" stroke="#43e97b" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="10" y="-100" font-family="system-ui" font-size="9" fill="#43e97b">v₂</text>
+      
+      <!-- v3: diagonal -->
+      <line x1="-100" y1="-80" x2="100" y2="80" stroke="#feca57" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="110" y="85" font-family="system-ui" font-size="9" fill="#feca57">v₃</text>
+      
+      <!-- v4: other diagonal -->
+      <line x1="-100" y1="80" x2="100" y2="-80" stroke="#00d9ff" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="110" y="-75" font-family="system-ui" font-size="9" fill="#00d9ff">v₄</text>
+    </g>
+    
+    <!-- Projected scores -->
+    <g filter="url(#glowProj)">
+      <!-- Projection onto v1 -->
+      <line x1="70" y1="20" x2="35" y2="20" stroke="#f5576c" stroke-width="2" marker-end="url(#arrowR)"/>
+      
+      <!-- Projection onto v2 -->
+      <line x1="0" y1="-30" x2="0" y2="-15" stroke="#43e97b" stroke-width="2" marker-end="url(#arrowG)"/>
+    </g>
+    
+    <text x="0" y="135" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)">
+      Project score s(x) onto random directions v
+    </text>
+  </g>
+  
+  <!-- Right side: Formula -->
+  <g transform="translate(650, 250)">
+    <rect x="-150" y="-130" width="300" height="260" rx="12" fill="rgba(0,0,0,0.3)" stroke="rgba(245,87,108,0.3)" stroke-width="1"/>
+    
+    <text x="0" y="-105" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#f5576c">
+      SSM Objective
+    </text>
+    
+    <rect x="-130" y="-85" width="260" height="50" rx="8" fill="rgba(245,87,108,0.15)"/>
+    <text x="0" y="-55" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="white">
+      E<tspan baseline-shift="sub" font-size="9">v,x</tspan>[ v<tspan baseline-shift="sup" font-size="9">T</tspan>∇s<tspan baseline-shift="sub" font-size="9">θ</tspan>v + ½(v<tspan baseline-shift="sup" font-size="9">T</tspan>s<tspan baseline-shift="sub" font-size="9">θ</tspan>)² ]
+    </text>
+    
+    <text x="0" y="-15" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">The key computation:</text>
+    
+    <rect x="-130" y="0" width="260" height="40" rx="6" fill="rgba(67,233,123,0.15)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#43e97b">
+      v<tspan baseline-shift="sup" font-size="9">T</tspan>∇s·v = ∇<tspan baseline-shift="sub" font-size="9">x</tspan>(v<tspan baseline-shift="sup" font-size="9">T</tspan>s)·v
+    </text>
+    
+    <text x="0" y="65" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.6)">
+      Only ONE backprop!
+    </text>
+    
+    <g transform="translate(0, 90)">
+      <text x="-100" y="0" font-family="system-ui" font-size="10" fill="#43e97b">✓</text>
+      <text x="-85" y="0" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.7)">No noise needed</text>
+      
+      <text x="-100" y="20" font-family="system-ui" font-size="10" fill="#43e97b">✓</text>
+      <text x="-85" y="20" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.7)">O(1) complexity</text>
+      
+      <text x="-100" y="40" font-family="system-ui" font-size="10" fill="#feca57">~</text>
+      <text x="-85" y="40" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.7)">Higher variance</text>
+    </g>
+  </g>
+  
+  <!-- Bottom comparison -->
+  <g transform="translate(425, 465)">
+    <rect x="-380" y="-25" width="760" height="45" rx="8" fill="rgba(0,0,0,0.3)"/>
+    
+    <text x="-280" y="0" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+      <tspan fill="#667eea">Explicit SM:</tspan> O(d) backprops
+    </text>
+    <text x="-70" y="0" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+      <tspan fill="#f5576c">Sliced SM:</tspan> O(1) backprops
+    </text>
+    <text x="150" y="0" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+      <tspan fill="#43e97b">DSM:</tspan> O(1) forward passes
+    </text>
+  </g>
+</svg>
+

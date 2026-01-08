@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 550">
+  <defs>
+    <linearGradient id="bgVPVE" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a18"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    
+    <linearGradient id="vpGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    
+    <linearGradient id="veGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5576c"/>
+      <stop offset="100%" style="stop-color:#f093fb"/>
+    </linearGradient>
+    
+    <filter id="glowVP">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="950" height="550" fill="url(#bgVPVE)"/>
+  
+  <!-- Title -->
+  <text x="475" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="700" fill="white" filter="url(#glowVP)">
+    VP-SDE vs VE-SDE: Two Flavors of Diffusion
+  </text>
+  <text x="475" y="68" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">
+    Different noise schedules, same generative power — unified by the SDE framework
+  </text>
+  
+  <!-- VP-SDE (Left) -->
+  <g transform="translate(240, 300)">
+    <rect x="-190" y="-180" width="380" height="360" rx="15" fill="rgba(67,233,123,0.05)" stroke="url(#vpGrad)" stroke-width="2"/>
+    
+    <text x="0" y="-150" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="#43e97b">
+      VP-SDE (Variance Preserving)
+    </text>
+    <text x="0" y="-130" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">
+      DDPM / Score SDE
+    </text>
+    
+    <!-- SDE equation -->
+    <rect x="-170" y="-110" width="340" height="45" rx="8" fill="rgba(67,233,123,0.15)"/>
+    <text x="0" y="-82" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white">
+      dx = <tspan fill="#f5576c">−½β(t)x</tspan>dt + <tspan fill="#feca57">√β(t)</tspan>dW
+    </text>
+    
+    <!-- Properties -->
+    <g transform="translate(-150, -45)">
+      <text y="0" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+        <tspan fill="#43e97b">Drift:</tspan> −½β(t)x (pulls toward 0)
+      </text>
+      <text y="22" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+        <tspan fill="#feca57">Diffusion:</tspan> √β(t)
+      </text>
+      <text y="44" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+        <tspan fill="#667eea">Variance:</tspan> Bounded (~1)
+      </text>
+      <text y="66" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+        <tspan fill="#764ba2">Mean at T:</tspan> → 0
+      </text>
+    </g>
+    
+    <!-- Variance visualization -->
+    <g transform="translate(0, 90)">
+      <text x="0" y="-15" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Variance over time</text>
+      
+      <!-- Axis -->
+      <line x1="-120" y1="50" x2="120" y2="50" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <line x1="-120" y1="50" x2="-120" y2="-10" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      
+      <!-- VP curve (starts at 0, approaches ~1) -->
+      <path d="M -120,50 Q -60,40 0,20 Q 60,5 120,0" fill="none" stroke="#43e97b" stroke-width="2"/>
+      
+      <text x="125" y="55" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.4)">t</text>
+      <text x="-135" y="-5" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.4)">σ²</text>
+      <text x="125" y="5" font-family="system-ui" font-size="8" fill="#43e97b">~1</text>
+    </g>
+    
+    <!-- Used by -->
+    <rect x="-160" y="145" width="320" height="25" rx="5" fill="rgba(67,233,123,0.1)"/>
+    <text x="0" y="162" text-anchor="middle" font-family="system-ui" font-size="10" fill="#43e97b">
+      Used by: DDPM, Stable Diffusion, DALL-E 2
+    </text>
+  </g>
+  
+  <!-- VS -->
+  <text x="475" y="310" text-anchor="middle" font-family="system-ui" font-size="24" font-weight="700" fill="rgba(255,255,255,0.3)">VS</text>
+  
+  <!-- VE-SDE (Right) -->
+  <g transform="translate(710, 300)">
+    <rect x="-190" y="-180" width="380" height="360" rx="15" fill="rgba(245,87,108,0.05)" stroke="url(#veGrad)" stroke-width="2"/>
+    
+    <text x="0" y="-150" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="#f5576c">
+      VE-SDE (Variance Exploding)
+    </text>
+    <text x="0" y="-130" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">
+      NCSN / SMLD
+    </text>
+    
+    <!-- SDE equation -->
+    <rect x="-170" y="-110" width="340" height="45" rx="8" fill="rgba(245,87,108,0.15)"/>
+    <text x="0" y="-82" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white">
+      dx = <tspan fill="#feca57">√(dσ²/dt)</tspan>dW
+    </text>
+    
+    <!-- Properties -->
+    <g transform="translate(-150, -45)">
+      <text y="0" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+        <tspan fill="#43e97b">Drift:</tspan> 0 (no drift!)
+      </text>
+      <text y="22" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+        <tspan fill="#feca57">Diffusion:</tspan> √(dσ²/dt)
+      </text>
+      <text y="44" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+        <tspan fill="#667eea">Variance:</tspan> Unbounded (explodes!)
+      </text>
+      <text y="66" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+        <tspan fill="#764ba2">Mean at T:</tspan> = original x
+      </text>
+    </g>
+    
+    <!-- Variance visualization -->
+    <g transform="translate(0, 90)">
+      <text x="0" y="-15" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Variance over time</text>
+      
+      <!-- Axis -->
+      <line x1="-120" y1="50" x2="120" y2="50" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <line x1="-120" y1="50" x2="-120" y2="-10" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      
+      <!-- VE curve (exponential growth) -->
+      <path d="M -120,48 Q -40,45 0,30 Q 40,10 80,-20 Q 100,-40 120,-60" fill="none" stroke="#f5576c" stroke-width="2"/>
+      
+      <text x="125" y="55" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.4)">t</text>
+      <text x="-135" y="-5" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.4)">σ²</text>
+      <text x="125" y="-55" font-family="system-ui" font-size="8" fill="#f5576c">∞</text>
+    </g>
+    
+    <!-- Used by -->
+    <rect x="-160" y="145" width="320" height="25" rx="5" fill="rgba(245,87,108,0.1)"/>
+    <text x="0" y="162" text-anchor="middle" font-family="system-ui" font-size="10" fill="#f5576c">
+      Used by: NCSN, SMLD (older methods)
+    </text>
+  </g>
+  
+  <!-- Bottom comparison -->
+  <g transform="translate(475, 515)">
+    <rect x="-400" y="-20" width="800" height="40" rx="8" fill="rgba(0,0,0,0.3)"/>
+    <text x="0" y="5" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.8)">
+      Both are <tspan fill="#feca57">mathematically equivalent</tspan> for generation — just different noise schedules!
+    </text>
+  </g>
+</svg>
+

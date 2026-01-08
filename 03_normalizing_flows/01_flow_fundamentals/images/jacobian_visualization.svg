@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 260">
+  <defs>
+    <linearGradient id="inputSpace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+    <linearGradient id="outputSpace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#EC4899"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="260" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="350" y="25" font-family="system-ui, sans-serif" font-size="16" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Jacobian Determinant: Volume Change</text>
+  
+  <!-- Input Space -->
+  <rect x="50" y="60" width="120" height="120" rx="8" fill="url(#inputSpace)" opacity="0.3"/>
+  <rect x="50" y="60" width="120" height="120" rx="8" fill="none" stroke="#3B82F6" stroke-width="2"/>
+  
+  <!-- Grid in input -->
+  <line x1="90" y1="60" x2="90" y2="180" stroke="#3B82F6" stroke-width="1" opacity="0.5"/>
+  <line x1="130" y1="60" x2="130" y2="180" stroke="#3B82F6" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="100" x2="170" y2="100" stroke="#3B82F6" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="140" x2="170" y2="140" stroke="#3B82F6" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Sample points in input -->
+  <circle cx="70" cy="80" r="3" fill="#60A5FA"/>
+  <circle cx="110" cy="80" r="3" fill="#60A5FA"/>
+  <circle cx="150" cy="80" r="3" fill="#60A5FA"/>
+  <circle cx="70" cy="120" r="3" fill="#60A5FA"/>
+  <circle cx="110" cy="120" r="3" fill="#60A5FA"/>
+  <circle cx="150" cy="120" r="3" fill="#60A5FA"/>
+  <circle cx="70" cy="160" r="3" fill="#60A5FA"/>
+  <circle cx="110" cy="160" r="3" fill="#60A5FA"/>
+  <circle cx="150" cy="160" r="3" fill="#60A5FA"/>
+  
+  <text x="110" y="200" font-family="system-ui, sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle" font-weight="bold">z-space</text>
+  <text x="110" y="215" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Unit Volume</text>
+  
+  <!-- Arrow -->
+  <line x1="190" y1="120" x2="290" y2="120" stroke="#64748B" stroke-width="2"/>
+  <polygon points="290,120 280,115 280,125" fill="#64748B"/>
+  <text x="240" y="105" font-family="system-ui, sans-serif" font-size="12" fill="#F1F5F9" text-anchor="middle" font-weight="bold">f</text>
+  <text x="240" y="145" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Transform</text>
+  
+  <!-- Output Space (stretched/squeezed) -->
+  <path d="M 320 50 L 500 70 L 520 190 L 310 170 Z" fill="url(#outputSpace)" opacity="0.3"/>
+  <path d="M 320 50 L 500 70 L 520 190 L 310 170 Z" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+  
+  <!-- Transformed grid -->
+  <line x1="355" y1="58" x2="350" y2="175" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+  <line x1="415" y1="65" x2="430" y2="180" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+  <line x1="330" y1="95" x2="510" y2="115" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+  <line x1="320" y1="140" x2="515" y2="155" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Transformed sample points -->
+  <circle cx="338" cy="68" r="3" fill="#C084FC"/>
+  <circle cx="400" cy="75" r="3" fill="#C084FC"/>
+  <circle cx="480" cy="85" r="3" fill="#C084FC"/>
+  <circle cx="332" cy="110" r="3" fill="#C084FC"/>
+  <circle cx="410" cy="118" r="3" fill="#C084FC"/>
+  <circle cx="498" cy="130" r="3" fill="#C084FC"/>
+  <circle cx="325" cy="155" r="3" fill="#C084FC"/>
+  <circle cx="420" cy="162" r="3" fill="#C084FC"/>
+  <circle cx="505" cy="172" r="3" fill="#C084FC"/>
+  
+  <text x="410" y="200" font-family="system-ui, sans-serif" font-size="11" fill="#8B5CF6" text-anchor="middle" font-weight="bold">x-space</text>
+  <text x="410" y="215" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Changed Volume</text>
+  
+  <!-- Jacobian box -->
+  <rect x="540" y="70" width="140" height="100" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+  <text x="610" y="95" font-family="system-ui, sans-serif" font-size="10" fill="#10B981" text-anchor="middle" font-weight="bold">Jacobian</text>
+  <text x="610" y="115" font-family="system-ui, sans-serif" font-size="10" fill="#F1F5F9" text-anchor="middle">J = ∂f/∂z</text>
+  <text x="610" y="140" font-family="system-ui, sans-serif" font-size="9" fill="#F59E0B" text-anchor="middle" font-weight="bold">|det J|</text>
+  <text x="610" y="158" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle">= Volume Scale</text>
+  
+  <!-- Bottom formula -->
+  <rect x="200" y="225" width="300" height="30" rx="5" fill="#1E293B"/>
+  <text x="350" y="245" font-family="system-ui, sans-serif" font-size="10" fill="#F1F5F9" text-anchor="middle">p(x) = p(z) · |det J|⁻¹</text>
+</svg>
+

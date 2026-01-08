@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="bgHutch" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a18"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    
+    <linearGradient id="titleHutch" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f5576c"/>
+      <stop offset="50%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#feca57"/>
+    </linearGradient>
+    
+    <linearGradient id="matrixGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    
+    <linearGradient id="vectorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    
+    <linearGradient id="resultGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f5576c"/>
+      <stop offset="100%" style="stop-color:#f093fb"/>
+    </linearGradient>
+    
+    <filter id="glowHutch">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <marker id="arrowHutch" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#feca57"/>
+    </marker>
+  </defs>
+  
+  <rect width="900" height="450" fill="url(#bgHutch)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="url(#titleHutch)" filter="url(#glowHutch)">
+    Hutchinson's Trace Estimator: O(d) → O(1)
+  </text>
+  <text x="450" y="70" text-anchor="middle" font-family="system-ui" font-size="13" fill="rgba(255,255,255,0.6)">
+    Estimate the trace of a matrix with just ONE matrix-vector product
+  </text>
+  
+  <!-- The Problem -->
+  <g transform="translate(230, 180)">
+    <rect x="-180" y="-70" width="360" height="140" rx="12" fill="rgba(102,126,234,0.1)" stroke="url(#matrixGrad)" stroke-width="2"/>
+    
+    <text x="0" y="-45" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#667eea">THE PROBLEM</text>
+    
+    <text x="0" y="-15" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="white">
+      tr(A) = Σ<tspan baseline-shift="sub" font-size="12">i</tspan> A<tspan baseline-shift="sub" font-size="12">ii</tspan>
+    </text>
+    
+    <text x="0" y="15" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)">
+      Requires accessing d diagonal elements
+    </text>
+    
+    <text x="0" y="40" text-anchor="middle" font-family="system-ui" font-size="11" fill="#f5576c">
+      For Jacobian: O(d) backpropagations!
+    </text>
+    
+    <text x="0" y="60" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">
+      d=150,528 for ImageNet 🤯
+    </text>
+  </g>
+  
+  <!-- Arrow -->
+  <line x1="415" y1="180" x2="485" y2="180" stroke="#feca57" stroke-width="2" marker-end="url(#arrowHutch)"/>
+  <text x="450" y="165" text-anchor="middle" font-family="system-ui" font-size="10" fill="#feca57">Magic!</text>
+  
+  <!-- The Solution -->
+  <g transform="translate(670, 180)">
+    <rect x="-180" y="-70" width="360" height="140" rx="12" fill="rgba(67,233,123,0.1)" stroke="url(#vectorGrad)" stroke-width="2"/>
+    
+    <text x="0" y="-45" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#43e97b">HUTCHINSON'S TRICK</text>
+    
+    <rect x="-150" y="-30" width="300" height="45" rx="6" fill="rgba(67,233,123,0.2)"/>
+    <text x="0" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#43e97b" filter="url(#glowHutch)">
+      tr(A) = E<tspan baseline-shift="sub" font-size="12">v</tspan>[ v<tspan baseline-shift="sup" font-size="12">T</tspan>Av ]
+    </text>
+    
+    <text x="0" y="35" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)">
+      where E[vv<tspan baseline-shift="sup" font-size="8">T</tspan>] = I
+    </text>
+    
+    <text x="0" y="55" text-anchor="middle" font-family="system-ui" font-size="11" fill="#43e97b">
+      Only ONE matrix-vector product!
+    </text>
+  </g>
+  
+  <!-- Proof sketch -->
+  <g transform="translate(450, 330)">
+    <rect x="-380" y="-50" width="760" height="100" rx="10" fill="rgba(0,0,0,0.3)" stroke="rgba(245,87,108,0.3)" stroke-width="1"/>
+    
+    <text x="0" y="-25" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#f5576c">PROOF (Elegant!)</text>
+    
+    <text x="0" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white">
+      E[v<tspan baseline-shift="sup" font-size="10">T</tspan>Av] = E[tr(v<tspan baseline-shift="sup" font-size="10">T</tspan>Av)] = E[tr(Avv<tspan baseline-shift="sup" font-size="10">T</tspan>)] = tr(A·E[vv<tspan baseline-shift="sup" font-size="10">T</tspan>]) = tr(A·I) = tr(A) ✓
+    </text>
+    
+    <text x="-200" y="35" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">cyclic property of trace</text>
+    <text x="0" y="35" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">linearity of expectation</text>
+    <text x="180" y="35" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">E[vv<tspan baseline-shift="sup" font-size="7">T</tspan>]=I</text>
+  </g>
+  
+  <!-- Random vectors -->
+  <g transform="translate(450, 420)">
+    <rect x="-350" y="-20" width="700" height="38" rx="6" fill="rgba(254,202,87,0.1)" stroke="rgba(254,202,87,0.3)" stroke-width="1"/>
+    
+    <text x="-200" y="4" font-family="system-ui" font-size="11" fill="#feca57">Rademacher: v<tspan baseline-shift="sub" font-size="8">i</tspan> ∈ {−1, +1}</text>
+    <text x="0" y="4" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">|</text>
+    <text x="200" y="4" font-family="system-ui" font-size="11" fill="#43e97b">Gaussian: v ~ N(0, I)</text>
+  </g>
+</svg>
+

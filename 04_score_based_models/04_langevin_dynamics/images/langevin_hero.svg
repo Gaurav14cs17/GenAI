@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 650">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#252550"/>
+    </linearGradient>
+    <filter id="glow4">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1100" height="650" fill="url(#bg4)"/>
+  
+  <!-- Title -->
+  <text x="550" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="32" font-weight="300" fill="white" letter-spacing="2">
+    LANGEVIN DYNAMICS — MCMC Sampling
+  </text>
+  <text x="550" y="70" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" fill="rgba(255,255,255,0.6)">
+    Sample from p(x) using only the score function — converges to target distribution
+  </text>
+  
+  <!-- Continuous-time SDE -->
+  <g transform="translate(280, 170)">
+    <rect x="-230" y="-70" width="460" height="140" rx="12" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.4)" stroke-width="1.5"/>
+    <text x="0" y="-45" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#6366f1">CONTINUOUS-TIME LANGEVIN SDE</text>
+    
+    <text x="0" y="-15" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Overdamped Langevin diffusion:</text>
+    
+    <text x="0" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="white" filter="url(#glow4)">
+      dx = <tspan fill="#6366f1">∇log p(x)</tspan>dt + <tspan fill="#f59e0b">√2 dW<tspan baseline-shift="sub" font-size="14">t</tspan></tspan>
+    </text>
+    
+    <text x="-100" y="50" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6366f1">drift: toward high prob</text>
+    <text x="100" y="50" font-family="'Segoe UI', sans-serif" font-size="10" fill="#f59e0b">diffusion: Brownian motion</text>
+  </g>
+  
+  <!-- Discrete-time Update -->
+  <g transform="translate(820, 170)">
+    <rect x="-230" y="-70" width="460" height="140" rx="12" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.5)" stroke-width="2"/>
+    <text x="0" y="-45" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#10b981">EULER-MARUYAMA DISCRETIZATION</text>
+    
+    <text x="0" y="-15" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Discrete update with step size ε:</text>
+    
+    <rect x="-180" y="0" width="360" height="45" rx="8" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+    <text x="0" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="white">
+      x<tspan baseline-shift="sub" font-size="12">t+1</tspan> = x<tspan baseline-shift="sub" font-size="12">t</tspan> + <tspan fill="#6366f1">ε·s(x<tspan baseline-shift="sub" font-size="10">t</tspan>)</tspan> + <tspan fill="#f59e0b">√(2ε)·z<tspan baseline-shift="sub" font-size="10">t</tspan></tspan>
+    </text>
+    
+    <text x="0" y="60" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="rgba(255,255,255,0.5)">z<tspan baseline-shift="sub" font-size="8">t</tspan> ~ N(0, I)</text>
+  </g>
+  
+  <!-- Convergence Theory Box -->
+  <g transform="translate(550, 340)">
+    <rect x="-480" y="-60" width="960" height="120" rx="15" fill="rgba(0,0,0,0.4)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+    
+    <text x="-430" y="-35" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#6366f1">📐 CONVERGENCE THEORY</text>
+    
+    <!-- Fokker-Planck -->
+    <text x="-430" y="-5" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Fokker-Planck equation for density p<tspan baseline-shift="sub" font-size="8">t</tspan>(x):</text>
+    <text x="-430" y="20" font-family="Georgia, serif" font-size="14" fill="white">
+      ∂p<tspan baseline-shift="sub" font-size="10">t</tspan>/∂t = −∇·(p<tspan baseline-shift="sub" font-size="10">t</tspan>∇log p) + Δp<tspan baseline-shift="sub" font-size="10">t</tspan> = ∇·(p<tspan baseline-shift="sub" font-size="10">t</tspan>∇log(p<tspan baseline-shift="sub" font-size="10">t</tspan>/p))
+    </text>
+    
+    <!-- Stationary distribution -->
+    <text x="150" y="-5" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Stationary distribution (∂p<tspan baseline-shift="sub" font-size="8">t</tspan>/∂t = 0):</text>
+    <text x="150" y="20" font-family="Georgia, serif" font-size="14" fill="#10b981">
+      p<tspan baseline-shift="sub" font-size="10">∞</tspan>(x) = p(x)  <tspan fill="white">✓</tspan>
+    </text>
+    
+    <!-- KL decay -->
+    <text x="-430" y="50" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">KL divergence decay (under log-Sobolev):</text>
+    <text x="150" y="50" font-family="Georgia, serif" font-size="14" fill="white">
+      KL(p<tspan baseline-shift="sub" font-size="10">t</tspan> || p) ≤ e<tspan baseline-shift="super" font-size="10">−2λt</tspan> · KL(p<tspan baseline-shift="sub" font-size="10">0</tspan> || p)
+    </text>
+  </g>
+  
+  <!-- Discretization Error -->
+  <g transform="translate(280, 480)">
+    <rect x="-230" y="-50" width="460" height="100" rx="12" fill="rgba(239,68,68,0.06)" stroke="rgba(239,68,68,0.4)" stroke-width="1.5"/>
+    <text x="0" y="-25" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#ef4444">⚠️ DISCRETIZATION ERROR</text>
+    
+    <text x="0" y="5" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Discrete Langevin has bias:</text>
+    <text x="0" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white">
+      KL(p<tspan baseline-shift="sub" font-size="10">T</tspan> || p) ≤ O(ε) + O(e<tspan baseline-shift="super" font-size="10">−λT</tspan>)
+    </text>
+    <text x="0" y="50" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.4)">Need ε → 0 and T → ∞ for exact samples</text>
+  </g>
+  
+  <!-- MALA Correction -->
+  <g transform="translate(820, 480)">
+    <rect x="-230" y="-50" width="460" height="100" rx="12" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.4)" stroke-width="1.5"/>
+    <text x="0" y="-25" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#10b981">✓ MALA: Metropolis Correction</text>
+    
+    <text x="0" y="5" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Accept-reject step removes bias:</text>
+    <text x="0" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="white">
+      α = min(1, p(x')q(x|x') / p(x)q(x'|x))
+    </text>
+    <text x="0" y="50" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#10b981">Exact samples with finite ε!</text>
+  </g>
+  
+  <!-- Annealed Langevin -->
+  <g transform="translate(550, 600)">
+    <rect x="-450" y="-35" width="900" height="65" rx="12" fill="rgba(236,72,153,0.06)" stroke="rgba(236,72,153,0.3)" stroke-width="1"/>
+    
+    <text x="-400" y="-10" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#ec4899">🌡️ ANNEALED LANGEVIN (NCSN)</text>
+    
+    <text x="-180" y="-10" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Multi-scale noise schedule:</text>
+    <text x="100" y="-10" font-family="Georgia, serif" font-size="13" fill="white">
+      σ<tspan baseline-shift="sub" font-size="9">1</tspan> > σ<tspan baseline-shift="sub" font-size="9">2</tspan> > ... > σ<tspan baseline-shift="sub" font-size="9">L</tspan>
+    </text>
+    
+    <text x="-400" y="18" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">
+      High noise: explore modes | Low noise: refine samples
+    </text>
+    <text x="100" y="18" font-family="Georgia, serif" font-size="12" fill="white">
+      x<tspan baseline-shift="sub" font-size="8">t+1</tspan> = x<tspan baseline-shift="sub" font-size="8">t</tspan> + ε<tspan baseline-shift="sub" font-size="8">i</tspan>s<tspan baseline-shift="sub" font-size="8">θ</tspan>(x<tspan baseline-shift="sub" font-size="8">t</tspan>, σ<tspan baseline-shift="sub" font-size="8">i</tspan>) + √(2ε<tspan baseline-shift="sub" font-size="8">i</tspan>)z
+    </text>
+  </g>
+</svg>

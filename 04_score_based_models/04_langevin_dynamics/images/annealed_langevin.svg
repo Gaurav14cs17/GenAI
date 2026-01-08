@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 450">
+  <defs>
+    <linearGradient id="bgAL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#1a1a35"/>
+    </linearGradient>
+    <filter id="glowAL">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="950" height="450" fill="url(#bgAL)"/>
+  
+  <!-- Title -->
+  <text x="475" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="white">
+    🌡️ Annealed Langevin Dynamics (NCSN)
+  </text>
+  <text x="475" y="70" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" fill="rgba(255,255,255,0.5)">
+    Multi-scale noise levels for better mode exploration
+  </text>
+  
+  <!-- Noise schedule -->
+  <g transform="translate(475, 140)">
+    <rect x="-400" y="-40" width="800" height="80" rx="12" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.4)" stroke-width="1.5"/>
+    
+    <text x="-350" y="-15" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#6366f1">NOISE SCHEDULE</text>
+    
+    <text x="-350" y="15" font-family="Georgia, serif" font-size="16" fill="white">
+      σ<tspan baseline-shift="sub" font-size="11">1</tspan> > σ<tspan baseline-shift="sub" font-size="11">2</tspan> > ... > σ<tspan baseline-shift="sub" font-size="11">L</tspan>
+    </text>
+    
+    <text x="50" y="-15" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Geometric schedule:</text>
+    <text x="50" y="15" font-family="Georgia, serif" font-size="14" fill="white">
+      σ<tspan baseline-shift="sub" font-size="10">i</tspan> = σ<tspan baseline-shift="sub" font-size="10">1</tspan> · (σ<tspan baseline-shift="sub" font-size="10">L</tspan>/σ<tspan baseline-shift="sub" font-size="10">1</tspan>)<tspan baseline-shift="super" font-size="10">(i−1)/(L−1)</tspan>
+    </text>
+  </g>
+  
+  <!-- Algorithm -->
+  <g transform="translate(475, 280)">
+    <rect x="-400" y="-80" width="800" height="160" rx="12" fill="rgba(0,0,0,0.4)" stroke="rgba(16,185,129,0.4)" stroke-width="1.5"/>
+    
+    <text x="-350" y="-55" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#10b981">ANNEALED LANGEVIN ALGORITHM</text>
+    
+    <text x="-350" y="-25" font-family="'Courier New', monospace" font-size="12" fill="rgba(255,255,255,0.7)">
+      for i = 1 to L:
+    </text>
+    <text x="-320" y="0" font-family="'Courier New', monospace" font-size="12" fill="rgba(255,255,255,0.7)">
+      for t = 1 to T:
+    </text>
+    <text x="-290" y="25" font-family="'Courier New', monospace" font-size="12" fill="white">
+      z ~ N(0, I)
+    </text>
+    <text x="-290" y="50" font-family="Georgia, serif" font-size="14" fill="white">
+      x ← x + <tspan fill="#6366f1">ε<tspan baseline-shift="sub" font-size="10">i</tspan> · s<tspan baseline-shift="sub" font-size="10">θ</tspan>(x, σ<tspan baseline-shift="sub" font-size="10">i</tspan>)</tspan> + <tspan fill="#f59e0b">√(2ε<tspan baseline-shift="sub" font-size="10">i</tspan>) · z</tspan>
+    </text>
+    
+    <text x="150" y="-25" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">Step size schedule:</text>
+    <text x="150" y="0" font-family="Georgia, serif" font-size="13" fill="white">
+      ε<tspan baseline-shift="sub" font-size="9">i</tspan> = ε · (σ<tspan baseline-shift="sub" font-size="9">i</tspan>/σ<tspan baseline-shift="sub" font-size="9">L</tspan>)²
+    </text>
+    
+    <text x="150" y="35" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">Larger steps at high noise,</text>
+    <text x="150" y="55" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">smaller steps at low noise</text>
+  </g>
+  
+  <!-- Why it works -->
+  <g transform="translate(475, 420)">
+    <rect x="-400" y="-25" width="800" height="45" rx="22" fill="rgba(236,72,153,0.08)" stroke="rgba(236,72,153,0.3)"/>
+    
+    <text x="-350" y="0" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ec4899" font-weight="600">WHY:</text>
+    <text x="-300" y="0" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.7)">
+      High σ: smoothed density → explores modes  |  Low σ: sharp density → refines samples
+    </text>
+  </g>
+</svg>

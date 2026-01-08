@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 280">
+  <defs>
+    <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#EC4899"/>
+    </linearGradient>
+    <linearGradient id="densityGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#1E293B"/>
+      <stop offset="100%" style="stop-color:#3B82F6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="750" height="280" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="375" y="30" font-family="system-ui, sans-serif" font-size="18" fill="#F1F5F9" text-anchor="middle" font-weight="bold">The Score Function: ∇ log p(x)</text>
+  
+  <!-- Left: Probability Density -->
+  <text x="180" y="60" font-family="system-ui, sans-serif" font-size="12" fill="#3B82F6" text-anchor="middle" font-weight="bold">Probability Density p(x)</text>
+  
+  <!-- Density curve -->
+  <path d="M 60 200 Q 100 195 130 180 Q 160 130 180 100 Q 200 80 220 100 Q 240 130 260 180 Q 290 195 320 200" stroke="#3B82F6" stroke-width="3" fill="url(#densityGrad)" opacity="0.3"/>
+  <path d="M 60 200 Q 100 195 130 180 Q 160 130 180 100 Q 200 80 220 100 Q 240 130 260 180 Q 290 195 320 200" stroke="#3B82F6" stroke-width="3" fill="none"/>
+  
+  <!-- X axis -->
+  <line x1="50" y1="200" x2="330" y2="200" stroke="#475569" stroke-width="2"/>
+  <text x="330" y="220" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">x</text>
+  
+  <!-- Peak annotation -->
+  <circle cx="200" cy="80" r="4" fill="#3B82F6"/>
+  <text x="200" y="65" font-family="system-ui, sans-serif" font-size="9" fill="#60A5FA" text-anchor="middle">peak</text>
+  
+  <!-- Arrow -->
+  <text x="375" y="140" font-family="system-ui, sans-serif" font-size="24" fill="#64748B">→</text>
+  <text x="375" y="165" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">gradient</text>
+  
+  <!-- Right: Score Function -->
+  <text x="570" y="60" font-family="system-ui, sans-serif" font-size="12" fill="#EC4899" text-anchor="middle" font-weight="bold">Score Function s(x) = ∇ log p(x)</text>
+  
+  <!-- Score arrows -->
+  <line x1="430" y1="180" x2="430" y2="200" stroke="#475569" stroke-width="2"/>
+  
+  <!-- Score vectors at different points -->
+  <circle cx="460" cy="150" r="3" fill="#EC4899"/>
+  <line x1="460" y1="150" x2="485" y2="130" stroke="#EC4899" stroke-width="2"/>
+  <polygon points="485,130 478,135 480,142" fill="#EC4899"/>
+  
+  <circle cx="520" cy="140" r="3" fill="#EC4899"/>
+  <line x1="520" y1="140" x2="545" y2="125" stroke="#EC4899" stroke-width="2"/>
+  <polygon points="545,125 538,130 540,137" fill="#EC4899"/>
+  
+  <circle cx="580" cy="120" r="3" fill="#10B981"/>
+  <circle cx="580" cy="120" r="6" fill="none" stroke="#10B981" stroke-width="2"/>
+  <text x="595" y="110" font-family="system-ui, sans-serif" font-size="8" fill="#10B981">peak</text>
+  <text x="595" y="122" font-family="system-ui, sans-serif" font-size="8" fill="#10B981">s=0</text>
+  
+  <circle cx="640" cy="140" r="3" fill="#EC4899"/>
+  <line x1="640" y1="140" x2="615" y2="125" stroke="#EC4899" stroke-width="2"/>
+  <polygon points="615,125 622,130 620,137" fill="#EC4899"/>
+  
+  <circle cx="700" cy="150" r="3" fill="#EC4899"/>
+  <line x1="700" y1="150" x2="675" y2="130" stroke="#EC4899" stroke-width="2"/>
+  <polygon points="675,130 682,135 680,142" fill="#EC4899"/>
+  
+  <!-- X axis for score -->
+  <line x1="430" y1="180" x2="720" y2="180" stroke="#475569" stroke-width="2"/>
+  <text x="720" y="200" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">x</text>
+  
+  <!-- Explanation box -->
+  <rect x="150" y="225" width="450" height="45" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="375" y="248" font-family="system-ui, sans-serif" font-size="11" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Score = direction pointing toward higher probability</text>
+  <text x="375" y="263" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Follow the score to reach density peaks • Zero at maxima</text>
+</svg>
+

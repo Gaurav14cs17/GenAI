@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 160">
+  <defs>
+    <linearGradient id="bgGrad11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="160" fill="url(#bgGrad11)" rx="10"/>
+  
+  <!-- Title -->
+  <text x="250" y="25" font-family="JetBrains Mono, Consolas, monospace" font-size="12" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Alternating Mask Pattern</text>
+  
+  <!-- Layer 1 -->
+  <rect x="30" y="45" width="140" height="30" rx="6" fill="#3b82f6" opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="100" y="65" font-family="JetBrains Mono, Consolas, monospace" font-size="10" fill="#60a5fa" text-anchor="middle">Layer 1</text>
+  <text x="250" y="65" font-family="sans-serif" font-size="10" fill="#94a3b8" text-anchor="start">Transform z</text>
+  <text x="307" y="65" font-family="sans-serif" font-size="8" fill="#94a3b8" baseline-shift="sub">b</text>
+  <text x="315" y="65" font-family="sans-serif" font-size="10" fill="#94a3b8"> given z</text>
+  <text x="366" y="65" font-family="sans-serif" font-size="8" fill="#94a3b8" baseline-shift="sub">a</text>
+  <rect x="395" y="50" width="60" height="20" rx="4" fill="#3b82f6" opacity="0.3"/>
+  <text x="425" y="65" font-family="JetBrains Mono, Consolas, monospace" font-size="9" fill="#60a5fa" text-anchor="middle">Mask A</text>
+  
+  <!-- Layer 2 -->
+  <rect x="30" y="85" width="140" height="30" rx="6" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="1.5"/>
+  <text x="100" y="105" font-family="JetBrains Mono, Consolas, monospace" font-size="10" fill="#34d399" text-anchor="middle">Layer 2</text>
+  <text x="250" y="105" font-family="sans-serif" font-size="10" fill="#94a3b8" text-anchor="start">Transform z</text>
+  <text x="307" y="105" font-family="sans-serif" font-size="8" fill="#94a3b8" baseline-shift="sub">a</text>
+  <text x="315" y="105" font-family="sans-serif" font-size="10" fill="#94a3b8"> given z</text>
+  <text x="366" y="105" font-family="sans-serif" font-size="8" fill="#94a3b8" baseline-shift="sub">b</text>
+  <rect x="395" y="90" width="60" height="20" rx="4" fill="#10b981" opacity="0.3"/>
+  <text x="425" y="105" font-family="JetBrains Mono, Consolas, monospace" font-size="9" fill="#34d399" text-anchor="middle">Mask B</text>
+  
+  <!-- Layer 3 -->
+  <rect x="30" y="125" width="140" height="30" rx="6" fill="#3b82f6" opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="100" y="145" font-family="JetBrains Mono, Consolas, monospace" font-size="10" fill="#60a5fa" text-anchor="middle">Layer 3</text>
+  <text x="250" y="145" font-family="sans-serif" font-size="10" fill="#94a3b8" text-anchor="start">Transform z</text>
+  <text x="307" y="145" font-family="sans-serif" font-size="8" fill="#94a3b8" baseline-shift="sub">b</text>
+  <text x="315" y="145" font-family="sans-serif" font-size="10" fill="#94a3b8"> given z</text>
+  <text x="366" y="145" font-family="sans-serif" font-size="8" fill="#94a3b8" baseline-shift="sub">a</text>
+  <rect x="395" y="130" width="60" height="20" rx="4" fill="#3b82f6" opacity="0.3"/>
+  <text x="425" y="145" font-family="JetBrains Mono, Consolas, monospace" font-size="9" fill="#60a5fa" text-anchor="middle">Mask A</text>
+  
+  <!-- Arrows -->
+  <path d="M 100 77 L 100 82" stroke="#475569" stroke-width="1.5"/>
+  <polygon points="100,85 96,80 104,80" fill="#475569"/>
+  <path d="M 100 117 L 100 122" stroke="#475569" stroke-width="1.5"/>
+  <polygon points="100,125 96,120 104,120" fill="#475569"/>
+</svg>
+

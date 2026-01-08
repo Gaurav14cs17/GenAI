@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <defs>
+    <linearGradient id="bgRev" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a18"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    
+    <linearGradient id="titleRev" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#764ba2"/>
+      <stop offset="50%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#43e97b"/>
+    </linearGradient>
+    
+    <linearGradient id="noiseGradRev" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#764ba2"/>
+      <stop offset="100%" style="stop-color:#667eea"/>
+    </linearGradient>
+    
+    <linearGradient id="dataGradRev" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    
+    <linearGradient id="pathRev" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#764ba2"/>
+      <stop offset="50%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#43e97b"/>
+    </linearGradient>
+    
+    <filter id="glowRev">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <marker id="arrowRev" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#43e97b"/>
+    </marker>
+  </defs>
+  
+  <rect width="1000" height="500" fill="url(#bgRev)"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="700" fill="url(#titleRev)" filter="url(#glowRev)">
+    Reverse-Time SDE: Noise → Data (Generation!)
+  </text>
+  <text x="500" y="68" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">
+    Anderson's theorem: reverse the forward SDE using the learned score
+  </text>
+  
+  <!-- Time axis (reversed) -->
+  <g transform="translate(500, 430)">
+    <line x1="-400" y1="0" x2="400" y2="0" stroke="url(#pathRev)" stroke-width="3"/>
+    <line x1="-390" y1="-8" x2="-400" y2="0" stroke="#43e97b" stroke-width="3"/>
+    <line x1="-390" y1="8" x2="-400" y2="0" stroke="#43e97b" stroke-width="3"/>
+    
+    <text x="380" y="25" font-family="system-ui" font-size="11" fill="#764ba2">t = T (start)</text>
+    <text x="-380" y="25" font-family="system-ui" font-size="11" fill="#43e97b">t = 0 (generated!)</text>
+    <text x="0" y="25" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">← reverse time</text>
+  </g>
+  
+  <!-- Distribution evolution (reversed order) -->
+  
+  <!-- t=T: Pure noise (START) -->
+  <g transform="translate(880, 260)">
+    <text x="0" y="-130" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#764ba2">START: p_T ≈ N(0,I)</text>
+    
+    <ellipse cx="0" cy="0" rx="70" ry="70" fill="rgba(118,75,162,0.1)"/>
+    <ellipse cx="0" cy="0" rx="50" ry="50" fill="rgba(118,75,162,0.15)"/>
+    <ellipse cx="0" cy="0" rx="30" ry="30" fill="rgba(118,75,162,0.2)"/>
+    <circle cx="0" cy="0" r="8" fill="#764ba2" opacity="0.5"/>
+    
+    <!-- Random sample -->
+    <circle cx="35" cy="-25" r="6" fill="#764ba2" stroke="white" stroke-width="1.5"/>
+    <text x="50" y="-20" font-family="system-ui" font-size="9" fill="#764ba2">z ~ N(0,I)</text>
+    
+    <text x="0" y="100" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Sample random noise</text>
+  </g>
+  
+  <!-- t=0.7: Denoising -->
+  <g transform="translate(660, 260)">
+    <text x="0" y="-130" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#667eea">p_t (denoising)</text>
+    
+    <ellipse cx="-15" cy="0" rx="50" ry="65" fill="rgba(102,126,234,0.1)"/>
+    <ellipse cx="-15" cy="0" rx="35" ry="48" fill="rgba(102,126,234,0.18)"/>
+    <ellipse cx="-15" cy="0" rx="20" ry="30" fill="rgba(102,126,234,0.28)"/>
+    
+    <ellipse cx="20" cy="15" rx="45" ry="60" fill="rgba(102,126,234,0.1)"/>
+    <ellipse cx="20" cy="15" rx="30" ry="42" fill="rgba(102,126,234,0.18)"/>
+    <ellipse cx="20" cy="15" rx="18" ry="25" fill="rgba(102,126,234,0.28)"/>
+    
+    <text x="0" y="100" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Structure emerging</text>
+  </g>
+  
+  <!-- t=0.3: Almost clean -->
+  <g transform="translate(380, 260)">
+    <text x="0" y="-130" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#38f9d7">p_t (almost clean)</text>
+    
+    <ellipse cx="-30" cy="-5" rx="35" ry="55" fill="rgba(56,249,215,0.12)"/>
+    <ellipse cx="-30" cy="-5" rx="22" ry="38" fill="rgba(56,249,215,0.22)"/>
+    <ellipse cx="-30" cy="-5" rx="10" ry="22" fill="rgba(56,249,215,0.35)"/>
+    
+    <ellipse cx="30" cy="15" rx="30" ry="50" fill="rgba(56,249,215,0.12)"/>
+    <ellipse cx="30" cy="15" rx="18" ry="32" fill="rgba(56,249,215,0.22)"/>
+    <ellipse cx="30" cy="15" rx="8" ry="18" fill="rgba(56,249,215,0.35)"/>
+    
+    <text x="0" y="100" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Modes sharpening</text>
+  </g>
+  
+  <!-- t=0: Generated sample (END) -->
+  <g transform="translate(120, 260)">
+    <text x="0" y="-130" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#43e97b">END: p_0 = p_data</text>
+    
+    <ellipse cx="-30" cy="0" rx="28" ry="50" fill="rgba(67,233,123,0.15)"/>
+    <ellipse cx="-30" cy="0" rx="16" ry="35" fill="rgba(67,233,123,0.3)"/>
+    <ellipse cx="-30" cy="0" rx="6" ry="18" fill="#43e97b" opacity="0.5"/>
+    
+    <ellipse cx="28" cy="15" rx="24" ry="42" fill="rgba(67,233,123,0.15)"/>
+    <ellipse cx="28" cy="15" rx="14" ry="28" fill="rgba(67,233,123,0.3)"/>
+    <ellipse cx="28" cy="15" rx="5" ry="14" fill="#43e97b" opacity="0.5"/>
+    
+    <!-- Generated sample -->
+    <circle cx="-28" cy="5" r="7" fill="#43e97b" stroke="white" stroke-width="2"/>
+    <text x="-55" y="35" font-family="system-ui" font-size="9" fill="#43e97b">generated!</text>
+    
+    <text x="0" y="100" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Clean sample ✓</text>
+  </g>
+  
+  <!-- Reverse arrows with score -->
+  <g opacity="0.7">
+    <path d="M 810,260 Q 750,250 710,255" fill="none" stroke="#43e97b" stroke-width="2" marker-end="url(#arrowRev)"/>
+    <path d="M 580,260 Q 520,250 450,255" fill="none" stroke="#43e97b" stroke-width="2" marker-end="url(#arrowRev)"/>
+    <path d="M 310,260 Q 250,250 190,255" fill="none" stroke="#43e97b" stroke-width="2" marker-end="url(#arrowRev)"/>
+    
+    <text x="760" y="235" font-family="system-ui" font-size="9" fill="#43e97b">score guides!</text>
+  </g>
+  
+  <!-- Reverse SDE equation -->
+  <g transform="translate(500, 110)">
+    <rect x="-320" y="-35" width="640" height="65" rx="12" fill="rgba(0,0,0,0.4)" stroke="rgba(67,233,123,0.4)" stroke-width="1"/>
+    
+    <text x="0" y="-8" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="white">
+      dx = [ <tspan fill="#f5576c">f(x,t)</tspan> − <tspan fill="#43e97b">g(t)² ∇<tspan baseline-shift="sub" font-size="11">x</tspan>log p<tspan baseline-shift="sub" font-size="11">t</tspan>(x)</tspan> ] dt + <tspan fill="#feca57">g(t)</tspan> dW̄<tspan baseline-shift="sub" font-size="11">t</tspan>
+    </text>
+    
+    <text x="0" y="18" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)">
+      The <tspan fill="#43e97b">score correction term</tspan> is what makes generation possible!
+    </text>
+  </g>
+</svg>
+

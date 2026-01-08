@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680">
+  <defs>
+    <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a15"/>
+      <stop offset="100%" style="stop-color:#1f1f3a"/>
+    </linearGradient>
+    <filter id="glow7">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1100" height="680" fill="url(#bg7)"/>
+  
+  <!-- Title -->
+  <text x="550" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="32" font-weight="300" fill="white" letter-spacing="2">
+    SCORE-FLOW RELATIONSHIP
+  </text>
+  <text x="550" y="70" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" fill="rgba(255,255,255,0.6)">
+    Three equivalent perspectives: Score, Flow, and Diffusion are all connected
+  </text>
+  
+  <!-- Score Models -->
+  <g transform="translate(200, 210)">
+    <rect x="-170" y="-90" width="340" height="180" rx="12" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.5)" stroke-width="2"/>
+    <text x="0" y="-65" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#10b981">SCORE MODELS</text>
+    <text x="0" y="-45" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">NCSN, Score SDE</text>
+    
+    <text x="0" y="-15" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Learn the score function:</text>
+    <text x="0" y="12" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="white">
+      s<tspan baseline-shift="sub" font-size="12">θ</tspan>(x, t) ≈ ∇<tspan baseline-shift="sub" font-size="12">x</tspan> log p<tspan baseline-shift="sub" font-size="12">t</tspan>(x)
+    </text>
+    
+    <text x="0" y="45" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Training objective:</text>
+    <text x="0" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="white">
+      E[||s<tspan baseline-shift="sub" font-size="9">θ</tspan> + ε/σ||²]
+    </text>
+  </g>
+  
+  <!-- Flow Models -->
+  <g transform="translate(550, 210)">
+    <rect x="-170" y="-90" width="340" height="180" rx="12" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.5)" stroke-width="2"/>
+    <text x="0" y="-65" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#6366f1">FLOW MODELS</text>
+    <text x="0" y="-45" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">CNF, Flow Matching, Rectified Flow</text>
+    
+    <text x="0" y="-15" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Learn the velocity field:</text>
+    <text x="0" y="12" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="white">
+      v<tspan baseline-shift="sub" font-size="12">θ</tspan>(x, t) ≈ dx/dt
+    </text>
+    
+    <text x="0" y="45" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Training objective:</text>
+    <text x="0" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="white">
+      E[||v<tspan baseline-shift="sub" font-size="9">θ</tspan> − (x<tspan baseline-shift="sub" font-size="9">1</tspan>−x<tspan baseline-shift="sub" font-size="9">0</tspan>)||²]
+    </text>
+  </g>
+  
+  <!-- Diffusion Models -->
+  <g transform="translate(900, 210)">
+    <rect x="-170" y="-90" width="340" height="180" rx="12" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.5)" stroke-width="2"/>
+    <text x="0" y="-65" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#f59e0b">DIFFUSION MODELS</text>
+    <text x="0" y="-45" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">DDPM, DDIM</text>
+    
+    <text x="0" y="-15" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Learn the noise:</text>
+    <text x="0" y="12" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="white">
+      ε<tspan baseline-shift="sub" font-size="12">θ</tspan>(x, t) ≈ ε
+    </text>
+    
+    <text x="0" y="45" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Training objective:</text>
+    <text x="0" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="white">
+      E[||ε<tspan baseline-shift="sub" font-size="9">θ</tspan> − ε||²]
+    </text>
+  </g>
+  
+  <!-- Equivalence Equations -->
+  <g transform="translate(550, 400)">
+    <rect x="-480" y="-65" width="960" height="130" rx="15" fill="rgba(0,0,0,0.4)" stroke="rgba(236,72,153,0.4)" stroke-width="1.5"/>
+    
+    <text x="-430" y="-40" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#ec4899">📐 MATHEMATICAL EQUIVALENCES</text>
+    
+    <!-- Score ↔ Noise -->
+    <text x="-350" y="-10" font-family="'Segoe UI', sans-serif" font-size="11" fill="#10b981">Score ↔ Noise:</text>
+    <text x="-350" y="15" font-family="Georgia, serif" font-size="16" fill="white">
+      s<tspan baseline-shift="sub" font-size="11">θ</tspan> = −ε<tspan baseline-shift="sub" font-size="11">θ</tspan>/σ<tspan baseline-shift="sub" font-size="11">t</tspan>
+    </text>
+    
+    <!-- Score ↔ Flow -->
+    <text x="-50" y="-10" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6366f1">Score → Flow (Prob. Flow ODE):</text>
+    <text x="-50" y="15" font-family="Georgia, serif" font-size="16" fill="white">
+      v = f − ½g²s
+    </text>
+    
+    <!-- Clean data prediction -->
+    <text x="250" y="-10" font-family="'Segoe UI', sans-serif" font-size="11" fill="#f59e0b">All predict clean data:</text>
+    <text x="250" y="15" font-family="Georgia, serif" font-size="16" fill="white">
+      x̂<tspan baseline-shift="sub" font-size="11">0</tspan> = x<tspan baseline-shift="sub" font-size="11">t</tspan> + σ<tspan baseline-shift="sub" font-size="11">t</tspan>²s = x<tspan baseline-shift="sub" font-size="11">t</tspan> − σ<tspan baseline-shift="sub" font-size="11">t</tspan>ε
+    </text>
+    
+    <!-- General relationship -->
+    <text x="0" y="50" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">
+      Unified ODE: dx/dt = v<tspan baseline-shift="sub" font-size="8">θ</tspan>(x, t) where v encodes the score/noise in all formulations
+    </text>
+  </g>
+  
+  <!-- Flow Matching -->
+  <g transform="translate(550, 560)">
+    <rect x="-480" y="-45" width="960" height="90" rx="15" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+    
+    <text x="-430" y="-20" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#6366f1">🚀 FLOW MATCHING (Lipman et al. 2023)</text>
+    
+    <text x="-430" y="8" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Conditional path:</text>
+    <text x="-250" y="8" font-family="Georgia, serif" font-size="13" fill="white">
+      x<tspan baseline-shift="sub" font-size="9">t</tspan> = (1−t)x<tspan baseline-shift="sub" font-size="9">0</tspan> + t·x<tspan baseline-shift="sub" font-size="9">1</tspan>  <tspan font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">(linear interpolation)</tspan>
+    </text>
+    
+    <text x="200" y="8" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Target velocity:</text>
+    <text x="380" y="8" font-family="Georgia, serif" font-size="13" fill="white">
+      v* = x<tspan baseline-shift="sub" font-size="9">1</tspan> − x<tspan baseline-shift="sub" font-size="9">0</tspan>
+    </text>
+    
+    <text x="0" y="35" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#10b981">
+      ✓ Simulation-free training | ✓ Faster convergence | ✓ Straighter trajectories
+    </text>
+  </g>
+  
+  <!-- Key insight -->
+  <text x="550" y="665" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">
+    <tspan fill="#ec4899">Key insight:</tspan> All three approaches learn the same underlying transport map from noise to data!
+  </text>
+</svg>

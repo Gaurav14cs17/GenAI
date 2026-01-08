@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480">
+  <defs>
+    <linearGradient id="bgGrad7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="flowLine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="50%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="480" fill="url(#bgGrad7)" rx="12"/>
+  
+  <!-- Title -->
+  <rect x="200" y="15" width="300" height="35" rx="8" fill="#334155"/>
+  <text x="350" y="40" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="bold" fill="#e2e8f0" text-anchor="middle">MULTI-SCALE FLOW</text>
+  
+  <!-- Main flow line -->
+  <path d="M 350 65 L 350 450" stroke="url(#flowLine)" stroke-width="4" fill="none"/>
+  
+  <!-- Input -->
+  <rect x="260" y="60" width="180" height="35" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+  <text x="350" y="83" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#60a5fa" text-anchor="middle">Input: 32×32×3</text>
+  
+  <!-- Arrow down -->
+  <polygon points="350,100 345,95 355,95" fill="#3b82f6"/>
+  
+  <!-- Squeeze 1 -->
+  <rect x="250" y="105" width="200" height="30" rx="6" fill="#3b82f6" opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="350" y="125" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#60a5fa" text-anchor="middle">[SQUEEZE] → 16×16×12</text>
+  
+  <!-- Arrow down -->
+  <polygon points="350,145 345,140 355,140" fill="#60a5fa"/>
+  
+  <!-- Coupling Layers 1 -->
+  <rect x="250" y="150" width="200" height="30" rx="6" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="350" y="170" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#a78bfa" text-anchor="middle">[K COUPLING LAYERS]</text>
+  
+  <!-- Arrow down -->
+  <polygon points="350,190 345,185 355,185" fill="#a78bfa"/>
+  
+  <!-- Split 1 -->
+  <rect x="220" y="195" width="260" height="40" rx="6" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="350" y="213" font-family="JetBrains Mono, Consolas, monospace" font-size="10" fill="#fbbf24" text-anchor="middle">[SPLIT]</text>
+  <text x="350" y="228" font-family="JetBrains Mono, Consolas, monospace" font-size="9" fill="#fcd34d" text-anchor="middle">16×16×6 → z₁ | 16×16×6 continue</text>
+  
+  <!-- z1 branch -->
+  <path d="M 280 235 L 280 255 L 120 255 L 120 445" stroke="#f59e0b" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+  <rect x="70" y="440" width="100" height="30" rx="6" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="120" y="460" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#fbbf24" text-anchor="middle">z₁</text>
+  
+  <!-- Arrow down (main branch) -->
+  <polygon points="350,245 345,240 355,240" fill="#fbbf24"/>
+  
+  <!-- Squeeze 2 -->
+  <rect x="250" y="250" width="200" height="30" rx="6" fill="#3b82f6" opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="350" y="270" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#60a5fa" text-anchor="middle">[SQUEEZE] → 8×8×24</text>
+  
+  <!-- Arrow down -->
+  <polygon points="350,290 345,285 355,285" fill="#60a5fa"/>
+  
+  <!-- Coupling Layers 2 -->
+  <rect x="250" y="295" width="200" height="30" rx="6" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="350" y="315" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#a78bfa" text-anchor="middle">[K COUPLING LAYERS]</text>
+  
+  <!-- Arrow down -->
+  <polygon points="350,335 345,330 355,330" fill="#a78bfa"/>
+  
+  <!-- Split 2 -->
+  <rect x="220" y="340" width="260" height="40" rx="6" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="350" y="358" font-family="JetBrains Mono, Consolas, monospace" font-size="10" fill="#fbbf24" text-anchor="middle">[SPLIT]</text>
+  <text x="350" y="373" font-family="JetBrains Mono, Consolas, monospace" font-size="9" fill="#fcd34d" text-anchor="middle">8×8×12 → z₂ | 8×8×12 continue</text>
+  
+  <!-- z2 branch -->
+  <path d="M 280 380 L 280 395 L 200 395 L 200 445" stroke="#f59e0b" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+  <rect x="150" y="440" width="100" height="30" rx="6" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="200" y="460" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#fbbf24" text-anchor="middle">z₂</text>
+  
+  <!-- ... (repeat) -->
+  <text x="350" y="405" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="middle">... (repeat) ...</text>
+  
+  <!-- Arrow down to final -->
+  <polygon points="350,425 345,420 355,420" fill="#ec4899"/>
+  
+  <!-- Final z3 -->
+  <rect x="260" y="430" width="180" height="40" rx="6" fill="#ec4899" opacity="0.2" stroke="#ec4899" stroke-width="2"/>
+  <text x="350" y="448" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#f472b6" text-anchor="middle">Final z₃</text>
+  <text x="350" y="463" font-family="JetBrains Mono, Consolas, monospace" font-size="9" fill="#f9a8d4" text-anchor="middle">(all remaining channels)</text>
+  
+  <!-- Latent output box -->
+  <rect x="500" y="390" width="180" height="70" rx="8" fill="#10b981" opacity="0.1" stroke="#10b981" stroke-width="2"/>
+  <text x="590" y="415" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#34d399" text-anchor="middle">Latent:</text>
+  <text x="590" y="435" font-family="JetBrains Mono, Consolas, monospace" font-size="10" fill="#6ee7b7" text-anchor="middle">z = [z₁, z₂, z₃]</text>
+  <text x="590" y="452" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">(concatenated)</text>
+  
+  <!-- Arrow to latent -->
+  <path d="M 445 455 L 495 430" stroke="#10b981" stroke-width="2" fill="none"/>
+  <polygon points="495,430 487,435 489,427" fill="#10b981"/>
+  
+  <!-- Legend -->
+  <rect x="520" y="100" width="160" height="150" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="600" y="125" font-family="JetBrains Mono, Consolas, monospace" font-size="10" fill="#94a3b8" text-anchor="middle">Legend</text>
+  
+  <rect x="535" y="140" width="50" height="15" rx="3" fill="#3b82f6" opacity="0.3" stroke="#3b82f6" stroke-width="1"/>
+  <text x="595" y="152" font-family="sans-serif" font-size="9" fill="#94a3b8">Squeeze</text>
+  
+  <rect x="535" y="165" width="50" height="15" rx="3" fill="#1e293b" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="595" y="177" font-family="sans-serif" font-size="9" fill="#94a3b8">Coupling</text>
+  
+  <rect x="535" y="190" width="50" height="15" rx="3" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="1"/>
+  <text x="595" y="202" font-family="sans-serif" font-size="9" fill="#94a3b8">Split</text>
+  
+  <line x1="535" y1="222" x2="585" y2="222" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="595" y="227" font-family="sans-serif" font-size="9" fill="#94a3b8">→ to latent</text>
+</svg>
+

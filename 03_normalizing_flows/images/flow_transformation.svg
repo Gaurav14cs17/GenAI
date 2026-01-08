@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#161b22;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5cf6" />
+      <stop offset="100%" style="stop-color:#06b6d4" />
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee"/>
+    </marker>
+  </defs>
+  
+  <rect width="800" height="350" fill="url(#bg2)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" fill="#f0f6fc" font-family="Georgia, serif" font-size="22" text-anchor="middle" font-weight="bold">
+    The Flow Transformation Pipeline
+  </text>
+  
+  <!-- Stage 1: Base Distribution -->
+  <g transform="translate(80, 170)">
+    <rect x="-65" y="-80" width="130" height="160" rx="10" fill="#21262d" stroke="#30363d" stroke-width="2"/>
+    <text x="0" y="-55" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="middle">BASE DISTRIBUTION</text>
+    
+    <!-- Gaussian visualization -->
+    <ellipse cx="0" cy="20" rx="40" ry="40" fill="#8b5cf6" opacity="0.2"/>
+    <ellipse cx="0" cy="20" rx="28" ry="28" fill="#8b5cf6" opacity="0.4"/>
+    <ellipse cx="0" cy="20" rx="16" ry="16" fill="#8b5cf6" opacity="0.7"/>
+    <circle cx="0" cy="20" r="6" fill="#a855f7" filter="url(#glow2)"/>
+    
+    <text x="0" y="75" fill="#c9d1d9" font-family="Georgia, serif" font-size="13" text-anchor="middle" font-style="italic">z ~ N(0, I)</text>
+  </g>
+  
+  <!-- Arrow 1 -->
+  <g transform="translate(180, 170)">
+    <path d="M 0,0 L 80,0" stroke="url(#arrowGrad)" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+    <text x="40" y="-15" fill="#8b5cf6" font-family="Georgia, serif" font-size="14" text-anchor="middle">f₁</text>
+  </g>
+  
+  <!-- Stage 2: Flow Layer 1 -->
+  <g transform="translate(300, 170)">
+    <rect x="-50" y="-80" width="100" height="160" rx="10" fill="#21262d" stroke="#6e40c9" stroke-width="2"/>
+    <text x="0" y="-55" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="middle">FLOW f₁</text>
+    
+    <!-- Transformed shape -->
+    <ellipse cx="0" cy="20" rx="35" ry="45" fill="#9333ea" opacity="0.3" transform="rotate(15)"/>
+    <ellipse cx="0" cy="20" rx="22" ry="30" fill="#9333ea" opacity="0.5" transform="rotate(15)"/>
+    <circle cx="0" cy="20" r="8" fill="#a855f7" filter="url(#glow2)"/>
+    
+    <text x="0" y="75" fill="#c9d1d9" font-family="Georgia, serif" font-size="12" text-anchor="middle">z₁ = f₁(z)</text>
+  </g>
+  
+  <!-- Arrow 2 -->
+  <g transform="translate(380, 170)">
+    <path d="M 0,0 L 80,0" stroke="url(#arrowGrad)" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+    <text x="40" y="-15" fill="#7c3aed" font-family="Georgia, serif" font-size="14" text-anchor="middle">f₂</text>
+  </g>
+  
+  <!-- Stage 3: Flow Layer 2 -->
+  <g transform="translate(500, 170)">
+    <rect x="-50" y="-80" width="100" height="160" rx="10" fill="#21262d" stroke="#1f6feb" stroke-width="2"/>
+    <text x="0" y="-55" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="middle">FLOW f₂</text>
+    
+    <!-- More transformed -->
+    <ellipse cx="-12" cy="10" rx="20" ry="30" fill="#0ea5e9" opacity="0.4" transform="rotate(-25)"/>
+    <ellipse cx="15" cy="30" rx="25" ry="20" fill="#0ea5e9" opacity="0.4" transform="rotate(20)"/>
+    <circle cx="5" cy="20" r="8" fill="#22d3ee" filter="url(#glow2)"/>
+    
+    <text x="0" y="75" fill="#c9d1d9" font-family="Georgia, serif" font-size="12" text-anchor="middle">z₂ = f₂(z₁)</text>
+  </g>
+  
+  <!-- Arrow 3 -->
+  <g transform="translate(580, 170)">
+    <path d="M 0,0 L 80,0" stroke="url(#arrowGrad)" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+    <text x="40" y="-15" fill="#06b6d4" font-family="Georgia, serif" font-size="14" text-anchor="middle">fₖ</text>
+  </g>
+  
+  <!-- Stage 4: Output Distribution -->
+  <g transform="translate(700, 170)">
+    <rect x="-65" y="-80" width="130" height="160" rx="10" fill="#21262d" stroke="#22d3ee" stroke-width="2"/>
+    <text x="0" y="-55" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="middle">DATA DISTRIBUTION</text>
+    
+    <!-- Complex output -->
+    <ellipse cx="-20" cy="5" rx="18" ry="28" fill="#06b6d4" opacity="0.4" transform="rotate(-30)"/>
+    <ellipse cx="20" cy="35" rx="22" ry="15" fill="#06b6d4" opacity="0.4" transform="rotate(15)"/>
+    <ellipse cx="-5" cy="40" rx="15" ry="22" fill="#06b6d4" opacity="0.5" transform="rotate(-10)"/>
+    <ellipse cx="10" cy="10" rx="12" ry="18" fill="#06b6d4" opacity="0.6"/>
+    <circle cx="5" cy="20" r="6" fill="#22d3ee" filter="url(#glow2)"/>
+    
+    <text x="0" y="75" fill="#c9d1d9" font-family="Georgia, serif" font-size="13" text-anchor="middle" font-style="italic">x = p(x)</text>
+  </g>
+  
+  <!-- Key Equation Box -->
+  <g transform="translate(400, 310)">
+    <rect x="-280" y="-20" width="560" height="40" rx="8" fill="#21262d" stroke="#30363d"/>
+    <text x="0" y="6" fill="#c9d1d9" font-family="Georgia, serif" font-size="14" text-anchor="middle">
+      log p(x) = log p(z) - Σₖ log|det(∂fₖ/∂zₖ₋₁)|
+    </text>
+  </g>
+</svg>
+
+

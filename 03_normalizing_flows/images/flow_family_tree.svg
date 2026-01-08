@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bgGrad3)" rx="12"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="JetBrains Mono, Consolas, monospace" font-size="16" font-weight="bold" fill="#e2e8f0" text-anchor="middle">🏆 THE FLOW FAMILY TREE</text>
+  
+  <!-- Timeline bar -->
+  <rect x="50" y="55" width="700" height="6" rx="3" fill="#334155"/>
+  <rect x="50" y="55" width="700" height="6" rx="3" fill="url(#timelineGrad)" opacity="0.7"/>
+  
+  <!-- Year markers -->
+  <text x="50" y="50" font-family="JetBrains Mono, Consolas, monospace" font-size="12" fill="#94a3b8" text-anchor="middle">2015</text>
+  <text x="750" y="50" font-family="JetBrains Mono, Consolas, monospace" font-size="12" fill="#94a3b8" text-anchor="middle">2024</text>
+  
+  <!-- Planar/Radial Flows (2015) -->
+  <circle cx="80" cy="58" r="8" fill="#3b82f6"/>
+  <rect x="30" y="75" width="150" height="60" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+  <text x="105" y="95" font-family="JetBrains Mono, Consolas, monospace" font-size="11" font-weight="bold" fill="#60a5fa" text-anchor="middle">Planar/Radial Flows</text>
+  <text x="105" y="110" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">(Rezende &amp; Mohamed)</text>
+  <text x="105" y="125" font-family="Georgia, serif" font-size="9" fill="#64748b" font-style="italic" text-anchor="middle">"Flows can be expressive!"</text>
+  
+  <!-- Arrow down from Planar -->
+  <path d="M 105 140 L 105 160 L 180 160" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- NICE (2015) -->
+  <circle cx="150" cy="58" r="8" fill="#6366f1"/>
+  <rect x="185" y="145" width="120" height="50" rx="8" fill="#1e293b" stroke="#6366f1" stroke-width="2"/>
+  <text x="245" y="168" font-family="JetBrains Mono, Consolas, monospace" font-size="12" font-weight="bold" fill="#818cf8" text-anchor="middle">NICE (2015)</text>
+  <text x="245" y="183" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Volume-preserving</text>
+  
+  <!-- Arrow from NICE to RealNVP -->
+  <path d="M 310 170 L 350 170" stroke="#8b5cf6" stroke-width="2" fill="none"/>
+  <polygon points="350,170 342,165 342,175" fill="#8b5cf6"/>
+  
+  <!-- RealNVP (2017) -->
+  <circle cx="350" cy="58" r="8" fill="#8b5cf6"/>
+  <rect x="355" y="145" width="130" height="70" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="420" y="168" font-family="JetBrains Mono, Consolas, monospace" font-size="12" font-weight="bold" fill="#a78bfa" text-anchor="middle">RealNVP (2017)</text>
+  <text x="420" y="188" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Multi-scale</text>
+  <text x="420" y="203" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Architecture</text>
+  
+  <!-- Arrow from RealNVP to Glow -->
+  <path d="M 490 180 L 530 180" stroke="#c026d3" stroke-width="2" fill="none"/>
+  <polygon points="530,180 522,175 522,185" fill="#c026d3"/>
+  
+  <!-- Glow (2018) -->
+  <circle cx="480" cy="58" r="8" fill="#c026d3"/>
+  <rect x="535" y="145" width="130" height="70" rx="8" fill="#1e293b" stroke="#c026d3" stroke-width="2"/>
+  <text x="600" y="168" font-family="JetBrains Mono, Consolas, monospace" font-size="12" font-weight="bold" fill="#e879f9" text-anchor="middle">Glow (2018)</text>
+  <text x="600" y="188" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">1×1 Convs</text>
+  <text x="600" y="203" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">ActNorm</text>
+  
+  <!-- Merge point -->
+  <path d="M 420 220 L 420 250 L 400 270" stroke="#475569" stroke-width="2" fill="none"/>
+  <path d="M 600 220 L 600 250 L 400 270" stroke="#475569" stroke-width="2" fill="none"/>
+  
+  <!-- Neural Spline Flows (2019) -->
+  <circle cx="550" cy="58" r="6" fill="#db2777"/>
+  <rect x="310" y="275" width="180" height="50" rx="8" fill="#1e293b" stroke="#db2777" stroke-width="2"/>
+  <text x="400" y="298" font-family="JetBrains Mono, Consolas, monospace" font-size="11" font-weight="bold" fill="#f472b6" text-anchor="middle">Neural Spline Flows (2019)</text>
+  <text x="400" y="315" font-family="Georgia, serif" font-size="9" fill="#64748b" font-style="italic" text-anchor="middle">"More expressive coupling"</text>
+  
+  <!-- Arrow to FFJORD -->
+  <path d="M 400 330 L 400 345" stroke="#475569" stroke-width="2" fill="none"/>
+  
+  <!-- FFJORD (Continuous Flows) -->
+  <rect x="310" y="350" width="180" height="50" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="400" y="373" font-family="JetBrains Mono, Consolas, monospace" font-size="11" font-weight="bold" fill="#fbbf24" text-anchor="middle">FFJORD (Continuous)</text>
+  <text x="400" y="390" font-family="Georgia, serif" font-size="9" fill="#64748b" font-style="italic" text-anchor="middle">"Neural ODEs for flows"</text>
+  
+  <!-- Flow Matching (2023) -->
+  <circle cx="680" cy="58" r="8" fill="#10b981"/>
+  <rect x="560" y="350" width="180" height="50" rx="8" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="2" filter="url(#glow2)"/>
+  <text x="650" y="373" font-family="JetBrains Mono, Consolas, monospace" font-size="11" font-weight="bold" fill="#34d399" text-anchor="middle">Flow Matching (2023)</text>
+  <text x="650" y="390" font-family="Georgia, serif" font-size="9" fill="#64748b" font-style="italic" text-anchor="middle">"Connects to diffusion!"</text>
+  
+  <!-- Arrow from FFJORD to Flow Matching -->
+  <path d="M 495 375 L 555 375" stroke="#475569" stroke-width="2" fill="none"/>
+  <polygon points="555,375 547,370 547,380" fill="#10b981"/>
+  
+  <!-- Connection line from 2023 marker -->
+  <path d="M 680 66 L 680 120 L 650 120 L 650 345" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5,3" fill="none" opacity="0.5"/>
+</svg>
+

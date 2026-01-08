@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="evalMetBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0c0c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="900" height="400" fill="url(#evalMetBg)"/>
+  
+  <text x="450" y="35" fill="#fff" font-family="Georgia, serif" font-size="20" text-anchor="middle" font-weight="bold">
+    Evaluation Metrics Comparison
+  </text>
+  
+  <!-- Density-based metrics -->
+  <g transform="translate(250, 180)">
+    <rect x="-180" y="-100" width="360" height="200" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text y="-75" fill="#10b981" font-family="Georgia, serif" font-size="14" text-anchor="middle" font-weight="bold">📊 DENSITY METRICS</text>
+    
+    <!-- BPD -->
+    <g transform="translate(-100, -30)">
+      <rect x="-60" y="-30" width="120" height="100" rx="8" fill="#21262d"/>
+      <text y="-10" fill="#22d3ee" font-family="Georgia, serif" font-size="11" text-anchor="middle" font-weight="bold">Bits/Dim</text>
+      <text y="10" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">-log₂p(x)</text>
+      <text y="25" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">─────────</text>
+      <text y="40" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">H×W×C</text>
+      <text y="60" fill="#10b981" font-family="Georgia, serif" font-size="9" text-anchor="middle">Lower = Better</text>
+    </g>
+    
+    <!-- NLL -->
+    <g transform="translate(70, -30)">
+      <rect x="-60" y="-30" width="120" height="100" rx="8" fill="#21262d"/>
+      <text y="-10" fill="#f59e0b" font-family="Georgia, serif" font-size="11" text-anchor="middle" font-weight="bold">NLL</text>
+      <text y="15" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">-1/N Σlog p(xᵢ)</text>
+      <text y="60" fill="#10b981" font-family="Georgia, serif" font-size="9" text-anchor="middle">Lower = Better</text>
+    </g>
+    
+    <text y="85" fill="#64748b" font-family="Georgia, serif" font-size="9" text-anchor="middle" font-style="italic">
+      Flow advantage: Exact computation (vs bounds for VAE)
+    </text>
+  </g>
+  
+  <!-- Sample quality metrics -->
+  <g transform="translate(650, 180)">
+    <rect x="-180" y="-100" width="360" height="200" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text y="-75" fill="#3b82f6" font-family="Georgia, serif" font-size="14" text-anchor="middle" font-weight="bold">🎨 SAMPLE QUALITY</text>
+    
+    <!-- FID -->
+    <g transform="translate(-100, -30)">
+      <rect x="-60" y="-30" width="120" height="100" rx="8" fill="#21262d"/>
+      <text y="-10" fill="#8b5cf6" font-family="Georgia, serif" font-size="11" text-anchor="middle" font-weight="bold">FID Score</text>
+      <text y="10" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">Inception</text>
+      <text y="25" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">feature dist</text>
+      <text y="60" fill="#10b981" font-family="Georgia, serif" font-size="9" text-anchor="middle">Lower = Better</text>
+    </g>
+    
+    <!-- IS -->
+    <g transform="translate(70, -30)">
+      <rect x="-60" y="-30" width="120" height="100" rx="8" fill="#21262d"/>
+      <text y="-10" fill="#ec4899" font-family="Georgia, serif" font-size="11" text-anchor="middle" font-weight="bold">IS (Optional)</text>
+      <text y="10" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">Inception</text>
+      <text y="25" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">Score</text>
+      <text y="60" fill="#10b981" font-family="Georgia, serif" font-size="9" text-anchor="middle">Higher = Better</text>
+    </g>
+    
+    <text y="85" fill="#64748b" font-family="Georgia, serif" font-size="9" text-anchor="middle" font-style="italic">
+      Note: High likelihood ≠ good samples always
+    </text>
+  </g>
+  
+  <!-- Benchmark table -->
+  <g transform="translate(450, 340)">
+    <rect x="-380" y="-40" width="760" height="55" rx="8" fill="#1e293b" stroke="#475569"/>
+    <text y="-15" fill="#f1f5f9" font-family="Georgia, serif" font-size="11" text-anchor="middle" font-weight="bold">
+      CIFAR-10 Benchmarks (BPD)
+    </text>
+    <text y="8" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">
+      Glow: 3.35 | Flow++: 3.08 | Neural Spline: 3.38 | VAE (best): ~3.5 | Compression limit: ~2.8
+    </text>
+  </g>
+</svg>
+
+

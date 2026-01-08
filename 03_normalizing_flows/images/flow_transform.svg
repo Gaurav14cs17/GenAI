@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220">
+  <defs>
+    <linearGradient id="gaussianGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+    <linearGradient id="complexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#EC4899"/>
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#34D399"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="220" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="350" y="25" font-family="system-ui, sans-serif" font-size="16" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Normalizing Flows: Transform Simple → Complex</text>
+  
+  <!-- Gaussian Distribution (Left) -->
+  <rect x="40" y="60" width="160" height="120" rx="10" fill="#1E293B" stroke="#3B82F6" stroke-width="2"/>
+  
+  <!-- Gaussian shape -->
+  <ellipse cx="120" cy="120" rx="50" ry="40" fill="url(#gaussianGrad)" opacity="0.3"/>
+  <ellipse cx="120" cy="120" rx="35" ry="28" fill="url(#gaussianGrad)" opacity="0.5"/>
+  <ellipse cx="120" cy="120" rx="20" ry="16" fill="url(#gaussianGrad)" opacity="0.7"/>
+  <circle cx="120" cy="120" r="8" fill="#3B82F6"/>
+  
+  <!-- Sample points -->
+  <circle cx="100" cy="108" r="3" fill="#60A5FA"/>
+  <circle cx="140" cy="115" r="3" fill="#60A5FA"/>
+  <circle cx="115" cy="135" r="3" fill="#60A5FA"/>
+  <circle cx="130" cy="125" r="3" fill="#60A5FA"/>
+  <circle cx="105" cy="128" r="3" fill="#60A5FA"/>
+  <circle cx="138" cy="105" r="3" fill="#60A5FA"/>
+  <circle cx="125" cy="110" r="3" fill="#60A5FA"/>
+  
+  <text x="120" y="195" font-family="system-ui, sans-serif" font-size="12" fill="#3B82F6" text-anchor="middle" font-weight="bold">p(z) = N(0, I)</text>
+  <text x="120" y="210" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">Simple, Known</text>
+  
+  <!-- Flow Arrows -->
+  <defs>
+    <marker id="flowArrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34D399"/>
+    </marker>
+  </defs>
+  
+  <!-- Forward flow -->
+  <line x1="220" y1="110" x2="290" y2="110" stroke="url(#arrowGrad)" stroke-width="3" marker-end="url(#flowArrow2)"/>
+  <text x="255" y="100" font-family="system-ui, sans-serif" font-size="11" fill="#10B981" text-anchor="middle" font-weight="bold">f</text>
+  <text x="255" y="85" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Flow</text>
+  
+  <!-- Inverse flow -->
+  <defs>
+    <marker id="inverseArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F59E0B"/>
+    </marker>
+  </defs>
+  <line x1="290" y1="135" x2="220" y2="135" stroke="#F59E0B" stroke-width="3" marker-end="url(#inverseArrow)"/>
+  <text x="255" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#F59E0B" text-anchor="middle" font-weight="bold">f⁻¹</text>
+  <text x="255" y="170" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Inverse</text>
+  
+  <!-- Complex Distribution (Right) -->
+  <rect x="310" y="60" width="160" height="120" rx="10" fill="#1E293B" stroke="#8B5CF6" stroke-width="2"/>
+  
+  <!-- Complex shape (multi-modal) -->
+  <ellipse cx="350" cy="100" rx="25" ry="18" fill="url(#complexGrad)" opacity="0.6"/>
+  <ellipse cx="400" cy="130" rx="30" ry="22" fill="url(#complexGrad)" opacity="0.6"/>
+  <ellipse cx="360" cy="145" rx="18" ry="12" fill="url(#complexGrad)" opacity="0.6"/>
+  
+  <!-- Sample points -->
+  <circle cx="345" cy="95" r="3" fill="#C084FC"/>
+  <circle cx="355" cy="105" r="3" fill="#C084FC"/>
+  <circle cx="395" cy="125" r="3" fill="#C084FC"/>
+  <circle cx="410" cy="135" r="3" fill="#C084FC"/>
+  <circle cx="400" cy="145" r="3" fill="#C084FC"/>
+  <circle cx="355" cy="148" r="3" fill="#C084FC"/>
+  <circle cx="365" cy="140" r="3" fill="#C084FC"/>
+  
+  <text x="390" y="195" font-family="system-ui, sans-serif" font-size="12" fill="#8B5CF6" text-anchor="middle" font-weight="bold">p(x) = ???</text>
+  <text x="390" y="210" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">Complex, Data</text>
+  
+  <!-- Jacobian box -->
+  <rect x="500" y="80" width="170" height="80" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+  <text x="585" y="105" font-family="system-ui, sans-serif" font-size="10" fill="#10B981" text-anchor="middle" font-weight="bold">Change of Variables</text>
+  <text x="585" y="130" font-family="system-ui, sans-serif" font-size="11" fill="#F1F5F9" text-anchor="middle">p(x) = p(z) |det J|⁻¹</text>
+  <text x="585" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Exact likelihood!</text>
+</svg>
+

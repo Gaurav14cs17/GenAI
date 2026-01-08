@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e2f"/>
+      <stop offset="100%" style="stop-color:#2d2d44"/>
+    </linearGradient>
+    <filter id="glow3">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1100" height="620" fill="url(#bg3)"/>
+  
+  <!-- Title -->
+  <text x="550" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="32" font-weight="300" fill="white" letter-spacing="2">
+    SLICED SCORE MATCHING — Song et al. (2020)
+  </text>
+  <text x="550" y="70" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" fill="rgba(255,255,255,0.6)">
+    Hutchinson's trace estimator reduces Jacobian computation from O(d) → O(1)
+  </text>
+  
+  <!-- The Problem -->
+  <g transform="translate(200, 180)">
+    <rect x="-170" y="-80" width="340" height="160" rx="12" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.4)" stroke-width="1.5"/>
+    <text x="0" y="-55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#ef4444">❌ THE BOTTLENECK</text>
+    
+    <text x="0" y="-25" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Explicit score matching loss:</text>
+    
+    <text x="0" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="white">
+      J̃(θ) = E<tspan baseline-shift="sub" font-size="10">p</tspan>[½||s<tspan baseline-shift="sub" font-size="10">θ</tspan>||² + <tspan fill="#ef4444">tr(∇<tspan baseline-shift="sub" font-size="10">x</tspan>s<tspan baseline-shift="sub" font-size="10">θ</tspan>)</tspan>]
+    </text>
+    
+    <text x="0" y="35" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">Jacobian trace requires:</text>
+    <text x="0" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ef4444">
+      tr(∇<tspan baseline-shift="sub" font-size="10">x</tspan>s<tspan baseline-shift="sub" font-size="10">θ</tspan>) = Σ<tspan baseline-shift="sub" font-size="10">i=1</tspan><tspan baseline-shift="super" font-size="10">d</tspan> ∂s<tspan baseline-shift="sub" font-size="10">θ,i</tspan>/∂x<tspan baseline-shift="sub" font-size="10">i</tspan>
+    </text>
+    
+    <text x="0" y="80" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.4)">
+      d separate backward passes needed!
+    </text>
+  </g>
+  
+  <!-- Hutchinson's Theorem -->
+  <g transform="translate(550, 180)">
+    <rect x="-170" y="-80" width="340" height="160" rx="12" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.5)" stroke-width="2"/>
+    <text x="0" y="-55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#f59e0b">🎯 HUTCHINSON'S THEOREM</text>
+    
+    <text x="0" y="-25" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">For any matrix A and random vector v:</text>
+    
+    <rect x="-130" y="-10" width="260" height="45" rx="8" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.5)"/>
+    <text x="0" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="white" filter="url(#glow3)">
+      tr(A) = E<tspan baseline-shift="sub" font-size="12">v</tspan>[v<tspan baseline-shift="sup" font-size="12">T</tspan>Av]
+    </text>
+    
+    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">Required condition:</text>
+    <text x="0" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#f59e0b">
+      E[v] = 0,  E[vv<tspan baseline-shift="sup" font-size="10">T</tspan>] = I
+    </text>
+  </g>
+  
+  <!-- The Solution -->
+  <g transform="translate(900, 180)">
+    <rect x="-170" y="-80" width="340" height="160" rx="12" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.4)" stroke-width="1.5"/>
+    <text x="0" y="-55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#10b981">✓ SLICED SM LOSS</text>
+    
+    <text x="0" y="-25" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Replace trace with expectation:</text>
+    
+    <rect x="-150" y="-5" width="300" height="50" rx="8" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.5)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white">
+      J<tspan baseline-shift="sub" font-size="10">SSM</tspan> = E<tspan baseline-shift="sub" font-size="10">x,v</tspan>[½(v<tspan baseline-shift="sup" font-size="10">T</tspan>s<tspan baseline-shift="sub" font-size="10">θ</tspan>)² + <tspan fill="#10b981">v<tspan baseline-shift="sup" font-size="10">T</tspan>∇<tspan baseline-shift="sub" font-size="10">x</tspan>s<tspan baseline-shift="sub" font-size="10">θ</tspan> · v</tspan>]
+    </text>
+    
+    <text x="0" y="60" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#10b981">
+      ✓ Only 1 vector-Jacobian product!
+    </text>
+    <text x="0" y="78" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">
+      v<tspan baseline-shift="sup" font-size="7">T</tspan>∇s·v computed via 1 backward pass
+    </text>
+  </g>
+  
+  <!-- Mathematical Proof -->
+  <g transform="translate(550, 370)">
+    <rect x="-480" y="-70" width="960" height="140" rx="15" fill="rgba(0,0,0,0.4)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+    
+    <text x="-430" y="-45" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#f59e0b">📐 PROOF OF HUTCHINSON'S ESTIMATOR</text>
+    
+    <text x="-430" y="-15" font-family="Georgia, serif" font-size="13" fill="white">
+      E<tspan baseline-shift="sub" font-size="9">v</tspan>[v<tspan baseline-shift="sup" font-size="9">T</tspan>Av] = E<tspan baseline-shift="sub" font-size="9">v</tspan>[Σ<tspan baseline-shift="sub" font-size="8">i,j</tspan> v<tspan baseline-shift="sub" font-size="9">i</tspan>A<tspan baseline-shift="sub" font-size="9">ij</tspan>v<tspan baseline-shift="sub" font-size="9">j</tspan>] = Σ<tspan baseline-shift="sub" font-size="8">i,j</tspan> A<tspan baseline-shift="sub" font-size="9">ij</tspan>E[v<tspan baseline-shift="sub" font-size="9">i</tspan>v<tspan baseline-shift="sub" font-size="9">j</tspan>]
+    </text>
+    
+    <text x="-430" y="15" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">Since E[vvᵀ] = I, we have E[vᵢvⱼ] = δᵢⱼ (Kronecker delta):</text>
+    
+    <text x="-430" y="45" font-family="Georgia, serif" font-size="13" fill="white">
+      = Σ<tspan baseline-shift="sub" font-size="8">i,j</tspan> A<tspan baseline-shift="sub" font-size="9">ij</tspan>δ<tspan baseline-shift="sub" font-size="9">ij</tspan> = Σ<tspan baseline-shift="sub" font-size="8">i</tspan> A<tspan baseline-shift="sub" font-size="9">ii</tspan> = <tspan fill="#10b981">tr(A)</tspan>  ✓
+    </text>
+  </g>
+  
+  <!-- Projection Vector Choices -->
+  <g transform="translate(550, 510)">
+    <text x="0" y="-35" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="white">PROJECTION VECTOR DISTRIBUTIONS</text>
+    
+    <g transform="translate(-300, 0)">
+      <rect x="-140" y="-25" width="280" height="80" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.4)"/>
+      <text x="0" y="-5" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#6366f1">GAUSSIAN</text>
+      <text x="0" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="white">v ~ N(0, I)</text>
+      <text x="0" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">E[v]=0, E[vvᵀ]=I ✓</text>
+    </g>
+    
+    <g transform="translate(0, 0)">
+      <rect x="-140" y="-25" width="280" height="80" rx="10" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.5)"/>
+      <text x="0" y="-5" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#10b981">RADEMACHER (Best!)</text>
+      <text x="0" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="white">vᵢ ~ Uniform{−1, +1}</text>
+      <text x="0" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#10b981">Lowest variance estimator</text>
+    </g>
+    
+    <g transform="translate(300, 0)">
+      <rect x="-140" y="-25" width="280" height="80" rx="10" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.4)"/>
+      <text x="0" y="-5" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#f59e0b">UNIFORM SPHERE</text>
+      <text x="0" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="white">v ~ Uniform(S<tspan baseline-shift="super" font-size="9">d−1</tspan>)</text>
+      <text x="0" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Normalized directions</text>
+    </g>
+  </g>
+  
+  <!-- Complexity comparison -->
+  <g transform="translate(550, 595)">
+    <rect x="-350" y="-18" width="700" height="32" rx="16" fill="rgba(0,0,0,0.4)" stroke="rgba(16,185,129,0.3)"/>
+    <text x="0" y="5" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="white">
+      <tspan fill="#ef4444">Explicit SM: O(d) backprops</tspan>
+      <tspan dx="40">→</tspan>
+      <tspan dx="40" fill="#10b981">Sliced SM: O(1) backprop</tspan>
+      <tspan dx="40" fill="rgba(255,255,255,0.5)">| Scalable to d = 10⁶+</tspan>
+    </text>
+  </g>
+</svg>

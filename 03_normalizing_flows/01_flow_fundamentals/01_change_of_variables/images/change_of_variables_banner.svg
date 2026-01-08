@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180">
+  <defs>
+    <linearGradient id="covBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="covGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f43f5e" />
+      <stop offset="100%" style="stop-color:#ec4899" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="180" fill="url(#covBg)"/>
+  
+  <!-- Mathematical decoration -->
+  <text x="30" y="80" fill="#f43f5e" opacity="0.08" font-family="Georgia, serif" font-size="100">∫</text>
+  <text x="700" y="120" fill="#ec4899" opacity="0.08" font-family="Georgia, serif" font-size="80">dx</text>
+  
+  <!-- Main visual: transformation arrow -->
+  <g transform="translate(200, 95)">
+    <ellipse cx="0" cy="0" rx="40" ry="40" fill="#f43f5e" opacity="0.3"/>
+    <ellipse cx="0" cy="0" rx="25" ry="25" fill="#f43f5e" opacity="0.5"/>
+    <circle cx="0" cy="0" r="10" fill="#f43f5e"/>
+    <text y="65" fill="#94a3b8" font-family="Georgia, serif" font-size="12" text-anchor="middle">p(z)</text>
+  </g>
+  
+  <path d="M 270,95 L 380,95" stroke="url(#covGrad)" stroke-width="4" fill="none"/>
+  <polygon points="380,88 400,95 380,102" fill="#ec4899"/>
+  <text x="335" y="80" fill="#f472b6" font-family="Georgia, serif" font-size="16" text-anchor="middle" font-weight="bold">f</text>
+  
+  <g transform="translate(500, 95)">
+    <ellipse cx="-10" cy="-15" rx="30" ry="20" fill="#ec4899" opacity="0.3" transform="rotate(-20)"/>
+    <ellipse cx="20" cy="10" rx="35" ry="25" fill="#ec4899" opacity="0.3" transform="rotate(25)"/>
+    <ellipse cx="0" cy="0" rx="18" ry="22" fill="#ec4899" opacity="0.5"/>
+    <circle cx="0" cy="0" r="8" fill="#ec4899"/>
+    <text y="65" fill="#94a3b8" font-family="Georgia, serif" font-size="12" text-anchor="middle">p(x)</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="35" fill="#fff" font-family="Georgia, serif" font-size="24" text-anchor="middle" font-weight="bold">
+    Change of Variables
+  </text>
+  <text x="400" y="165" fill="#64748b" font-family="Georgia, serif" font-size="11" text-anchor="middle">
+    How probability density transforms under invertible mappings
+  </text>
+</svg>
+
+

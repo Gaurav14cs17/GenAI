@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#1a1a35"/>
+    </linearGradient>
+    <filter id="glow6">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1100" height="680" fill="url(#bg6)"/>
+  
+  <!-- Title -->
+  <text x="550" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="32" font-weight="300" fill="white" letter-spacing="2">
+    REVERSE-TIME SDE — Anderson (1982)
+  </text>
+  <text x="550" y="70" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" fill="rgba(255,255,255,0.6)">
+    Time reversal of diffusion processes: Generation by running time backwards
+  </text>
+  
+  <!-- Forward SDE -->
+  <g transform="translate(280, 170)">
+    <rect x="-230" y="-65" width="460" height="130" rx="12" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.4)" stroke-width="1.5"/>
+    <text x="0" y="-40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#6366f1">FORWARD SDE (t: 0 → T)</text>
+    
+    <text x="0" y="-10" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Data → Noise:</text>
+    
+    <text x="0" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="white">
+      dx = f(x, t)dt + g(t)dW<tspan baseline-shift="sub" font-size="12">t</tspan>
+    </text>
+    
+    <text x="0" y="50" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">
+      p<tspan baseline-shift="sub" font-size="7">0</tspan> = p<tspan baseline-shift="sub" font-size="7">data</tspan> → p<tspan baseline-shift="sub" font-size="7">T</tspan> ≈ N(0, σ²I)
+    </text>
+  </g>
+  
+  <!-- Reverse SDE -->
+  <g transform="translate(820, 170)">
+    <rect x="-230" y="-65" width="460" height="130" rx="12" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.5)" stroke-width="2"/>
+    <text x="0" y="-40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#10b981">REVERSE SDE (t: T → 0)</text>
+    
+    <text x="0" y="-10" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Noise → Data (Generation!):</text>
+    
+    <rect x="-200" y="5" width="400" height="40" rx="8" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+    <text x="0" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="white" filter="url(#glow6)">
+      dx = [f − <tspan fill="#10b981">g²∇log p<tspan baseline-shift="sub" font-size="11">t</tspan></tspan>]dt + gdW̄<tspan baseline-shift="sub" font-size="11">t</tspan>
+    </text>
+    
+    <text x="0" y="58" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#10b981">
+      Score enables time reversal!
+    </text>
+  </g>
+  
+  <!-- Anderson's Theorem -->
+  <g transform="translate(550, 330)">
+    <rect x="-480" y="-55" width="960" height="110" rx="15" fill="rgba(0,0,0,0.4)" stroke="rgba(245,158,11,0.4)" stroke-width="1.5"/>
+    
+    <text x="-430" y="-30" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#f59e0b">📐 ANDERSON'S THEOREM (1982)</text>
+    
+    <text x="-430" y="0" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">For forward SDE: dx = f dt + g dW, the time-reversed process satisfies:</text>
+    
+    <text x="0" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="white">
+      dx = [f(x, t) − g(t)²∇<tspan baseline-shift="sub" font-size="12">x</tspan> log p<tspan baseline-shift="sub" font-size="12">t</tspan>(x)]dt + g(t)dW̄<tspan baseline-shift="sub" font-size="12">t</tspan>
+    </text>
+    
+    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">
+      W̄<tspan baseline-shift="sub" font-size="7">t</tspan> is a reverse-time Wiener process | The extra term g²∇log p<tspan baseline-shift="sub" font-size="7">t</tspan> corrects the drift
+    </text>
+  </g>
+  
+  <!-- Probability Flow ODE -->
+  <g transform="translate(550, 465)">
+    <rect x="-480" y="-55" width="960" height="110" rx="15" fill="rgba(236,72,153,0.06)" stroke="rgba(236,72,153,0.4)" stroke-width="1.5"/>
+    
+    <text x="-430" y="-30" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#ec4899">🎯 PROBABILITY FLOW ODE (Deterministic)</text>
+    
+    <text x="-430" y="0" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Same marginals as SDE, but deterministic:</text>
+    
+    <text x="0" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="white">
+      dx/dt = f(x, t) − <tspan fill="#ec4899">½g(t)²∇<tspan baseline-shift="sub" font-size="12">x</tspan> log p<tspan baseline-shift="sub" font-size="12">t</tspan>(x)</tspan>
+    </text>
+    
+    <text x="-200" y="55" font-family="'Segoe UI', sans-serif" font-size="10" fill="#10b981">✓ Fast sampling (ODE solvers)</text>
+    <text x="100" y="55" font-family="'Segoe UI', sans-serif" font-size="10" fill="#10b981">✓ Exact likelihood computation</text>
+  </g>
+  
+  <!-- Generation Algorithm -->
+  <g transform="translate(550, 600)">
+    <rect x="-480" y="-45" width="960" height="85" rx="15" fill="rgba(16,185,129,0.06)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+    
+    <text x="-430" y="-20" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#10b981">GENERATION ALGORITHM</text>
+    
+    <text x="-430" y="8" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">1. Sample x<tspan baseline-shift="sub" font-size="8">T</tspan> ~ N(0, σ²I)</text>
+    <text x="-150" y="8" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">2. Solve reverse SDE/ODE with s<tspan baseline-shift="sub" font-size="8">θ</tspan>(x, t) ≈ ∇log p<tspan baseline-shift="sub" font-size="8">t</tspan></text>
+    <text x="350" y="8" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">3. Output x<tspan baseline-shift="sub" font-size="8">0</tspan> ~ p<tspan baseline-shift="sub" font-size="8">data</tspan></text>
+    
+    <text x="0" y="35" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="white">
+      Discretization: x<tspan baseline-shift="sub" font-size="9">t−Δt</tspan> = x<tspan baseline-shift="sub" font-size="9">t</tspan> − [f − g²s<tspan baseline-shift="sub" font-size="9">θ</tspan>]Δt + g√Δt · z  <tspan font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">(SDE)</tspan>
+    </text>
+  </g>
+</svg>

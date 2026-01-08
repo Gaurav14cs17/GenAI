@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 400">
+  <defs>
+    <linearGradient id="bgComp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <rect width="850" height="400" fill="url(#bgComp)"/>
+  
+  <!-- Title -->
+  <text x="425" y="40" fill="#f1f5f9" font-family="Georgia, serif" font-size="24" text-anchor="middle" font-weight="bold">
+    Generative Models Comparison
+  </text>
+  
+  <!-- Flow Card -->
+  <g transform="translate(55, 70)" filter="url(#cardShadow)">
+    <rect width="170" height="290" rx="12" fill="#1e3a5f"/>
+    <rect width="170" height="50" rx="12" fill="#10b981"/>
+    <rect y="38" width="170" height="12" fill="#1e3a5f"/>
+    <text x="85" y="32" fill="#fff" font-family="Georgia, serif" font-size="16" text-anchor="middle" font-weight="bold">FLOW</text>
+    
+    <g transform="translate(15, 70)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">LIKELIHOOD</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="140" height="8" rx="4" fill="#10b981"/>
+      <text x="145" y="22" fill="#10b981" font-family="monospace" font-size="10">✓ Exact</text>
+    </g>
+    
+    <g transform="translate(15, 115)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">SAMPLING</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="120" height="8" rx="4" fill="#10b981"/>
+      <text x="145" y="22" fill="#10b981" font-family="monospace" font-size="10">Fast</text>
+    </g>
+    
+    <g transform="translate(15, 160)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">TRAINING</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="130" height="8" rx="4" fill="#10b981"/>
+      <text x="145" y="22" fill="#10b981" font-family="monospace" font-size="10">Stable</text>
+    </g>
+    
+    <g transform="translate(15, 205)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">QUALITY</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="100" height="8" rx="4" fill="#f59e0b"/>
+      <text x="145" y="22" fill="#f59e0b" font-family="monospace" font-size="10">Good</text>
+    </g>
+    
+    <text x="85" y="270" fill="#64748b" font-family="Georgia, serif" font-size="11" text-anchor="middle" font-style="italic">RealNVP, Glow</text>
+  </g>
+  
+  <!-- VAE Card -->
+  <g transform="translate(250, 70)" filter="url(#cardShadow)">
+    <rect width="170" height="290" rx="12" fill="#1e3a5f"/>
+    <rect width="170" height="50" rx="12" fill="#8b5cf6"/>
+    <rect y="38" width="170" height="12" fill="#1e3a5f"/>
+    <text x="85" y="32" fill="#fff" font-family="Georgia, serif" font-size="16" text-anchor="middle" font-weight="bold">VAE</text>
+    
+    <g transform="translate(15, 70)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">LIKELIHOOD</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="90" height="8" rx="4" fill="#f59e0b"/>
+      <text x="145" y="22" fill="#f59e0b" font-family="monospace" font-size="10">ELBO</text>
+    </g>
+    
+    <g transform="translate(15, 115)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">SAMPLING</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="120" height="8" rx="4" fill="#10b981"/>
+      <text x="145" y="22" fill="#10b981" font-family="monospace" font-size="10">Fast</text>
+    </g>
+    
+    <g transform="translate(15, 160)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">TRAINING</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="130" height="8" rx="4" fill="#10b981"/>
+      <text x="145" y="22" fill="#10b981" font-family="monospace" font-size="10">Stable</text>
+    </g>
+    
+    <g transform="translate(15, 205)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">QUALITY</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="80" height="8" rx="4" fill="#f59e0b"/>
+      <text x="145" y="22" fill="#f59e0b" font-family="monospace" font-size="10">Blurry</text>
+    </g>
+    
+    <text x="85" y="270" fill="#64748b" font-family="Georgia, serif" font-size="11" text-anchor="middle" font-style="italic">β-VAE, VQ-VAE</text>
+  </g>
+  
+  <!-- GAN Card -->
+  <g transform="translate(445, 70)" filter="url(#cardShadow)">
+    <rect width="170" height="290" rx="12" fill="#1e3a5f"/>
+    <rect width="170" height="50" rx="12" fill="#ef4444"/>
+    <rect y="38" width="170" height="12" fill="#1e3a5f"/>
+    <text x="85" y="32" fill="#fff" font-family="Georgia, serif" font-size="16" text-anchor="middle" font-weight="bold">GAN</text>
+    
+    <g transform="translate(15, 70)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">LIKELIHOOD</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="20" height="8" rx="4" fill="#ef4444"/>
+      <text x="145" y="22" fill="#ef4444" font-family="monospace" font-size="10">✗ None</text>
+    </g>
+    
+    <g transform="translate(15, 115)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">SAMPLING</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="140" height="8" rx="4" fill="#10b981"/>
+      <text x="145" y="22" fill="#10b981" font-family="monospace" font-size="10">Fast</text>
+    </g>
+    
+    <g transform="translate(15, 160)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">TRAINING</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="50" height="8" rx="4" fill="#ef4444"/>
+      <text x="145" y="22" fill="#ef4444" font-family="monospace" font-size="10">Hard</text>
+    </g>
+    
+    <g transform="translate(15, 205)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">QUALITY</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="130" height="8" rx="4" fill="#10b981"/>
+      <text x="145" y="22" fill="#10b981" font-family="monospace" font-size="10">Sharp</text>
+    </g>
+    
+    <text x="85" y="270" fill="#64748b" font-family="Georgia, serif" font-size="11" text-anchor="middle" font-style="italic">StyleGAN, BigGAN</text>
+  </g>
+  
+  <!-- Diffusion Card -->
+  <g transform="translate(640, 70)" filter="url(#cardShadow)">
+    <rect width="170" height="290" rx="12" fill="#1e3a5f"/>
+    <rect width="170" height="50" rx="12" fill="#06b6d4"/>
+    <rect y="38" width="170" height="12" fill="#1e3a5f"/>
+    <text x="85" y="32" fill="#fff" font-family="Georgia, serif" font-size="16" text-anchor="middle" font-weight="bold">DIFFUSION</text>
+    
+    <g transform="translate(15, 70)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">LIKELIHOOD</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="90" height="8" rx="4" fill="#f59e0b"/>
+      <text x="145" y="22" fill="#f59e0b" font-family="monospace" font-size="10">Bound</text>
+    </g>
+    
+    <g transform="translate(15, 115)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">SAMPLING</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="40" height="8" rx="4" fill="#ef4444"/>
+      <text x="145" y="22" fill="#ef4444" font-family="monospace" font-size="10">Slow</text>
+    </g>
+    
+    <g transform="translate(15, 160)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">TRAINING</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="130" height="8" rx="4" fill="#10b981"/>
+      <text x="145" y="22" fill="#10b981" font-family="monospace" font-size="10">Stable</text>
+    </g>
+    
+    <g transform="translate(15, 205)">
+      <text fill="#94a3b8" font-family="monospace" font-size="10">QUALITY</text>
+      <rect y="15" width="140" height="8" rx="4" fill="#334155"/>
+      <rect y="15" width="140" height="8" rx="4" fill="#10b981"/>
+      <text x="145" y="22" fill="#10b981" font-family="monospace" font-size="10">SOTA</text>
+    </g>
+    
+    <text x="85" y="270" fill="#64748b" font-family="Georgia, serif" font-size="11" text-anchor="middle" font-style="italic">DDPM, Stable Diff</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(280, 375)">
+    <rect x="0" y="-5" width="12" height="12" rx="2" fill="#10b981"/>
+    <text x="18" y="5" fill="#94a3b8" font-family="monospace" font-size="10">Excellent</text>
+    <rect x="90" y="-5" width="12" height="12" rx="2" fill="#f59e0b"/>
+    <text x="108" y="5" fill="#94a3b8" font-family="monospace" font-size="10">Moderate</text>
+    <rect x="190" y="-5" width="12" height="12" rx="2" fill="#ef4444"/>
+    <text x="208" y="5" fill="#94a3b8" font-family="monospace" font-size="10">Limited</text>
+  </g>
+</svg>
+
+

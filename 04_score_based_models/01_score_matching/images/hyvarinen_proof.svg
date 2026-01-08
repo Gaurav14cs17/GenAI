@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 550">
+  <defs>
+    <linearGradient id="bgProof" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a18"/>
+      <stop offset="50%" style="stop-color:#12122a"/>
+      <stop offset="100%" style="stop-color:#1a1a3a"/>
+    </linearGradient>
+    
+    <linearGradient id="titleGradProof" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f5af19"/>
+      <stop offset="50%" style="stop-color:#f12711"/>
+      <stop offset="100%" style="stop-color:#f5af19"/>
+    </linearGradient>
+    
+    <linearGradient id="stepGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    
+    <linearGradient id="stepGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    
+    <linearGradient id="stepGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f5576c"/>
+      <stop offset="100%" style="stop-color:#f093fb"/>
+    </linearGradient>
+    
+    <linearGradient id="resultGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d9ff"/>
+      <stop offset="100%" style="stop-color:#43e97b"/>
+    </linearGradient>
+    
+    <filter id="glowProof">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <marker id="arrowFlow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#feca57"/>
+    </marker>
+  </defs>
+  
+  <rect width="950" height="550" fill="url(#bgProof)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="150" fill="url(#stepGrad1)" opacity="0.03"/>
+  <circle cx="850" cy="450" r="130" fill="url(#stepGrad2)" opacity="0.03"/>
+  
+  <!-- Title -->
+  <text x="475" y="45" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="url(#titleGradProof)" filter="url(#glowProof)">
+    Hyvärinen's Score Matching Trick
+  </text>
+  <text x="475" y="75" text-anchor="middle" font-family="system-ui" font-size="13" fill="rgba(255,255,255,0.6)">
+    How to match scores without knowing the true score — using integration by parts
+  </text>
+  
+  <!-- Step 1: The Problem -->
+  <g transform="translate(50, 120)">
+    <rect x="0" y="0" width="420" height="95" rx="10" fill="rgba(102,126,234,0.1)" stroke="url(#stepGrad1)" stroke-width="2"/>
+    <text x="15" y="25" font-family="system-ui" font-size="12" font-weight="600" fill="#667eea">STEP 1: The Naive Objective</text>
+    
+    <text x="210" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="white">
+      L = ½ E[ || s<tspan baseline-shift="sub" font-size="10">θ</tspan>(x) − ∇log p(x) ||² ]
+    </text>
+    
+    <text x="210" y="80" text-anchor="middle" font-family="system-ui" font-size="11" fill="#f5576c">
+      ✗ We don't know ∇log p(x)!
+    </text>
+  </g>
+  
+  <!-- Arrow -->
+  <line x1="475" y1="145" x2="475" y2="135" stroke="#feca57" stroke-width="2"/>
+  <line x1="475" y1="180" x2="475" y2="170" stroke="#feca57" stroke-width="2"/>
+  <polygon points="475,185 470,175 480,175" fill="#feca57"/>
+  
+  <!-- Step 2: Expand -->
+  <g transform="translate(480, 120)">
+    <rect x="0" y="0" width="420" height="95" rx="10" fill="rgba(102,126,234,0.1)" stroke="url(#stepGrad1)" stroke-width="2"/>
+    <text x="15" y="25" font-family="system-ui" font-size="12" font-weight="600" fill="#667eea">STEP 2: Expand the Square</text>
+    
+    <text x="210" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white">
+      = ½E[||s<tspan baseline-shift="sub" font-size="9">θ</tspan>||²] − E[s<tspan baseline-shift="sub" font-size="9">θ</tspan>·∇log p] + ½E[||∇log p||²]
+    </text>
+    
+    <text x="210" y="80" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">
+      The last term is constant (doesn't depend on θ)
+    </text>
+  </g>
+  
+  <!-- Step 3: The Key Cross Term -->
+  <g transform="translate(50, 230)">
+    <rect x="0" y="0" width="850" height="110" rx="10" fill="rgba(67,233,123,0.1)" stroke="url(#stepGrad2)" stroke-width="2"/>
+    <text x="15" y="25" font-family="system-ui" font-size="12" font-weight="600" fill="#43e97b">STEP 3: Transform the Cross Term (The Magic!)</text>
+    
+    <text x="425" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="white">
+      E<tspan baseline-shift="sub" font-size="10">p</tspan>[s<tspan baseline-shift="sub" font-size="10">θ</tspan>·∇log p] = ∫ p(x) s<tspan baseline-shift="sub" font-size="10">θ</tspan>(x)·(∇p(x)/p(x)) dx = ∫ s<tspan baseline-shift="sub" font-size="10">θ</tspan>(x)·∇p(x) dx
+    </text>
+    
+    <text x="425" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#38f9d7">
+      Integration by parts: = −∫ p(x) ∇·s<tspan baseline-shift="sub" font-size="10">θ</tspan>(x) dx = −E<tspan baseline-shift="sub" font-size="10">p</tspan>[tr(∇s<tspan baseline-shift="sub" font-size="10">θ</tspan>)]
+    </text>
+  </g>
+  
+  <!-- Arrow -->
+  <line x1="475" y1="345" x2="475" y2="360" stroke="#feca57" stroke-width="2"/>
+  <polygon points="475,370 470,360 480,360" fill="#feca57"/>
+  
+  <!-- Final Result -->
+  <g transform="translate(100, 385)">
+    <rect x="0" y="0" width="750" height="130" rx="12" fill="rgba(0,217,255,0.08)" stroke="url(#resultGrad)" stroke-width="3"/>
+    
+    <text x="375" y="30" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#00d9ff">
+      FINAL RESULT: Hyvärinen's Score Matching Objective
+    </text>
+    
+    <rect x="100" y="45" width="550" height="50" rx="8" fill="rgba(67,233,123,0.15)" stroke="rgba(67,233,123,0.4)" stroke-width="1"/>
+    <text x="375" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#43e97b" filter="url(#glowProof)">
+      L<tspan baseline-shift="sub" font-size="14">SM</tspan>(θ) = E[ ½||s<tspan baseline-shift="sub" font-size="14">θ</tspan>(x)||² + tr(∇<tspan baseline-shift="sub" font-size="14">x</tspan>s<tspan baseline-shift="sub" font-size="14">θ</tspan>(x)) ]
+    </text>
+    
+    <text x="375" y="115" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.7)">
+      ✓ No need to know ∇log p(x)!  •  ✓ Only requires samples from p(x)  •  ✓ Same optimal solution
+    </text>
+  </g>
+  
+  <!-- Side note -->
+  <g transform="translate(475, 525)">
+    <rect x="-350" y="-20" width="700" height="38" rx="6" fill="rgba(245,87,108,0.1)" stroke="rgba(245,87,108,0.3)" stroke-width="1"/>
+    <text text-anchor="middle" y="3" font-family="system-ui" font-size="12" fill="#f5576c">
+      ⚠️ Challenge: tr(∇s<tspan baseline-shift="sub" font-size="9">θ</tspan>) requires O(d) backpropagation passes → Solved by Denoising SM or Sliced SM
+    </text>
+  </g>
+</svg>
+

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200">
+  <defs>
+    <linearGradient id="evalBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <filter id="evalGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="900" height="200" fill="url(#evalBg)"/>
+  
+  <!-- Metric visualizations -->
+  <g transform="translate(200, 105)">
+    <rect x="-70" y="-45" width="140" height="90" rx="10" fill="#10b981" opacity="0.2"/>
+    <rect x="-70" y="-45" width="140" height="90" rx="10" fill="none" stroke="#10b981" stroke-width="2"/>
+    <text y="-15" fill="#10b981" font-family="Georgia, serif" font-size="14" text-anchor="middle" font-weight="bold">BPD</text>
+    <text y="10" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">-log₂p(x)/d</text>
+    <text y="30" fill="#64748b" font-family="Georgia, serif" font-size="9" text-anchor="middle">bits per dimension</text>
+  </g>
+  
+  <g transform="translate(450, 105)">
+    <rect x="-70" y="-45" width="140" height="90" rx="10" fill="#3b82f6" opacity="0.2"/>
+    <rect x="-70" y="-45" width="140" height="90" rx="10" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <text y="-15" fill="#3b82f6" font-family="Georgia, serif" font-size="14" text-anchor="middle" font-weight="bold">FID</text>
+    <text y="10" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Inception dist</text>
+    <text y="30" fill="#64748b" font-family="Georgia, serif" font-size="9" text-anchor="middle">sample quality</text>
+  </g>
+  
+  <g transform="translate(700, 105)">
+    <rect x="-70" y="-45" width="140" height="90" rx="10" fill="#f59e0b" opacity="0.2"/>
+    <rect x="-70" y="-45" width="140" height="90" rx="10" fill="none" stroke="#f59e0b" stroke-width="2"/>
+    <text y="-15" fill="#f59e0b" font-family="Georgia, serif" font-size="14" text-anchor="middle" font-weight="bold">NLL</text>
+    <text y="10" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">-𝔼[log p(x)]</text>
+    <text y="30" fill="#64748b" font-family="Georgia, serif" font-size="9" text-anchor="middle">negative log-likelihood</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="450" y="35" fill="#fff" font-family="Georgia, serif" font-size="26" text-anchor="middle" font-weight="bold" filter="url(#evalGlow)">
+    Flow Evaluation
+  </text>
+  <text x="450" y="188" fill="#64748b" font-family="Georgia, serif" font-size="11" text-anchor="middle">
+    Metrics and methodology for assessing normalizing flow performance
+  </text>
+</svg>
+
+

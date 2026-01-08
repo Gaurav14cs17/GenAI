@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 450">
+  <defs>
+    <linearGradient id="bgKI" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <filter id="glowKI">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="950" height="450" fill="url(#bgKI)"/>
+  
+  <!-- Title -->
+  <text x="475" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="white">
+    💡 THE KEY INSIGHT: Why Z Disappears
+  </text>
+  
+  <!-- Left: The Problem -->
+  <g transform="translate(240, 230)">
+    <rect x="-200" y="-150" width="400" height="300" rx="15" fill="rgba(239,68,68,0.06)" stroke="rgba(239,68,68,0.4)" stroke-width="2"/>
+    
+    <text x="0" y="-120" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#ef4444">❌ LEARNING p(x) DIRECTLY</text>
+    
+    <!-- EBM definition -->
+    <text x="0" y="-85" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Energy-Based Model:</text>
+    <text x="0" y="-60" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="white">
+      p<tspan baseline-shift="sub" font-size="11">θ</tspan>(x) = exp(−E<tspan baseline-shift="sub" font-size="11">θ</tspan>(x)) / Z<tspan baseline-shift="sub" font-size="11">θ</tspan>
+    </text>
+    
+    <!-- Partition function -->
+    <rect x="-160" y="-40" width="320" height="55" rx="8" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.4)"/>
+    <text x="0" y="-20" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Partition function:</text>
+    <text x="0" y="5" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#ef4444">
+      Z<tspan baseline-shift="sub" font-size="11">θ</tspan> = ∫ exp(−E<tspan baseline-shift="sub" font-size="11">θ</tspan>(x)) dx
+    </text>
+    
+    <!-- MLE gradient -->
+    <text x="0" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">MLE gradient requires Z:</text>
+    <text x="0" y="65" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="white">
+      ∇<tspan baseline-shift="sub" font-size="9">θ</tspan>log p = −∇<tspan baseline-shift="sub" font-size="9">θ</tspan>E − <tspan fill="#ef4444">∇<tspan baseline-shift="sub" font-size="9">θ</tspan>log Z</tspan>
+    </text>
+    <text x="0" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="rgba(255,255,255,0.6)">
+      = −∇<tspan baseline-shift="sub" font-size="9">θ</tspan>E + <tspan fill="#ef4444">E<tspan baseline-shift="sub" font-size="9">p<tspan baseline-shift="sub" font-size="6">θ</tspan></tspan>[∇<tspan baseline-shift="sub" font-size="9">θ</tspan>E]</tspan>
+    </text>
+    
+    <text x="0" y="125" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#ef4444">
+      ⚠️ Expectation over p<tspan baseline-shift="sub" font-size="7">θ</tspan> needs MCMC!
+    </text>
+  </g>
+  
+  <!-- Arrow -->
+  <g transform="translate(475, 230)">
+    <line x1="-10" y1="0" x2="10" y2="0" stroke="white" stroke-width="2" opacity="0.4"/>
+    <polygon points="15,-4 25,0 15,4" fill="rgba(255,255,255,0.5)"/>
+  </g>
+  
+  <!-- Right: The Solution -->
+  <g transform="translate(710, 230)">
+    <rect x="-200" y="-150" width="400" height="300" rx="15" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.5)" stroke-width="2"/>
+    
+    <text x="0" y="-120" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#10b981">✓ LEARNING ∇log p(x) INSTEAD</text>
+    
+    <!-- Score definition -->
+    <text x="0" y="-85" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Score function definition:</text>
+    <text x="0" y="-60" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="white">
+      s(x) = ∇<tspan baseline-shift="sub" font-size="11">x</tspan> log p(x)
+    </text>
+    
+    <!-- The magic -->
+    <rect x="-160" y="-40" width="320" height="80" rx="8" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.4)"/>
+    <text x="0" y="-18" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">The gradient kills Z:</text>
+    <text x="0" y="8" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white">
+      ∇<tspan baseline-shift="sub" font-size="10">x</tspan> log(p̃/Z) = ∇<tspan baseline-shift="sub" font-size="10">x</tspan> log p̃ − <tspan fill="#10b981" text-decoration="line-through">∇<tspan baseline-shift="sub" font-size="10">x</tspan> log Z</tspan>
+    </text>
+    <text x="0" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#10b981" filter="url(#glowKI)">
+      = ∇<tspan baseline-shift="sub" font-size="10">x</tspan> log p̃(x)
+    </text>
+    
+    <!-- Reason -->
+    <text x="0" y="65" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Because Z is constant w.r.t. x:</text>
+    <text x="0" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white">
+      ∂Z/∂x = 0  →  ∇<tspan baseline-shift="sub" font-size="10">x</tspan> log Z = 0
+    </text>
+    
+    <text x="0" y="125" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#10b981">
+      ✓ No partition function needed!
+    </text>
+  </g>
+  
+  <!-- Bottom summary -->
+  <g transform="translate(475, 415)">
+    <rect x="-380" y="-25" width="760" height="45" rx="22" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.4)"/>
+    <text x="0" y="0" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" fill="white">
+      <tspan fill="#10b981" font-weight="600">Key:</tspan> s(x) = ∇<tspan baseline-shift="sub" font-size="9">x</tspan>log p̃(x) = −∇<tspan baseline-shift="sub" font-size="9">x</tspan>E(x) — directly compute score without Z!
+    </text>
+  </g>
+</svg>

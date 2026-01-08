@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29"/>
+      <stop offset="50%" style="stop-color:#302b63"/>
+      <stop offset="100%" style="stop-color:#24243e"/>
+    </linearGradient>
+    
+    <linearGradient id="planarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    
+    <linearGradient id="radialGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#667eea"/>
+    </marker>
+    
+    <marker id="arrowRad" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f5576c"/>
+    </marker>
+  </defs>
+  
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui" font-size="24" font-weight="700" fill="white">
+    Planar vs Radial Flows
+  </text>
+  
+  <!-- Planar Flow Section -->
+  <g transform="translate(0, 60)">
+    <text x="225" y="30" text-anchor="middle" font-family="system-ui" font-size="18" font-weight="600" fill="url(#planarGrad)">
+      Planar Flow
+    </text>
+    
+    <!-- Before transformation -->
+    <g transform="translate(120, 120)">
+      <text y="-75" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.7)">Before</text>
+      
+      <!-- Gaussian contours -->
+      <ellipse rx="60" ry="60" fill="none" stroke="#667eea" stroke-width="1" opacity="0.3"/>
+      <ellipse rx="45" ry="45" fill="none" stroke="#667eea" stroke-width="1" opacity="0.4"/>
+      <ellipse rx="30" ry="30" fill="none" stroke="#667eea" stroke-width="1" opacity="0.5"/>
+      <ellipse rx="15" ry="15" fill="none" stroke="#667eea" stroke-width="1" opacity="0.6"/>
+      
+      <!-- Sample points -->
+      <g fill="#a5b4fc">
+        <circle cx="10" cy="-8" r="3"/>
+        <circle cx="-15" cy="5" r="3"/>
+        <circle cx="5" cy="20" r="3"/>
+        <circle cx="-8" cy="-20" r="3"/>
+        <circle cx="25" cy="8" r="3"/>
+        <circle cx="-25" cy="-5" r="3"/>
+        <circle cx="0" cy="0" r="3"/>
+      </g>
+    </g>
+    
+    <!-- Transformation arrow -->
+    <g transform="translate(200, 120)">
+      <path d="M 0,0 L 50,0" stroke="#667eea" stroke-width="2" marker-end="url(#arrow)"/>
+      <text x="25" y="-10" text-anchor="middle" font-family="monospace" font-size="10" fill="#667eea">f(z)</text>
+    </g>
+    
+    <!-- After transformation -->
+    <g transform="translate(330, 120)">
+      <text y="-75" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.7)">After</text>
+      
+      <!-- Hyperplane visualization -->
+      <line x1="-70" y1="40" x2="70" y2="-40" stroke="rgba(102,126,234,0.3)" stroke-width="40" stroke-linecap="round"/>
+      <line x1="-70" y1="40" x2="70" y2="-40" stroke="#667eea" stroke-width="1" stroke-dasharray="5,5"/>
+      
+      <!-- Deformed contours (stretched along hyperplane) -->
+      <ellipse rx="65" ry="35" fill="none" stroke="#667eea" stroke-width="1" opacity="0.3" transform="rotate(-30)"/>
+      <ellipse rx="50" ry="25" fill="none" stroke="#667eea" stroke-width="1" opacity="0.4" transform="rotate(-30)"/>
+      <ellipse rx="35" ry="18" fill="none" stroke="#667eea" stroke-width="1" opacity="0.5" transform="rotate(-30)"/>
+      
+      <!-- Transformed points -->
+      <g fill="#a5b4fc">
+        <circle cx="15" cy="-15" r="3"/>
+        <circle cx="-20" cy="15" r="3"/>
+        <circle cx="8" cy="5" r="3"/>
+        <circle cx="-12" cy="-25" r="3"/>
+        <circle cx="35" cy="-5" r="3"/>
+        <circle cx="-35" cy="20" r="3"/>
+        <circle cx="3" cy="-8" r="3"/>
+      </g>
+      
+      <!-- w vector -->
+      <line x1="0" y1="0" x2="40" y2="-30" stroke="#feca57" stroke-width="2" marker-end="url(#arrow)"/>
+      <text x="50" y="-35" font-family="monospace" font-size="10" fill="#feca57">w</text>
+    </g>
+    
+    <!-- Formula box -->
+    <g transform="translate(225, 230)">
+      <rect x="-180" y="-25" width="360" height="50" rx="6" fill="rgba(102,126,234,0.1)" stroke="#667eea" stroke-width="1"/>
+      <text y="5" text-anchor="middle" font-family="monospace" font-size="13" fill="#a5b4fc">
+        f(z) = z + u · h(wᵀz + b)
+      </text>
+    </g>
+    
+    <!-- Jacobian determinant -->
+    <g transform="translate(225, 300)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)">Jacobian Determinant:</text>
+      <text y="20" text-anchor="middle" font-family="monospace" font-size="12" fill="#667eea">det(J) = 1 + uᵀψ(z)</text>
+      <text y="40" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.4)">where ψ(z) = h'(wᵀz + b) · w</text>
+    </g>
+  </g>
+  
+  <!-- Divider -->
+  <line x1="450" y1="80" x2="450" y2="420" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  
+  <!-- Radial Flow Section -->
+  <g transform="translate(450, 60)">
+    <text x="225" y="30" text-anchor="middle" font-family="system-ui" font-size="18" font-weight="600" fill="url(#radialGrad)">
+      Radial Flow
+    </text>
+    
+    <!-- Before transformation -->
+    <g transform="translate(120, 120)">
+      <text y="-75" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.7)">Before</text>
+      
+      <!-- Gaussian contours -->
+      <circle r="60" fill="none" stroke="#f5576c" stroke-width="1" opacity="0.3"/>
+      <circle r="45" fill="none" stroke="#f5576c" stroke-width="1" opacity="0.4"/>
+      <circle r="30" fill="none" stroke="#f5576c" stroke-width="1" opacity="0.5"/>
+      <circle r="15" fill="none" stroke="#f5576c" stroke-width="1" opacity="0.6"/>
+      
+      <!-- Sample points -->
+      <g fill="#fda4af">
+        <circle cx="10" cy="-8" r="3"/>
+        <circle cx="-15" cy="5" r="3"/>
+        <circle cx="5" cy="20" r="3"/>
+        <circle cx="-8" cy="-20" r="3"/>
+        <circle cx="25" cy="8" r="3"/>
+        <circle cx="-25" cy="-5" r="3"/>
+        <circle cx="0" cy="0" r="3"/>
+      </g>
+      
+      <!-- Center z0 -->
+      <circle cx="0" cy="0" r="4" fill="#feca57" stroke="#fff" stroke-width="1"/>
+    </g>
+    
+    <!-- Transformation arrow -->
+    <g transform="translate(200, 120)">
+      <path d="M 0,0 L 50,0" stroke="#f5576c" stroke-width="2" marker-end="url(#arrowRad)"/>
+      <text x="25" y="-10" text-anchor="middle" font-family="monospace" font-size="10" fill="#f5576c">f(z)</text>
+    </g>
+    
+    <!-- After transformation (expanded) -->
+    <g transform="translate(330, 120)">
+      <text y="-75" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.7)">After (β &gt; 0)</text>
+      
+      <!-- Expanded contours -->
+      <circle r="70" fill="none" stroke="#f5576c" stroke-width="1" opacity="0.3"/>
+      <circle r="55" fill="none" stroke="#f5576c" stroke-width="1" opacity="0.4"/>
+      <circle r="40" fill="none" stroke="#f5576c" stroke-width="1" opacity="0.5"/>
+      <circle r="25" fill="none" stroke="#f5576c" stroke-width="1" opacity="0.6"/>
+      
+      <!-- Radial arrows showing expansion -->
+      <g stroke="#f5576c" stroke-width="1" opacity="0.5">
+        <line x1="0" y1="0" x2="50" y2="0"/>
+        <line x1="0" y1="0" x2="35" y2="35"/>
+        <line x1="0" y1="0" x2="0" y2="50"/>
+        <line x1="0" y1="0" x2="-35" y2="35"/>
+        <line x1="0" y1="0" x2="-50" y2="0"/>
+        <line x1="0" y1="0" x2="-35" y2="-35"/>
+        <line x1="0" y1="0" x2="0" y2="-50"/>
+        <line x1="0" y1="0" x2="35" y2="-35"/>
+      </g>
+      
+      <!-- Transformed points (further from center) -->
+      <g fill="#fda4af">
+        <circle cx="18" cy="-14" r="3"/>
+        <circle cx="-25" cy="10" r="3"/>
+        <circle cx="10" cy="35" r="3"/>
+        <circle cx="-15" cy="-35" r="3"/>
+        <circle cx="40" cy="15" r="3"/>
+        <circle cx="-45" cy="-10" r="3"/>
+        <circle cx="5" cy="5" r="3"/>
+      </g>
+      
+      <!-- Center z0 -->
+      <circle cx="0" cy="0" r="5" fill="#feca57" stroke="#fff" stroke-width="1"/>
+      <text x="12" y="5" font-family="monospace" font-size="10" fill="#feca57">z₀</text>
+    </g>
+    
+    <!-- Formula box -->
+    <g transform="translate(225, 230)">
+      <rect x="-180" y="-25" width="360" height="50" rx="6" fill="rgba(240,147,251,0.1)" stroke="#f5576c" stroke-width="1"/>
+      <text y="5" text-anchor="middle" font-family="monospace" font-size="13" fill="#fda4af">
+        f(z) = z + βh(α,r)(z - z₀)
+      </text>
+    </g>
+    
+    <!-- Jacobian determinant -->
+    <g transform="translate(225, 300)">
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)">Jacobian Determinant:</text>
+      <text y="20" text-anchor="middle" font-family="monospace" font-size="11" fill="#f5576c">det(J) = (1+βh)^(d-1)(1+βh+βh'r)</text>
+      <text y="40" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.4)">where h(α,r) = 1/(α+r), r = ||z-z₀||</text>
+    </g>
+  </g>
+  
+  <!-- Comparison Table -->
+  <g transform="translate(450, 420)">
+    <rect x="-350" y="-25" width="700" height="80" rx="8" fill="rgba(0,0,0,0.3)"/>
+    
+    <text x="-300" y="0" font-family="system-ui" font-size="11" font-weight="600" fill="#667eea">Planar:</text>
+    <text x="-230" y="0" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">Stretches along hyperplane direction</text>
+    
+    <text x="50" y="0" font-family="system-ui" font-size="11" font-weight="600" fill="#f5576c">Radial:</text>
+    <text x="110" y="0" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">Expands/contracts around center point</text>
+    
+    <text x="-300" y="30" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Parameters: u, w ∈ ℝᵈ, b ∈ ℝ</text>
+    <text x="50" y="30" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Parameters: z₀ ∈ ℝᵈ, α, β ∈ ℝ</text>
+    
+    <text x="0" y="55" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">Both require multiple compositions for complex distributions</text>
+  </g>
+</svg>
+

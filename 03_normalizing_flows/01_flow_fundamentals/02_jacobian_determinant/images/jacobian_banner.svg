@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180">
+  <defs>
+    <linearGradient id="jacBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="180" fill="url(#jacBg)"/>
+  
+  <!-- Matrix visualization -->
+  <g transform="translate(200, 90)">
+    <rect x="-60" y="-45" width="120" height="90" rx="5" fill="none" stroke="#f59e0b" stroke-width="2"/>
+    <text x="-40" y="-20" fill="#f59e0b" font-family="monospace" font-size="11">∂f₁/∂z₁</text>
+    <text x="20" y="-20" fill="#f59e0b" font-family="monospace" font-size="11" opacity="0.5">...</text>
+    <text x="-40" y="5" fill="#f59e0b" font-family="monospace" font-size="11" opacity="0.5">⋮</text>
+    <text x="20" y="5" fill="#f59e0b" font-family="monospace" font-size="11" opacity="0.5">⋱</text>
+    <text x="-40" y="30" fill="#f59e0b" font-family="monospace" font-size="11" opacity="0.5">...</text>
+    <text x="20" y="30" fill="#f59e0b" font-family="monospace" font-size="11">∂fₐ/∂zₐ</text>
+  </g>
+  
+  <text x="320" y="95" fill="#f59e0b" font-family="Georgia, serif" font-size="24" font-weight="bold">→</text>
+  
+  <g transform="translate(420, 90)">
+    <text x="0" y="5" fill="#f59e0b" font-family="Georgia, serif" font-size="18">det(J)</text>
+  </g>
+  
+  <text x="500" y="95" fill="#f59e0b" font-family="Georgia, serif" font-size="24" font-weight="bold">→</text>
+  
+  <g transform="translate(600, 90)">
+    <rect x="-50" y="-25" width="100" height="50" rx="8" fill="#f59e0b" opacity="0.2"/>
+    <text x="0" y="8" fill="#f59e0b" font-family="Georgia, serif" font-size="14" text-anchor="middle">Volume</text>
+    <text x="0" y="25" fill="#f59e0b" font-family="Georgia, serif" font-size="14" text-anchor="middle">Change</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="35" fill="#fff" font-family="Georgia, serif" font-size="24" text-anchor="middle" font-weight="bold">
+    The Jacobian Determinant
+  </text>
+  <text x="400" y="165" fill="#64748b" font-family="Georgia, serif" font-size="11" text-anchor="middle">
+    Measuring how transformations stretch and compress space
+  </text>
+</svg>
+
+

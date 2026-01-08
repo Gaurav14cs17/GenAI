@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 320">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="320" fill="url(#bgGrad)" rx="12"/>
+  
+  <!-- Title -->
+  <text x="350" y="35" font-family="JetBrains Mono, Consolas, monospace" font-size="16" font-weight="bold" fill="#94a3b8" text-anchor="middle">THE LIKELIHOOD LANDSCAPE</text>
+  
+  <!-- VAE Row -->
+  <rect x="40" y="55" width="80" height="36" rx="6" fill="#3b82f6" opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="80" y="78" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="bold" fill="#60a5fa" text-anchor="middle">VAE</text>
+  <text x="150" y="78" font-family="Georgia, serif" font-size="13" fill="#94a3b8" font-style="italic">"I can give you a lower bound... maybe?"</text>
+  <circle cx="620" cy="73" r="12" fill="#fbbf24" opacity="0.3"/>
+  <text x="620" y="78" font-family="sans-serif" font-size="14" fill="#fbbf24" text-anchor="middle">⚠</text>
+  
+  <!-- GAN Row -->
+  <rect x="40" y="100" width="80" height="36" rx="6" fill="#ef4444" opacity="0.2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="80" y="123" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="bold" fill="#f87171" text-anchor="middle">GAN</text>
+  <text x="150" y="123" font-family="Georgia, serif" font-size="13" fill="#94a3b8" font-style="italic">"Probability? Never heard of it."</text>
+  <circle cx="620" cy="118" r="12" fill="#ef4444" opacity="0.3"/>
+  <text x="620" y="123" font-family="sans-serif" font-size="14" fill="#ef4444" text-anchor="middle">✗</text>
+  
+  <!-- Diffusion Row -->
+  <rect x="40" y="145" width="80" height="36" rx="6" fill="#a855f7" opacity="0.2" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="80" y="168" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="bold" fill="#c084fc" text-anchor="middle">Diffusion</text>
+  <text x="150" y="168" font-family="Georgia, serif" font-size="13" fill="#94a3b8" font-style="italic">"It's complicated... let me run 1000 steps first."</text>
+  <circle cx="620" cy="163" r="12" fill="#fbbf24" opacity="0.3"/>
+  <text x="620" y="168" font-family="sans-serif" font-size="14" fill="#fbbf24" text-anchor="middle">⚠</text>
+  
+  <!-- Divider -->
+  <line x1="40" y1="200" x2="660" y2="200" stroke="#475569" stroke-width="2" stroke-dasharray="8,4"/>
+  
+  <!-- Flow Row (highlighted) -->
+  <rect x="35" y="220" width="630" height="70" rx="10" fill="#10b981" opacity="0.1" stroke="#10b981" stroke-width="2"/>
+  <rect x="40" y="235" width="80" height="40" rx="8" fill="url(#flowGrad)" filter="url(#glow)"/>
+  <text x="80" y="262" font-family="JetBrains Mono, Consolas, monospace" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">Flow</text>
+  <text x="150" y="255" font-family="Georgia, serif" font-size="14" fill="#e2e8f0" font-style="italic">"That sample? Let me see...</text>
+  
+  <!-- Exact likelihood callout -->
+  <rect x="430" y="232" width="140" height="48" rx="6" fill="#10b981" opacity="0.25" stroke="#10b981" stroke-width="1.5"/>
+  <text x="500" y="252" font-family="JetBrains Mono, Consolas, monospace" font-size="18" font-weight="bold" fill="#10b981" text-anchor="middle">0.00742</text>
+  <text x="500" y="270" font-family="JetBrains Mono, Consolas, monospace" font-size="10" fill="#34d399" text-anchor="middle">EXACT likelihood!</text>
+  
+  <!-- Checkmark -->
+  <circle cx="620" cy="255" r="16" fill="#10b981" opacity="0.4"/>
+  <text x="620" y="261" font-family="sans-serif" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
+</svg>
+
