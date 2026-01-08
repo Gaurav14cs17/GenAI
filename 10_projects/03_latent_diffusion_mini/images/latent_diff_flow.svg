@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200">
+  <defs>
+    <linearGradient id="vaeEncGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+    <linearGradient id="diffGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#EC4899"/>
+    </linearGradient>
+    <linearGradient id="vaeDecGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="200" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="350" y="22" font-family="system-ui, sans-serif" font-size="13" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Latent Diffusion Architecture</text>
+  
+  <!-- Row 1 -->
+  <!-- Image -->
+  <rect x="30" y="45" width="80" height="50" rx="6" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="70" y="70" font-family="system-ui, sans-serif" font-size="16" fill="#94A3B8" text-anchor="middle">🖼️</text>
+  <text x="70" y="85" font-family="system-ui, sans-serif" font-size="7" fill="#64748B" text-anchor="middle">512×512×3</text>
+  
+  <!-- Arrow -->
+  <line x1="115" y1="70" x2="140" y2="70" stroke="#64748B" stroke-width="2"/>
+  <polygon points="140,70 133,65 133,75" fill="#64748B"/>
+  
+  <!-- VAE Encoder -->
+  <rect x="145" y="40" width="100" height="60" rx="8" fill="url(#vaeEncGrad2)"/>
+  <text x="195" y="65" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">VAE Encoder</text>
+  <text x="195" y="80" font-family="system-ui, sans-serif" font-size="8" fill="#BFDBFE" text-anchor="middle">(8× compress)</text>
+  
+  <!-- Arrow -->
+  <line x1="250" y1="70" x2="280" y2="70" stroke="#64748B" stroke-width="2"/>
+  <polygon points="280,70 273,65 273,75" fill="#64748B"/>
+  
+  <!-- Latent -->
+  <rect x="285" y="45" width="80" height="50" rx="6" fill="#4C1D95"/>
+  <text x="325" y="68" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">Latent z</text>
+  <text x="325" y="82" font-family="system-ui, sans-serif" font-size="7" fill="#C4B5FD" text-anchor="middle">64×64×4</text>
+  
+  <!-- Arrow down -->
+  <line x1="325" y1="100" x2="325" y2="125" stroke="#64748B" stroke-width="2"/>
+  <polygon points="325,125 320,118 330,118" fill="#64748B"/>
+  
+  <!-- Row 2 -->
+  <!-- Generated -->
+  <rect x="30" y="130" width="80" height="50" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+  <text x="70" y="155" font-family="system-ui, sans-serif" font-size="16" fill="#10B981" text-anchor="middle">🎨</text>
+  <text x="70" y="170" font-family="system-ui, sans-serif" font-size="7" fill="#64748B" text-anchor="middle">Generated</text>
+  
+  <!-- Arrow -->
+  <line x1="140" y1="155" x2="115" y2="155" stroke="#64748B" stroke-width="2"/>
+  <polygon points="115,155 122,150 122,160" fill="#64748B"/>
+  
+  <!-- VAE Decoder -->
+  <rect x="145" y="125" width="100" height="60" rx="8" fill="url(#vaeDecGrad2)"/>
+  <text x="195" y="150" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">VAE Decoder</text>
+  <text x="195" y="165" font-family="system-ui, sans-serif" font-size="8" fill="#D1FAE5" text-anchor="middle">(8× expand)</text>
+  
+  <!-- Arrow -->
+  <line x1="280" y1="155" x2="250" y2="155" stroke="#64748B" stroke-width="2"/>
+  <polygon points="250,155 257,150 257,160" fill="#64748B"/>
+  
+  <!-- U-Net -->
+  <rect x="285" y="130" width="100" height="50" rx="8" fill="url(#diffGrad2)"/>
+  <text x="335" y="152" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">Diffusion</text>
+  <text x="335" y="167" font-family="system-ui, sans-serif" font-size="8" fill="#F5D0FE" text-anchor="middle">U-Net</text>
+  
+  <!-- Key insight -->
+  <rect x="420" y="70" width="250" height="60" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+  <text x="545" y="95" font-family="system-ui, sans-serif" font-size="9" fill="#F59E0B" text-anchor="middle" font-weight="bold">💡 Key: Diffuse in 64×64 space</text>
+  <text x="545" y="115" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle">64× less compute than pixel diffusion!</text>
+</svg>
+

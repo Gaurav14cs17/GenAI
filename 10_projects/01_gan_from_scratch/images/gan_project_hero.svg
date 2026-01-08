@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="genGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="discGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.6)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="white" filter="url(#glow)">
+    🛠️ Project: GAN from Scratch
+  </text>
+  <text x="450" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="rgba(255,255,255,0.7)">
+    Build a complete adversarial training pipeline on MNIST/CIFAR-10
+  </text>
+  
+  <!-- Architecture Diagram -->
+  <g transform="translate(450, 200)">
+    <!-- Noise input -->
+    <g transform="translate(-300, 0)">
+      <rect x="-40" y="-30" width="80" height="60" rx="8" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="2"/>
+      <text y="-5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a78bfa">Noise z</text>
+      <text y="12" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">~ N(0,I)</text>
+    </g>
+    
+    <path d="M -250 0 L -180 0" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Generator -->
+    <g transform="translate(-120, 0)">
+      <rect x="-60" y="-45" width="120" height="90" rx="10" fill="rgba(34,197,94,0.2)" stroke="#22c55e" stroke-width="2" filter="url(#shadow)"/>
+      <text y="-20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#4ade80">Generator</text>
+      <text y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.6)">ConvTranspose</text>
+      <text y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.6)">BatchNorm</text>
+      <text y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.6)">ReLU</text>
+    </g>
+    
+    <path d="M -50 0 L 20 0" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Fake Image -->
+    <g transform="translate(80, 0)">
+      <rect x="-40" y="-35" width="80" height="70" rx="8" fill="url(#genGrad)" opacity="0.7"/>
+      <text y="5" text-anchor="middle" font-size="20">🖼️</text>
+      <text y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.6)">Fake</text>
+    </g>
+    
+    <path d="M 130 0 L 200 0" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Discriminator -->
+    <g transform="translate(280, 0)">
+      <rect x="-70" y="-45" width="140" height="90" rx="10" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+      <text y="-20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#f87171">Discriminator</text>
+      <text y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.6)">Conv + LeakyReLU</text>
+      <text y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.6)">Real/Fake?</text>
+      <text y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.6)">→ 0 or 1</text>
+    </g>
+  </g>
+  
+  <!-- Milestones -->
+  <g transform="translate(450, 330)">
+    <rect x="-380" y="-30" width="760" height="60" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    <text y="-5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.9)">Milestones</text>
+    <text y="18" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">
+      ① Basic GAN → ② DCGAN → ③ Training Tricks → ④ CIFAR-10 → ⑤ FID &lt; 50
+    </text>
+  </g>
+</svg>
+

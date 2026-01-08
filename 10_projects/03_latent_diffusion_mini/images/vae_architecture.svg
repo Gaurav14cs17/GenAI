@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0a20"/>
+      <stop offset="100%" style="stop-color:#1a0a2e"/>
+    </linearGradient>
+    <linearGradient id="encGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#be185d"/>
+    </linearGradient>
+    <linearGradient id="decGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#14b8a6"/>
+      <stop offset="100%" style="stop-color:#0d9488"/>
+    </linearGradient>
+    <linearGradient id="latentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#6d28d9"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+  
+  <rect width="1000" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="white" filter="url(#glow)">
+    Variational Autoencoder (VAE)
+  </text>
+  <text x="500" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">
+    Learning to Compress Images into Meaningful Latent Representations
+  </text>
+  
+  <!-- Main Architecture -->
+  <g transform="translate(50, 100)">
+    <!-- Input Image -->
+    <g transform="translate(0, 80)">
+      <rect x="0" y="0" width="80" height="100" rx="8" fill="rgba(59,130,246,0.2)" stroke="#3b82f6" stroke-width="2"/>
+      <text x="40" y="30" text-anchor="middle" font-size="24">🖼️</text>
+      <text x="40" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#60a5fa">Input x</text>
+      <text x="40" y="75" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">H×W×3</text>
+    </g>
+    
+    <path d="M 90 130 L 130 130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Encoder -->
+    <g transform="translate(140, 40)">
+      <rect x="0" y="0" width="150" height="180" rx="10" fill="rgba(236,72,153,0.15)" stroke="#ec4899" stroke-width="2" filter="url(#shadow)"/>
+      <text x="75" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#f472b6">Encoder</text>
+      
+      <g transform="translate(20, 45)">
+        <rect x="0" y="0" width="110" height="30" rx="4" fill="rgba(236,72,153,0.2)"/>
+        <text x="55" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#f9a8d4">Conv ↓ + ResBlocks</text>
+      </g>
+      <g transform="translate(20, 80)">
+        <rect x="0" y="0" width="110" height="30" rx="4" fill="rgba(236,72,153,0.2)"/>
+        <text x="55" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#f9a8d4">Conv ↓ + Attention</text>
+      </g>
+      <g transform="translate(20, 115)">
+        <rect x="0" y="0" width="110" height="30" rx="4" fill="rgba(236,72,153,0.2)"/>
+        <text x="55" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#f9a8d4">Conv ↓ + ResBlocks</text>
+      </g>
+      <text x="75" y="165" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">8× downsample</text>
+    </g>
+    
+    <path d="M 300 130 L 340 130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- μ and σ -->
+    <g transform="translate(350, 60)">
+      <rect x="0" y="0" width="100" height="140" rx="8" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="50" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#a78bfa">Distribution</text>
+      
+      <g transform="translate(10, 40)">
+        <rect x="0" y="0" width="80" height="35" rx="4" fill="rgba(34,197,94,0.2)" stroke="#22c55e"/>
+        <text x="40" y="15" text-anchor="middle" font-family="serif" font-size="14" fill="#4ade80">μ</text>
+        <text x="40" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="rgba(255,255,255,0.6)">mean</text>
+      </g>
+      
+      <g transform="translate(10, 85)">
+        <rect x="0" y="0" width="80" height="35" rx="4" fill="rgba(251,191,36,0.2)" stroke="#fbbf24"/>
+        <text x="40" y="15" text-anchor="middle" font-family="serif" font-size="14" fill="#fcd34d">log σ²</text>
+        <text x="40" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="rgba(255,255,255,0.6)">variance</text>
+      </g>
+    </g>
+    
+    <path d="M 460 130 L 500 130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Reparameterization -->
+    <g transform="translate(510, 75)">
+      <rect x="0" y="0" width="120" height="110" rx="8" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="60" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#fcd34d">Reparameterize</text>
+      <text x="60" y="55" text-anchor="middle" font-family="serif" font-size="12" fill="white">z = μ + σ · ε</text>
+      <text x="60" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">ε ~ N(0, I)</text>
+      <text x="60" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="#fbbf24">enables backprop</text>
+    </g>
+    
+    <path d="M 640 130 L 680 130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Latent -->
+    <g transform="translate(690, 85)">
+      <rect x="0" y="0" width="70" height="90" rx="8" fill="url(#latentGrad)" filter="url(#shadow)"/>
+      <text x="35" y="30" text-anchor="middle" font-size="20">💎</text>
+      <text x="35" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="white">z</text>
+      <text x="35" y="75" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.8)">h/8×w/8×4</text>
+    </g>
+    
+    <path d="M 770 130 L 810 130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Decoder -->
+    <g transform="translate(820, 40)">
+      <rect x="0" y="0" width="130" height="180" rx="10" fill="rgba(20,184,166,0.15)" stroke="#14b8a6" stroke-width="2" filter="url(#shadow)"/>
+      <text x="65" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#2dd4bf">Decoder</text>
+      
+      <g transform="translate(10, 45)">
+        <rect x="0" y="0" width="110" height="30" rx="4" fill="rgba(20,184,166,0.2)"/>
+        <text x="55" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5eead4">Conv ↑ + ResBlocks</text>
+      </g>
+      <g transform="translate(10, 80)">
+        <rect x="0" y="0" width="110" height="30" rx="4" fill="rgba(20,184,166,0.2)"/>
+        <text x="55" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5eead4">Conv ↑ + Attention</text>
+      </g>
+      <g transform="translate(10, 115)">
+        <rect x="0" y="0" width="110" height="30" rx="4" fill="rgba(20,184,166,0.2)"/>
+        <text x="55" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#5eead4">Conv ↑ + ResBlocks</text>
+      </g>
+      <text x="65" y="165" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">8× upsample</text>
+    </g>
+  </g>
+  
+  <!-- Loss Function Box -->
+  <g transform="translate(50, 350)">
+    <rect x="0" y="0" width="900" height="130" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    
+    <text x="450" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="white">
+      📐 VAE Loss Function (ELBO)
+    </text>
+    
+    <g transform="translate(50, 50)">
+      <rect x="0" y="0" width="380" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1"/>
+      <text x="190" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#f87171">Reconstruction Loss</text>
+      <text x="190" y="48" text-anchor="middle" font-family="serif" font-size="13" fill="white">ℒ_recon = ‖x - x̂‖² + ℒ_perceptual</text>
+    </g>
+    
+    <text x="450" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="rgba(255,255,255,0.5)">+</text>
+    
+    <g transform="translate(470, 50)">
+      <rect x="0" y="0" width="380" height="60" rx="8" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1"/>
+      <text x="190" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#a78bfa">KL Divergence</text>
+      <text x="190" y="48" text-anchor="middle" font-family="serif" font-size="13" fill="white">ℒ_KL = D_KL(q(z|x) ‖ p(z))</text>
+    </g>
+  </g>
+</svg>
+

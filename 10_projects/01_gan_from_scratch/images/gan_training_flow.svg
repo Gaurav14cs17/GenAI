@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+  </defs>
+  
+  <rect width="1000" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="white" filter="url(#glow)">
+    GAN Training Loop: Step by Step
+  </text>
+  
+  <!-- Step 1: Train Discriminator -->
+  <g transform="translate(50, 80)">
+    <rect x="0" y="0" width="420" height="180" rx="12" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="2"/>
+    <text x="210" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#f87171">
+      Step 1: Train Discriminator
+    </text>
+    
+    <!-- Real path -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="60" height="50" rx="6" fill="#3b82f6"/>
+      <text x="30" y="20" text-anchor="middle" font-size="14">🖼️</text>
+      <text x="30" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="white">Real</text>
+    </g>
+    <path d="M 90 75 L 140 75" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowRed)"/>
+    <g transform="translate(150, 50)">
+      <rect x="0" y="0" width="80" height="50" rx="6" fill="url(#redGrad)"/>
+      <text x="40" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">D(real)</text>
+    </g>
+    <path d="M 240 75 L 290 75" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowRed)"/>
+    <g transform="translate(300, 50)">
+      <rect x="0" y="0" width="100" height="50" rx="6" fill="rgba(239,68,68,0.3)" stroke="#ef4444"/>
+      <text x="50" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#fca5a5">BCE Loss</text>
+      <text x="50" y="38" text-anchor="middle" font-family="monospace" font-size="8" fill="white">label=1</text>
+    </g>
+    
+    <!-- Fake path -->
+    <g transform="translate(20, 115)">
+      <rect x="0" y="0" width="60" height="50" rx="6" fill="url(#greenGrad)"/>
+      <text x="30" y="20" text-anchor="middle" font-size="14">🎨</text>
+      <text x="30" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="white">G(z)</text>
+    </g>
+    <path d="M 90 140 L 140 140" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowRed)"/>
+    <g transform="translate(150, 115)">
+      <rect x="0" y="0" width="80" height="50" rx="6" fill="url(#redGrad)"/>
+      <text x="40" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">D(fake)</text>
+      <text x="40" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.7)">.detach()</text>
+    </g>
+    <path d="M 240 140 L 290 140" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowRed)"/>
+    <g transform="translate(300, 115)">
+      <rect x="0" y="0" width="100" height="50" rx="6" fill="rgba(239,68,68,0.3)" stroke="#ef4444"/>
+      <text x="50" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#fca5a5">BCE Loss</text>
+      <text x="50" y="38" text-anchor="middle" font-family="monospace" font-size="8" fill="white">label=0</text>
+    </g>
+  </g>
+  
+  <!-- Step 2: Train Generator -->
+  <g transform="translate(530, 80)">
+    <rect x="0" y="0" width="420" height="180" rx="12" fill="rgba(34,197,94,0.1)" stroke="#22c55e" stroke-width="2"/>
+    <text x="210" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#4ade80">
+      Step 2: Train Generator
+    </text>
+    
+    <!-- Generator path -->
+    <g transform="translate(20, 70)">
+      <rect x="0" y="0" width="60" height="50" rx="6" fill="url(#purpleGrad)"/>
+      <text x="30" y="20" text-anchor="middle" font-size="14">🎲</text>
+      <text x="30" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="white">z~N(0,I)</text>
+    </g>
+    <path d="M 90 95 L 110 95" stroke="#22c55e" stroke-width="2" marker-end="url(#arrowGreen)"/>
+    <g transform="translate(120, 70)">
+      <rect x="0" y="0" width="70" height="50" rx="6" fill="url(#greenGrad)"/>
+      <text x="35" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">G(z)</text>
+    </g>
+    <path d="M 200 95 L 220 95" stroke="#22c55e" stroke-width="2" marker-end="url(#arrowGreen)"/>
+    <g transform="translate(230, 70)">
+      <rect x="0" y="0" width="70" height="50" rx="6" fill="url(#redGrad)"/>
+      <text x="35" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">D(G(z))</text>
+    </g>
+    <path d="M 310 95 L 330 95" stroke="#22c55e" stroke-width="2" marker-end="url(#arrowGreen)"/>
+    <g transform="translate(340, 70)">
+      <rect x="0" y="0" width="70" height="50" rx="6" fill="rgba(34,197,94,0.3)" stroke="#22c55e"/>
+      <text x="35" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#86efac">BCE</text>
+      <text x="35" y="38" text-anchor="middle" font-family="monospace" font-size="8" fill="white">label=1</text>
+    </g>
+    
+    <text x="210" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">
+      Goal: Make D think fake images are real
+    </text>
+  </g>
+  
+  <!-- Algorithm Box -->
+  <g transform="translate(50, 290)">
+    <rect x="0" y="0" width="900" height="190" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="450" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="white">
+      📝 Training Algorithm (PyTorch Pseudocode)
+    </text>
+    
+    <g transform="translate(30, 50)">
+      <text font-family="monospace" font-size="11" fill="#94a3b8">
+        <tspan x="0" y="0" fill="#c084fc">for</tspan><tspan> epoch </tspan><tspan fill="#c084fc">in</tspan><tspan> range(epochs):</tspan>
+        <tspan x="20" y="20" fill="#c084fc">for</tspan><tspan> real_imgs, _ </tspan><tspan fill="#c084fc">in</tspan><tspan> dataloader:</tspan>
+        <tspan x="40" y="40" fill="#6b7280"># === Train Discriminator ===</tspan>
+        <tspan x="40" y="60">z = </tspan><tspan fill="#22d3ee">torch.randn</tspan><tspan>(batch_size, latent_dim)</tspan>
+        <tspan x="40" y="80">fake_imgs = </tspan><tspan fill="#4ade80">G</tspan><tspan>(z)</tspan>
+      </text>
+    </g>
+    
+    <g transform="translate(450, 50)">
+      <text font-family="monospace" font-size="11" fill="#94a3b8">
+        <tspan x="0" y="0">d_real = </tspan><tspan fill="#f87171">D</tspan><tspan>(real_imgs)</tspan>
+        <tspan x="0" y="20">d_fake = </tspan><tspan fill="#f87171">D</tspan><tspan>(fake_imgs</tspan><tspan fill="#fbbf24">.detach()</tspan><tspan>)</tspan>
+        <tspan x="0" y="40">loss_D = </tspan><tspan fill="#22d3ee">BCE</tspan><tspan>(d_real, </tspan><tspan fill="#4ade80">1</tspan><tspan>) + </tspan><tspan fill="#22d3ee">BCE</tspan><tspan>(d_fake, </tspan><tspan fill="#f87171">0</tspan><tspan>)</tspan>
+        <tspan x="0" y="70" fill="#6b7280"># === Train Generator ===</tspan>
+        <tspan x="0" y="90">g_fake = </tspan><tspan fill="#f87171">D</tspan><tspan>(</tspan><tspan fill="#4ade80">G</tspan><tspan>(z))</tspan>
+        <tspan x="0" y="110">loss_G = </tspan><tspan fill="#22d3ee">BCE</tspan><tspan>(g_fake, </tspan><tspan fill="#4ade80">1</tspan><tspan>)  </tspan><tspan fill="#6b7280"># Fool D!</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
+

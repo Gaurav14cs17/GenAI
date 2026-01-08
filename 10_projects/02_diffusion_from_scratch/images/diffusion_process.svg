@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="forwardGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="30%" style="stop-color:#eab308"/>
+      <stop offset="60%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
+    </linearGradient>
+    <linearGradient id="reverseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="30%" style="stop-color:#f97316"/>
+      <stop offset="60%" style="stop-color:#eab308"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="arrowRight" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowLeft" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto">
+      <polygon points="10 0, 0 3.5, 10 7" fill="#22c55e"/>
+    </marker>
+  </defs>
+  
+  <rect width="1000" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="white" filter="url(#glow)">
+    The Diffusion Process
+  </text>
+  <text x="500" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">
+    Forward: Gradual destruction • Reverse: Learned reconstruction
+  </text>
+  
+  <!-- Forward Process -->
+  <g transform="translate(50, 100)">
+    <text x="450" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#f87171">
+      → Forward Process q(x_t | x_{t-1}) — Add Noise
+    </text>
+    
+    <!-- Images at different timesteps -->
+    <g transform="translate(0, 30)">
+      <!-- t=0 Clean -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="90" height="90" rx="10" fill="#22c55e" filter="url(#glow)"/>
+        <text x="45" y="35" text-anchor="middle" font-size="28">🎨</text>
+        <text x="45" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">Clean</text>
+        <text x="45" y="105" text-anchor="middle" font-family="monospace" font-size="11" fill="#4ade80">t = 0</text>
+      </g>
+      
+      <path d="M 100 45 L 160 45" stroke="url(#forwardGrad)" stroke-width="3" marker-end="url(#arrowRight)"/>
+      
+      <!-- t=250 -->
+      <g transform="translate(170, 0)">
+        <rect x="0" y="0" width="90" height="90" rx="10" fill="#84cc16"/>
+        <text x="45" y="35" text-anchor="middle" font-size="28">🖼️</text>
+        <text x="45" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">Slight noise</text>
+        <text x="45" y="105" text-anchor="middle" font-family="monospace" font-size="11" fill="#a3e635">t = 250</text>
+      </g>
+      
+      <path d="M 270 45 L 330 45" stroke="url(#forwardGrad)" stroke-width="3" marker-end="url(#arrowRight)"/>
+      
+      <!-- t=500 -->
+      <g transform="translate(340, 0)">
+        <rect x="0" y="0" width="90" height="90" rx="10" fill="#eab308"/>
+        <text x="45" y="35" text-anchor="middle" font-size="28">🌁</text>
+        <text x="45" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">Noisy</text>
+        <text x="45" y="105" text-anchor="middle" font-family="monospace" font-size="11" fill="#fcd34d">t = 500</text>
+      </g>
+      
+      <path d="M 440 45 L 500 45" stroke="url(#forwardGrad)" stroke-width="3" marker-end="url(#arrowRight)"/>
+      
+      <!-- t=750 -->
+      <g transform="translate(510, 0)">
+        <rect x="0" y="0" width="90" height="90" rx="10" fill="#f97316"/>
+        <text x="45" y="35" text-anchor="middle" font-size="28">🌫️</text>
+        <text x="45" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">Very noisy</text>
+        <text x="45" y="105" text-anchor="middle" font-family="monospace" font-size="11" fill="#fb923c">t = 750</text>
+      </g>
+      
+      <path d="M 610 45 L 670 45" stroke="url(#forwardGrad)" stroke-width="3" marker-end="url(#arrowRight)"/>
+      
+      <!-- t=1000 Pure noise -->
+      <g transform="translate(680, 0)">
+        <rect x="0" y="0" width="90" height="90" rx="10" fill="#ef4444"/>
+        <text x="45" y="35" text-anchor="middle" font-size="28">📡</text>
+        <text x="45" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">Pure noise</text>
+        <text x="45" y="105" text-anchor="middle" font-family="monospace" font-size="11" fill="#f87171">t = 1000</text>
+      </g>
+      
+      <!-- Math formula -->
+      <text x="820" y="40" text-anchor="middle" font-family="serif" font-size="12" fill="rgba(255,255,255,0.8)">
+        x_t = √ᾱ_t · x_0
+      </text>
+      <text x="820" y="60" text-anchor="middle" font-family="serif" font-size="12" fill="rgba(255,255,255,0.8)">
+        + √(1-ᾱ_t) · ε
+      </text>
+      <text x="820" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.5)">ε ~ N(0, I)</text>
+    </g>
+  </g>
+  
+  <!-- Reverse Process -->
+  <g transform="translate(50, 270)">
+    <text x="450" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#4ade80">
+      ← Reverse Process p_θ(x_{t-1} | x_t) — Denoise (Learned)
+    </text>
+    
+    <!-- Images at different timesteps -->
+    <g transform="translate(680, 30)">
+      <!-- Start from noise -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="90" height="90" rx="10" fill="#ef4444"/>
+        <text x="45" y="35" text-anchor="middle" font-size="28">📡</text>
+        <text x="45" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">Start</text>
+        <text x="45" y="105" text-anchor="middle" font-family="monospace" font-size="11" fill="#f87171">t = T</text>
+      </g>
+    </g>
+    
+    <g transform="translate(510, 30)">
+      <path d="M 160 45 L 100 45" stroke="url(#reverseGrad)" stroke-width="3" marker-end="url(#arrowLeft)"/>
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="90" height="90" rx="10" fill="#f97316"/>
+        <text x="45" y="35" text-anchor="middle" font-size="28">🌫️</text>
+        <text x="45" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">Denoise</text>
+      </g>
+    </g>
+    
+    <g transform="translate(340, 30)">
+      <path d="M 160 45 L 100 45" stroke="url(#reverseGrad)" stroke-width="3" marker-end="url(#arrowLeft)"/>
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="90" height="90" rx="10" fill="#eab308"/>
+        <text x="45" y="35" text-anchor="middle" font-size="28">🌁</text>
+        <text x="45" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">Cleaner</text>
+      </g>
+    </g>
+    
+    <g transform="translate(170, 30)">
+      <path d="M 160 45 L 100 45" stroke="url(#reverseGrad)" stroke-width="3" marker-end="url(#arrowLeft)"/>
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="90" height="90" rx="10" fill="#84cc16"/>
+        <text x="45" y="35" text-anchor="middle" font-size="28">🖼️</text>
+        <text x="45" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">Almost clean</text>
+      </g>
+    </g>
+    
+    <g transform="translate(0, 30)">
+      <path d="M 160 45 L 100 45" stroke="url(#reverseGrad)" stroke-width="3" marker-end="url(#arrowLeft)"/>
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="90" height="90" rx="10" fill="#22c55e" filter="url(#glow)"/>
+        <text x="45" y="35" text-anchor="middle" font-size="28">✨</text>
+        <text x="45" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">Generated!</text>
+        <text x="45" y="105" text-anchor="middle" font-family="monospace" font-size="11" fill="#4ade80">t = 0</text>
+      </g>
+    </g>
+    
+    <!-- U-Net box -->
+    <g transform="translate(820, 30)">
+      <rect x="0" y="0" width="90" height="90" rx="10" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="45" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#a78bfa">U-Net</text>
+      <text x="45" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">ε_θ(x_t, t)</text>
+      <text x="45" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">Predicts noise</text>
+    </g>
+  </g>
+  
+  <!-- Training objective box -->
+  <g transform="translate(50, 430)">
+    <rect x="0" y="0" width="900" height="55" rx="10" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="100" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#c4b5fd">Training Objective:</text>
+    <text x="450" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="white">
+      ℒ = 𝔼_{x_0, ε, t} [ ‖ε - ε_θ(x_t, t)‖² ]
+    </text>
+    <text x="450" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">
+      Simple MSE between predicted and actual noise
+    </text>
+    <text x="800" y="32" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#fbbf24">
+      💡 Beautifully simple!
+    </text>
+  </g>
+</svg>
+

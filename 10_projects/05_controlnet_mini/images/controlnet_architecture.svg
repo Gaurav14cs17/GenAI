@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 550">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e1b4b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="frozenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="trainableGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="zeroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22c55e"/>
+    </marker>
+  </defs>
+  
+  <rect width="1000" height="550" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="white" filter="url(#glow)">
+    ControlNet Architecture
+  </text>
+  <text x="500" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">
+    Add Spatial Control Without Modifying the Base Model
+  </text>
+  
+  <!-- Main Architecture -->
+  <g transform="translate(50, 100)">
+    <!-- Control Input -->
+    <g transform="translate(0, 120)">
+      <rect x="0" y="0" width="80" height="100" rx="8" fill="rgba(236,72,153,0.2)" stroke="#ec4899" stroke-width="2" filter="url(#shadow)"/>
+      <text x="40" y="25" text-anchor="middle" font-size="20">🎨</text>
+      <text x="40" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#f472b6">Control</text>
+      <text x="40" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#f472b6">Signal</text>
+      <text x="40" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">edges/depth</text>
+    </g>
+    
+    <path d="M 90 170 L 130 170" stroke="#ec4899" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- ControlNet (Trainable Copy) -->
+    <g transform="translate(140, 50)">
+      <rect x="0" y="0" width="180" height="240" rx="12" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="2" filter="url(#shadow)"/>
+      <text x="90" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#4ade80">ControlNet</text>
+      <text x="90" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#86efac">(trainable copy)</text>
+      
+      <!-- Encoder blocks -->
+      <g transform="translate(20, 65)">
+        <rect x="0" y="0" width="140" height="35" rx="5" fill="rgba(34,197,94,0.2)" stroke="#22c55e"/>
+        <text x="70" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.8)">Encoder Block 1</text>
+      </g>
+      <g transform="translate(20, 105)">
+        <rect x="0" y="0" width="140" height="35" rx="5" fill="rgba(34,197,94,0.2)" stroke="#22c55e"/>
+        <text x="70" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.8)">Encoder Block 2</text>
+      </g>
+      <g transform="translate(20, 145)">
+        <rect x="0" y="0" width="140" height="35" rx="5" fill="rgba(34,197,94,0.2)" stroke="#22c55e"/>
+        <text x="70" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.8)">Middle Block</text>
+      </g>
+      
+      <!-- Zero convs -->
+      <g transform="translate(30, 195)">
+        <rect x="0" y="0" width="120" height="30" rx="4" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="2"/>
+        <text x="60" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#fcd34d">Zero Convolutions</text>
+      </g>
+    </g>
+    
+    <!-- Zero Conv Outputs -->
+    <path d="M 330 120 L 400 120" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+    <path d="M 330 160 L 400 160" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+    <path d="M 330 200 L 400 200" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+    
+    <!-- Base U-Net (Frozen) -->
+    <g transform="translate(410, 30)">
+      <rect x="0" y="0" width="220" height="280" rx="12" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+      
+      <rect x="10" y="10" width="200" height="30" rx="5" fill="rgba(59,130,246,0.3)"/>
+      <text x="110" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#60a5fa">Base U-Net (Frozen 🔒)</text>
+      
+      <!-- Encoder side -->
+      <g transform="translate(15, 55)">
+        <rect x="0" y="0" width="80" height="60" rx="5" fill="rgba(59,130,246,0.2)" stroke="#3b82f6"/>
+        <text x="40" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.8)">Encoder</text>
+        <text x="40" y="45" text-anchor="middle" font-size="16">⬇️</text>
+      </g>
+      
+      <!-- Add operations -->
+      <g transform="translate(100, 55)">
+        <circle cx="15" cy="30" r="12" fill="rgba(245,158,11,0.3)" stroke="#f59e0b"/>
+        <text x="15" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#fcd34d">+</text>
+      </g>
+      <g transform="translate(100, 125)">
+        <circle cx="15" cy="30" r="12" fill="rgba(245,158,11,0.3)" stroke="#f59e0b"/>
+        <text x="15" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#fcd34d">+</text>
+      </g>
+      
+      <!-- Middle -->
+      <g transform="translate(15, 130)">
+        <rect x="0" y="0" width="80" height="40" rx="5" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6"/>
+        <text x="40" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.8)">Middle</text>
+      </g>
+      
+      <!-- Decoder side -->
+      <g transform="translate(125, 130)">
+        <rect x="0" y="0" width="80" height="60" rx="5" fill="rgba(59,130,246,0.2)" stroke="#3b82f6"/>
+        <text x="40" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.8)">Decoder</text>
+        <text x="40" y="45" text-anchor="middle" font-size="16">⬆️</text>
+      </g>
+      
+      <!-- Skip connections -->
+      <path d="M 55 115 Q 55 200, 165 200" stroke="rgba(59,130,246,0.5)" stroke-width="1.5" stroke-dasharray="3,3" fill="none"/>
+      
+      <!-- Output -->
+      <g transform="translate(60, 210)">
+        <rect x="0" y="0" width="100" height="50" rx="5" fill="rgba(34,197,94,0.2)" stroke="#22c55e"/>
+        <text x="50" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#4ade80">Output</text>
+        <text x="50" y="38" text-anchor="middle" font-size="14">✨</text>
+      </g>
+    </g>
+    
+    <!-- Noisy Input -->
+    <g transform="translate(410, 320)">
+      <rect x="0" y="0" width="80" height="60" rx="8" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="40" y="25" text-anchor="middle" font-size="16">🌫️</text>
+      <text x="40" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#a78bfa">z_t + t + text</text>
+    </g>
+    <path d="M 490 350 L 520 270" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+  
+  <!-- Key Concepts Box -->
+  <g transform="translate(680, 100)">
+    <rect x="0" y="0" width="270" height="300" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    
+    <text x="135" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="white">
+      🔑 Key Concepts
+    </text>
+    
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="230" height="70" rx="6" fill="rgba(245,158,11,0.1)" stroke="#f59e0b"/>
+      <text x="115" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#fcd34d">Zero Convolution</text>
+      <text x="115" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">Initialized to output zeros</text>
+      <text x="115" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">Gradually learns to contribute</text>
+    </g>
+    
+    <g transform="translate(20, 130)">
+      <rect x="0" y="0" width="230" height="70" rx="6" fill="rgba(59,130,246,0.1)" stroke="#3b82f6"/>
+      <text x="115" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#60a5fa">Frozen Base 🔒</text>
+      <text x="115" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">Pretrained SD weights locked</text>
+      <text x="115" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">Preserves original capability</text>
+    </g>
+    
+    <g transform="translate(20, 210)">
+      <rect x="0" y="0" width="230" height="70" rx="6" fill="rgba(34,197,94,0.1)" stroke="#22c55e"/>
+      <text x="115" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#4ade80">Trainable Copy 📝</text>
+      <text x="115" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">Copy of encoder + middle</text>
+      <text x="115" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">Learns spatial conditioning</text>
+    </g>
+  </g>
+  
+  <!-- Control Types -->
+  <g transform="translate(50, 440)">
+    <rect x="0" y="0" width="900" height="90" rx="10" fill="rgba(236,72,153,0.1)" stroke="#ec4899" stroke-width="1.5"/>
+    <text x="450" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f472b6">
+      🎛️ Control Signal Types
+    </text>
+    
+    <g transform="translate(80, 45)">
+      <rect x="0" y="0" width="100" height="35" rx="5" fill="rgba(236,72,153,0.2)"/>
+      <text x="50" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">🔲 Canny Edge</text>
+    </g>
+    <g transform="translate(200, 45)">
+      <rect x="0" y="0" width="100" height="35" rx="5" fill="rgba(236,72,153,0.2)"/>
+      <text x="50" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">📐 Depth Map</text>
+    </g>
+    <g transform="translate(320, 45)">
+      <rect x="0" y="0" width="100" height="35" rx="5" fill="rgba(236,72,153,0.2)"/>
+      <text x="50" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">🦴 Pose</text>
+    </g>
+    <g transform="translate(440, 45)">
+      <rect x="0" y="0" width="100" height="35" rx="5" fill="rgba(236,72,153,0.2)"/>
+      <text x="50" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">🎭 Segmentation</text>
+    </g>
+    <g transform="translate(560, 45)">
+      <rect x="0" y="0" width="100" height="35" rx="5" fill="rgba(236,72,153,0.2)"/>
+      <text x="50" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">✏️ Scribble</text>
+    </g>
+    <g transform="translate(680, 45)">
+      <rect x="0" y="0" width="100" height="35" rx="5" fill="rgba(236,72,153,0.2)"/>
+      <text x="50" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="white">🔳 Normal Map</text>
+    </g>
+  </g>
+</svg>
+

@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0a20"/>
+      <stop offset="100%" style="stop-color:#1a0a2e"/>
+    </linearGradient>
+    <linearGradient id="qGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="kGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="vGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+  </defs>
+  
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="white" filter="url(#glow)">
+    Cross-Attention Mechanism
+  </text>
+  <text x="450" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)">
+    How Text Conditions Image Features
+  </text>
+  
+  <!-- Main Diagram -->
+  <g transform="translate(100, 100)">
+    <!-- Image Features (Q) -->
+    <g transform="translate(0, 50)">
+      <rect x="0" y="0" width="120" height="150" rx="10" fill="rgba(59,130,246,0.2)" stroke="#3b82f6" stroke-width="2"/>
+      <text x="60" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#60a5fa">Image Features</text>
+      <text x="60" y="55" text-anchor="middle" font-size="24">🖼️</text>
+      <text x="60" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">Latent features</text>
+      <text x="60" y="105" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">(h×w) × d</text>
+      
+      <rect x="30" y="115" width="60" height="25" rx="4" fill="url(#qGrad)"/>
+      <text x="60" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="white">Q</text>
+    </g>
+    
+    <!-- Text Embeddings (K, V) -->
+    <g transform="translate(0, 240)">
+      <rect x="0" y="0" width="120" height="150" rx="10" fill="rgba(251,191,36,0.2)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="60" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#fcd34d">Text Embeddings</text>
+      <text x="60" y="55" text-anchor="middle" font-size="24">📝</text>
+      <text x="60" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">CLIP encoded</text>
+      <text x="60" y="105" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">77 × 768</text>
+      
+      <rect x="10" y="115" width="45" height="25" rx="4" fill="url(#kGrad)"/>
+      <text x="32" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="white">K</text>
+      
+      <rect x="65" y="115" width="45" height="25" rx="4" fill="url(#vGrad)"/>
+      <text x="87" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="white">V</text>
+    </g>
+    
+    <!-- Arrows to attention -->
+    <path d="M 130 185 L 250 200" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 130 355 L 250 230" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 130 375 L 250 330" stroke="#10b981" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Attention Computation -->
+    <g transform="translate(260, 150)">
+      <rect x="0" y="0" width="200" height="180" rx="12" fill="rgba(236,72,153,0.15)" stroke="#ec4899" stroke-width="2"/>
+      <text x="100" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#f472b6">Attention</text>
+      
+      <!-- Step 1: QK^T -->
+      <g transform="translate(20, 45)">
+        <rect x="0" y="0" width="160" height="35" rx="4" fill="rgba(236,72,153,0.2)"/>
+        <text x="80" y="15" text-anchor="middle" font-family="serif" font-size="11" fill="white">scores = Q · K^T / √d</text>
+        <text x="80" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">(h×w) × 77</text>
+      </g>
+      
+      <!-- Step 2: Softmax -->
+      <g transform="translate(20, 90)">
+        <rect x="0" y="0" width="160" height="35" rx="4" fill="rgba(236,72,153,0.2)"/>
+        <text x="80" y="15" text-anchor="middle" font-family="serif" font-size="11" fill="white">attn = softmax(scores)</text>
+        <text x="80" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">attention weights</text>
+      </g>
+      
+      <!-- Step 3: Weighted V -->
+      <g transform="translate(20, 135)">
+        <rect x="0" y="0" width="160" height="35" rx="4" fill="rgba(236,72,153,0.2)"/>
+        <text x="80" y="15" text-anchor="middle" font-family="serif" font-size="11" fill="white">out = attn · V</text>
+        <text x="80" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">(h×w) × d</text>
+      </g>
+    </g>
+    
+    <!-- Output -->
+    <path d="M 470 240 L 530 240" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <g transform="translate(540, 170)">
+      <rect x="0" y="0" width="140" height="140" rx="10" fill="rgba(34,197,94,0.2)" stroke="#22c55e" stroke-width="2"/>
+      <text x="70" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#4ade80">Output</text>
+      <text x="70" y="65" text-anchor="middle" font-size="28">✨</text>
+      <text x="70" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">Text-conditioned</text>
+      <text x="70" y="112" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">image features</text>
+      <text x="70" y="130" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">(h×w) × d</text>
+    </g>
+  </g>
+  
+  <!-- Formula Box -->
+  <g transform="translate(100, 420)">
+    <rect x="0" y="0" width="700" height="60" rx="10" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="350" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#a78bfa">
+      Cross-Attention Formula
+    </text>
+    <text x="350" y="48" text-anchor="middle" font-family="serif" font-size="15" fill="white">
+      CrossAttn(Q, K, V) = softmax(QK^T / √d_k) · V
+    </text>
+  </g>
+</svg>
+

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0a20"/>
+      <stop offset="100%" style="stop-color:#1a103d"/>
+    </linearGradient>
+    <linearGradient id="diffusionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f43f5e"/>
+      <stop offset="100%" style="stop-color:#e11d48"/>
+    </linearGradient>
+    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#0891b2"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="white" filter="url(#glow)">
+    Diffusion Models vs Flow Matching
+  </text>
+  <text x="450" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">
+    Two paradigms for the same goal: noise → data transformation
+  </text>
+  
+  <!-- Diffusion Side -->
+  <g transform="translate(250, 240)">
+    <rect x="-170" y="-110" width="340" height="220" rx="15" fill="rgba(244,63,94,0.1)" stroke="#f43f5e" stroke-width="2" filter="url(#shadow)"/>
+    <text y="-85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#fb7185">Diffusion Models</text>
+    
+    <!-- Curved noisy path -->
+    <g transform="translate(0, -20)">
+      <path d="M -120 0 Q -80 -40 -40 -20 Q 0 0 40 -30 Q 80 -60 120 -40" stroke="#f43f5e" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+      
+      <!-- Noise points along path -->
+      <circle cx="-120" cy="0" r="8" fill="url(#diffusionGrad)"/>
+      <circle cx="-40" cy="-20" r="8" fill="url(#diffusionGrad)" opacity="0.8"/>
+      <circle cx="40" cy="-30" r="8" fill="url(#diffusionGrad)" opacity="0.6"/>
+      <circle cx="120" cy="-40" r="8" fill="#22c55e"/>
+    </g>
+    
+    <!-- Key properties -->
+    <g transform="translate(0, 40)">
+      <text x="-130" y="0" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Predict noise ε</text>
+      <text x="-130" y="18" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Score matching loss</text>
+      <text x="-130" y="36" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Variance schedule</text>
+      <text x="-130" y="54" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Many steps (50-1000)</text>
+    </g>
+    
+    <text y="100" text-anchor="middle" font-family="monospace" font-size="11" fill="#fb7185">ℒ = 𝔼[‖ε - ε_θ(x_t, t)‖²]</text>
+  </g>
+  
+  <!-- VS -->
+  <g transform="translate(450, 240)">
+    <circle r="25" fill="rgba(168,85,247,0.3)" stroke="#a855f7" stroke-width="2"/>
+    <text y="6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#c084fc">VS</text>
+  </g>
+  
+  <!-- Flow Matching Side -->
+  <g transform="translate(650, 240)">
+    <rect x="-170" y="-110" width="340" height="220" rx="15" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2" filter="url(#shadow)"/>
+    <text y="-85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#22d3ee">Flow Matching</text>
+    
+    <!-- Straight path -->
+    <g transform="translate(0, -20)">
+      <line x1="-120" y1="0" x2="120" y2="0" stroke="#06b6d4" stroke-width="2"/>
+      
+      <!-- Points along straight line -->
+      <circle cx="-120" cy="0" r="8" fill="url(#flowGrad)"/>
+      <circle cx="-40" cy="0" r="8" fill="url(#flowGrad)" opacity="0.8"/>
+      <circle cx="40" cy="0" r="8" fill="url(#flowGrad)" opacity="0.6"/>
+      <circle cx="120" cy="0" r="8" fill="#22c55e"/>
+    </g>
+    
+    <!-- Key properties -->
+    <g transform="translate(0, 40)">
+      <text x="-130" y="0" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Predict velocity v</text>
+      <text x="-130" y="18" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Regression loss</text>
+      <text x="-130" y="36" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Linear interpolation</text>
+      <text x="-130" y="54" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Fewer steps (1-10)</text>
+    </g>
+    
+    <text y="100" text-anchor="middle" font-family="monospace" font-size="11" fill="#22d3ee">ℒ = 𝔼[‖v - v_θ(x_t, t)‖²]</text>
+  </g>
+  
+  <!-- Bottom: Unified View -->
+  <g transform="translate(450, 420)">
+    <rect x="-350" y="-35" width="700" height="70" rx="12" fill="rgba(168,85,247,0.1)" stroke="rgba(168,85,247,0.3)"/>
+    <text y="-8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#c084fc">Unified View: Both are continuous-time transformations</text>
+    <text y="18" text-anchor="middle" font-family="serif" font-size="13" fill="rgba(255,255,255,0.7)">
+      dx/dt = f(x, t) — Diffusion uses SDE, Flow uses ODE
+    </text>
+  </g>
+</svg>
+

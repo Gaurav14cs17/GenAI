@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="velGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="100%" style="stop-color:#4ecdc4"/>
+    </linearGradient>
+    <marker id="arrowVel" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#4ecdc4"/>
+    </marker>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <text x="400" y="35" text-anchor="middle" font-family="system-ui" font-size="22" font-weight="700" fill="white">
+    Learned Velocity Field v_θ(x_t, t)
+  </text>
+  <text x="400" y="60" text-anchor="middle" font-family="system-ui" font-size="13" fill="rgba(255,255,255,0.6)">
+    The neural network learns to predict the direction from noise to data
+  </text>
+  
+  <!-- Grid of velocity vectors -->
+  <g transform="translate(100, 100)">
+    <!-- Background grid -->
+    <rect x="0" y="0" width="600" height="250" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)"/>
+    
+    <!-- Velocity field arrows - showing flow from left (noise) to right (data) -->
+    <g stroke="#4ecdc4" stroke-width="1.5" fill="none">
+      <!-- Row 1 -->
+      <line x1="30" y1="30" x2="70" y2="35" marker-end="url(#arrowVel)"/>
+      <line x1="120" y1="25" x2="160" y2="30" marker-end="url(#arrowVel)"/>
+      <line x1="210" y1="28" x2="250" y2="32" marker-end="url(#arrowVel)"/>
+      <line x1="300" y1="30" x2="340" y2="33" marker-end="url(#arrowVel)"/>
+      <line x1="390" y1="32" x2="430" y2="34" marker-end="url(#arrowVel)"/>
+      <line x1="480" y1="33" x2="520" y2="34" marker-end="url(#arrowVel)"/>
+      <line x1="540" y1="34" x2="580" y2="34" marker-end="url(#arrowVel)"/>
+      
+      <!-- Row 2 -->
+      <line x1="30" y1="70" x2="70" y2="72" marker-end="url(#arrowVel)"/>
+      <line x1="120" y1="68" x2="160" y2="70" marker-end="url(#arrowVel)"/>
+      <line x1="210" y1="69" x2="250" y2="70" marker-end="url(#arrowVel)"/>
+      <line x1="300" y1="70" x2="340" y2="70" marker-end="url(#arrowVel)"/>
+      <line x1="390" y1="70" x2="430" y2="70" marker-end="url(#arrowVel)"/>
+      <line x1="480" y1="70" x2="520" y2="70" marker-end="url(#arrowVel)"/>
+      <line x1="540" y1="70" x2="580" y2="70" marker-end="url(#arrowVel)"/>
+      
+      <!-- Row 3 -->
+      <line x1="30" y1="110" x2="70" y2="108" marker-end="url(#arrowVel)"/>
+      <line x1="120" y1="112" x2="160" y2="110" marker-end="url(#arrowVel)"/>
+      <line x1="210" y1="111" x2="250" y2="110" marker-end="url(#arrowVel)"/>
+      <line x1="300" y1="110" x2="340" y2="110" marker-end="url(#arrowVel)"/>
+      <line x1="390" y1="110" x2="430" y2="110" marker-end="url(#arrowVel)"/>
+      <line x1="480" y1="110" x2="520" y2="110" marker-end="url(#arrowVel)"/>
+      <line x1="540" y1="110" x2="580" y2="110" marker-end="url(#arrowVel)"/>
+      
+      <!-- Row 4 -->
+      <line x1="30" y1="150" x2="70" y2="145" marker-end="url(#arrowVel)"/>
+      <line x1="120" y1="152" x2="160" y2="148" marker-end="url(#arrowVel)"/>
+      <line x1="210" y1="150" x2="250" y2="148" marker-end="url(#arrowVel)"/>
+      <line x1="300" y1="150" x2="340" y2="149" marker-end="url(#arrowVel)"/>
+      <line x1="390" y1="150" x2="430" y2="150" marker-end="url(#arrowVel)"/>
+      <line x1="480" y1="150" x2="520" y2="150" marker-end="url(#arrowVel)"/>
+      <line x1="540" y1="150" x2="580" y2="150" marker-end="url(#arrowVel)"/>
+      
+      <!-- Row 5 -->
+      <line x1="30" y1="190" x2="70" y2="185" marker-end="url(#arrowVel)"/>
+      <line x1="120" y1="192" x2="160" y2="188" marker-end="url(#arrowVel)"/>
+      <line x1="210" y1="190" x2="250" y2="188" marker-end="url(#arrowVel)"/>
+      <line x1="300" y1="190" x2="340" y2="189" marker-end="url(#arrowVel)"/>
+      <line x1="390" y1="190" x2="430" y2="190" marker-end="url(#arrowVel)"/>
+      <line x1="480" y1="190" x2="520" y2="190" marker-end="url(#arrowVel)"/>
+      <line x1="540" y1="190" x2="580" y2="190" marker-end="url(#arrowVel)"/>
+      
+      <!-- Row 6 -->
+      <line x1="30" y1="220" x2="70" y2="215" marker-end="url(#arrowVel)"/>
+      <line x1="120" y1="222" x2="160" y2="218" marker-end="url(#arrowVel)"/>
+      <line x1="210" y1="220" x2="250" y2="218" marker-end="url(#arrowVel)"/>
+      <line x1="300" y1="220" x2="340" y2="219" marker-end="url(#arrowVel)"/>
+      <line x1="390" y1="220" x2="430" y2="220" marker-end="url(#arrowVel)"/>
+      <line x1="480" y1="220" x2="520" y2="220" marker-end="url(#arrowVel)"/>
+      <line x1="540" y1="220" x2="580" y2="220" marker-end="url(#arrowVel)"/>
+    </g>
+    
+    <!-- Labels -->
+    <text x="0" y="270" font-family="serif" font-size="14" fill="#ff6b6b">t = 0 (noise)</text>
+    <text x="530" y="270" font-family="serif" font-size="14" fill="#4ecdc4">t = 1 (data)</text>
+    
+    <!-- Time axis -->
+    <line x1="0" y1="255" x2="600" y2="255" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  </g>
+  
+  <!-- Formula box -->
+  <g transform="translate(400, 380)">
+    <text text-anchor="middle" font-family="serif" font-size="16" fill="#a78bfa">
+      Loss: 𝓛 = 𝔼[‖v_θ(x_t, t) - (x₁ - x₀)‖²]
+    </text>
+  </g>
+</svg>
+

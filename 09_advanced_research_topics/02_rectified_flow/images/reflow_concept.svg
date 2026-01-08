@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300">
+  <defs>
+    <linearGradient id="crossingGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444"/>
+      <stop offset="100%" style="stop-color:#F97316"/>
+    </linearGradient>
+    <linearGradient id="straightGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#3B82F6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="300" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="350" y="25" font-family="system-ui, sans-serif" font-size="16" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Rectified Flow: Before and After</text>
+  
+  <!-- Left: Crossing Paths -->
+  <rect x="30" y="45" width="300" height="210" rx="10" fill="#1E293B" stroke="#EF4444" stroke-width="2"/>
+  <text x="180" y="70" font-family="system-ui, sans-serif" font-size="12" fill="#EF4444" text-anchor="middle" font-weight="bold">Standard Flow (Paths Cross)</text>
+  
+  <!-- Crossing path lines -->
+  <circle cx="60" cy="100" r="5" fill="#3B82F6"/>
+  <circle cx="300" cy="120" r="5" fill="#8B5CF6"/>
+  <path d="M 65 100 Q 150 80 200 130 Q 250 150 295 120" stroke="#3B82F6" stroke-width="2" fill="none"/>
+  
+  <circle cx="60" cy="140" r="5" fill="#F59E0B"/>
+  <circle cx="300" cy="160" r="5" fill="#EC4899"/>
+  <path d="M 65 140 Q 150 180 200 150 Q 250 120 295 160" stroke="#F59E0B" stroke-width="2" fill="none"/>
+  
+  <circle cx="60" cy="180" r="5" fill="#10B981"/>
+  <circle cx="300" cy="200" r="5" fill="#A855F7"/>
+  <path d="M 65 180 Q 150 160 200 170 Q 250 180 295 200" stroke="#10B981" stroke-width="2" fill="none"/>
+  
+  <!-- X mark for crossing -->
+  <text x="180" y="155" font-family="system-ui, sans-serif" font-size="16" fill="#EF4444" text-anchor="middle">✗</text>
+  
+  <text x="180" y="235" font-family="system-ui, sans-serif" font-size="9" fill="#EF4444" text-anchor="middle">Crossing = Need many steps!</text>
+  <text x="60" y="240" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8">x₀</text>
+  <text x="290" y="240" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8">x₁</text>
+  
+  <!-- Arrow -->
+  <text x="350" y="155" font-family="system-ui, sans-serif" font-size="24" fill="#64748B" text-anchor="middle">→</text>
+  <text x="350" y="175" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Reflow</text>
+  
+  <!-- Right: Straight Paths -->
+  <rect x="370" y="45" width="300" height="210" rx="10" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+  <text x="520" y="70" font-family="system-ui, sans-serif" font-size="12" fill="#10B981" text-anchor="middle" font-weight="bold">After Rectification (Straight)</text>
+  
+  <!-- Straight path lines -->
+  <circle cx="400" cy="100" r="5" fill="#3B82F6"/>
+  <circle cx="640" cy="100" r="5" fill="#8B5CF6"/>
+  <line x1="405" y1="100" x2="635" y2="100" stroke="url(#straightGrad)" stroke-width="3"/>
+  
+  <circle cx="400" cy="140" r="5" fill="#F59E0B"/>
+  <circle cx="640" cy="140" r="5" fill="#EC4899"/>
+  <line x1="405" y1="140" x2="635" y2="140" stroke="url(#straightGrad)" stroke-width="3"/>
+  
+  <circle cx="400" cy="180" r="5" fill="#10B981"/>
+  <circle cx="640" cy="180" r="5" fill="#A855F7"/>
+  <line x1="405" y1="180" x2="635" y2="180" stroke="url(#straightGrad)" stroke-width="3"/>
+  
+  <circle cx="400" cy="220" r="5" fill="#EF4444"/>
+  <circle cx="640" cy="220" r="5" fill="#FBBF24"/>
+  <line x1="405" y1="220" x2="635" y2="220" stroke="url(#straightGrad)" stroke-width="3"/>
+  
+  <text x="520" y="235" font-family="system-ui, sans-serif" font-size="9" fill="#10B981" text-anchor="middle">Straight = 1-step Euler! ✓</text>
+  <text x="400" y="250" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8">x₀</text>
+  <text x="630" y="250" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8">x₁</text>
+  
+  <!-- Bottom note -->
+  <text x="350" y="285" font-family="system-ui, sans-serif" font-size="10" fill="#64748B" text-anchor="middle" font-style="italic">Straight paths → minimal ODE steps → faster sampling</text>
+</svg>
+

@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 550">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e1b4b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="clipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="crossAttnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#be185d"/>
+    </linearGradient>
+    <linearGradient id="cfgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+  
+  <rect width="1000" height="550" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="white" filter="url(#glow)">
+    Text-to-Image Architecture
+  </text>
+  <text x="500" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">
+    CLIP Text Encoding + Cross-Attention + Classifier-Free Guidance
+  </text>
+  
+  <!-- Main Pipeline -->
+  <g transform="translate(50, 100)">
+    <!-- Text Input -->
+    <g transform="translate(0, 80)">
+      <rect x="0" y="0" width="120" height="80" rx="10" fill="rgba(251,191,36,0.2)" stroke="#fbbf24" stroke-width="2" filter="url(#shadow)"/>
+      <text x="60" y="30" text-anchor="middle" font-size="20">💬</text>
+      <text x="60" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#fcd34d">"a cat wearing</text>
+      <text x="60" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#fcd34d">a top hat"</text>
+    </g>
+    
+    <path d="M 130 120 L 170 120" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- CLIP Text Encoder -->
+    <g transform="translate(180, 50)">
+      <rect x="0" y="0" width="130" height="140" rx="10" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+      <text x="65" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#fbbf24">CLIP</text>
+      <text x="65" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#fcd34d">Text Encoder</text>
+      
+      <g transform="translate(15, 65)">
+        <rect x="0" y="0" width="100" height="25" rx="4" fill="rgba(245,158,11,0.2)"/>
+        <text x="50" y="17" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.8)">Tokenize</text>
+      </g>
+      <g transform="translate(15, 95)">
+        <rect x="0" y="0" width="100" height="25" rx="4" fill="rgba(245,158,11,0.2)"/>
+        <text x="50" y="17" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.8)">Transformer</text>
+      </g>
+      <text x="65" y="135" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.4)">frozen</text>
+    </g>
+    
+    <path d="M 320 120 L 360 120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Text Embeddings -->
+    <g transform="translate(370, 80)">
+      <rect x="0" y="0" width="80" height="80" rx="8" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="40" y="30" text-anchor="middle" font-size="18">📝</text>
+      <text x="40" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#a78bfa">Text Emb</text>
+      <text x="40" y="68" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)">77×768</text>
+    </g>
+    
+    <!-- Cross Attention arrows -->
+    <path d="M 450 100 L 500 100 L 500 180 L 550 180" stroke="#ec4899" stroke-width="2" stroke-dasharray="5,3"/>
+    
+    <!-- U-Net with Cross Attention -->
+    <g transform="translate(560, 30)">
+      <rect x="0" y="0" width="200" height="260" rx="12" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+      <text x="100" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#a78bfa">U-Net</text>
+      
+      <!-- Noise input -->
+      <g transform="translate(20, 50)">
+        <rect x="0" y="0" width="60" height="50" rx="6" fill="rgba(239,68,68,0.3)" stroke="#ef4444"/>
+        <text x="30" y="25" text-anchor="middle" font-size="14">🌫️</text>
+        <text x="30" y="42" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)">z_t</text>
+      </g>
+      
+      <!-- Time embedding -->
+      <g transform="translate(100, 50)">
+        <rect x="0" y="0" width="80" height="50" rx="6" fill="rgba(6,182,212,0.3)" stroke="#06b6d4"/>
+        <text x="40" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#22d3ee">Time t</text>
+        <text x="40" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)">sinusoidal</text>
+      </g>
+      
+      <!-- Cross-Attention Block -->
+      <g transform="translate(20, 115)">
+        <rect x="0" y="0" width="160" height="70" rx="8" fill="rgba(236,72,153,0.2)" stroke="#ec4899" stroke-width="2"/>
+        <text x="80" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#f472b6">Cross-Attention</text>
+        <text x="80" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">Q: image features</text>
+        <text x="80" y="56" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">K,V: text embeddings</text>
+      </g>
+      
+      <!-- Output -->
+      <g transform="translate(60, 200)">
+        <rect x="0" y="0" width="80" height="45" rx="6" fill="rgba(34,197,94,0.3)" stroke="#22c55e"/>
+        <text x="40" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#4ade80">ε_θ(z_t, t, c)</text>
+        <text x="40" y="36" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)">predicted noise</text>
+      </g>
+    </g>
+    
+    <!-- Output -->
+    <g transform="translate(820, 100)">
+      <rect x="0" y="0" width="80" height="80" rx="10" fill="rgba(34,197,94,0.3)" stroke="#22c55e" stroke-width="2" filter="url(#shadow)"/>
+      <text x="40" y="35" text-anchor="middle" font-size="24">🐱</text>
+      <text x="40" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#4ade80">Generated!</text>
+    </g>
+    
+    <path d="M 770 160 L 810 140" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+  
+  <!-- Classifier-Free Guidance Box -->
+  <g transform="translate(50, 380)">
+    <rect x="0" y="0" width="900" height="150" rx="12" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="2"/>
+    
+    <text x="450" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#34d399">
+      🎛️ Classifier-Free Guidance (CFG)
+    </text>
+    
+    <g transform="translate(50, 50)">
+      <text font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">
+        <tspan x="0" y="0" font-weight="600" fill="#4ade80">Key Idea:</tspan>
+        <tspan x="0" y="20" fill="rgba(255,255,255,0.7)">Mix conditional and unconditional predictions</tspan>
+      </text>
+      
+      <text x="0" y="55" font-family="serif" font-size="14" fill="white">
+        ε̃ = ε_uncond + w · (ε_cond - ε_uncond)
+      </text>
+      
+      <text x="0" y="85" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">
+        w = guidance scale (typical: 7.5)
+      </text>
+    </g>
+    
+    <g transform="translate(450, 50)">
+      <text font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">
+        <tspan x="0" y="0" font-weight="600" fill="#fbbf24">Training:</tspan>
+        <tspan x="0" y="20" fill="rgba(255,255,255,0.7)">• Randomly drop text (set to ∅) 10% of time</tspan>
+        <tspan x="0" y="38" fill="rgba(255,255,255,0.7)">• Model learns both conditional &amp; unconditional</tspan>
+      </text>
+      
+      <text font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">
+        <tspan x="0" y="65" font-weight="600" fill="#f472b6">Effect:</tspan>
+        <tspan x="0" y="83" fill="rgba(255,255,255,0.7)">Higher w → stronger text adherence, less diversity</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
+

@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29"/>
+      <stop offset="50%" style="stop-color:#302b63"/>
+      <stop offset="100%" style="stop-color:#24243e"/>
+    </linearGradient>
+    
+    <linearGradient id="proj1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    
+    <linearGradient id="proj2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    
+    <linearGradient id="proj3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#0891b2"/>
+    </linearGradient>
+    
+    <linearGradient id="proj4Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    
+    <linearGradient id="proj5Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#db2777"/>
+    </linearGradient>
+    
+    <linearGradient id="proj6Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <rect width="1000" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Background pattern -->
+  <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+    <circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.03)"/>
+  </pattern>
+  <rect width="1000" height="500" fill="url(#grid)"/>
+  
+  <!-- Title -->
+  <text x="500" y="50" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="white" filter="url(#glow)">
+    🛠️ Hands-On Generative AI Projects
+  </text>
+  <text x="500" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">
+    Build generative models from scratch • Master the fundamentals • Create production-ready systems
+  </text>
+  
+  <!-- Project Cards Row 1 -->
+  <g transform="translate(85, 110)">
+    <!-- Project 1: GAN -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="260" height="140" rx="12" fill="rgba(34,197,94,0.1)" stroke="#22c55e" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="40" cy="40" r="24" fill="url(#proj1Grad)"/>
+      <text x="40" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="white">01</text>
+      
+      <text x="80" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#4ade80">GAN from Scratch</text>
+      <text x="80" y="55" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.7)">Adversarial training</text>
+      
+      <text x="20" y="80" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Generator vs Discriminator</text>
+      <text x="20" y="95" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Mode collapse debugging</text>
+      <text x="20" y="110" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• FID evaluation</text>
+      
+      <rect x="20" y="120" width="70" height="18" rx="4" fill="rgba(34,197,94,0.3)"/>
+      <text x="55" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#4ade80">🟢 Beginner</text>
+    </g>
+    
+    <!-- Project 2: Diffusion -->
+    <g transform="translate(280, 0)">
+      <rect x="0" y="0" width="260" height="140" rx="12" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="40" cy="40" r="24" fill="url(#proj2Grad)"/>
+      <text x="40" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="white">02</text>
+      
+      <text x="80" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#a78bfa">Diffusion from Scratch</text>
+      <text x="80" y="55" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.7)">DDPM implementation</text>
+      
+      <text x="20" y="80" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Noise scheduling</text>
+      <text x="20" y="95" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• U-Net architecture</text>
+      <text x="20" y="110" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• DDPM/DDIM sampling</text>
+      
+      <rect x="20" y="120" width="85" height="18" rx="4" fill="rgba(251,191,36,0.3)"/>
+      <text x="62" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#fbbf24">🟡 Intermediate</text>
+    </g>
+    
+    <!-- Project 3: Latent Diffusion -->
+    <g transform="translate(560, 0)">
+      <rect x="0" y="0" width="260" height="140" rx="12" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="40" cy="40" r="24" fill="url(#proj3Grad)"/>
+      <text x="40" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="white">03</text>
+      
+      <text x="80" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#22d3ee">Latent Diffusion Mini</text>
+      <text x="80" y="55" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.7)">VAE + Latent space</text>
+      
+      <text x="20" y="80" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Autoencoder training</text>
+      <text x="20" y="95" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Perceptual loss</text>
+      <text x="20" y="110" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• 48× efficiency gain</text>
+      
+      <rect x="20" y="120" width="85" height="18" rx="4" fill="rgba(251,191,36,0.3)"/>
+      <text x="62" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#fbbf24">🟡 Intermediate</text>
+    </g>
+  </g>
+  
+  <!-- Project Cards Row 2 -->
+  <g transform="translate(85, 270)">
+    <!-- Project 4: Text-to-Image -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="260" height="140" rx="12" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="40" cy="40" r="24" fill="url(#proj4Grad)"/>
+      <text x="40" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="white">04</text>
+      
+      <text x="80" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#fbbf24">Text-to-Image Mini</text>
+      <text x="80" y="55" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.7)">CLIP + Cross-attention</text>
+      
+      <text x="20" y="80" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Text encoding</text>
+      <text x="20" y="95" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Cross-attention</text>
+      <text x="20" y="110" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Classifier-free guidance</text>
+      
+      <rect x="20" y="120" width="70" height="18" rx="4" fill="rgba(239,68,68,0.3)"/>
+      <text x="55" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#f87171">🔴 Advanced</text>
+    </g>
+    
+    <!-- Project 5: ControlNet -->
+    <g transform="translate(280, 0)">
+      <rect x="0" y="0" width="260" height="140" rx="12" fill="rgba(236,72,153,0.1)" stroke="#ec4899" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="40" cy="40" r="24" fill="url(#proj5Grad)"/>
+      <text x="40" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="white">05</text>
+      
+      <text x="80" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#f472b6">ControlNet Mini</text>
+      <text x="80" y="55" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.7)">Spatial conditioning</text>
+      
+      <text x="20" y="80" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Zero convolutions</text>
+      <text x="20" y="95" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Edge/depth control</text>
+      <text x="20" y="110" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• Adapter training</text>
+      
+      <rect x="20" y="120" width="70" height="18" rx="4" fill="rgba(239,68,68,0.3)"/>
+      <text x="55" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#f87171">🔴 Advanced</text>
+    </g>
+    
+    <!-- Project 6: Speed -->
+    <g transform="translate(560, 0)">
+      <rect x="0" y="0" width="260" height="140" rx="12" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="40" cy="40" r="24" fill="url(#proj6Grad)"/>
+      <text x="40" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="white">06</text>
+      
+      <text x="80" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#f87171">Speed Optimization</text>
+      <text x="80" y="55" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.7)">Production-ready</text>
+      
+      <text x="20" y="80" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• DPM++ samplers</text>
+      <text x="20" y="95" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• torch.compile</text>
+      <text x="20" y="110" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">• 50× speedup</text>
+      
+      <rect x="20" y="120" width="70" height="18" rx="4" fill="rgba(239,68,68,0.3)"/>
+      <text x="55" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#f87171">🔴 Advanced</text>
+    </g>
+  </g>
+  
+  <!-- Bottom bar -->
+  <g transform="translate(85, 430)">
+    <rect x="0" y="0" width="830" height="50" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    
+    <text x="80" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">🧠 Deep Learning</text>
+    <text x="220" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">🔧 Debugging Skills</text>
+    <text x="380" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">📊 Evaluation Metrics</text>
+    <text x="540" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">⚡ Production Ready</text>
+    <text x="700" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">💼 Portfolio Projects</text>
+  </g>
+</svg>

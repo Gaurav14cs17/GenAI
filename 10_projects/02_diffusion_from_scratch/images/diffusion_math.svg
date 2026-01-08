@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0a20"/>
+      <stop offset="50%" style="stop-color:#1a0a2e"/>
+      <stop offset="100%" style="stop-color:#0c0a20"/>
+    </linearGradient>
+    <linearGradient id="mathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="50%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1000" height="650" fill="url(#bgGrad)"/>
+  
+  <!-- Background math symbols -->
+  <text x="80" y="120" font-family="serif" font-size="80" fill="rgba(255,255,255,0.02)" transform="rotate(-15 80 120)">∫∇</text>
+  <text x="850" y="200" font-family="serif" font-size="70" fill="rgba(255,255,255,0.02)" transform="rotate(12 850 200)">𝔼∂</text>
+  <text x="100" y="550" font-family="serif" font-size="60" fill="rgba(255,255,255,0.02)">μσ²</text>
+  <text x="820" y="600" font-family="serif" font-size="65" fill="rgba(255,255,255,0.02)">βα</text>
+  
+  <!-- Title -->
+  <text x="500" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="white" filter="url(#glow)">
+    Mathematics of Diffusion Models
+  </text>
+  <text x="500" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="rgba(255,255,255,0.6)">
+    DDPM: Denoising Diffusion Probabilistic Models
+  </text>
+  
+  <!-- Noise Schedule Section -->
+  <g transform="translate(50, 100)">
+    <rect x="0" y="0" width="420" height="160" rx="12" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2"/>
+    
+    <text x="210" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#22d3ee">
+      📊 Noise Schedule
+    </text>
+    
+    <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">
+      <tspan font-weight="600" fill="#67e8f9">Variance schedule:</tspan>
+    </text>
+    <text x="210" y="85" text-anchor="middle" font-family="serif" font-size="14" fill="white">
+      β₁ &lt; β₂ &lt; ... &lt; β_T
+    </text>
+    <text x="210" y="105" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.6)">
+      typically β₁ = 10⁻⁴, β_T = 0.02
+    </text>
+    
+    <text x="30" y="135" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">
+      <tspan font-weight="600" fill="#67e8f9">Cumulative products:</tspan>
+    </text>
+    <text x="280" y="135" font-family="serif" font-size="12" fill="white">
+      α_t = 1 - β_t,  ᾱ_t = ∏ᵢ₌₁ᵗ αᵢ
+    </text>
+  </g>
+  
+  <!-- Forward Process Section -->
+  <g transform="translate(530, 100)">
+    <rect x="0" y="0" width="420" height="160" rx="12" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="2"/>
+    
+    <text x="210" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#f87171">
+      → Forward Process q(x_t | x_0)
+    </text>
+    
+    <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">
+      <tspan font-weight="600" fill="#fca5a5">Closed-form solution:</tspan>
+    </text>
+    <text x="210" y="90" text-anchor="middle" font-family="serif" font-size="16" fill="white">
+      q(x_t | x₀) = 𝒩(x_t; √ᾱ_t x₀, (1-ᾱ_t)I)
+    </text>
+    
+    <text x="30" y="125" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">
+      <tspan font-weight="600" fill="#fca5a5">Reparameterization:</tspan>
+    </text>
+    <text x="210" y="150" text-anchor="middle" font-family="serif" font-size="15" fill="white">
+      x_t = √ᾱ_t · x₀ + √(1-ᾱ_t) · ε
+    </text>
+  </g>
+  
+  <!-- Reverse Process Section -->
+  <g transform="translate(50, 280)">
+    <rect x="0" y="0" width="420" height="180" rx="12" fill="rgba(34,197,94,0.1)" stroke="#22c55e" stroke-width="2"/>
+    
+    <text x="210" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#4ade80">
+      ← Reverse Process p_θ(x_{t-1} | x_t)
+    </text>
+    
+    <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">
+      <tspan font-weight="600" fill="#86efac">Learned Gaussian:</tspan>
+    </text>
+    <text x="210" y="85" text-anchor="middle" font-family="serif" font-size="14" fill="white">
+      p_θ(x_{t-1}|x_t) = 𝒩(x_{t-1}; μ_θ(x_t,t), σ²_t I)
+    </text>
+    
+    <text x="30" y="115" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">
+      <tspan font-weight="600" fill="#86efac">Mean prediction:</tspan>
+    </text>
+    <text x="210" y="145" text-anchor="middle" font-family="serif" font-size="13" fill="white">
+      μ_θ = (1/√α_t)(x_t - β_t/√(1-ᾱ_t) · ε_θ(x_t, t))
+    </text>
+    
+    <text x="30" y="170" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">
+      where ε_θ is the U-Net predicting the noise
+    </text>
+  </g>
+  
+  <!-- Training Objective Section -->
+  <g transform="translate(530, 280)">
+    <rect x="0" y="0" width="420" height="180" rx="12" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="2"/>
+    
+    <text x="210" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#a78bfa">
+      🎯 Training Objective
+    </text>
+    
+    <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">
+      <tspan font-weight="600" fill="#c4b5fd">Simplified loss (DDPM):</tspan>
+    </text>
+    <text x="210" y="95" text-anchor="middle" font-family="serif" font-size="18" fill="white" filter="url(#glow)">
+      ℒ_simple = 𝔼_{t,x₀,ε} [‖ε - ε_θ(x_t, t)‖²]
+    </text>
+    
+    <text x="30" y="130" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">
+      <tspan fill="#fbbf24">Algorithm:</tspan>
+    </text>
+    <text x="30" y="150" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">
+      1. Sample x₀ ~ data, t ~ U[1,T], ε ~ N(0,I)
+    </text>
+    <text x="30" y="168" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">
+      2. Compute x_t = √ᾱ_t·x₀ + √(1-ᾱ_t)·ε
+    </text>
+  </g>
+  
+  <!-- Sampling Algorithm -->
+  <g transform="translate(50, 480)">
+    <rect x="0" y="0" width="900" height="150" rx="12" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="2"/>
+    
+    <text x="450" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#fcd34d">
+      🔄 DDPM Sampling Algorithm
+    </text>
+    
+    <g transform="translate(50, 50)">
+      <text font-family="monospace" font-size="11" fill="#94a3b8">
+        <tspan x="0" y="0" fill="#fbbf24">def</tspan><tspan> sample(model, T):</tspan>
+        <tspan x="20" y="20">x_T = </tspan><tspan fill="#22d3ee">torch.randn</tspan><tspan>(...) </tspan><tspan fill="#6b7280"># Start from pure noise</tspan>
+        <tspan x="20" y="40" fill="#fbbf24">for</tspan><tspan> t </tspan><tspan fill="#fbbf24">in</tspan><tspan> reversed(range(1, T+1)):</tspan>
+        <tspan x="40" y="60">z = </tspan><tspan fill="#22d3ee">torch.randn_like</tspan><tspan>(x_t) </tspan><tspan fill="#fbbf24">if</tspan><tspan> t > 1 </tspan><tspan fill="#fbbf24">else</tspan><tspan> 0</tspan>
+      </text>
+    </g>
+    
+    <g transform="translate(500, 50)">
+      <text font-family="monospace" font-size="11" fill="#94a3b8">
+        <tspan x="0" y="0">ε_pred = </tspan><tspan fill="#a78bfa">model</tspan><tspan>(x_t, t)</tspan>
+        <tspan x="0" y="20">μ = (1/√α_t) * (x_t - β_t/√(1-ᾱ_t) * ε_pred)</tspan>
+        <tspan x="0" y="40">x_{t-1} = μ + σ_t * z</tspan>
+        <tspan x="0" y="70" fill="#fbbf24">return</tspan><tspan> x_0 </tspan><tspan fill="#6b7280"># Generated image!</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
+

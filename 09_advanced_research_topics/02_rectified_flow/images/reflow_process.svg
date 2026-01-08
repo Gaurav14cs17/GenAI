@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="bgRF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29"/>
+      <stop offset="100%" style="stop-color:#302b63"/>
+    </linearGradient>
+    <linearGradient id="stage1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
+    </linearGradient>
+    <linearGradient id="stage2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#eab308"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+    <linearGradient id="stage3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+    <filter id="glowRF">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrowRF" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.5)"/>
+    </marker>
+  </defs>
+  
+  <rect width="900" height="400" fill="url(#bgRF)"/>
+  
+  <text x="450" y="35" text-anchor="middle" font-family="system-ui" font-size="22" font-weight="700" fill="white" filter="url(#glowRF)">
+    Reflow: Iterative Path Straightening
+  </text>
+  
+  <!-- Stage 1: Curved paths -->
+  <g transform="translate(150, 200)">
+    <rect x="-120" y="-100" width="240" height="200" rx="12" fill="rgba(249,115,22,0.1)" stroke="url(#stage1)" stroke-width="2"/>
+    <text y="-75" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#fb923c">Initial (k=0)</text>
+    
+    <!-- Curved crossing paths -->
+    <path d="M -80,-40 Q -20,-70 20,-20 Q 60,30 80,20" stroke="#f97316" stroke-width="2" fill="none"/>
+    <path d="M -80,0 Q -20,40 20,-10 Q 60,-60 80,-40" stroke="#f97316" stroke-width="2" fill="none"/>
+    <path d="M -80,40 Q -20,10 20,30 Q 60,50 80,60" stroke="#f97316" stroke-width="2" fill="none"/>
+    
+    <circle cx="-80" cy="-40" r="4" fill="#ef4444"/>
+    <circle cx="-80" cy="0" r="4" fill="#ef4444"/>
+    <circle cx="-80" cy="40" r="4" fill="#ef4444"/>
+    <circle cx="80" cy="20" r="4" fill="#22c55e"/>
+    <circle cx="80" cy="-40" r="4" fill="#22c55e"/>
+    <circle cx="80" cy="60" r="4" fill="#22c55e"/>
+    
+    <text y="85" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Paths cross ✗</text>
+  </g>
+  
+  <!-- Arrow 1 -->
+  <g transform="translate(310, 200)">
+    <path d="M 0,0 L 50,0" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowRF)"/>
+    <text y="-15" x="25" text-anchor="middle" font-family="system-ui" font-size="10" fill="#a78bfa">Reflow</text>
+  </g>
+  
+  <!-- Stage 2: Less curved -->
+  <g transform="translate(450, 200)">
+    <rect x="-120" y="-100" width="240" height="200" rx="12" fill="rgba(234,179,8,0.1)" stroke="url(#stage2)" stroke-width="2"/>
+    <text y="-75" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#fde047">After Reflow 1 (k=1)</text>
+    
+    <!-- Less curved paths -->
+    <path d="M -80,-40 Q 0,-45 80,-30" stroke="#eab308" stroke-width="2" fill="none"/>
+    <path d="M -80,0 Q 0,5 80,10" stroke="#eab308" stroke-width="2" fill="none"/>
+    <path d="M -80,40 Q 0,45 80,50" stroke="#eab308" stroke-width="2" fill="none"/>
+    
+    <circle cx="-80" cy="-40" r="4" fill="#ef4444"/>
+    <circle cx="-80" cy="0" r="4" fill="#ef4444"/>
+    <circle cx="-80" cy="40" r="4" fill="#ef4444"/>
+    <circle cx="80" cy="-30" r="4" fill="#22c55e"/>
+    <circle cx="80" cy="10" r="4" fill="#22c55e"/>
+    <circle cx="80" cy="50" r="4" fill="#22c55e"/>
+    
+    <text y="85" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Less crossing ⚠</text>
+  </g>
+  
+  <!-- Arrow 2 -->
+  <g transform="translate(610, 200)">
+    <path d="M 0,0 L 50,0" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowRF)"/>
+    <text y="-15" x="25" text-anchor="middle" font-family="system-ui" font-size="10" fill="#a78bfa">Reflow</text>
+  </g>
+  
+  <!-- Stage 3: Straight -->
+  <g transform="translate(750, 200)">
+    <rect x="-120" y="-100" width="240" height="200" rx="12" fill="rgba(34,197,94,0.1)" stroke="url(#stage3)" stroke-width="2" filter="url(#glowRF)"/>
+    <text y="-75" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#4ade80">After Reflow 2+ (k≥2)</text>
+    
+    <!-- Straight paths -->
+    <line x1="-80" y1="-40" x2="80" y2="-40" stroke="#22c55e" stroke-width="2"/>
+    <line x1="-80" y1="0" x2="80" y2="0" stroke="#22c55e" stroke-width="2"/>
+    <line x1="-80" y1="40" x2="80" y2="40" stroke="#22c55e" stroke-width="2"/>
+    
+    <circle cx="-80" cy="-40" r="4" fill="#ef4444"/>
+    <circle cx="-80" cy="0" r="4" fill="#ef4444"/>
+    <circle cx="-80" cy="40" r="4" fill="#ef4444"/>
+    <circle cx="80" cy="-40" r="4" fill="#22c55e"/>
+    <circle cx="80" cy="0" r="4" fill="#22c55e"/>
+    <circle cx="80" cy="40" r="4" fill="#22c55e"/>
+    
+    <text y="85" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Straight ✓</text>
+  </g>
+  
+  <!-- Bottom formula -->
+  <g transform="translate(450, 365)">
+    <rect x="-380" y="-25" width="760" height="45" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    <text y="5" text-anchor="middle" font-family="serif" font-size="14" fill="#a78bfa">
+      Each reflow: sample (x₀, x₁) pairs using current model, then retrain → paths straighten
+    </text>
+  </g>
+</svg>
+

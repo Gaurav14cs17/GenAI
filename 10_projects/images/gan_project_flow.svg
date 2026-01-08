@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+  <defs>
+    <linearGradient id="projGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#EC4899"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="100" fill="#0F172A"/>
+  
+  <!-- Noise -->
+  <rect x="20" y="30" width="60" height="40" rx="6" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="50" y="55" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">z ~ N(0,I)</text>
+  
+  <!-- Arrow -->
+  <line x1="85" y1="50" x2="115" y2="50" stroke="#64748B" stroke-width="2"/>
+  <polygon points="115,50 108,45 108,55" fill="#64748B"/>
+  
+  <!-- Generator -->
+  <rect x="120" y="25" width="80" height="50" rx="8" fill="url(#projGrad)"/>
+  <text x="160" y="55" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Generator</text>
+  
+  <!-- Arrow -->
+  <line x1="205" y1="50" x2="235" y2="50" stroke="#64748B" stroke-width="2"/>
+  <polygon points="235,50 228,45 228,55" fill="#64748B"/>
+  
+  <!-- Fake Image -->
+  <rect x="240" y="30" width="60" height="40" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+  <text x="270" y="55" font-family="system-ui, sans-serif" font-size="9" fill="#10B981" text-anchor="middle">Fake 🖼️</text>
+  
+  <!-- Arrow down to D -->
+  <line x1="270" y1="75" x2="320" y2="75" stroke="#64748B" stroke-width="2"/>
+  <line x1="320" y1="75" x2="320" y2="50" stroke="#64748B" stroke-width="2"/>
+  <polygon points="320,50 315,57 325,57" fill="#64748B"/>
+  
+  <!-- Discriminator -->
+  <rect x="305" y="25" width="80" height="50" rx="8" fill="#EF4444"/>
+  <text x="345" y="50" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">Discrim</text>
+  <text x="345" y="65" font-family="system-ui, sans-serif" font-size="8" fill="#FECACA" text-anchor="middle">P(real)?</text>
+</svg>
+

@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0d1a"/>
+      <stop offset="50%" style="stop-color:#1a1a3e"/>
+      <stop offset="100%" style="stop-color:#0d0d1a"/>
+    </linearGradient>
+    <linearGradient id="genGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <linearGradient id="discGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f43f5e"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="noiseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#10b981"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#f43f5e"/>
+    </marker>
+  </defs>
+  
+  <rect width="1000" height="600" fill="url(#bgGrad)"/>
+  
+  <!-- Grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  </pattern>
+  <rect width="1000" height="600" fill="url(#grid)"/>
+  
+  <!-- Title -->
+  <text x="500" y="45" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" fill="white" filter="url(#glow)">
+    GAN Architecture Deep Dive
+  </text>
+  <text x="500" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="rgba(255,255,255,0.6)">
+    Generator vs Discriminator: The Adversarial Game
+  </text>
+  
+  <!-- GENERATOR SECTION -->
+  <g transform="translate(50, 120)">
+    <text x="200" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#10b981">
+      🎨 Generator Network
+    </text>
+    
+    <!-- Latent Vector -->
+    <g transform="translate(0, 40)">
+      <rect x="0" y="0" width="80" height="120" rx="8" fill="url(#noiseGrad)" filter="url(#shadow)"/>
+      <text x="40" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="white">Latent z</text>
+      <text x="40" y="50" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.8)">100 × 1</text>
+      <text x="40" y="75" text-anchor="middle" font-size="20">🎲</text>
+      <text x="40" y="100" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">~ N(0, I)</text>
+    </g>
+    
+    <path d="M 90 100 L 130 100" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+    
+    <!-- FC Layer -->
+    <g transform="translate(140, 35)">
+      <rect x="0" y="0" width="70" height="130" rx="6" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2"/>
+      <text x="35" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#34d399">Linear</text>
+      <text x="35" y="45" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">100→256×7×7</text>
+      <text x="35" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#34d399">ReLU</text>
+      <text x="35" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#34d399">Reshape</text>
+      <text x="35" y="115" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">256×7×7</text>
+    </g>
+    
+    <path d="M 220 100 L 250 100" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+    
+    <!-- ConvTranspose 1 -->
+    <g transform="translate(260, 25)">
+      <rect x="0" y="0" width="70" height="150" rx="6" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2"/>
+      <text x="35" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#34d399">ConvT2d</text>
+      <text x="35" y="45" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">256→128</text>
+      <text x="35" y="65" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">k=4, s=2</text>
+      <text x="35" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#fbbf24">BatchNorm</text>
+      <text x="35" y="110" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#34d399">ReLU</text>
+      <text x="35" y="135" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">128×14×14</text>
+    </g>
+    
+    <path d="M 340 100 L 370 100" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+    
+    <!-- ConvTranspose 2 -->
+    <g transform="translate(380, 25)">
+      <rect x="0" y="0" width="70" height="150" rx="6" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2"/>
+      <text x="35" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#34d399">ConvT2d</text>
+      <text x="35" y="45" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">128→1</text>
+      <text x="35" y="65" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">k=4, s=2</text>
+      <text x="35" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#a78bfa">Tanh</text>
+      <text x="35" y="115" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">[-1, 1]</text>
+      <text x="35" y="135" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">1×28×28</text>
+    </g>
+  </g>
+  
+  <!-- DISCRIMINATOR SECTION -->
+  <g transform="translate(520, 120)">
+    <text x="230" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#f43f5e">
+      🔍 Discriminator Network
+    </text>
+    
+    <!-- Input Image -->
+    <g transform="translate(0, 40)">
+      <rect x="0" y="0" width="80" height="120" rx="8" fill="rgba(59,130,246,0.3)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+      <text x="40" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="white">Image</text>
+      <text x="40" y="50" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.8)">1 × 28 × 28</text>
+      <text x="40" y="80" text-anchor="middle" font-size="22">🖼️</text>
+      <text x="40" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">Real or Fake?</text>
+    </g>
+    
+    <path d="M 90 100 L 120 100" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRed)"/>
+    
+    <!-- Conv 1 -->
+    <g transform="translate(130, 30)">
+      <rect x="0" y="0" width="70" height="140" rx="6" fill="rgba(244,63,94,0.2)" stroke="#f43f5e" stroke-width="2"/>
+      <text x="35" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#fb7185">Conv2d</text>
+      <text x="35" y="45" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">1→64</text>
+      <text x="35" y="65" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">k=4, s=2</text>
+      <text x="35" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#fb7185">LeakyReLU</text>
+      <text x="35" y="110" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">(0.2)</text>
+      <text x="35" y="130" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">64×14×14</text>
+    </g>
+    
+    <path d="M 210 100 L 240 100" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRed)"/>
+    
+    <!-- Conv 2 -->
+    <g transform="translate(250, 25)">
+      <rect x="0" y="0" width="70" height="150" rx="6" fill="rgba(244,63,94,0.2)" stroke="#f43f5e" stroke-width="2"/>
+      <text x="35" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#fb7185">Conv2d</text>
+      <text x="35" y="45" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">64→128</text>
+      <text x="35" y="65" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">k=4, s=2</text>
+      <text x="35" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#fbbf24">BatchNorm</text>
+      <text x="35" y="110" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#fb7185">LeakyReLU</text>
+      <text x="35" y="130" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.6)">128×7×7</text>
+    </g>
+    
+    <path d="M 330 100 L 360 100" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRed)"/>
+    
+    <!-- Output -->
+    <g transform="translate(370, 40)">
+      <rect x="0" y="0" width="80" height="120" rx="8" fill="rgba(244,63,94,0.3)" stroke="#f43f5e" stroke-width="2"/>
+      <text x="40" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#fb7185">Flatten</text>
+      <text x="40" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#fb7185">Linear</text>
+      <text x="40" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#a78bfa">Sigmoid</text>
+      <text x="40" y="95" text-anchor="middle" font-size="18">📊</text>
+      <text x="40" y="115" text-anchor="middle" font-family="monospace" font-size="9" fill="white">P(real)</text>
+    </g>
+  </g>
+  
+  <!-- Training Dynamics Section -->
+  <g transform="translate(50, 360)">
+    <rect x="0" y="0" width="900" height="220" rx="15" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    
+    <text x="450" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="white">
+      ⚔️ Adversarial Training Dynamics
+    </text>
+    
+    <!-- Loss Functions -->
+    <g transform="translate(50, 60)">
+      <rect x="0" y="0" width="380" height="80" rx="8" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1"/>
+      <text x="190" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#34d399">Generator Loss</text>
+      <text x="190" y="50" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.9)">L_G = -E[log(D(G(z)))]</text>
+      <text x="190" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.5)">Goal: Fool D into thinking fake is real</text>
+    </g>
+    
+    <g transform="translate(470, 60)">
+      <rect x="0" y="0" width="380" height="80" rx="8" fill="rgba(244,63,94,0.1)" stroke="#f43f5e" stroke-width="1"/>
+      <text x="190" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#fb7185">Discriminator Loss</text>
+      <text x="190" y="50" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.9)">L_D = -E[log(D(x))] - E[log(1-D(G(z)))]</text>
+      <text x="190" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.5)">Goal: Correctly classify real vs fake</text>
+    </g>
+    
+    <!-- Training Tips -->
+    <g transform="translate(50, 155)">
+      <text x="0" y="0" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#fbbf24">💡 Key Tips:</text>
+      <text x="100" y="0" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Use .detach() on fake images when training D</text>
+      <text x="400" y="0" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Adam with β₁=0.5, β₂=0.999</text>
+      <text x="650" y="0" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Label smoothing: 0.9 for real</text>
+      
+      <text x="0" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#f87171">⚠️ Watch For:</text>
+      <text x="100" y="25" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Mode collapse (all same output)</text>
+      <text x="350" y="25" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• D loss → 0 too fast</text>
+      <text x="550" y="25" font-family="system-ui, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">• Oscillating losses</text>
+    </g>
+  </g>
+</svg>
+

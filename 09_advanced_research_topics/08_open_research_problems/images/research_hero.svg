@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bgOR" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#1a1a2a"/>
+      <stop offset="100%" style="stop-color:#2a1a3a"/>
+    </linearGradient>
+    <linearGradient id="questionGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="futureGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+    <filter id="glowOR">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="dots" patternUnits="userSpaceOnUse" width="20" height="20">
+      <circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.05)"/>
+    </pattern>
+  </defs>
+  
+  <rect width="900" height="500" fill="url(#bgOR)"/>
+  <rect width="900" height="500" fill="url(#dots)"/>
+  
+  <!-- Animated question marks in background -->
+  <g fill="rgba(251,191,36,0.1)" font-family="system-ui" font-size="40">
+    <text x="80" y="120" opacity="0.3">?</text>
+    <text x="200" y="400" opacity="0.2">?</text>
+    <text x="700" y="150" opacity="0.25">?</text>
+    <text x="820" y="380" opacity="0.15">?</text>
+    <text x="400" y="480" opacity="0.2">?</text>
+  </g>
+  
+  <text x="450" y="45" text-anchor="middle" font-family="system-ui" font-size="32" font-weight="700" fill="white" filter="url(#glowOR)">
+    🔮 Open Research Problems
+  </text>
+  <text x="450" y="80" text-anchor="middle" font-family="system-ui" font-size="15" fill="rgba(255,255,255,0.7)">
+    Unsolved challenges pushing the boundaries of generative AI
+  </text>
+  
+  <!-- Problem categories in a radial layout -->
+  <g transform="translate(450, 280)">
+    <!-- Center hub -->
+    <circle r="50" fill="rgba(139,92,246,0.2)" stroke="url(#futureGrad)" stroke-width="3" filter="url(#glowOR)"/>
+    <text y="8" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="white">Future</text>
+    
+    <!-- Problem 1: Sampling Speed -->
+    <g transform="translate(-200, -120)">
+      <rect x="-80" y="-45" width="160" height="90" rx="12" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+      <text y="-20" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#f87171">⚡ Real-Time</text>
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">30+ FPS generation</text>
+      <text y="20" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">for interactive apps</text>
+      <line x1="70" y1="45" x2="130" y2="85" stroke="rgba(239,68,68,0.3)" stroke-width="1" stroke-dasharray="4,2"/>
+    </g>
+    
+    <!-- Problem 2: Long Video -->
+    <g transform="translate(200, -120)">
+      <rect x="-80" y="-45" width="160" height="90" rx="12" fill="rgba(102,126,234,0.15)" stroke="#667eea" stroke-width="2"/>
+      <text y="-20" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#a5b4fc">🎬 Long Video</text>
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">Minutes of coherent</text>
+      <text y="20" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">video content</text>
+      <line x1="-70" y1="45" x2="-130" y2="85" stroke="rgba(102,126,234,0.3)" stroke-width="1" stroke-dasharray="4,2"/>
+    </g>
+    
+    <!-- Problem 3: Control -->
+    <g transform="translate(-250, 40)">
+      <rect x="-80" y="-45" width="160" height="90" rx="12" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="2"/>
+      <text y="-20" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#4ade80">🎯 Precise Control</text>
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">Exact placement,</text>
+      <text y="20" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">counting, composition</text>
+      <line x1="80" y1="0" x2="150" y2="0" stroke="rgba(34,197,94,0.3)" stroke-width="1" stroke-dasharray="4,2"/>
+    </g>
+    
+    <!-- Problem 4: Physics -->
+    <g transform="translate(250, 40)">
+      <rect x="-80" y="-45" width="160" height="90" rx="12" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="2"/>
+      <text y="-20" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#fcd34d">🌍 Physics</text>
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">Correct reflections,</text>
+      <text y="20" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">shadows, dynamics</text>
+      <line x1="-80" y1="0" x2="-150" y2="0" stroke="rgba(251,191,36,0.3)" stroke-width="1" stroke-dasharray="4,2"/>
+    </g>
+    
+    <!-- Problem 5: Efficiency -->
+    <g transform="translate(-120, 150)">
+      <rect x="-80" y="-45" width="160" height="90" rx="12" fill="rgba(168,85,247,0.15)" stroke="#a855f7" stroke-width="2"/>
+      <text y="-20" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#c4b5fd">💰 Training Cost</text>
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">10-100× more</text>
+      <text y="20" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">efficient training</text>
+      <line x1="40" y1="-50" x2="60" y2="-90" stroke="rgba(168,85,247,0.3)" stroke-width="1" stroke-dasharray="4,2"/>
+    </g>
+    
+    <!-- Problem 6: Evaluation -->
+    <g transform="translate(120, 150)">
+      <rect x="-80" y="-45" width="160" height="90" rx="12" fill="rgba(236,72,153,0.15)" stroke="#ec4899" stroke-width="2"/>
+      <text y="-20" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#f472b6">📊 Evaluation</text>
+      <text y="0" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">Better metrics than</text>
+      <text y="20" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">FID, CLIP score</text>
+      <line x1="-40" y1="-50" x2="-60" y2="-90" stroke="rgba(236,72,153,0.3)" stroke-width="1" stroke-dasharray="4,2"/>
+    </g>
+  </g>
+  
+  <!-- Call to action -->
+  <g transform="translate(450, 470)">
+    <rect x="-350" y="-20" width="700" height="35" rx="8" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6"/>
+    <text y="3" text-anchor="middle" font-family="system-ui" font-size="13" fill="#c4b5fd">
+      🚀 These open problems define the future of generative AI research
+    </text>
+  </g>
+</svg>
+

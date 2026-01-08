@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0a20"/>
+      <stop offset="50%" style="stop-color:#1a103d"/>
+      <stop offset="100%" style="stop-color:#0c0a20"/>
+    </linearGradient>
+    <linearGradient id="unetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#0891b2"/>
+    </linearGradient>
+    <linearGradient id="timeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="noiseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="50%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+  
+  <rect width="1000" height="600" fill="url(#bgGrad)"/>
+  
+  <!-- Grid pattern -->
+  <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  </pattern>
+  <rect width="1000" height="600" fill="url(#grid)"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="white" filter="url(#glow)">
+    U-Net Architecture for Diffusion
+  </text>
+  <text x="500" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">
+    Encoder-Decoder with Skip Connections and Time Embedding
+  </text>
+  
+  <!-- U-Net Diagram -->
+  <g transform="translate(100, 100)">
+    <!-- Input -->
+    <g transform="translate(0, 170)">
+      <rect x="0" y="0" width="60" height="80" rx="6" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="30" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#a78bfa">x_t</text>
+      <text x="30" y="45" text-anchor="middle" font-size="16">🌫️</text>
+      <text x="30" y="65" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)">C×H×W</text>
+    </g>
+    
+    <path d="M 70 210 L 100 210" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Encoder blocks -->
+    <g transform="translate(110, 130)">
+      <rect x="0" y="0" width="70" height="160" rx="8" fill="rgba(6,182,212,0.2)" stroke="#06b6d4" stroke-width="2"/>
+      <text x="35" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#22d3ee">Down 1</text>
+      <text x="35" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">Conv 3×3</text>
+      <text x="35" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">GroupNorm</text>
+      <text x="35" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">SiLU</text>
+      <text x="35" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#fbbf24">+ Time Emb</text>
+      <text x="35" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">Conv 3×3</text>
+      <text x="35" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">MaxPool</text>
+      <text x="35" y="150" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">64ch</text>
+    </g>
+    
+    <path d="M 190 210 L 210 210" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <g transform="translate(220, 110)">
+      <rect x="0" y="0" width="70" height="200" rx="8" fill="rgba(6,182,212,0.25)" stroke="#06b6d4" stroke-width="2"/>
+      <text x="35" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#22d3ee">Down 2</text>
+      <text x="35" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">ResBlock</text>
+      <text x="35" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#fbbf24">+ Time Emb</text>
+      <text x="35" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#c084fc">Attention</text>
+      <text x="35" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">ResBlock</text>
+      <text x="35" y="145" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">Downsample</text>
+      <text x="35" y="185" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">128ch</text>
+    </g>
+    
+    <path d="M 300 210 L 320 210" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <g transform="translate(330, 90)">
+      <rect x="0" y="0" width="70" height="240" rx="8" fill="rgba(6,182,212,0.3)" stroke="#06b6d4" stroke-width="2"/>
+      <text x="35" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#22d3ee">Down 3</text>
+      <text x="35" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">ResBlock×2</text>
+      <text x="35" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#c084fc">Self-Attn</text>
+      <text x="35" y="110" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">Downsample</text>
+      <text x="35" y="225" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">256ch</text>
+    </g>
+    
+    <path d="M 410 210 L 430 210" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Bottleneck -->
+    <g transform="translate(440, 160)">
+      <rect x="0" y="0" width="80" height="100" rx="10" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+      <text x="40" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#fcd34d">Middle</text>
+      <text x="40" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">ResBlock</text>
+      <text x="40" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#c084fc">Attention</text>
+      <text x="40" y="79" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">ResBlock</text>
+      <text x="40" y="95" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">512ch</text>
+    </g>
+    
+    <path d="M 530 210 L 550 210" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Decoder blocks -->
+    <g transform="translate(560, 90)">
+      <rect x="0" y="0" width="70" height="240" rx="8" fill="rgba(34,197,94,0.3)" stroke="#22c55e" stroke-width="2"/>
+      <text x="35" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#4ade80">Up 1</text>
+      <text x="35" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">Upsample</text>
+      <text x="35" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#fbbf24">+ Skip</text>
+      <text x="35" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">ResBlock×2</text>
+      <text x="35" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#c084fc">Attention</text>
+      <text x="35" y="225" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">256ch</text>
+    </g>
+    
+    <path d="M 640 210 L 660 210" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <g transform="translate(670, 110)">
+      <rect x="0" y="0" width="70" height="200" rx="8" fill="rgba(34,197,94,0.25)" stroke="#22c55e" stroke-width="2"/>
+      <text x="35" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#4ade80">Up 2</text>
+      <text x="35" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">Upsample</text>
+      <text x="35" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#fbbf24">+ Skip</text>
+      <text x="35" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">ResBlock</text>
+      <text x="35" y="185" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">128ch</text>
+    </g>
+    
+    <path d="M 750 210 L 770 210" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Output -->
+    <g transform="translate(780, 170)">
+      <rect x="0" y="0" width="60" height="80" rx="6" fill="rgba(34,197,94,0.3)" stroke="#22c55e" stroke-width="2"/>
+      <text x="30" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#4ade80">ε_θ</text>
+      <text x="30" y="45" text-anchor="middle" font-size="16">🎯</text>
+      <text x="30" y="65" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)">Noise</text>
+    </g>
+    
+    <!-- Skip connections -->
+    <path d="M 145 130 C 145 60, 595 60, 595 90" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,4" fill="none"/>
+    <path d="M 255 110 C 255 50, 705 50, 705 110" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,4" fill="none"/>
+    <text x="430" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#fbbf24">Skip Connections (Concat)</text>
+    
+    <!-- Time embedding -->
+    <g transform="translate(350, 380)">
+      <rect x="0" y="0" width="260" height="80" rx="10" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="130" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#fcd34d">⏱️ Time Embedding</text>
+      <text x="130" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">Sinusoidal Positional Encoding</text>
+      <text x="130" y="65" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.6)">t → MLP → broadcast to all blocks</text>
+    </g>
+  </g>
+  
+  <!-- Key features box -->
+  <g transform="translate(50, 520)">
+    <rect x="0" y="0" width="900" height="60" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="100" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#22d3ee">🔄 Encoder-Decoder</text>
+    <text x="280" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#fbbf24">⚡ Skip Connections</text>
+    <text x="450" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#c084fc">👁️ Self-Attention</text>
+    <text x="620" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#f59e0b">⏱️ Time Conditioning</text>
+    <text x="800" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#4ade80">📐 GroupNorm</text>
+  </g>
+</svg>
+

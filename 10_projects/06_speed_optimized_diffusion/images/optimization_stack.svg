@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280">
+  <defs>
+    <linearGradient id="stackGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444"/>
+      <stop offset="100%" style="stop-color:#F97316"/>
+    </linearGradient>
+    <linearGradient id="stackGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#EAB308"/>
+    </linearGradient>
+    <linearGradient id="stackGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <linearGradient id="stackGrad4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+    <linearGradient id="stackGrad5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#EC4899"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="280" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="250" y="25" font-family="system-ui, sans-serif" font-size="14" fill="#F1F5F9" text-anchor="middle" font-weight="bold">The Optimization Stack</text>
+  
+  <!-- Layer 1: Sampler -->
+  <rect x="40" y="45" width="420" height="42" rx="6" fill="url(#stackGrad1)"/>
+  <text x="55" y="68" font-family="system-ui, sans-serif" font-size="16" fill="white">🎯</text>
+  <text x="80" y="62" font-family="system-ui, sans-serif" font-size="10" fill="white" font-weight="bold">Sampler Optimization</text>
+  <text x="80" y="78" font-family="system-ui, sans-serif" font-size="9" fill="#FECACA">DDPM (1000) → DDIM (50) → DPM++ (20)</text>
+  
+  <!-- Layer 2: Compiler -->
+  <rect x="40" y="92" width="420" height="42" rx="6" fill="url(#stackGrad2)"/>
+  <text x="55" y="115" font-family="system-ui, sans-serif" font-size="16" fill="white">🔧</text>
+  <text x="80" y="109" font-family="system-ui, sans-serif" font-size="10" fill="white" font-weight="bold">Compiler Optimization</text>
+  <text x="80" y="125" font-family="system-ui, sans-serif" font-size="9" fill="#FEF3C7">torch.compile() → Graph optimization</text>
+  
+  <!-- Layer 3: Precision -->
+  <rect x="40" y="139" width="420" height="42" rx="6" fill="url(#stackGrad3)"/>
+  <text x="55" y="162" font-family="system-ui, sans-serif" font-size="16" fill="white">💾</text>
+  <text x="80" y="156" font-family="system-ui, sans-serif" font-size="10" fill="white" font-weight="bold">Precision Optimization</text>
+  <text x="80" y="172" font-family="system-ui, sans-serif" font-size="9" fill="#D1FAE5">FP32 → FP16/BF16 → INT8 (quantization)</text>
+  
+  <!-- Layer 4: Attention -->
+  <rect x="40" y="186" width="420" height="42" rx="6" fill="url(#stackGrad4)"/>
+  <text x="55" y="209" font-family="system-ui, sans-serif" font-size="16" fill="white">👁️</text>
+  <text x="80" y="203" font-family="system-ui, sans-serif" font-size="10" fill="white" font-weight="bold">Attention Optimization</text>
+  <text x="80" y="219" font-family="system-ui, sans-serif" font-size="9" fill="#BFDBFE">Naive → FlashAttention → xFormers</text>
+  
+  <!-- Layer 5: Deployment -->
+  <rect x="40" y="233" width="420" height="42" rx="6" fill="url(#stackGrad5)"/>
+  <text x="55" y="256" font-family="system-ui, sans-serif" font-size="16" fill="white">🚀</text>
+  <text x="80" y="250" font-family="system-ui, sans-serif" font-size="10" fill="white" font-weight="bold">Deployment Optimization</text>
+  <text x="80" y="266" font-family="system-ui, sans-serif" font-size="9" fill="#F5D0FE">PyTorch → TensorRT / ONNX Runtime</text>
+</svg>
+

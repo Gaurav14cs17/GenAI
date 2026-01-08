@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350">
+  <defs>
+    <linearGradient id="flow1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+    <linearGradient id="flow2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#A855F7"/>
+    </linearGradient>
+    <linearGradient id="flow3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EC4899"/>
+      <stop offset="100%" style="stop-color:#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="flow4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#EAB308"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="350" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="300" y="25" font-family="system-ui, sans-serif" font-size="14" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Research Learning Path</text>
+  
+  <!-- Step 1: Flow Matching -->
+  <rect x="175" y="40" width="250" height="55" rx="8" fill="url(#flow1)"/>
+  <text x="300" y="62" font-family="system-ui, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">1. 🌊 Flow Matching</text>
+  <text x="300" y="80" font-family="system-ui, sans-serif" font-size="9" fill="#BFDBFE" text-anchor="middle">Velocity fields • OT paths • New paradigm</text>
+  
+  <!-- Arrow -->
+  <line x1="300" y1="100" x2="300" y2="115" stroke="#64748B" stroke-width="2"/>
+  <polygon points="300,115 295,108 305,108" fill="#64748B"/>
+  
+  <!-- Step 2: Rectified Flow -->
+  <rect x="175" y="120" width="250" height="55" rx="8" fill="url(#flow2)"/>
+  <text x="300" y="142" font-family="system-ui, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">2. ➡️ Rectified Flow</text>
+  <text x="300" y="160" font-family="system-ui, sans-serif" font-size="9" fill="#E9D5FF" text-anchor="middle">Reflow • Path straightening • Few-step</text>
+  
+  <!-- Arrow -->
+  <line x1="300" y1="180" x2="300" y2="195" stroke="#64748B" stroke-width="2"/>
+  <polygon points="300,195 295,188 305,188" fill="#64748B"/>
+  
+  <!-- Step 3: Consistency Models -->
+  <rect x="175" y="200" width="250" height="55" rx="8" fill="url(#flow3)"/>
+  <text x="300" y="222" font-family="system-ui, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">3. ⚡ Consistency Models</text>
+  <text x="300" y="240" font-family="system-ui, sans-serif" font-size="9" fill="#FECDD3" text-anchor="middle">Self-consistency • Single-step • LCM</text>
+  
+  <!-- Arrow -->
+  <line x1="300" y1="260" x2="300" y2="275" stroke="#64748B" stroke-width="2"/>
+  <polygon points="300,275 295,268 305,268" fill="#64748B"/>
+  
+  <!-- Step 4: Distillation -->
+  <rect x="175" y="280" width="250" height="50" rx="8" fill="url(#flow4)"/>
+  <text x="300" y="302" font-family="system-ui, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">4. 📚 Distillation</text>
+  <text x="300" y="320" font-family="system-ui, sans-serif" font-size="9" fill="#FEF3C7" text-anchor="middle">Progressive • Adversarial • Deployment</text>
+  
+  <!-- Bottom branches -->
+  <line x1="230" y1="335" x2="230" y2="345" stroke="#64748B" stroke-width="2"/>
+  <line x1="300" y1="335" x2="300" y2="345" stroke="#64748B" stroke-width="2"/>
+  <line x1="370" y1="335" x2="370" y2="345" stroke="#64748B" stroke-width="2"/>
+  
+  <!-- Branch icons -->
+  <text x="230" y="345" font-family="system-ui, sans-serif" font-size="16" fill="#10B981" text-anchor="middle">🎬</text>
+  <text x="300" y="345" font-family="system-ui, sans-serif" font-size="16" fill="#3B82F6" text-anchor="middle">🎲</text>
+  <text x="370" y="345" font-family="system-ui, sans-serif" font-size="16" fill="#8B5CF6" text-anchor="middle">🔮</text>
+</svg>
+

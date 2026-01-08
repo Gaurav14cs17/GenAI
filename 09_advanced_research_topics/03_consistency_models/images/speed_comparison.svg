@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 200">
+  <defs>
+    <linearGradient id="diffusionBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444"/>
+      <stop offset="100%" style="stop-color:#F97316"/>
+    </linearGradient>
+    <linearGradient id="consistencyBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#34D399"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="750" height="200" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="375" y="30" font-family="system-ui, sans-serif" font-size="16" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Speed Comparison: Diffusion vs Consistency</text>
+  
+  <!-- Diffusion row -->
+  <text x="60" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#F97316" text-anchor="start" font-weight="bold">Diffusion</text>
+  <text x="60" y="90" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="start">(DDPM)</text>
+  
+  <!-- Diffusion steps visualization -->
+  <g>
+    <rect x="150" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <rect x="175" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <rect x="200" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <rect x="225" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <text x="260" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8">...</text>
+    <rect x="280" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <rect x="305" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <rect x="330" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <text x="365" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8">...</text>
+    <rect x="385" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <rect x="410" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <rect x="435" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <text x="470" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8">...</text>
+    <rect x="490" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <rect x="515" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+    <rect x="540" y="60" width="20" height="30" rx="2" fill="#374151" stroke="#F97316" stroke-width="1"/>
+  </g>
+  
+  <!-- Time indicator -->
+  <text x="620" y="80" font-family="system-ui, sans-serif" font-size="11" fill="#F97316" text-anchor="start" font-weight="bold">~30s</text>
+  <text x="675" y="80" font-family="system-ui, sans-serif" font-size="16" fill="#EF4444">😴</text>
+  
+  <text x="345" y="105" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">1000 sequential steps</text>
+  
+  <!-- Consistency row -->
+  <text x="60" y="145" font-family="system-ui, sans-serif" font-size="12" fill="#10B981" text-anchor="start" font-weight="bold">Consistency</text>
+  <text x="60" y="160" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="start">(LCM)</text>
+  
+  <!-- Consistency steps visualization -->
+  <rect x="150" y="130" width="50" height="35" rx="4" fill="#10B981" stroke="#34D399" stroke-width="2"/>
+  <text x="175" y="152" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">1-4</text>
+  
+  <!-- Arrow -->
+  <line x1="210" y1="147" x2="250" y2="147" stroke="#34D399" stroke-width="2"/>
+  <polygon points="250,147 240,142 240,152" fill="#34D399"/>
+  
+  <!-- Result -->
+  <rect x="260" y="130" width="60" height="35" rx="4" fill="#8B5CF6" stroke="#A78BFA" stroke-width="2"/>
+  <text x="290" y="152" font-family="system-ui, sans-serif" font-size="16" fill="white" text-anchor="middle">🖼️</text>
+  
+  <!-- Time indicator -->
+  <text x="360" y="152" font-family="system-ui, sans-serif" font-size="11" fill="#10B981" text-anchor="start" font-weight="bold">~0.3s</text>
+  <text x="420" y="152" font-family="system-ui, sans-serif" font-size="16" fill="#10B981">🎉</text>
+  
+  <!-- Speedup label -->
+  <rect x="500" y="125" width="120" height="40" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+  <text x="560" y="148" font-family="system-ui, sans-serif" font-size="14" fill="#10B981" text-anchor="middle" font-weight="bold">100× Faster!</text>
+  
+  <!-- Bottom note -->
+  <text x="375" y="190" font-family="system-ui, sans-serif" font-size="10" fill="#64748B" text-anchor="middle" font-style="italic">Same quality, fraction of the time</text>
+</svg>
+
