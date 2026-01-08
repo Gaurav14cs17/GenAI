@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="goalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="metricGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    <linearGradient id="compressionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa709a"/>
+      <stop offset="100%" style="stop-color:#fee140"/>
+    </linearGradient>
+    <linearGradient id="generativeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="featureGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8edea"/>
+      <stop offset="100%" style="stop-color:#fed6e3"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.6)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+  
+  <!-- Grid -->
+  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  </pattern>
+  <rect width="800" height="480" fill="url(#grid)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#fff">Which Metrics to Use?</text>
+  <text x="400" y="55" text-anchor="middle" font-family="Arial" font-size="12" fill="rgba(255,255,255,0.6)">Choose based on your end goal</text>
+  
+  <!-- Central question -->
+  <g transform="translate(400, 100)" filter="url(#shadow)">
+    <ellipse rx="100" ry="30" fill="url(#goalGrad)" opacity="0.95"/>
+    <text x="0" y="6" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#fff">What is your goal?</text>
+  </g>
+  
+  <!-- Branches -->
+  
+  <!-- Compression -->
+  <path d="M300,115 L150,165" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrow)"/>
+  <g transform="translate(130, 200)" filter="url(#shadow)">
+    <rect x="-100" y="-30" width="200" height="60" rx="10" fill="url(#compressionGrad)" opacity="0.95"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#1a1a2e">Compression</text>
+    <text x="0" y="8" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(26,26,46,0.8)">/Transmission</text>
+  </g>
+  <g transform="translate(130, 275)">
+    <rect x="-90" y="-25" width="180" height="50" rx="8" fill="rgba(250,112,154,0.2)" stroke="rgba(250,112,154,0.5)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">→ PSNR, BPD</text>
+    <text x="0" y="12" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">→ MS-SSIM</text>
+  </g>
+  
+  <!-- Generative -->
+  <path d="M350,130 L280,165" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrow)"/>
+  <g transform="translate(320, 200)" filter="url(#shadow)">
+    <rect x="-85" y="-30" width="170" height="60" rx="10" fill="url(#generativeGrad)" opacity="0.95"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#1a1a2e">Generating</text>
+    <text x="0" y="8" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(26,26,46,0.8)">new samples?</text>
+  </g>
+  <g transform="translate(320, 275)">
+    <rect x="-90" y="-25" width="180" height="50" rx="8" fill="rgba(79,172,254,0.2)" stroke="rgba(79,172,254,0.5)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">→ FID, Precision/Recall</text>
+    <text x="0" y="12" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">→ Visual inspection</text>
+  </g>
+  
+  <!-- Feature Learning -->
+  <path d="M450,130 L520,165" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrow)"/>
+  <g transform="translate(480, 200)" filter="url(#shadow)">
+    <rect x="-85" y="-30" width="170" height="60" rx="10" fill="url(#featureGrad)" opacity="0.95"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#1a1a2e">Learning features</text>
+    <text x="0" y="8" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(26,26,46,0.8)">for downstream?</text>
+  </g>
+  <g transform="translate(480, 275)">
+    <rect x="-90" y="-25" width="180" height="50" rx="8" fill="rgba(168,237,234,0.2)" stroke="rgba(168,237,234,0.5)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">→ Linear probe accuracy</text>
+    <text x="0" y="12" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">→ Transfer metrics</text>
+  </g>
+  
+  <!-- Model Comparison -->
+  <path d="M500,115 L650,165" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrow)"/>
+  <g transform="translate(670, 200)" filter="url(#shadow)">
+    <rect x="-100" y="-30" width="200" height="60" rx="10" fill="url(#metricGrad)" opacity="0.95"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#1a1a2e">Model comparison</text>
+    <text x="0" y="8" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(26,26,46,0.8)">on same task?</text>
+  </g>
+  <g transform="translate(670, 275)">
+    <rect x="-90" y="-25" width="180" height="50" rx="8" fill="rgba(67,233,123,0.2)" stroke="rgba(67,233,123,0.5)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">→ ELBO (VAEs)</text>
+    <text x="0" y="12" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">→ Reconstruction error</text>
+  </g>
+  
+  <!-- Bottom row: Disentanglement & Anomaly -->
+  
+  <!-- Disentanglement -->
+  <g transform="translate(250, 380)" filter="url(#shadow)">
+    <rect x="-100" y="-30" width="200" height="60" rx="10" fill="url(#goalGrad)" opacity="0.85"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#fff">Understanding</text>
+    <text x="0" y="8" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.8)">latent structure?</text>
+  </g>
+  <g transform="translate(250, 445)">
+    <rect x="-90" y="-20" width="180" height="40" rx="8" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.5)"/>
+    <text x="0" y="0" text-anchor="middle" font-family="Arial" font-size="10" fill="#fff">→ Disentanglement metrics, Traversals</text>
+  </g>
+  
+  <!-- Anomaly Detection -->
+  <g transform="translate(550, 380)" filter="url(#shadow)">
+    <rect x="-100" y="-30" width="200" height="60" rx="10" fill="url(#compressionGrad)" opacity="0.85"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#1a1a2e">Anomaly</text>
+    <text x="0" y="8" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(26,26,46,0.8)">detection?</text>
+  </g>
+  <g transform="translate(550, 445)">
+    <rect x="-90" y="-20" width="180" height="40" rx="8" fill="rgba(250,112,154,0.2)" stroke="rgba(250,112,154,0.5)"/>
+    <text x="0" y="0" text-anchor="middle" font-family="Arial" font-size="10" fill="#fff">→ Recon error distribution, AUROC</text>
+  </g>
+</svg>
+

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="daeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="diffusionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8edea"/>
+      <stop offset="100%" style="stop-color:#fed6e3"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.6)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="200" fill="url(#bgGrad)"/>
+  
+  <!-- Grid -->
+  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  </pattern>
+  <rect width="600" height="200" fill="url(#grid)"/>
+  
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#fff">From DAE to Diffusion Models</text>
+  
+  <!-- DAE Box -->
+  <g transform="translate(120, 100)" filter="url(#shadow)">
+    <rect x="-80" y="-40" width="160" height="80" rx="10" fill="url(#daeGrad)" opacity="0.95"/>
+    <text x="0" y="-10" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#1a1a2e">DAE</text>
+    <text x="0" y="8" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(26,26,46,0.8)">(single noise level)</text>
+  </g>
+  
+  <!-- Arrow with annotation -->
+  <path d="M205,100 L320,100" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="262" y="85" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.7)">extend to</text>
+  <text x="262" y="98" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.7)">multiple</text>
+  <text x="262" y="111" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.7)">noise levels</text>
+  
+  <!-- Diffusion Box -->
+  <g transform="translate(450, 100)" filter="url(#shadow)">
+    <rect x="-100" y="-45" width="200" height="90" rx="12" fill="url(#diffusionGrad)" opacity="0.95"/>
+    <text x="0" y="-15" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#1a1a2e">Score Matching / DDPM</text>
+    <text x="0" y="5" text-anchor="middle" font-family="Arial" font-size="11" fill="rgba(26,26,46,0.8)">Stable Diffusion</text>
+    <text x="0" y="25" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(26,26,46,0.6)">(multi-scale denoising)</text>
+  </g>
+  
+  <!-- Bottom note -->
+  <g transform="translate(300, 175)">
+    <text x="0" y="0" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.6)">💡 Understanding DAE → Understanding modern generative AI</text>
+  </g>
+</svg>
+

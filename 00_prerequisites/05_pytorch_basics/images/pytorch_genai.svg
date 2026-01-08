@@ -1,0 +1,108 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bluePT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="greenPT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="orangePT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="pytorchPT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ee4c2c"/>
+      <stop offset="100%" style="stop-color:#ff6b35"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="500" fill="#0f172a"/>
+  
+  <text x="400" y="40" text-anchor="middle" fill="#ee4c2c" font-family="Arial, sans-serif" font-size="24" font-weight="bold">PyTorch Basics for GenAI</text>
+  
+  <!-- Tensor Shapes -->
+  <g transform="translate(50, 80)">
+    <rect width="340" height="130" rx="12" fill="#1e293b" stroke="#ee4c2c" stroke-width="2"/>
+    <text x="170" y="28" text-anchor="middle" fill="#ee4c2c" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Tensor Shapes Matter!</text>
+    
+    <rect x="20" y="50" width="70" height="25" rx="4" fill="url(#bluePT)"/>
+    <text x="55" y="67" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10">[B, C, H, W]</text>
+    <text x="55" y="92" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="9">Images</text>
+    
+    <rect x="100" y="50" width="70" height="25" rx="4" fill="url(#greenPT)"/>
+    <text x="135" y="67" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10">[B, T, D]</text>
+    <text x="135" y="92" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="9">Sequences</text>
+    
+    <rect x="180" y="50" width="70" height="25" rx="4" fill="url(#orangePT)"/>
+    <text x="215" y="67" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10">[B, D]</text>
+    <text x="215" y="92" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="9">Latents</text>
+    
+    <rect x="260" y="50" width="60" height="25" rx="4" fill="url(#pytorchPT)"/>
+    <text x="290" y="67" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10">[B]</text>
+    <text x="290" y="92" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="9">Labels</text>
+    
+    <text x="170" y="118" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">B=batch, C=channels, H=height, W=width</text>
+  </g>
+  
+  <!-- Training Loop -->
+  <g transform="translate(410, 80)">
+    <rect width="340" height="130" rx="12" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+    <text x="170" y="28" text-anchor="middle" fill="#22c55e" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Training Loop (5 Steps)</text>
+    
+    <rect x="130" y="45" width="80" height="25" rx="4" fill="url(#bluePT)"/>
+    <text x="170" y="62" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10">1. Forward</text>
+    
+    <rect x="230" y="65" width="80" height="25" rx="4" fill="url(#greenPT)"/>
+    <text x="270" y="82" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10">2. Loss</text>
+    
+    <rect x="200" y="95" width="100" height="25" rx="4" fill="url(#orangePT)"/>
+    <text x="250" y="112" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10">3. backward()</text>
+    
+    <rect x="50" y="95" width="100" height="25" rx="4" fill="url(#pytorchPT)"/>
+    <text x="100" y="112" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10">4. step()</text>
+    
+    <rect x="30" y="65" width="100" height="25" rx="4" fill="#475569"/>
+    <text x="80" y="82" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10">5. zero_grad()</text>
+  </g>
+  
+  <!-- Key Classes -->
+  <g transform="translate(50, 230)">
+    <rect width="700" height="100" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="350" y="28" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Essential PyTorch Classes</text>
+    
+    <rect x="30" y="50" width="140" height="35" rx="6" fill="url(#bluePT)" opacity="0.5"/>
+    <text x="100" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">nn.Module</text>
+    
+    <rect x="190" y="50" width="140" height="35" rx="6" fill="url(#greenPT)" opacity="0.5"/>
+    <text x="260" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">DataLoader</text>
+    
+    <rect x="350" y="50" width="140" height="35" rx="6" fill="url(#orangePT)" opacity="0.5"/>
+    <text x="420" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">optim.Adam</text>
+    
+    <rect x="510" y="50" width="160" height="35" rx="6" fill="url(#pytorchPT)" opacity="0.5"/>
+    <text x="590" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">autograd</text>
+  </g>
+  
+  <!-- GenAI Patterns -->
+  <g transform="translate(50, 350)">
+    <rect width="700" height="130" rx="12" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+    <text x="350" y="28" text-anchor="middle" fill="#a855f7" font-family="Arial, sans-serif" font-size="16" font-weight="bold">GenAI-Specific Patterns</text>
+    
+    <rect x="30" y="50" width="200" height="60" rx="8" fill="#0f172a"/>
+    <text x="130" y="72" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="12" font-weight="bold">GAN</text>
+    <text x="130" y="90" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10">2 models, 2 optimizers</text>
+    <text x="130" y="105" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="9">alternating training</text>
+    
+    <rect x="250" y="50" width="200" height="60" rx="8" fill="#0f172a"/>
+    <text x="350" y="72" text-anchor="middle" fill="#22c55e" font-family="Arial, sans-serif" font-size="12" font-weight="bold">VAE</text>
+    <text x="350" y="90" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10">Reparameterization trick</text>
+    <text x="350" y="105" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="9">z = mu + sigma * eps</text>
+    
+    <rect x="470" y="50" width="200" height="60" rx="8" fill="#0f172a"/>
+    <text x="570" y="72" text-anchor="middle" fill="#f97316" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Diffusion</text>
+    <text x="570" y="90" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10">EMA weights</text>
+    <text x="570" y="105" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="9">ema = 0.9999 * ema + 0.0001 * theta</text>
+  </g>
+</svg>

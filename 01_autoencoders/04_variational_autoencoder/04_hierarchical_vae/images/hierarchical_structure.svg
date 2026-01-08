@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550">
+  <defs>
+    <linearGradient id="hvaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0c1e"/>
+      <stop offset="100%" style="stop-color:#1a1a3e"/>
+    </linearGradient>
+    <linearGradient id="level1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="level2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="level3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="level4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="850" height="550" fill="url(#hvaBg)" rx="15"/>
+  
+  <!-- Title -->
+  <text x="425" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Hierarchical VAE Architecture</text>
+  <text x="425" y="55" text-anchor="middle" fill="#aaaaaa" font-family="Arial, sans-serif" font-size="12">Multi-scale latent variables for better generation</text>
+  
+  <!-- Left: Hierarchical structure diagram -->
+  <g transform="translate(50, 80)">
+    <rect x="0" y="0" width="350" height="380" rx="10" fill="#0d1b2a" stroke="#764ba2" stroke-width="2"/>
+    <text x="175" y="25" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Generative Model (Top-Down)</text>
+    
+    <!-- z_L (top level) -->
+    <g transform="translate(125, 50)">
+      <rect x="0" y="0" width="100" height="50" rx="8" fill="url(#level1)"/>
+      <text x="50" y="30" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">z_L</text>
+      <text x="50" y="65" text-anchor="middle" fill="#aaaaaa" font-size="9">Global: identity, pose</text>
+      <text x="50" y="78" text-anchor="middle" fill="#764ba2" font-size="9">4×4 resolution</text>
+    </g>
+    
+    <!-- Arrow down -->
+    <path d="M 175 108 L 175 135" stroke="#ffffff" stroke-width="2"/>
+    <polygon points="170,135 175,145 180,135" fill="#ffffff"/>
+    
+    <!-- z_2 -->
+    <g transform="translate(100, 150)">
+      <rect x="0" y="0" width="150" height="50" rx="8" fill="url(#level2)"/>
+      <text x="75" y="30" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">z_{L-1}</text>
+      <text x="75" y="65" text-anchor="middle" fill="#aaaaaa" font-size="9">Mid-level: parts, structure</text>
+      <text x="75" y="78" text-anchor="middle" fill="#f5576c" font-size="9">8×8 resolution</text>
+    </g>
+    
+    <!-- Arrow down -->
+    <path d="M 175 208 L 175 235" stroke="#ffffff" stroke-width="2"/>
+    <polygon points="170,235 175,245 180,235" fill="#ffffff"/>
+    
+    <!-- z_1 -->
+    <g transform="translate(75, 250)">
+      <rect x="0" y="0" width="200" height="50" rx="8" fill="url(#level3)"/>
+      <text x="100" y="30" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">z_1</text>
+      <text x="100" y="65" text-anchor="middle" fill="#aaaaaa" font-size="9">Fine details: textures</text>
+      <text x="100" y="78" text-anchor="middle" fill="#00f2fe" font-size="9">16×16 resolution</text>
+    </g>
+    
+    <!-- Arrow down -->
+    <path d="M 175 308 L 175 335" stroke="#ffffff" stroke-width="2"/>
+    <polygon points="170,335 175,345 180,335" fill="#ffffff"/>
+    
+    <!-- x (output) -->
+    <g transform="translate(50, 350)">
+      <rect x="0" y="0" width="250" height="40" rx="8" fill="url(#level4)"/>
+      <text x="125" y="26" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">x (generated image)</text>
+    </g>
+  </g>
+  
+  <!-- Right: Information flow -->
+  <g transform="translate(450, 80)">
+    <rect x="0" y="0" width="350" height="380" rx="10" fill="#0d1b2a" stroke="#00f2fe" stroke-width="2"/>
+    <text x="175" y="25" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">What Each Level Captures</text>
+    
+    <!-- Top level description -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="310" height="70" rx="8" fill="#1a1a2e" stroke="url(#level1)" stroke-width="2"/>
+      <text x="20" y="22" fill="#764ba2" font-size="13" font-weight="bold">Top Level (z_L)</text>
+      <text x="20" y="42" fill="#ffffff" font-size="11">• Global semantics</text>
+      <text x="20" y="57" fill="#aaaaaa" font-size="10">Identity, viewpoint, overall structure</text>
+    </g>
+    
+    <!-- Mid level description -->
+    <g transform="translate(20, 135)">
+      <rect x="0" y="0" width="310" height="70" rx="8" fill="#1a1a2e" stroke="url(#level2)" stroke-width="2"/>
+      <text x="20" y="22" fill="#f5576c" font-size="13" font-weight="bold">Middle Levels</text>
+      <text x="20" y="42" fill="#ffffff" font-size="11">• Object parts and layout</text>
+      <text x="20" y="57" fill="#aaaaaa" font-size="10">Eyes, nose, mouth positions</text>
+    </g>
+    
+    <!-- Low level description -->
+    <g transform="translate(20, 220)">
+      <rect x="0" y="0" width="310" height="70" rx="8" fill="#1a1a2e" stroke="url(#level3)" stroke-width="2"/>
+      <text x="20" y="22" fill="#00f2fe" font-size="13" font-weight="bold">Bottom Level (z_1)</text>
+      <text x="20" y="42" fill="#ffffff" font-size="11">• Fine-grained details</text>
+      <text x="20" y="57" fill="#aaaaaa" font-size="10">Textures, skin details, hair strands</text>
+    </g>
+    
+    <!-- Benefits -->
+    <g transform="translate(20, 305)">
+      <rect x="0" y="0" width="310" height="65" rx="8" fill="#1a1a2e" stroke="#38ef7d" stroke-width="2"/>
+      <text x="155" y="18" text-anchor="middle" fill="#38ef7d" font-size="12" font-weight="bold">✓ Benefits</text>
+      <text x="20" y="38" fill="#ffffff" font-size="10">• Better posterior approximation</text>
+      <text x="20" y="53" fill="#ffffff" font-size="10">• Reduced posterior collapse</text>
+      <text x="175" y="53" fill="#ffffff" font-size="10">• Multi-scale generation</text>
+    </g>
+  </g>
+  
+  <!-- Bottom: ELBO decomposition -->
+  <g transform="translate(100, 480)">
+    <rect x="0" y="0" width="650" height="55" rx="10" fill="#0d1b2a" stroke="#ffe66d" stroke-width="2"/>
+    <text x="325" y="20" text-anchor="middle" fill="#ffe66d" font-size="13" font-weight="bold">Hierarchical ELBO</text>
+    <text x="325" y="42" text-anchor="middle" fill="#ffffff" font-size="12">D_KL = Σ_l E[D_KL(q(z_l|z_&lt;l,x) || p(z_l|z_&gt;l))]  — KL splits across levels!</text>
+  </g>
+</svg>
+
+

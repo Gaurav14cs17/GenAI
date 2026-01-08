@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 180">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="convGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8edea"/>
+      <stop offset="100%" style="stop-color:#fed6e3"/>
+    </linearGradient>
+    <linearGradient id="bnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="swishGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    <linearGradient id="addGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa709a"/>
+      <stop offset="100%" style="stop-color:#fee140"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="rgba(255,255,255,0.6)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="180" fill="url(#bgGrad)"/>
+  
+  <!-- Grid -->
+  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  </pattern>
+  <rect width="700" height="180" fill="url(#grid)"/>
+  
+  <!-- Title -->
+  <text x="350" y="25" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#fff">Residual Block (NVAE/VDVAE Style)</text>
+  
+  <!-- Main flow -->
+  <g transform="translate(350, 95)">
+    <!-- Input -->
+    <g filter="url(#shadow)">
+      <rect x="-310" y="-25" width="55" height="50" rx="6" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.4)"/>
+      <text x="-282" y="5" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">Input</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M-250,0 L-225,0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Conv -->
+    <g filter="url(#shadow)">
+      <rect x="-220" y="-22" width="50" height="44" rx="6" fill="url(#convGrad)" opacity="0.95"/>
+      <text x="-195" y="5" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#1a1a2e">Conv</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M-165,0 L-145,0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- BN -->
+    <g filter="url(#shadow)">
+      <rect x="-140" y="-22" width="40" height="44" rx="6" fill="url(#bnGrad)" opacity="0.95"/>
+      <text x="-120" y="5" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#1a1a2e">BN</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M-95,0 L-75,0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Swish -->
+    <g filter="url(#shadow)">
+      <rect x="-70" y="-22" width="50" height="44" rx="6" fill="url(#swishGrad)" opacity="0.95"/>
+      <text x="-45" y="5" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#1a1a2e">Swish</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M-15,0 L5,0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Conv 2 -->
+    <g filter="url(#shadow)">
+      <rect x="10" y="-22" width="50" height="44" rx="6" fill="url(#convGrad)" opacity="0.95"/>
+      <text x="35" y="5" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#1a1a2e">Conv</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M65,0 L85,0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- BN 2 -->
+    <g filter="url(#shadow)">
+      <rect x="90" y="-22" width="40" height="44" rx="6" fill="url(#bnGrad)" opacity="0.95"/>
+      <text x="110" y="5" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#1a1a2e">BN</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M135,0 L155,0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Add (+) -->
+    <g filter="url(#shadow)">
+      <circle cx="175" cy="0" r="18" fill="url(#addGrad)" opacity="0.95"/>
+      <text x="175" y="6" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#1a1a2e">+</text>
+    </g>
+    
+    <!-- Skip connection from Input -->
+    <path d="M-282,30 L-282,55 L175,55 L175,20" fill="none" stroke="rgba(250,112,154,0.6)" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+    <text x="-50" y="70" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(250,112,154,0.8)">Skip connection (+ Input)</text>
+    
+    <!-- Arrow -->
+    <path d="M198,0 L218,0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Final Swish -->
+    <g filter="url(#shadow)">
+      <rect x="223" y="-22" width="50" height="44" rx="6" fill="url(#swishGrad)" opacity="0.95"/>
+      <text x="248" y="5" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#1a1a2e">Swish</text>
+    </g>
+    
+    <!-- Arrow to output -->
+    <path d="M278,0 L298,0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Output -->
+    <g filter="url(#shadow)">
+      <rect x="303" y="-25" width="55" height="50" rx="6" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.4)"/>
+      <text x="330" y="5" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">Output</text>
+    </g>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(350, 155)">
+    <text x="-200" y="0" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.6)">BN = Batch Norm</text>
+    <text x="-50" y="0" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.6)">Swish = x·σ(x)</text>
+  </g>
+</svg>
+

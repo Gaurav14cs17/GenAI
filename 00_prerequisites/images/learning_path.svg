@@ -1,0 +1,74 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blueLP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="greenLP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="orangeLP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="450" fill="#0f172a"/>
+  
+  <text x="400" y="35" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="22" font-weight="bold">Learning Path for GenAI Prerequisites</text>
+  
+  <!-- Start -->
+  <rect x="340" y="55" width="120" height="35" rx="17" fill="url(#greenLP)"/>
+  <text x="400" y="78" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Start Here</text>
+  
+  <!-- Arrow down -->
+  <path d="M 400 90 L 400 115" stroke="#64748b" stroke-width="3"/>
+  <polygon points="400,125 393,115 407,115" fill="#64748b"/>
+  
+  <!-- Math Foundations -->
+  <rect x="80" y="130" width="640" height="90" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+  <text x="400" y="155" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="14" font-weight="bold">MATH FOUNDATIONS (Study in parallel)</text>
+  
+  <rect x="110" y="170" width="180" height="40" rx="8" fill="url(#blueLP)"/>
+  <text x="200" y="195" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">01. Linear Algebra</text>
+  
+  <rect x="310" y="170" width="180" height="40" rx="8" fill="url(#blueLP)"/>
+  <text x="400" y="195" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">02. Probability Stats</text>
+  
+  <rect x="510" y="170" width="180" height="40" rx="8" fill="url(#blueLP)"/>
+  <text x="600" y="195" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">03. Information Theory</text>
+  
+  <!-- Arrow down -->
+  <path d="M 400 220 L 400 245" stroke="#64748b" stroke-width="3"/>
+  <polygon points="400,255 393,245 407,245" fill="#64748b"/>
+  
+  <!-- Practical Skills -->
+  <rect x="80" y="260" width="640" height="90" rx="12" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+  <text x="400" y="285" text-anchor="middle" fill="#22c55e" font-family="Arial, sans-serif" font-size="14" font-weight="bold">PRACTICAL SKILLS (Study in order)</text>
+  
+  <rect x="110" y="300" width="150" height="40" rx="8" fill="url(#greenLP)"/>
+  <text x="185" y="325" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">04. Optimization</text>
+  
+  <text x="280" y="325" fill="#64748b" font-family="Arial, sans-serif" font-size="20">-></text>
+  
+  <rect x="310" y="300" width="150" height="40" rx="8" fill="url(#greenLP)"/>
+  <text x="385" y="325" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">05. PyTorch</text>
+  
+  <text x="480" y="325" fill="#64748b" font-family="Arial, sans-serif" font-size="20">-></text>
+  
+  <rect x="510" y="300" width="180" height="40" rx="8" fill="url(#greenLP)"/>
+  <text x="600" y="325" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">06. CNNs</text>
+  
+  <!-- Arrow down -->
+  <path d="M 400 350 L 400 365" stroke="#64748b" stroke-width="3"/>
+  <polygon points="400,375 393,365 407,365" fill="#64748b"/>
+  
+  <!-- Data -->
+  <rect x="250" y="380" width="300" height="45" rx="8" fill="url(#orangeLP)"/>
+  <text x="400" y="408" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="13">07. Datasets and Preprocessing</text>
+  
+  <!-- Labels -->
+  <text x="750" y="185" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10" transform="rotate(90, 750, 185)">Theory</text>
+  <text x="750" y="315" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10" transform="rotate(90, 750, 315)">Practice</text>
+</svg>

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 500">
+  <defs>
+    <linearGradient id="betaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="z1Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="z2Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="z3Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f5af19"/>
+      <stop offset="100%" style="stop-color:#f12711"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="850" height="500" fill="url(#betaBg)" rx="15"/>
+  
+  <!-- Title -->
+  <text x="425" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" font-weight="bold">β-VAE: Disentangled Representations</text>
+  
+  <!-- Standard VAE (Entangled) -->
+  <g transform="translate(50, 70)">
+    <rect x="0" y="0" width="350" height="180" rx="10" fill="#0d1b2a" stroke="#ff6b6b" stroke-width="2"/>
+    <text x="175" y="25" text-anchor="middle" fill="#ff6b6b" font-size="16" font-weight="bold">Standard VAE (β=1): Entangled</text>
+    
+    <!-- Latent dimensions mixed -->
+    <g transform="translate(30, 50)">
+      <rect x="0" y="0" width="290" height="110" rx="8" fill="#1a1a2e"/>
+      
+      <!-- z1 affects multiple -->
+      <circle cx="40" cy="30" r="15" fill="url(#z1Grad)"/>
+      <text x="40" y="35" text-anchor="middle" fill="#ffffff" font-size="11">z₁</text>
+      <path d="M 60 30 L 100 25" stroke="#f5576c" stroke-width="2"/>
+      <path d="M 60 30 L 100 55" stroke="#f5576c" stroke-width="2"/>
+      <path d="M 60 30 L 100 85" stroke="#f5576c" stroke-width="2"/>
+      
+      <!-- z2 affects multiple -->
+      <circle cx="40" cy="80" r="15" fill="url(#z2Grad)"/>
+      <text x="40" y="85" text-anchor="middle" fill="#ffffff" font-size="11">z₂</text>
+      <path d="M 60 80 L 100 25" stroke="#00f2fe" stroke-width="2"/>
+      <path d="M 60 80 L 100 55" stroke="#00f2fe" stroke-width="2"/>
+      
+      <!-- Factors -->
+      <text x="110" y="28" fill="#ffffff" font-size="10">Pose</text>
+      <text x="110" y="58" fill="#ffffff" font-size="10">Expression</text>
+      <text x="110" y="88" fill="#ffffff" font-size="10">Lighting</text>
+      
+      <!-- Mixed outputs -->
+      <rect x="180" y="10" width="100" height="90" rx="5" fill="#2d3436"/>
+      <text x="230" y="40" text-anchor="middle" fill="#aaaaaa" font-size="9">Change z₁ →</text>
+      <text x="230" y="55" text-anchor="middle" fill="#ff6b6b" font-size="9">Pose + Expression</text>
+      <text x="230" y="70" text-anchor="middle" fill="#ff6b6b" font-size="9">+ Lighting change</text>
+      <text x="230" y="90" text-anchor="middle" fill="#ffffff" font-size="9">😕 confusing!</text>
+    </g>
+  </g>
+  
+  <!-- β-VAE (Disentangled) -->
+  <g transform="translate(450, 70)">
+    <rect x="0" y="0" width="350" height="180" rx="10" fill="#0d1b2a" stroke="#38ef7d" stroke-width="2"/>
+    <text x="175" y="25" text-anchor="middle" fill="#38ef7d" font-size="16" font-weight="bold">β-VAE (β&gt;1): Disentangled</text>
+    
+    <!-- Latent dimensions separated -->
+    <g transform="translate(30, 50)">
+      <rect x="0" y="0" width="290" height="110" rx="8" fill="#1a1a2e"/>
+      
+      <!-- z1 → pose only -->
+      <circle cx="40" cy="25" r="15" fill="url(#z1Grad)"/>
+      <text x="40" y="30" text-anchor="middle" fill="#ffffff" font-size="11">z₁</text>
+      <path d="M 60 25 L 100 25" stroke="#f5576c" stroke-width="3"/>
+      
+      <!-- z2 → expression only -->
+      <circle cx="40" cy="55" r="15" fill="url(#z2Grad)"/>
+      <text x="40" y="60" text-anchor="middle" fill="#ffffff" font-size="11">z₂</text>
+      <path d="M 60 55 L 100 55" stroke="#00f2fe" stroke-width="3"/>
+      
+      <!-- z3 → lighting only -->
+      <circle cx="40" cy="85" r="15" fill="url(#z3Grad)"/>
+      <text x="40" y="90" text-anchor="middle" fill="#ffffff" font-size="11">z₃</text>
+      <path d="M 60 85 L 100 85" stroke="#f12711" stroke-width="3"/>
+      
+      <!-- Factors -->
+      <text x="110" y="28" fill="#f5576c" font-size="10">Pose ✓</text>
+      <text x="110" y="58" fill="#00f2fe" font-size="10">Expression ✓</text>
+      <text x="110" y="88" fill="#f12711" font-size="10">Lighting ✓</text>
+      
+      <!-- Clean outputs -->
+      <rect x="180" y="10" width="100" height="90" rx="5" fill="#2d3436"/>
+      <text x="230" y="40" text-anchor="middle" fill="#aaaaaa" font-size="9">Change z₁ →</text>
+      <text x="230" y="55" text-anchor="middle" fill="#38ef7d" font-size="9">ONLY Pose</text>
+      <text x="230" y="70" text-anchor="middle" fill="#38ef7d" font-size="9">changes!</text>
+      <text x="230" y="90" text-anchor="middle" fill="#ffffff" font-size="9">😊 interpretable!</text>
+    </g>
+  </g>
+  
+  <!-- β tradeoff visualization -->
+  <g transform="translate(100, 280)">
+    <rect x="0" y="0" width="650" height="200" rx="10" fill="#0d1b2a" stroke="#ffe66d" stroke-width="2"/>
+    <text x="325" y="25" text-anchor="middle" fill="#ffe66d" font-size="16" font-weight="bold">The β Trade-off</text>
+    
+    <!-- Slider visualization -->
+    <g transform="translate(50, 60)">
+      <!-- Track -->
+      <rect x="0" y="20" width="550" height="10" rx="5" fill="#2d3436"/>
+      
+      <!-- Gradient fill -->
+      <defs>
+        <linearGradient id="betaSlider" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#4facfe"/>
+          <stop offset="50%" style="stop-color:#ffe66d"/>
+          <stop offset="100%" style="stop-color:#ff6b6b"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="20" width="550" height="10" rx="5" fill="url(#betaSlider)" opacity="0.6"/>
+      
+      <!-- Markers -->
+      <circle cx="50" cy="25" r="12" fill="#4facfe" stroke="#ffffff" stroke-width="2"/>
+      <text x="50" y="30" text-anchor="middle" fill="#ffffff" font-size="9">β=1</text>
+      <text x="50" y="55" text-anchor="middle" fill="#4facfe" font-size="10">Good recon</text>
+      <text x="50" y="70" text-anchor="middle" fill="#ff6b6b" font-size="10">Entangled</text>
+      
+      <circle cx="275" cy="25" r="12" fill="#ffe66d" stroke="#ffffff" stroke-width="2"/>
+      <text x="275" y="30" text-anchor="middle" fill="#000000" font-size="9">β=4</text>
+      <text x="275" y="55" text-anchor="middle" fill="#38ef7d" font-size="10">Sweet spot</text>
+      
+      <circle cx="500" cy="25" r="12" fill="#ff6b6b" stroke="#ffffff" stroke-width="2"/>
+      <text x="500" y="30" text-anchor="middle" fill="#ffffff" font-size="9">β=10+</text>
+      <text x="500" y="55" text-anchor="middle" fill="#38ef7d" font-size="10">Disentangled</text>
+      <text x="500" y="70" text-anchor="middle" fill="#ff6b6b" font-size="10">Poor recon</text>
+    </g>
+    
+    <!-- Formula -->
+    <rect x="150" y="130" width="350" height="45" rx="8" fill="#1a1a2e" stroke="#ffffff" stroke-width="1"/>
+    <text x="325" y="155" text-anchor="middle" fill="#ffffff" font-size="14">ℒ_β = E[log p(x|z)] - β · D_KL(q(z|x) || p(z))</text>
+    <text x="325" y="170" text-anchor="middle" fill="#aaaaaa" font-size="10">Higher β → stronger push toward independent z</text>
+  </g>
+</svg>
+
+

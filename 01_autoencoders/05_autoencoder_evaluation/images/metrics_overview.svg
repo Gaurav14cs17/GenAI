@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+  <defs>
+    <linearGradient id="evalBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="reconGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="genGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="latentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="likeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="550" fill="url(#evalBg)" rx="15"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="bold">Autoencoder Evaluation Metrics</text>
+  
+  <!-- Reconstruction Metrics -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="410" height="200" rx="12" fill="#0d1b2a" stroke="url(#reconGrad)" stroke-width="3"/>
+    <text x="205" y="30" text-anchor="middle" fill="#764ba2" font-size="18" font-weight="bold">📊 Reconstruction Quality</text>
+    
+    <!-- PSNR -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">PSNR</text>
+      <text x="57" y="38" text-anchor="middle" fill="#4ade80" font-size="11">Higher ↑</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">Peak Signal-Noise</text>
+    </g>
+    
+    <!-- SSIM -->
+    <g transform="translate(145, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">SSIM</text>
+      <text x="57" y="38" text-anchor="middle" fill="#4ade80" font-size="11">Higher ↑</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">Structural Sim</text>
+    </g>
+    
+    <!-- LPIPS -->
+    <g transform="translate(270, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">LPIPS</text>
+      <text x="57" y="38" text-anchor="middle" fill="#f87171" font-size="11">Lower ↓</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">Perceptual</text>
+    </g>
+    
+    <!-- When to use -->
+    <rect x="20" y="125" width="365" height="55" rx="8" fill="#1a1a2e"/>
+    <text x="30" y="148" fill="#aaaaaa" font-size="11">📌 Use for: Compression, denoising, reconstruction tasks</text>
+    <text x="30" y="168" fill="#ffe66d" font-size="10">💡 LPIPS correlates best with human perception!</text>
+  </g>
+  
+  <!-- Generative Metrics -->
+  <g transform="translate(460, 70)">
+    <rect x="0" y="0" width="410" height="200" rx="12" fill="#0d1b2a" stroke="url(#genGrad)" stroke-width="3"/>
+    <text x="205" y="30" text-anchor="middle" fill="#f5576c" font-size="18" font-weight="bold">🎨 Generation Quality (VAE)</text>
+    
+    <!-- FID -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">FID</text>
+      <text x="57" y="38" text-anchor="middle" fill="#f87171" font-size="11">Lower ↓</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">Fréchet Distance</text>
+    </g>
+    
+    <!-- IS -->
+    <g transform="translate(145, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">IS</text>
+      <text x="57" y="38" text-anchor="middle" fill="#4ade80" font-size="11">Higher ↑</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">Inception Score</text>
+    </g>
+    
+    <!-- Precision/Recall -->
+    <g transform="translate(270, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">P/R</text>
+      <text x="57" y="38" text-anchor="middle" fill="#4ade80" font-size="11">Higher ↑</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">Precision/Recall</text>
+    </g>
+    
+    <!-- When to use -->
+    <rect x="20" y="125" width="365" height="55" rx="8" fill="#1a1a2e"/>
+    <text x="30" y="148" fill="#aaaaaa" font-size="11">📌 Use for: VAE sample quality evaluation</text>
+    <text x="30" y="168" fill="#ffe66d" font-size="10">⚠️ FID needs 10k+ samples for stability!</text>
+  </g>
+  
+  <!-- Likelihood Metrics -->
+  <g transform="translate(30, 290)">
+    <rect x="0" y="0" width="410" height="200" rx="12" fill="#0d1b2a" stroke="url(#likeGrad)" stroke-width="3"/>
+    <text x="205" y="30" text-anchor="middle" fill="#38f9d7" font-size="18" font-weight="bold">📈 Likelihood (VAE)</text>
+    
+    <!-- ELBO -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">ELBO</text>
+      <text x="57" y="38" text-anchor="middle" fill="#4ade80" font-size="11">Higher ↑</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">Evidence Bound</text>
+    </g>
+    
+    <!-- BPD -->
+    <g transform="translate(145, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">BPD</text>
+      <text x="57" y="38" text-anchor="middle" fill="#f87171" font-size="11">Lower ↓</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">Bits/Dimension</text>
+    </g>
+    
+    <!-- IWAE -->
+    <g transform="translate(270, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">IWAE</text>
+      <text x="57" y="38" text-anchor="middle" fill="#4ade80" font-size="11">Higher ↑</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">IW Bound</text>
+    </g>
+    
+    <!-- When to use -->
+    <rect x="20" y="125" width="365" height="55" rx="8" fill="#1a1a2e"/>
+    <text x="30" y="148" fill="#aaaaaa" font-size="11">📌 Use for: Model comparison, density estimation</text>
+    <text x="30" y="168" fill="#ffe66d" font-size="10">⚠️ High ELBO ≠ good samples (check both!)</text>
+  </g>
+  
+  <!-- Latent Space Metrics -->
+  <g transform="translate(460, 290)">
+    <rect x="0" y="0" width="410" height="200" rx="12" fill="#0d1b2a" stroke="url(#latentGrad)" stroke-width="3"/>
+    <text x="205" y="30" text-anchor="middle" fill="#00f2fe" font-size="18" font-weight="bold">🔮 Disentanglement (β-VAE)</text>
+    
+    <!-- MIG -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">MIG</text>
+      <text x="57" y="38" text-anchor="middle" fill="#4ade80" font-size="11">Higher ↑</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">MI Gap</text>
+    </g>
+    
+    <!-- DCI -->
+    <g transform="translate(145, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">DCI</text>
+      <text x="57" y="38" text-anchor="middle" fill="#4ade80" font-size="11">Higher ↑</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">Disentangle</text>
+    </g>
+    
+    <!-- Factor -->
+    <g transform="translate(270, 50)">
+      <rect x="0" y="0" width="115" height="65" rx="8" fill="#1a1a2e"/>
+      <text x="57" y="20" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">Factor</text>
+      <text x="57" y="38" text-anchor="middle" fill="#4ade80" font-size="11">Higher ↑</text>
+      <text x="57" y="55" text-anchor="middle" fill="#aaaaaa" font-size="9">FactorVAE</text>
+    </g>
+    
+    <!-- When to use -->
+    <rect x="20" y="125" width="365" height="55" rx="8" fill="#1a1a2e"/>
+    <text x="30" y="148" fill="#aaaaaa" font-size="11">📌 Use for: β-VAE, controllable generation</text>
+    <text x="30" y="168" fill="#ffe66d" font-size="10">⚠️ Requires ground truth factors (synthetic data)</text>
+  </g>
+  
+  <!-- Bottom advice -->
+  <g transform="translate(200, 510)">
+    <rect x="0" y="0" width="500" height="30" rx="8" fill="#0d1b2a" stroke="#ffe66d" stroke-width="2"/>
+    <text x="250" y="20" text-anchor="middle" fill="#ffe66d" font-size="13" font-weight="bold">💡 Always report MULTIPLE metrics + visual inspection!</text>
+  </g>
+</svg>
+
+

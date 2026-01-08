@@ -1,0 +1,108 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blueGC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="greenGC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="orangeGC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="purpleGC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="#0f172a"/>
+  
+  <text x="400" y="35" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="20" font-weight="bold">How Prerequisites Connect to GenAI Models</text>
+  
+  <!-- Prerequisites -->
+  <text x="100" y="70" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="12">PREREQUISITES</text>
+  
+  <rect x="30" y="85" width="140" height="30" rx="6" fill="url(#blueGC)" opacity="0.8"/>
+  <text x="100" y="105" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">Linear Algebra</text>
+  
+  <rect x="30" y="125" width="140" height="30" rx="6" fill="url(#blueGC)" opacity="0.8"/>
+  <text x="100" y="145" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">Probability</text>
+  
+  <rect x="30" y="165" width="140" height="30" rx="6" fill="url(#blueGC)" opacity="0.8"/>
+  <text x="100" y="185" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">Info Theory</text>
+  
+  <rect x="30" y="205" width="140" height="30" rx="6" fill="url(#blueGC)" opacity="0.8"/>
+  <text x="100" y="225" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">Optimization</text>
+  
+  <rect x="30" y="245" width="140" height="30" rx="6" fill="url(#blueGC)" opacity="0.8"/>
+  <text x="100" y="265" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">PyTorch</text>
+  
+  <rect x="30" y="285" width="140" height="30" rx="6" fill="url(#blueGC)" opacity="0.8"/>
+  <text x="100" y="305" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">CNNs</text>
+  
+  <rect x="30" y="325" width="140" height="30" rx="6" fill="url(#blueGC)" opacity="0.8"/>
+  <text x="100" y="345" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">Datasets</text>
+  
+  <!-- GenAI Models -->
+  <text x="700" y="70" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="12">GENAI MODELS</text>
+  
+  <rect x="630" y="100" width="140" height="55" rx="8" fill="url(#greenGC)"/>
+  <text x="700" y="125" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="13" font-weight="bold">VAE</text>
+  <text x="700" y="143" text-anchor="middle" fill="#ddd" font-family="Arial, sans-serif" font-size="9">Variational Autoencoder</text>
+  
+  <rect x="630" y="170" width="140" height="55" rx="8" fill="url(#orangeGC)"/>
+  <text x="700" y="195" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="13" font-weight="bold">GAN</text>
+  <text x="700" y="213" text-anchor="middle" fill="#ddd" font-family="Arial, sans-serif" font-size="9">Generative Adversarial</text>
+  
+  <rect x="630" y="240" width="140" height="55" rx="8" fill="url(#purpleGC)"/>
+  <text x="700" y="265" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Diffusion</text>
+  <text x="700" y="283" text-anchor="middle" fill="#ddd" font-family="Arial, sans-serif" font-size="9">Stable Diffusion, DALL-E</text>
+  
+  <rect x="630" y="310" width="140" height="55" rx="8" fill="url(#blueGC)"/>
+  <text x="700" y="335" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Transformer</text>
+  <text x="700" y="353" text-anchor="middle" fill="#ddd" font-family="Arial, sans-serif" font-size="9">GPT, Vision Transformer</text>
+  
+  <!-- Connection lines -->
+  <g stroke="#475569" stroke-width="1" opacity="0.4">
+    <line x1="170" y1="100" x2="630" y2="127"/>
+    <line x1="170" y1="100" x2="630" y2="197"/>
+    <line x1="170" y1="100" x2="630" y2="267"/>
+    <line x1="170" y1="100" x2="630" y2="337"/>
+    
+    <line x1="170" y1="140" x2="630" y2="127"/>
+    <line x1="170" y1="140" x2="630" y2="197"/>
+    <line x1="170" y1="140" x2="630" y2="267"/>
+    <line x1="170" y1="140" x2="630" y2="337"/>
+    
+    <line x1="170" y1="180" x2="630" y2="127"/>
+    <line x1="170" y1="180" x2="630" y2="197"/>
+    <line x1="170" y1="180" x2="630" y2="267"/>
+    <line x1="170" y1="180" x2="630" y2="337"/>
+    
+    <line x1="170" y1="220" x2="630" y2="127"/>
+    <line x1="170" y1="220" x2="630" y2="197"/>
+    <line x1="170" y1="220" x2="630" y2="267"/>
+    <line x1="170" y1="220" x2="630" y2="337"/>
+    
+    <line x1="170" y1="260" x2="630" y2="127"/>
+    <line x1="170" y1="260" x2="630" y2="197"/>
+    <line x1="170" y1="260" x2="630" y2="267"/>
+    <line x1="170" y1="260" x2="630" y2="337"/>
+    
+    <line x1="170" y1="300" x2="630" y2="127"/>
+    <line x1="170" y1="300" x2="630" y2="197"/>
+    <line x1="170" y1="300" x2="630" y2="267"/>
+    
+    <line x1="170" y1="340" x2="630" y2="127"/>
+    <line x1="170" y1="340" x2="630" y2="197"/>
+    <line x1="170" y1="340" x2="630" y2="267"/>
+    <line x1="170" y1="340" x2="630" y2="337"/>
+  </g>
+  
+  <rect x="280" y="185" width="240" height="50" rx="8" fill="#1e293b" stroke="#64748b"/>
+  <text x="400" y="207" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="11">Every prerequisite topic</text>
+  <text x="400" y="223" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="11">is used in GenAI models</text>
+</svg>

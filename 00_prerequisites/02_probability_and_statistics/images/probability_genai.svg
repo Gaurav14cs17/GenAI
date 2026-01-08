@@ -1,0 +1,115 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blue2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="green2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="orange2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="purple2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="500" fill="#0f172a"/>
+  
+  <text x="400" y="40" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Probability in GenAI</text>
+  
+  <!-- VAE Flow -->
+  <g transform="translate(50, 80)">
+    <rect width="700" height="120" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="350" y="28" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="16" font-weight="bold">VAE: Learn to Encode and Generate</text>
+    
+    <rect x="30" y="50" width="80" height="50" rx="8" fill="url(#blue2)"/>
+    <text x="70" y="80" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="13">Image x</text>
+    
+    <text x="130" y="80" fill="#64748b" font-family="Arial, sans-serif" font-size="20">-></text>
+    
+    <rect x="150" y="50" width="100" height="50" rx="8" fill="url(#green2)"/>
+    <text x="200" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">Encoder</text>
+    <text x="200" y="88" text-anchor="middle" fill="#ddd" font-family="Arial, sans-serif" font-size="10">q(z|x)</text>
+    
+    <text x="270" y="80" fill="#64748b" font-family="Arial, sans-serif" font-size="20">-></text>
+    
+    <rect x="290" y="50" width="100" height="50" rx="25" fill="url(#purple2)"/>
+    <text x="340" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">Latent z</text>
+    <text x="340" y="88" text-anchor="middle" fill="#ddd" font-family="Arial, sans-serif" font-size="10">mu + sigma*eps</text>
+    
+    <text x="410" y="80" fill="#64748b" font-family="Arial, sans-serif" font-size="20">-></text>
+    
+    <rect x="430" y="50" width="100" height="50" rx="8" fill="url(#orange2)"/>
+    <text x="480" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">Decoder</text>
+    <text x="480" y="88" text-anchor="middle" fill="#ddd" font-family="Arial, sans-serif" font-size="10">p(x|z)</text>
+    
+    <text x="550" y="80" fill="#64748b" font-family="Arial, sans-serif" font-size="20">-></text>
+    
+    <rect x="570" y="50" width="100" height="50" rx="8" fill="url(#blue2)"/>
+    <text x="620" y="80" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="13">Image x</text>
+  </g>
+  
+  <!-- Diffusion -->
+  <g transform="translate(50, 220)">
+    <rect width="340" height="130" rx="12" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+    <text x="170" y="28" text-anchor="middle" fill="#22c55e" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Diffusion: Add/Remove Noise</text>
+    
+    <rect x="30" y="50" width="60" height="35" rx="6" fill="url(#blue2)"/>
+    <text x="60" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">Image</text>
+    
+    <text x="105" y="72" fill="#f97316" font-family="Arial, sans-serif" font-size="12">+noise-></text>
+    
+    <rect x="165" y="50" width="60" height="35" rx="6" fill="#475569"/>
+    <text x="195" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">Noise</text>
+    
+    <rect x="30" y="95" width="60" height="35" rx="6" fill="#475569"/>
+    <text x="60" y="117" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">Noise</text>
+    
+    <text x="105" y="117" fill="#22c55e" font-family="Arial, sans-serif" font-size="12">denoise-></text>
+    
+    <rect x="165" y="95" width="60" height="35" rx="6" fill="url(#green2)"/>
+    <text x="195" y="117" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">Image</text>
+    
+    <text x="280" y="85" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10">Stable</text>
+    <text x="280" y="100" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10">Diffusion</text>
+  </g>
+  
+  <!-- KL Divergence -->
+  <g transform="translate(410, 220)">
+    <rect width="340" height="130" rx="12" fill="#1e293b" stroke="#f97316" stroke-width="2"/>
+    <text x="170" y="28" text-anchor="middle" fill="#f97316" font-family="Arial, sans-serif" font-size="16" font-weight="bold">KL Divergence: Distribution Gap</text>
+    
+    <g transform="translate(40, 50)">
+      <ellipse cx="60" cy="35" rx="50" ry="30" fill="url(#blue2)" opacity="0.6"/>
+      <text x="60" y="40" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">p (true)</text>
+      
+      <ellipse cx="120" cy="35" rx="50" ry="30" fill="url(#orange2)" opacity="0.6"/>
+      <text x="140" y="40" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">q (model)</text>
+    </g>
+    
+    <rect x="200" y="50" width="120" height="50" rx="6" fill="#0f172a"/>
+    <text x="260" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">KL(p||q) >= 0</text>
+    <text x="260" y="90" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10">= 0 when p = q</text>
+    
+    <text x="170" y="120" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="11">VAE loss includes KL term</text>
+  </g>
+  
+  <!-- Bayes Rule -->
+  <g transform="translate(50, 370)">
+    <rect width="700" height="100" rx="12" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+    <text x="350" y="28" text-anchor="middle" fill="#a855f7" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Bayes Rule: The Foundation</text>
+    
+    <rect x="150" y="45" width="500" height="40" rx="8" fill="#0f172a"/>
+    <text x="400" y="72" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="16">p(z|x) = p(x|z) * p(z) / p(x)</text>
+    
+    <text x="200" y="92" fill="#3b82f6" font-family="Arial, sans-serif" font-size="11">posterior</text>
+    <text x="340" y="92" fill="#22c55e" font-family="Arial, sans-serif" font-size="11">likelihood</text>
+    <text x="440" y="92" fill="#f97316" font-family="Arial, sans-serif" font-size="11">prior</text>
+    <text x="540" y="92" fill="#a855f7" font-family="Arial, sans-serif" font-size="11">evidence</text>
+  </g>
+</svg>

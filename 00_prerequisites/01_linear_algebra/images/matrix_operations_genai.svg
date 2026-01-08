@@ -1,0 +1,124 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blue1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="green1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="orange1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="purple1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="500" fill="#0f172a"/>
+  
+  <text x="400" y="40" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Linear Algebra in GenAI</text>
+  
+  <!-- Box 1: Neural Network Layer -->
+  <g transform="translate(50, 80)">
+    <rect width="320" height="170" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="160" y="30" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="16" font-weight="bold">1. Neural Network Layer</text>
+    
+    <rect x="30" y="55" width="60" height="80" rx="6" fill="url(#blue1)"/>
+    <text x="60" y="100" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Input</text>
+    <text x="60" y="118" text-anchor="middle" fill="#ddd" font-family="Arial, sans-serif" font-size="11">x</text>
+    
+    <text x="110" y="100" fill="#fff" font-family="Arial, sans-serif" font-size="20">x</text>
+    
+    <rect x="130" y="55" width="60" height="80" rx="6" fill="url(#green1)"/>
+    <text x="160" y="100" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Weights</text>
+    <text x="160" y="118" text-anchor="middle" fill="#ddd" font-family="Arial, sans-serif" font-size="11">W</text>
+    
+    <text x="210" y="100" fill="#fff" font-family="Arial, sans-serif" font-size="20">=</text>
+    
+    <rect x="230" y="55" width="60" height="80" rx="6" fill="url(#orange1)"/>
+    <text x="260" y="100" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Output</text>
+    <text x="260" y="118" text-anchor="middle" fill="#ddd" font-family="Arial, sans-serif" font-size="11">Wx</text>
+    
+    <text x="160" y="158" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">Every layer = matrix multiplication</text>
+  </g>
+  
+  <!-- Box 2: Attention Mechanism -->
+  <g transform="translate(430, 80)">
+    <rect width="320" height="170" rx="12" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+    <text x="160" y="30" text-anchor="middle" fill="#22c55e" font-family="Arial, sans-serif" font-size="16" font-weight="bold">2. Attention Mechanism</text>
+    
+    <rect x="30" y="55" width="50" height="40" rx="6" fill="url(#blue1)"/>
+    <text x="55" y="80" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Q</text>
+    
+    <rect x="90" y="55" width="50" height="40" rx="6" fill="url(#green1)"/>
+    <text x="115" y="80" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">K</text>
+    
+    <rect x="150" y="55" width="50" height="40" rx="6" fill="url(#orange1)"/>
+    <text x="175" y="80" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">V</text>
+    
+    <text x="220" y="80" fill="#fff" font-family="Arial, sans-serif" font-size="16">-></text>
+    
+    <rect x="250" y="55" width="50" height="40" rx="6" fill="url(#purple1)"/>
+    <text x="275" y="80" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Attn</text>
+    
+    <rect x="30" y="110" width="270" height="30" rx="6" fill="#0f172a"/>
+    <text x="165" y="130" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">softmax(QK^T / sqrt(d)) x V</text>
+    
+    <text x="160" y="158" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">Transformers, Stable Diffusion</text>
+  </g>
+  
+  <!-- Box 3: Latent Space -->
+  <g transform="translate(50, 280)">
+    <rect width="320" height="170" rx="12" fill="#1e293b" stroke="#f97316" stroke-width="2"/>
+    <text x="160" y="30" text-anchor="middle" fill="#f97316" font-family="Arial, sans-serif" font-size="16" font-weight="bold">3. Latent Space Operations</text>
+    
+    <circle cx="60" cy="85" r="25" fill="url(#blue1)"/>
+    <text x="60" y="90" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">z1</text>
+    
+    <line x1="90" y1="85" x2="200" y2="85" stroke="#64748b" stroke-width="2" stroke-dasharray="8,4"/>
+    <circle cx="120" cy="85" r="8" fill="#64748b" opacity="0.5"/>
+    <circle cx="145" cy="85" r="8" fill="#64748b" opacity="0.7"/>
+    <circle cx="170" cy="85" r="8" fill="#64748b" opacity="0.9"/>
+    
+    <circle cx="230" cy="85" r="25" fill="url(#orange1)"/>
+    <text x="230" y="90" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">z2</text>
+    
+    <rect x="70" y="120" width="180" height="25" rx="6" fill="#0f172a"/>
+    <text x="160" y="138" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="11">z = (1-t)z1 + t*z2</text>
+    
+    <text x="160" y="162" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">Interpolation in VAE/GAN latent space</text>
+  </g>
+  
+  <!-- Box 4: LoRA -->
+  <g transform="translate(430, 280)">
+    <rect width="320" height="170" rx="12" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+    <text x="160" y="30" text-anchor="middle" fill="#a855f7" font-family="Arial, sans-serif" font-size="16" font-weight="bold">4. Low-Rank (LoRA)</text>
+    
+    <rect x="30" y="55" width="70" height="50" rx="6" fill="url(#blue1)"/>
+    <text x="65" y="85" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14">Big W</text>
+    
+    <text x="115" y="85" fill="#fff" font-family="Arial, sans-serif" font-size="16">=</text>
+    
+    <rect x="135" y="55" width="35" height="50" rx="6" fill="url(#green1)"/>
+    <text x="152" y="85" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">A</text>
+    
+    <text x="180" y="85" fill="#fff" font-family="Arial, sans-serif" font-size="14">x</text>
+    
+    <rect x="195" y="60" width="50" height="35" rx="6" fill="url(#orange1)"/>
+    <text x="220" y="83" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12">B</text>
+    
+    <text x="260" y="85" fill="#22c55e" font-family="Arial, sans-serif" font-size="12">Small!</text>
+    
+    <rect x="30" y="115" width="260" height="28" rx="6" fill="#0f172a"/>
+    <text x="160" y="134" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="11">Fine-tune with fewer parameters</text>
+    
+    <text x="160" y="162" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">LoRA adapters for LLMs</text>
+  </g>
+  
+  <rect x="50" y="465" width="700" height="25" rx="6" fill="#1e293b"/>
+  <text x="400" y="483" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="12">All GenAI models use matrix operations: layers, attention, latent spaces, compression</text>
+</svg>
