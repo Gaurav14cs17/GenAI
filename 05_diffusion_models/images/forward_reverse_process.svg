@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280">
+  <defs>
+    <linearGradient id="noiseGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B7280"/>
+      <stop offset="100%" style="stop-color:#374151"/>
+    </linearGradient>
+    <linearGradient id="imageGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="50%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="forwardArrow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444"/>
+      <stop offset="100%" style="stop-color:#F97316"/>
+    </linearGradient>
+    <linearGradient id="reverseArrow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#3B82F6"/>
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="280" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="450" y="30" font-family="system-ui, sans-serif" font-size="18" fill="#F1F5F9" text-anchor="middle" font-weight="bold">The Diffusion Process</text>
+  
+  <!-- Image boxes at different noise levels -->
+  <!-- Original Image (t=0) -->
+  <rect x="50" y="70" width="100" height="100" rx="8" fill="url(#imageGrad2)" stroke="#6366F1" stroke-width="2"/>
+  <circle cx="85" cy="100" r="10" fill="#FCD34D" opacity="0.9"/>
+  <path d="M60 155 Q80 125 100 145 Q120 115 140 155 Z" fill="#059669" opacity="0.8"/>
+  <text x="100" y="195" font-family="system-ui, sans-serif" font-size="12" fill="#10B981" text-anchor="middle" font-weight="bold">t = 0</text>
+  <text x="100" y="210" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">Clean Image</text>
+  
+  <!-- Slightly noisy (t=250) -->
+  <rect x="220" y="70" width="100" height="100" rx="8" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+  <circle cx="255" cy="100" r="10" fill="#FCD34D" opacity="0.7"/>
+  <path d="M230 155 Q250 125 270 145 Q290 115 310 155 Z" fill="#059669" opacity="0.6"/>
+  <g fill="#6B7280" opacity="0.4">
+    <rect x="235" y="80" width="4" height="4"/>
+    <rect x="275" y="90" width="5" height="5"/>
+    <rect x="255" y="130" width="4" height="4"/>
+    <rect x="295" y="110" width="4" height="4"/>
+  </g>
+  <text x="270" y="195" font-family="system-ui, sans-serif" font-size="12" fill="#F59E0B" text-anchor="middle" font-weight="bold">t = 250</text>
+  <text x="270" y="210" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">Slightly Noisy</text>
+  
+  <!-- More noisy (t=500) -->
+  <rect x="390" y="70" width="100" height="100" rx="8" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+  <circle cx="425" cy="100" r="10" fill="#FCD34D" opacity="0.4"/>
+  <path d="M400 155 Q420 125 440 145 Q460 115 480 155 Z" fill="#059669" opacity="0.3"/>
+  <g fill="#6B7280" opacity="0.6">
+    <rect x="405" y="80" width="5" height="5"/>
+    <rect x="425" y="75" width="6" height="6"/>
+    <rect x="455" y="85" width="5" height="5"/>
+    <rect x="410" y="100" width="4" height="4"/>
+    <rect x="440" y="95" width="5" height="5"/>
+    <rect x="470" y="105" width="4" height="4"/>
+    <rect x="415" y="125" width="5" height="5"/>
+    <rect x="445" y="130" width="4" height="4"/>
+    <rect x="465" y="140" width="5" height="5"/>
+  </g>
+  <text x="440" y="195" font-family="system-ui, sans-serif" font-size="12" fill="#F59E0B" text-anchor="middle" font-weight="bold">t = 500</text>
+  <text x="440" y="210" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">Quite Noisy</text>
+  
+  <!-- Very noisy (t=750) -->
+  <rect x="560" y="70" width="100" height="100" rx="8" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+  <g fill="#6B7280" opacity="0.7">
+    <rect x="575" y="80" width="5" height="5"/>
+    <rect x="595" y="75" width="6" height="6"/>
+    <rect x="625" y="85" width="5" height="5"/>
+    <rect x="580" y="95" width="4" height="4"/>
+    <rect x="610" y="90" width="5" height="5"/>
+    <rect x="640" y="100" width="4" height="4"/>
+    <rect x="570" y="110" width="5" height="5"/>
+    <rect x="600" y="115" width="6" height="6"/>
+    <rect x="630" y="108" width="5" height="5"/>
+    <rect x="585" y="130" width="4" height="4"/>
+    <rect x="615" y="135" width="5" height="5"/>
+    <rect x="645" y="125" width="4" height="4"/>
+    <rect x="575" y="145" width="5" height="5"/>
+    <rect x="605" y="150" width="4" height="4"/>
+    <rect x="635" y="142" width="5" height="5"/>
+  </g>
+  <text x="610" y="195" font-family="system-ui, sans-serif" font-size="12" fill="#F97316" text-anchor="middle" font-weight="bold">t = 750</text>
+  <text x="610" y="210" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">Mostly Noise</text>
+  
+  <!-- Pure noise (t=1000) -->
+  <rect x="730" y="70" width="100" height="100" rx="8" fill="url(#noiseGrad2)" stroke="#4B5563" stroke-width="2"/>
+  <g fill="#9CA3AF" opacity="0.6">
+    <rect x="745" y="80" width="6" height="6"/>
+    <rect x="765" y="75" width="7" height="7"/>
+    <rect x="795" y="85" width="6" height="6"/>
+    <rect x="750" y="95" width="5" height="5"/>
+    <rect x="780" y="90" width="6" height="6"/>
+    <rect x="810" y="100" width="5" height="5"/>
+    <rect x="740" y="110" width="6" height="6"/>
+    <rect x="770" y="115" width="7" height="7"/>
+    <rect x="800" y="108" width="6" height="6"/>
+    <rect x="755" y="130" width="5" height="5"/>
+    <rect x="785" y="135" width="6" height="6"/>
+    <rect x="815" y="125" width="5" height="5"/>
+    <rect x="745" y="145" width="6" height="6"/>
+    <rect x="775" y="150" width="5" height="5"/>
+    <rect x="805" y="142" width="6" height="6"/>
+  </g>
+  <text x="780" y="195" font-family="system-ui, sans-serif" font-size="12" fill="#EF4444" text-anchor="middle" font-weight="bold">t = 1000</text>
+  <text x="780" y="210" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">Pure Noise</text>
+  
+  <!-- Forward process arrow -->
+  <defs>
+    <marker id="forwardHead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F97316"/>
+    </marker>
+  </defs>
+  <line x1="160" y1="55" x2="720" y2="55" stroke="url(#forwardArrow)" stroke-width="3" marker-end="url(#forwardHead)" stroke-dasharray="8,4"/>
+  <text x="440" y="48" font-family="system-ui, sans-serif" font-size="12" fill="#F97316" text-anchor="middle" font-weight="bold">Forward Process (Add Noise)</text>
+  
+  <!-- Reverse process arrow -->
+  <defs>
+    <marker id="reverseHead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10B981"/>
+    </marker>
+  </defs>
+  <line x1="720" y1="235" x2="160" y2="235" stroke="url(#reverseArrow)" stroke-width="3" marker-end="url(#reverseHead)" filter="url(#glow2)"/>
+  <text x="440" y="260" font-family="system-ui, sans-serif" font-size="12" fill="#10B981" text-anchor="middle" font-weight="bold">Reverse Process (Denoise) — This is what we learn!</text>
+</svg>
+

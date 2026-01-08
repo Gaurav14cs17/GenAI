@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260">
+  <defs>
+    <linearGradient id="forwardGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444"/>
+      <stop offset="100%" style="stop-color:#F97316"/>
+    </linearGradient>
+    <linearGradient id="reverseGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#3B82F6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="260" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="400" y="25" font-family="system-ui, sans-serif" font-size="16" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Diffusion Process Overview</text>
+  
+  <!-- Image boxes -->
+  <!-- t=0 (Clean) -->
+  <rect x="50" y="70" width="80" height="80" rx="8" fill="#3B82F6" opacity="0.8"/>
+  <text x="90" y="105" font-family="system-ui, sans-serif" font-size="20" fill="white" text-anchor="middle">🖼️</text>
+  <text x="90" y="125" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">Clean</text>
+  <text x="90" y="165" font-family="system-ui, sans-serif" font-size="10" fill="#60A5FA" text-anchor="middle" font-weight="bold">t = 0</text>
+  
+  <!-- t=0.33 -->
+  <rect x="200" y="70" width="80" height="80" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="2"/>
+  <g opacity="0.6">
+    <rect x="215" y="85" width="4" height="4" fill="#6B7280"/>
+    <rect x="235" y="90" width="5" height="5" fill="#6B7280"/>
+    <rect x="255" y="88" width="4" height="4" fill="#6B7280"/>
+    <rect x="225" y="105" width="5" height="5" fill="#6B7280"/>
+    <rect x="245" y="110" width="4" height="4" fill="#6B7280"/>
+    <rect x="260" y="120" width="5" height="5" fill="#6B7280"/>
+  </g>
+  <text x="240" y="165" font-family="system-ui, sans-serif" font-size="10" fill="#F59E0B" text-anchor="middle">t = T/3</text>
+  
+  <!-- t=0.66 -->
+  <rect x="350" y="70" width="80" height="80" rx="8" fill="#1E293B" stroke="#F97316" stroke-width="2"/>
+  <g opacity="0.7">
+    <rect x="365" y="82" width="5" height="5" fill="#6B7280"/>
+    <rect x="385" y="88" width="6" height="6" fill="#6B7280"/>
+    <rect x="405" y="85" width="5" height="5" fill="#6B7280"/>
+    <rect x="370" y="100" width="4" height="4" fill="#6B7280"/>
+    <rect x="390" y="105" width="5" height="5" fill="#6B7280"/>
+    <rect x="410" y="98" width="4" height="4" fill="#6B7280"/>
+    <rect x="375" y="118" width="5" height="5" fill="#6B7280"/>
+    <rect x="395" y="122" width="4" height="4" fill="#6B7280"/>
+    <rect x="415" y="115" width="5" height="5" fill="#6B7280"/>
+    <rect x="365" y="132" width="4" height="4" fill="#6B7280"/>
+    <rect x="400" y="135" width="5" height="5" fill="#6B7280"/>
+  </g>
+  <text x="390" y="165" font-family="system-ui, sans-serif" font-size="10" fill="#F97316" text-anchor="middle">t = 2T/3</text>
+  
+  <!-- t=T (Noise) -->
+  <rect x="500" y="70" width="80" height="80" rx="8" fill="#374151" stroke="#EF4444" stroke-width="2"/>
+  <g opacity="0.7">
+    <rect x="510" y="78" width="5" height="5" fill="#9CA3AF"/>
+    <rect x="530" y="82" width="6" height="6" fill="#9CA3AF"/>
+    <rect x="555" y="80" width="5" height="5" fill="#9CA3AF"/>
+    <rect x="515" y="95" width="4" height="4" fill="#9CA3AF"/>
+    <rect x="540" y="98" width="5" height="5" fill="#9CA3AF"/>
+    <rect x="560" y="93" width="6" height="6" fill="#9CA3AF"/>
+    <rect x="520" y="112" width="5" height="5" fill="#9CA3AF"/>
+    <rect x="545" y="115" width="4" height="4" fill="#9CA3AF"/>
+    <rect x="565" y="110" width="5" height="5" fill="#9CA3AF"/>
+    <rect x="512" y="128" width="6" height="6" fill="#9CA3AF"/>
+    <rect x="535" y="132" width="5" height="5" fill="#9CA3AF"/>
+    <rect x="558" y="130" width="4" height="4" fill="#9CA3AF"/>
+  </g>
+  <text x="540" y="165" font-family="system-ui, sans-serif" font-size="10" fill="#EF4444" text-anchor="middle" font-weight="bold">t = T</text>
+  <text x="540" y="180" font-family="system-ui, sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle">Pure Noise</text>
+  
+  <!-- Forward arrow -->
+  <line x1="135" y1="55" x2="495" y2="55" stroke="url(#forwardGrad)" stroke-width="3"/>
+  <polygon points="495,55 485,50 485,60" fill="#F97316"/>
+  <text x="315" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#F97316" text-anchor="middle" font-weight="bold">Forward Process (Add Noise)</text>
+  
+  <!-- Reverse arrow -->
+  <line x1="495" y1="200" x2="135" y2="200" stroke="url(#reverseGrad2)" stroke-width="3"/>
+  <polygon points="135,200 145,195 145,205" fill="#10B981"/>
+  <text x="315" y="220" font-family="system-ui, sans-serif" font-size="11" fill="#10B981" text-anchor="middle" font-weight="bold">Reverse Process (Denoise) ← What we learn!</text>
+  
+  <!-- Formulas -->
+  <rect x="600" y="70" width="180" height="100" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="690" y="95" font-family="system-ui, sans-serif" font-size="10" fill="#F97316" text-anchor="middle" font-weight="bold">Forward:</text>
+  <text x="690" y="112" font-family="system-ui, sans-serif" font-size="9" fill="#F1F5F9" text-anchor="middle">xₜ = √ᾱₜ x₀ + √(1-ᾱₜ) ε</text>
+  <text x="690" y="138" font-family="system-ui, sans-serif" font-size="10" fill="#10B981" text-anchor="middle" font-weight="bold">Reverse:</text>
+  <text x="690" y="155" font-family="system-ui, sans-serif" font-size="9" fill="#F1F5F9" text-anchor="middle">Learn εθ(xₜ, t) ≈ ε</text>
+  
+  <!-- Bottom note -->
+  <text x="400" y="250" font-family="system-ui, sans-serif" font-size="10" fill="#64748B" text-anchor="middle" font-style="italic">Gradually add noise, then learn to reverse the process</text>
+</svg>
+

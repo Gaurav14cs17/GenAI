@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgLPath" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#12122a"/>
+      <stop offset="100%" style="stop-color:#0a0a1a"/>
+    </linearGradient>
+    
+    <!-- Module gradients -->
+    <linearGradient id="mod1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    
+    <linearGradient id="mod2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#c084fc"/>
+    </linearGradient>
+    
+    <linearGradient id="mod3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#f472b6"/>
+    </linearGradient>
+    
+    <linearGradient id="mod4Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#22d3ee"/>
+    </linearGradient>
+    
+    <linearGradient id="mod5Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    
+    <linearGradient id="mod6Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#f87171"/>
+    </linearGradient>
+    
+    <linearGradient id="mod7Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <linearGradient id="pathLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="15%" style="stop-color:#8b5cf6"/>
+      <stop offset="30%" style="stop-color:#ec4899"/>
+      <stop offset="45%" style="stop-color:#06b6d4"/>
+      <stop offset="60%" style="stop-color:#f59e0b"/>
+      <stop offset="75%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glowL" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="shadowL">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(0,0,0,0.4)"/>
+    </filter>
+    
+    <!-- Grid pattern -->
+    <pattern id="gridL" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bgLPath)"/>
+  <rect width="1200" height="400" fill="url(#gridL)"/>
+  
+  <!-- Decorative orbs -->
+  <ellipse cx="100" cy="200" rx="150" ry="120" fill="rgba(124,58,237,0.06)"/>
+  <ellipse cx="1100" cy="200" rx="150" ry="120" fill="rgba(16,185,129,0.06)"/>
+  <ellipse cx="600" cy="200" rx="200" ry="150" fill="rgba(6,182,212,0.04)"/>
+  
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="36" font-weight="700" fill="white" filter="url(#glowL)">
+    📚 Learning Path
+  </text>
+  <text x="600" y="80" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="14" fill="rgba(255,255,255,0.5)">
+    Master diffusion models from fundamentals to production techniques
+  </text>
+  
+  <!-- Main Connection Line -->
+  <path d="M 100,200 C 200,200 250,200 350,200 S 450,200 500,200 S 600,200 700,200 S 800,200 850,200 S 950,200 1000,200 L 1100,200" 
+        stroke="url(#pathLine)" stroke-width="6" fill="none" stroke-linecap="round" filter="url(#glowL)" opacity="0.8"/>
+  
+  <!-- Module 1: Fundamentals -->
+  <g transform="translate(100, 200)">
+    <circle r="45" fill="rgba(124,58,237,0.2)" stroke="url(#mod1Grad)" stroke-width="4" filter="url(#shadowL)"/>
+    <circle r="35" fill="rgba(124,58,237,0.4)"/>
+    <text y="8" text-anchor="middle" font-size="28">📐</text>
+    <text y="75" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="white">Fundamentals</text>
+    <text y="92" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Core Math &amp; Theory</text>
+    <rect x="-30" y="-70" width="60" height="22" rx="6" fill="rgba(124,58,237,0.8)"/>
+    <text y="-54" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="white">START</text>
+  </g>
+  
+  <!-- Module 2: DDPM -->
+  <g transform="translate(270, 200)">
+    <circle r="45" fill="rgba(139,92,246,0.2)" stroke="url(#mod2Grad)" stroke-width="4" filter="url(#shadowL)"/>
+    <circle r="35" fill="rgba(139,92,246,0.4)"/>
+    <text y="8" text-anchor="middle" font-size="28">🎯</text>
+    <text y="75" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="white">DDPM</text>
+    <text y="92" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Training &amp; Sampling</text>
+  </g>
+  
+  <!-- Module 3: DDIM -->
+  <g transform="translate(440, 200)">
+    <circle r="45" fill="rgba(236,72,153,0.2)" stroke="url(#mod3Grad)" stroke-width="4" filter="url(#shadowL)"/>
+    <circle r="35" fill="rgba(236,72,153,0.4)"/>
+    <text y="8" text-anchor="middle" font-size="28">⚡</text>
+    <text y="75" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="white">DDIM</text>
+    <text y="92" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Fast Sampling</text>
+  </g>
+  
+  <!-- Module 4: Score SDE -->
+  <g transform="translate(610, 200)">
+    <circle r="45" fill="rgba(6,182,212,0.2)" stroke="url(#mod4Grad)" stroke-width="4" filter="url(#shadowL)"/>
+    <circle r="35" fill="rgba(6,182,212,0.4)"/>
+    <text y="8" text-anchor="middle" font-size="28">📈</text>
+    <text y="75" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="white">Score SDE</text>
+    <text y="92" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Unified Framework</text>
+  </g>
+  
+  <!-- Module 5: Classifier Guidance -->
+  <g transform="translate(780, 200)">
+    <circle r="45" fill="rgba(245,158,11,0.2)" stroke="url(#mod5Grad)" stroke-width="4" filter="url(#shadowL)"/>
+    <circle r="35" fill="rgba(245,158,11,0.4)"/>
+    <text y="8" text-anchor="middle" font-size="28">🎛️</text>
+    <text y="75" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="white">Classifier</text>
+    <text y="92" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Guidance Methods</text>
+  </g>
+  
+  <!-- Module 6: CFG -->
+  <g transform="translate(950, 200)">
+    <circle r="45" fill="rgba(239,68,68,0.2)" stroke="url(#mod6Grad)" stroke-width="4" filter="url(#shadowL)"/>
+    <circle r="35" fill="rgba(239,68,68,0.4)"/>
+    <text y="8" text-anchor="middle" font-size="28">🆓</text>
+    <text y="75" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="white">CFG</text>
+    <text y="92" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Production Standard</text>
+  </g>
+  
+  <!-- Module 7: Evaluation -->
+  <g transform="translate(1100, 200)">
+    <circle r="45" fill="rgba(16,185,129,0.2)" stroke="url(#mod7Grad)" stroke-width="4" filter="url(#shadowL)"/>
+    <circle r="35" fill="rgba(16,185,129,0.4)"/>
+    <text y="8" text-anchor="middle" font-size="28">📊</text>
+    <text y="75" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="white">Evaluation</text>
+    <text y="92" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">FID, IS, CLIP</text>
+    <rect x="-30" y="-70" width="60" height="22" rx="6" fill="rgba(16,185,129,0.8)"/>
+    <text y="-54" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="white">FINISH</text>
+  </g>
+  
+  <!-- Bottom guidance -->
+  <g transform="translate(600, 340)">
+    <rect x="-250" y="-20" width="500" height="40" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="0" y="5" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">
+      Follow left → right for structured learning • Each builds on the previous
+    </text>
+  </g>
+</svg>

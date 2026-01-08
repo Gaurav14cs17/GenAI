@@ -1,0 +1,240 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 550">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a18"/>
+      <stop offset="50%" style="stop-color:#12102a"/>
+      <stop offset="100%" style="stop-color:#0a1018"/>
+    </linearGradient>
+    
+    <linearGradient id="queryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#f87171"/>
+    </linearGradient>
+    
+    <linearGradient id="keyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+    
+    <linearGradient id="valueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    
+    <linearGradient id="imageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <marker id="arrowRed" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f87171"/>
+    </marker>
+    
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#60a5fa"/>
+    </marker>
+    
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#34d399"/>
+    </marker>
+    
+    <marker id="arrowYellow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="550" fill="url(#bgGrad)"/>
+  
+  <!-- Decorative -->
+  <circle cx="100" cy="100" r="150" fill="url(#textGrad)" opacity="0.03"/>
+  <circle cx="900" cy="450" r="200" fill="url(#imageGrad)" opacity="0.03"/>
+  
+  <!-- Title -->
+  <text x="500" y="45" text-anchor="middle" font-family="system-ui" font-size="32" font-weight="800" fill="white" filter="url(#glow)">
+    Cross-Attention Mechanism
+  </text>
+  <text x="500" y="75" text-anchor="middle" font-family="system-ui" font-size="14" fill="rgba(255,255,255,0.6)">
+    The Bridge Between Language and Vision — How Text Guides Image Generation
+  </text>
+  
+  <!-- Main Cross-Attention Visualization -->
+  <g transform="translate(50, 110)">
+    
+    <!-- Text Embeddings (Source of K, V) -->
+    <g transform="translate(0, 100)">
+      <rect x="-10" y="-80" width="180" height="160" rx="12" fill="rgba(245,158,11,0.1)" stroke="url(#textGrad)" stroke-width="2"/>
+      <text x="80" y="-55" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="700" fill="#fcd34d">Text Embeddings</text>
+      <text x="80" y="-35" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">CLIP: [B, 77, 768]</text>
+      
+      <!-- Token boxes -->
+      <g transform="translate(15, -15)">
+        <rect width="40" height="25" rx="4" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="1"/>
+        <text x="20" y="17" text-anchor="middle" font-family="system-ui" font-size="9" fill="#fcd34d">"a"</text>
+      </g>
+      <g transform="translate(60, -15)">
+        <rect width="40" height="25" rx="4" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="1"/>
+        <text x="20" y="17" text-anchor="middle" font-family="system-ui" font-size="9" fill="#fcd34d">"cat"</text>
+      </g>
+      <g transform="translate(105, -15)">
+        <rect width="40" height="25" rx="4" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="1"/>
+        <text x="20" y="17" text-anchor="middle" font-family="system-ui" font-size="9" fill="#fcd34d">"on"</text>
+      </g>
+      <g transform="translate(35, 20)">
+        <rect width="45" height="25" rx="4" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="1"/>
+        <text x="22" y="17" text-anchor="middle" font-family="system-ui" font-size="9" fill="#fcd34d">"grass"</text>
+      </g>
+      <g transform="translate(85, 20)">
+        <text x="15" y="17" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.3)">...</text>
+      </g>
+      
+      <!-- K and V projections -->
+      <g transform="translate(25, 60)">
+        <rect width="50" height="30" rx="5" fill="rgba(59,130,246,0.3)" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="25" y="20" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#93c5fd">W_K</text>
+      </g>
+      <g transform="translate(85, 60)">
+        <rect width="50" height="30" rx="5" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="1.5"/>
+        <text x="25" y="20" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#6ee7b7">W_V</text>
+      </g>
+    </g>
+    
+    <!-- Image Features (Source of Q) -->
+    <g transform="translate(0, 300)">
+      <rect x="-10" y="-60" width="180" height="120" rx="12" fill="rgba(139,92,246,0.1)" stroke="url(#imageGrad)" stroke-width="2"/>
+      <text x="80" y="-35" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="700" fill="#c4b5fd">Image Features</text>
+      <text x="80" y="-15" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">φ(z_t): [B, H×W, C]</text>
+      
+      <!-- Feature grid visualization -->
+      <g transform="translate(25, 0)">
+        <rect width="110" height="35" rx="4" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1"/>
+        <g fill="rgba(139,92,246,0.5)">
+          <rect x="5" y="5" width="15" height="12" rx="2"/>
+          <rect x="25" y="5" width="15" height="12" rx="2"/>
+          <rect x="45" y="5" width="15" height="12" rx="2"/>
+          <rect x="65" y="5" width="15" height="12" rx="2"/>
+          <rect x="85" y="5" width="15" height="12" rx="2"/>
+          <rect x="5" y="20" width="15" height="12" rx="2"/>
+          <rect x="25" y="20" width="15" height="12" rx="2"/>
+          <rect x="45" y="20" width="15" height="12" rx="2"/>
+          <rect x="65" y="20" width="15" height="12" rx="2"/>
+          <rect x="85" y="20" width="15" height="12" rx="2"/>
+        </g>
+      </g>
+      
+      <!-- Q projection -->
+      <g transform="translate(55, 45)">
+        <rect width="50" height="30" rx="5" fill="rgba(239,68,68,0.3)" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="25" y="20" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fca5a5">W_Q</text>
+      </g>
+    </g>
+    
+    <!-- Arrows from projections to attention computation -->
+    <path d="M 180,160 L 250,160 L 250,220" stroke="#60a5fa" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+    <path d="M 180,180 L 280,180 L 280,220" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+    <path d="M 180,365 L 220,365 L 220,300" stroke="#f87171" stroke-width="2" fill="none" marker-end="url(#arrowRed)"/>
+    
+    <!-- Attention Computation -->
+    <g transform="translate(200, 230)">
+      <rect width="200" height="160" rx="15" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+      <text x="100" y="25" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="700" fill="white">Attention Computation</text>
+      
+      <!-- QK^T -->
+      <g transform="translate(30, 45)">
+        <rect width="60" height="35" rx="6" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" stroke-width="1"/>
+        <text x="30" y="23" text-anchor="middle" font-family="serif" font-size="12" fill="#fcd34d">QK^T/√d</text>
+      </g>
+      
+      <!-- Softmax -->
+      <g transform="translate(110, 45)">
+        <rect width="60" height="35" rx="6" fill="rgba(168,85,247,0.2)" stroke="#a855f7" stroke-width="1"/>
+        <text x="30" y="23" text-anchor="middle" font-family="system-ui" font-size="11" fill="#d8b4fe">softmax</text>
+      </g>
+      
+      <!-- Attention weights visualization -->
+      <g transform="translate(30, 95)">
+        <rect width="140" height="45" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <text x="70" y="15" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">Attention Weights</text>
+        <!-- Heatmap-style visualization -->
+        <g transform="translate(10, 22)">
+          <rect x="0" y="0" width="20" height="15" fill="rgba(239,68,68,0.8)" rx="2"/>
+          <rect x="24" y="0" width="20" height="15" fill="rgba(239,68,68,0.3)" rx="2"/>
+          <rect x="48" y="0" width="20" height="15" fill="rgba(239,68,68,0.1)" rx="2"/>
+          <rect x="72" y="0" width="20" height="15" fill="rgba(34,197,94,0.8)" rx="2"/>
+          <rect x="96" y="0" width="20" height="15" fill="rgba(34,197,94,0.2)" rx="2"/>
+        </g>
+        <text x="70" y="42" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.4)">"cat"→region</text>
+      </g>
+      
+      <!-- Arrow between operations -->
+      <path d="M 95,62 L 105,62" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Output: Attended Features -->
+    <g transform="translate(450, 250)">
+      <path d="M 0,100 L 50,100" stroke="#34d399" stroke-width="2" marker-end="url(#arrowGreen)"/>
+      
+      <g transform="translate(60, 50)">
+        <rect width="130" height="100" rx="12" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2"/>
+        <text x="65" y="25" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#6ee7b7">Output</text>
+        <text x="65" y="45" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">Attn(Q,K,V) · V</text>
+        
+        <!-- Conditioned features -->
+        <g transform="translate(15, 55)">
+          <rect width="100" height="30" rx="4" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="1"/>
+          <text x="50" y="20" text-anchor="middle" font-family="system-ui" font-size="9" fill="#6ee7b7">Text-conditioned</text>
+        </g>
+      </g>
+    </g>
+    
+    <!-- Visual Connection Lines (showing attention) -->
+    <g transform="translate(650, 100)">
+      <rect width="250" height="280" rx="15" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+      <text x="125" y="25" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="white">Attention in Action</text>
+      <text x="125" y="45" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">"a cat on grass"</text>
+      
+      <!-- Simplified image representation -->
+      <g transform="translate(25, 60)">
+        <rect width="200" height="120" rx="8" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1"/>
+        
+        <!-- Cat region (high attention to "cat") -->
+        <ellipse cx="100" cy="50" rx="40" ry="35" fill="rgba(239,68,68,0.3)" stroke="#ef4444" stroke-width="2"/>
+        <text x="100" y="55" text-anchor="middle" font-family="system-ui" font-size="10" fill="#fca5a5">"cat"</text>
+        
+        <!-- Grass region (high attention to "grass") -->
+        <rect x="20" y="90" width="160" height="25" rx="4" fill="rgba(34,197,94,0.3)" stroke="#22c55e" stroke-width="2"/>
+        <text x="100" y="107" text-anchor="middle" font-family="system-ui" font-size="10" fill="#86efac">"grass"</text>
+      </g>
+      
+      <!-- Legend -->
+      <g transform="translate(25, 200)">
+        <rect width="200" height="60" rx="6" fill="rgba(0,0,0,0.3)"/>
+        <text x="100" y="18" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.6)">Each image region attends to</text>
+        <text x="100" y="33" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.6)">relevant words in the prompt</text>
+        <text x="100" y="50" text-anchor="middle" font-family="system-ui" font-size="9" font-weight="600" fill="#fbbf24">= Fine-grained text control!</text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Formula -->
+  <g transform="translate(100, 480)">
+    <rect width="800" height="55" rx="10" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="400" y="35" text-anchor="middle" font-family="serif" font-size="18" fill="white">
+      Attention(Q, K, V) = softmax(QK^T / √d_k) · V
+    </text>
+    <text x="650" y="35" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">where Q from image, K/V from text</text>
+  </g>
+</svg>

@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a15"/>
+      <stop offset="100%" style="stop-color:#15152a"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="550" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui" font-size="24" font-weight="700" fill="white" filter="url(#glow)">
+    Memory Optimization Techniques Comparison
+  </text>
+  
+  <!-- Table Header -->
+  <g transform="translate(50, 80)">
+    <rect width="800" height="40" rx="8" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="80" y="27" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#c4b5fd">Technique</text>
+    <text x="230" y="27" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#c4b5fd">Memory Saved</text>
+    <text x="380" y="27" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#c4b5fd">Speed Impact</text>
+    <text x="550" y="27" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#c4b5fd">Use Case</text>
+    <text x="720" y="27" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#c4b5fd">Complexity</text>
+  </g>
+  
+  <!-- Row 1: FP16 -->
+  <g transform="translate(50, 130)">
+    <rect width="800" height="70" rx="6" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="80" y="30" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#93c5fd">FP16/BF16</text>
+    <text x="80" y="50" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Mixed Precision</text>
+    
+    <!-- Memory bar -->
+    <rect x="170" y="20" width="120" height="20" rx="4" fill="rgba(16,185,129,0.3)"/>
+    <rect x="170" y="20" width="60" height="20" rx="4" fill="#10b981"/>
+    <text x="230" y="55" text-anchor="middle" font-family="system-ui" font-size="11" fill="#6ee7b7">50%</text>
+    
+    <!-- Speed -->
+    <text x="380" y="40" text-anchor="middle" font-family="system-ui" font-size="12" fill="#6ee7b7">+20% faster</text>
+    
+    <!-- Use case -->
+    <text x="550" y="35" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.7)">Always use!</text>
+    <text x="550" y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">No quality loss</text>
+    
+    <!-- Complexity -->
+    <text x="720" y="40" text-anchor="middle" font-family="system-ui" font-size="11" fill="#6ee7b7">⭐ Easy</text>
+  </g>
+  
+  <!-- Row 2: Attention Slicing -->
+  <g transform="translate(50, 210)">
+    <rect width="800" height="70" rx="6" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" stroke-width="1"/>
+    <text x="80" y="30" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#fcd34d">Attention</text>
+    <text x="80" y="50" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Slicing</text>
+    
+    <!-- Memory bar -->
+    <rect x="170" y="20" width="120" height="20" rx="4" fill="rgba(16,185,129,0.3)"/>
+    <rect x="170" y="20" width="90" height="20" rx="4" fill="#10b981"/>
+    <text x="230" y="55" text-anchor="middle" font-family="system-ui" font-size="11" fill="#6ee7b7">75%</text>
+    
+    <!-- Speed -->
+    <text x="380" y="40" text-anchor="middle" font-family="system-ui" font-size="12" fill="#fbbf24">10-40% slower</text>
+    
+    <!-- Use case -->
+    <text x="550" y="35" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.7)">Limited VRAM</text>
+    <text x="550" y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">8-12GB GPUs</text>
+    
+    <!-- Complexity -->
+    <text x="720" y="40" text-anchor="middle" font-family="system-ui" font-size="11" fill="#fbbf24">⭐⭐ Medium</text>
+  </g>
+  
+  <!-- Row 3: Gradient Checkpointing -->
+  <g transform="translate(50, 290)">
+    <rect width="800" height="70" rx="6" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="80" y="30" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#c4b5fd">Gradient</text>
+    <text x="80" y="50" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Checkpointing</text>
+    
+    <!-- Memory bar -->
+    <rect x="170" y="20" width="120" height="20" rx="4" fill="rgba(16,185,129,0.3)"/>
+    <rect x="170" y="20" width="84" height="20" rx="4" fill="#10b981"/>
+    <text x="230" y="55" text-anchor="middle" font-family="system-ui" font-size="11" fill="#6ee7b7">70%</text>
+    
+    <!-- Speed -->
+    <text x="380" y="40" text-anchor="middle" font-family="system-ui" font-size="12" fill="#f87171">30-50% slower</text>
+    
+    <!-- Use case -->
+    <text x="550" y="35" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.7)">Training only</text>
+    <text x="550" y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">Fine-tuning</text>
+    
+    <!-- Complexity -->
+    <text x="720" y="40" text-anchor="middle" font-family="system-ui" font-size="11" fill="#fbbf24">⭐⭐ Medium</text>
+  </g>
+  
+  <!-- Row 4: CPU Offload -->
+  <g transform="translate(50, 370)">
+    <rect width="800" height="70" rx="6" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1"/>
+    <text x="80" y="30" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#6ee7b7">CPU</text>
+    <text x="80" y="50" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Offloading</text>
+    
+    <!-- Memory bar -->
+    <rect x="170" y="20" width="120" height="20" rx="4" fill="rgba(16,185,129,0.3)"/>
+    <rect x="170" y="20" width="108" height="20" rx="4" fill="#10b981"/>
+    <text x="230" y="55" text-anchor="middle" font-family="system-ui" font-size="11" fill="#6ee7b7">90%</text>
+    
+    <!-- Speed -->
+    <text x="380" y="40" text-anchor="middle" font-family="system-ui" font-size="12" fill="#ef4444">2-5× slower</text>
+    
+    <!-- Use case -->
+    <text x="550" y="35" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.7)">Extreme low VRAM</text>
+    <text x="550" y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">4-6GB GPUs</text>
+    
+    <!-- Complexity -->
+    <text x="720" y="40" text-anchor="middle" font-family="system-ui" font-size="11" fill="#fbbf24">⭐⭐ Medium</text>
+  </g>
+  
+  <!-- Row 5: VAE Tiling -->
+  <g transform="translate(50, 450)">
+    <rect width="800" height="70" rx="6" fill="rgba(236,72,153,0.1)" stroke="#ec4899" stroke-width="1"/>
+    <text x="80" y="30" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#f9a8d4">VAE</text>
+    <text x="80" y="50" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Tiling</text>
+    
+    <!-- Memory bar -->
+    <rect x="170" y="20" width="120" height="20" rx="4" fill="rgba(16,185,129,0.3)"/>
+    <rect x="170" y="20" width="96" height="20" rx="4" fill="#10b981"/>
+    <text x="230" y="55" text-anchor="middle" font-family="system-ui" font-size="11" fill="#6ee7b7">80%</text>
+    
+    <!-- Speed -->
+    <text x="380" y="40" text-anchor="middle" font-family="system-ui" font-size="12" fill="#fbbf24">~10% slower</text>
+    
+    <!-- Use case -->
+    <text x="550" y="35" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.7)">High resolution</text>
+    <text x="550" y="50" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">1024px+ images</text>
+    
+    <!-- Complexity -->
+    <text x="720" y="40" text-anchor="middle" font-family="system-ui" font-size="11" fill="#f87171">⭐⭐⭐ Complex</text>
+  </g>
+</svg>
+

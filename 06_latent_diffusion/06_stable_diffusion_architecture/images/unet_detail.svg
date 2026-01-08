@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a18"/>
+      <stop offset="100%" style="stop-color:#151530"/>
+    </linearGradient>
+    
+    <linearGradient id="downGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    
+    <linearGradient id="midGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#6d28d9"/>
+    </linearGradient>
+    
+    <linearGradient id="upGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="550" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui" font-size="26" font-weight="700" fill="white" filter="url(#glow)">
+    U-Net Architecture in Stable Diffusion
+  </text>
+  <text x="450" y="65" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">
+    Encoder-Decoder with Skip Connections and Cross-Attention at Multiple Resolutions
+  </text>
+  
+  <!-- U-Net Diagram -->
+  <g transform="translate(50, 100)">
+    
+    <!-- Encoder Path (Downsampling) -->
+    <g transform="translate(50, 0)">
+      <text x="80" y="0" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#93c5fd">Encoder (Down)</text>
+      
+      <!-- Level 1: 64x64, 320ch -->
+      <g transform="translate(0, 20)">
+        <rect width="160" height="70" rx="8" fill="rgba(59,130,246,0.2)" stroke="#3b82f6" stroke-width="2"/>
+        <text x="80" y="20" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#93c5fd">ResBlock + Attn</text>
+        <text x="80" y="38" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">64×64, 320ch</text>
+        <text x="80" y="55" text-anchor="middle" font-family="system-ui" font-size="8" fill="#60a5fa">+ Cross-Attn</text>
+      </g>
+      
+      <!-- Arrow down -->
+      <path d="M 80,95 L 80,115" stroke="#3b82f6" stroke-width="2"/>
+      <text x="110" y="108" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.4)">↓2×</text>
+      
+      <!-- Level 2: 32x32, 640ch -->
+      <g transform="translate(20, 120)">
+        <rect width="120" height="60" rx="8" fill="rgba(59,130,246,0.25)" stroke="#3b82f6" stroke-width="2"/>
+        <text x="60" y="18" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#93c5fd">ResBlock + Attn</text>
+        <text x="60" y="35" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">32×32, 640ch</text>
+        <text x="60" y="50" text-anchor="middle" font-family="system-ui" font-size="8" fill="#60a5fa">+ Cross-Attn</text>
+      </g>
+      
+      <!-- Arrow down -->
+      <path d="M 80,185 L 80,205" stroke="#3b82f6" stroke-width="2"/>
+      <text x="110" y="198" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.4)">↓2×</text>
+      
+      <!-- Level 3: 16x16, 1280ch -->
+      <g transform="translate(40, 210)">
+        <rect width="80" height="55" rx="8" fill="rgba(59,130,246,0.3)" stroke="#3b82f6" stroke-width="2"/>
+        <text x="40" y="18" text-anchor="middle" font-family="system-ui" font-size="9" font-weight="600" fill="#93c5fd">ResBlock</text>
+        <text x="40" y="33" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">16×16</text>
+        <text x="40" y="46" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">1280ch</text>
+      </g>
+      
+      <!-- Arrow down -->
+      <path d="M 80,270 L 80,290" stroke="#3b82f6" stroke-width="2"/>
+      <text x="110" y="283" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.4)">↓2×</text>
+      
+      <!-- Level 4: 8x8, 1280ch -->
+      <g transform="translate(55, 295)">
+        <rect width="50" height="45" rx="6" fill="rgba(59,130,246,0.35)" stroke="#3b82f6" stroke-width="2"/>
+        <text x="25" y="15" text-anchor="middle" font-family="system-ui" font-size="8" font-weight="600" fill="#93c5fd">ResBlock</text>
+        <text x="25" y="30" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">8×8</text>
+        <text x="25" y="40" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">1280ch</text>
+      </g>
+    </g>
+    
+    <!-- Middle Block -->
+    <g transform="translate(200, 295)">
+      <rect width="100" height="70" rx="10" fill="rgba(139,92,246,0.3)" stroke="url(#midGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="50" y="20" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="700" fill="#c4b5fd">Middle</text>
+      <text x="50" y="38" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.6)">ResBlock</text>
+      <text x="50" y="52" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.6)">+ Self-Attn</text>
+      <text x="50" y="65" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.4)">8×8, 1280ch</text>
+    </g>
+    
+    <!-- Arrows to middle -->
+    <path d="M 155,320 L 190,330" stroke="#3b82f6" stroke-width="2"/>
+    <path d="M 310,330 L 345,320" stroke="#10b981" stroke-width="2"/>
+    
+    <!-- Decoder Path (Upsampling) -->
+    <g transform="translate(350, 0)">
+      <text x="80" y="0" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#6ee7b7">Decoder (Up)</text>
+      
+      <!-- Level 4: 8x8, 1280ch -->
+      <g transform="translate(55, 295)">
+        <rect width="50" height="45" rx="6" fill="rgba(16,185,129,0.35)" stroke="#10b981" stroke-width="2"/>
+        <text x="25" y="15" text-anchor="middle" font-family="system-ui" font-size="8" font-weight="600" fill="#6ee7b7">ResBlock</text>
+        <text x="25" y="30" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">8×8</text>
+        <text x="25" y="40" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">1280ch</text>
+      </g>
+      
+      <!-- Arrow up -->
+      <path d="M 80,290 L 80,270" stroke="#10b981" stroke-width="2"/>
+      <text x="110" y="283" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.4)">↑2×</text>
+      
+      <!-- Level 3: 16x16, 1280ch -->
+      <g transform="translate(40, 210)">
+        <rect width="80" height="55" rx="8" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="2"/>
+        <text x="40" y="18" text-anchor="middle" font-family="system-ui" font-size="9" font-weight="600" fill="#6ee7b7">ResBlock</text>
+        <text x="40" y="33" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">16×16</text>
+        <text x="40" y="46" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">1280ch</text>
+      </g>
+      
+      <!-- Arrow up -->
+      <path d="M 80,205 L 80,185" stroke="#10b981" stroke-width="2"/>
+      <text x="110" y="198" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.4)">↑2×</text>
+      
+      <!-- Level 2: 32x32, 640ch -->
+      <g transform="translate(20, 120)">
+        <rect width="120" height="60" rx="8" fill="rgba(16,185,129,0.25)" stroke="#10b981" stroke-width="2"/>
+        <text x="60" y="18" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#6ee7b7">ResBlock + Attn</text>
+        <text x="60" y="35" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">32×32, 640ch</text>
+        <text x="60" y="50" text-anchor="middle" font-family="system-ui" font-size="8" fill="#34d399">+ Cross-Attn</text>
+      </g>
+      
+      <!-- Arrow up -->
+      <path d="M 80,115 L 80,95" stroke="#10b981" stroke-width="2"/>
+      <text x="110" y="108" font-family="system-ui" font-size="8" fill="rgba(255,255,255,0.4)">↑2×</text>
+      
+      <!-- Level 1: 64x64, 320ch -->
+      <g transform="translate(0, 20)">
+        <rect width="160" height="70" rx="8" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2"/>
+        <text x="80" y="20" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#6ee7b7">ResBlock + Attn</text>
+        <text x="80" y="38" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">64×64, 320ch</text>
+        <text x="80" y="55" text-anchor="middle" font-family="system-ui" font-size="8" fill="#34d399">+ Cross-Attn</text>
+      </g>
+    </g>
+    
+    <!-- Skip Connections -->
+    <g stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,3" fill="none">
+      <path d="M 210,55 L 350,55"/>
+      <path d="M 190,150 L 370,150"/>
+      <path d="M 170,237 L 390,237"/>
+      <path d="M 155,317 L 405,317"/>
+    </g>
+    <text x="280" y="45" text-anchor="middle" font-family="system-ui" font-size="9" fill="#fcd34d">Skip Connections</text>
+    
+    <!-- Text conditioning input -->
+    <g transform="translate(600, 100)">
+      <rect width="180" height="180" rx="12" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="90" y="25" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#fcd34d">Text Conditioning</text>
+      <text x="90" y="45" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">CLIP Embeddings</text>
+      
+      <g transform="translate(20, 60)">
+        <text y="15" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.7)">• Cross-Attention at:</text>
+        <text y="35" font-family="monospace" font-size="9" fill="#93c5fd">  - 64×64 (320ch)</text>
+        <text y="52" font-family="monospace" font-size="9" fill="#93c5fd">  - 32×32 (640ch)</text>
+        <text y="69" font-family="monospace" font-size="9" fill="#93c5fd">  - 16×16 (1280ch)</text>
+        <text y="90" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.7)">• Self-Attention at middle</text>
+        <text y="110" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.7)">• 8 attention heads</text>
+      </g>
+      
+      <!-- Arrow to U-Net -->
+      <path d="M 0,90 L -50,90" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,2"/>
+    </g>
+    
+    <!-- Time embedding -->
+    <g transform="translate(600, 300)">
+      <rect width="180" height="80" rx="10" fill="rgba(236,72,153,0.1)" stroke="#ec4899" stroke-width="1.5"/>
+      <text x="90" y="25" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#f9a8d4">Time Embedding</text>
+      <text x="90" y="45" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Sinusoidal + MLP</text>
+      <text x="90" y="65" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.4)">t → [sin, cos] → MLP → 1280</text>
+    </g>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(50, 500)">
+    <rect width="800" height="40" rx="8" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    
+    <g transform="translate(50, 25)">
+      <rect width="15" height="15" rx="3" fill="rgba(59,130,246,0.3)" stroke="#3b82f6" stroke-width="1"/>
+      <text x="25" y="12" font-family="system-ui" font-size="10" fill="#93c5fd">Encoder</text>
+    </g>
+    
+    <g transform="translate(150, 25)">
+      <rect width="15" height="15" rx="3" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="1"/>
+      <text x="25" y="12" font-family="system-ui" font-size="10" fill="#c4b5fd">Middle</text>
+    </g>
+    
+    <g transform="translate(250, 25)">
+      <rect width="15" height="15" rx="3" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="1"/>
+      <text x="25" y="12" font-family="system-ui" font-size="10" fill="#6ee7b7">Decoder</text>
+    </g>
+    
+    <g transform="translate(350, 25)">
+      <line x1="0" y1="7" x2="20" y2="7" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,2"/>
+      <text x="30" y="12" font-family="system-ui" font-size="10" fill="#fcd34d">Skip Connection</text>
+    </g>
+    
+    <g transform="translate(500, 25)">
+      <text y="12" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.6)">Total: ~860M parameters</text>
+    </g>
+  </g>
+</svg>

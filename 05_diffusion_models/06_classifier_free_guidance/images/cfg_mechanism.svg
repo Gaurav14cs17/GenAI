@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bgMech" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="100%" style="stop-color:#1a0a18"/>
+    </linearGradient>
+    
+    <linearGradient id="grayMech" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6b7280"/>
+      <stop offset="100%" style="stop-color:#9ca3af"/>
+    </linearGradient>
+    
+    <linearGradient id="greenMech" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <linearGradient id="redMech" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#f87171"/>
+    </linearGradient>
+    
+    <filter id="shadowMech">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.4)"/>
+    </filter>
+    
+    <pattern id="gridMech" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+    </pattern>
+    
+    <marker id="arrowMech" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="url(#greenMech)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgMech)"/>
+  <rect width="900" height="500" fill="url(#gridMech)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="'Inter', sans-serif" font-size="28" font-weight="700" fill="white">
+    CFG Mechanism: Two Forward Passes
+  </text>
+  
+  <!-- Diagram -->
+  <g transform="translate(450, 250)">
+    
+    <!-- Input -->
+    <g transform="translate(-350, 0)">
+      <rect x="-60" y="-60" width="120" height="120" rx="14" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.3)" stroke-width="2" filter="url(#shadowMech)"/>
+      <g fill="rgba(255,255,255,0.5)">
+        <circle cx="-20" cy="-20" r="6"/><circle cx="20" cy="-25" r="5"/>
+        <circle cx="-25" cy="20" r="5"/><circle cx="25" cy="22" r="6"/>
+        <circle cx="0" cy="0" r="7"/>
+      </g>
+      <text y="90" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" fill="rgba(255,255,255,0.6)">xₜ</text>
+    </g>
+    
+    <!-- Fork to two paths -->
+    <path d="M -275,0 L -200,-70" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+    <path d="M -275,0 L -200,70" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+    
+    <!-- Unconditional path -->
+    <g transform="translate(-100, -80)">
+      <rect x="-100" y="-45" width="200" height="90" rx="14" fill="rgba(107,114,128,0.15)" stroke="url(#grayMech)" stroke-width="2" filter="url(#shadowMech)"/>
+      <text y="-15" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="white">Unconditional</text>
+      <text y="8" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="#9ca3af">εθ(xₜ, t, ∅)</text>
+      <text y="28" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.4)">condition = null</text>
+    </g>
+    
+    <!-- Conditional path -->
+    <g transform="translate(-100, 80)">
+      <rect x="-100" y="-45" width="200" height="90" rx="14" fill="rgba(16,185,129,0.15)" stroke="url(#greenMech)" stroke-width="2" filter="url(#shadowMech)"/>
+      <text y="-15" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="white">Conditional</text>
+      <text y="8" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="#86efac">εθ(xₜ, t, y)</text>
+      <text y="28" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.4)">condition = "a cat"</text>
+    </g>
+    
+    <!-- Merge arrows -->
+    <path d="M 15,-80 L 100,-30" stroke="url(#grayMech)" stroke-width="2"/>
+    <path d="M 15,80 L 100,30" stroke="url(#greenMech)" stroke-width="2"/>
+    
+    <!-- CFG combination -->
+    <g transform="translate(180, 0)">
+      <rect x="-80" y="-70" width="160" height="140" rx="16" fill="rgba(239,68,68,0.15)" stroke="url(#redMech)" stroke-width="3" filter="url(#shadowMech)"/>
+      <text y="-35" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="url(#redMech)">CFG</text>
+      <text y="-10" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="white">ε̃ = ε(∅) +</text>
+      <text y="10" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="white">w·[ε(y)-ε(∅)]</text>
+      <rect x="-60" y="25" width="120" height="25" rx="6" fill="rgba(239,68,68,0.3)"/>
+      <text y="42" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#fca5a5">w = 7.5</text>
+    </g>
+    
+    <!-- Output arrow -->
+    <path d="M 275,0 L 340,0" stroke="url(#redMech)" stroke-width="3" marker-end="url(#arrowMech)"/>
+    
+    <!-- Output (guided) -->
+    <text x="350" y="5" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="14" fill="#f87171">ε̃</text>
+  </g>
+  
+  <!-- Intuition box -->
+  <g transform="translate(450, 420)">
+    <rect x="-380" y="-40" width="760" height="80" rx="14" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.3)" stroke-width="1"/>
+    <text x="0" y="-15" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#22d3ee">💡 Intuition</text>
+    <text x="0" y="10" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.6)">
+      ε(y) - ε(∅) = "direction of y-ness" → Scale by w to amplify conditioning
+    </text>
+    <text x="0" y="30" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.4)">
+      Higher w = more prompt adherence, less diversity
+    </text>
+  </g>
+</svg>

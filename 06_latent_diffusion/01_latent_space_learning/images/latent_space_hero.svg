@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="50%" style="stop-color:#16213e"/>
+      <stop offset="100%" style="stop-color:#0f3460"/>
+    </linearGradient>
+    
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+    
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#f472b6"/>
+    </linearGradient>
+    
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Pattern for grids -->
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+    
+    <!-- Arrow markers -->
+    <marker id="arrowPurple" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#a855f7"/>
+    </marker>
+    
+    <marker id="arrowBlue" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#06b6d4"/>
+    </marker>
+    
+    <marker id="arrowGreen" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#34d399"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="500" fill="url(#bgGrad)"/>
+  <rect width="1000" height="500" fill="url(#grid)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="50" r="100" fill="url(#purpleGrad)" opacity="0.1"/>
+  <circle cx="950" cy="450" r="120" fill="url(#blueGrad)" opacity="0.08"/>
+  <circle cx="800" cy="100" r="80" fill="url(#pinkGrad)" opacity="0.06"/>
+  
+  <!-- Title Section -->
+  <text x="500" y="50" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="800" fill="white" filter="url(#glow)">
+    Latent Space Learning
+  </text>
+  <text x="500" y="80" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="rgba(255,255,255,0.6)">
+    The Foundation of Efficient Generative Models — Learning Meaningful Compressed Representations
+  </text>
+  
+  <!-- Main Visualization: High-dimensional to Latent Space -->
+  <g transform="translate(0, 50)">
+    
+    <!-- Left: High-dimensional Image Space -->
+    <g transform="translate(120, 180)">
+      <!-- 3D cube representing high-dim space -->
+      <g filter="url(#softGlow)">
+        <polygon points="0,0 80,0 100,-30 20,-30" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="2"/>
+        <polygon points="0,0 0,80 20,50 20,-30" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="2"/>
+        <polygon points="0,80 80,80 100,50 20,50" fill="rgba(139,92,246,0.4)" stroke="#8b5cf6" stroke-width="2"/>
+        <polygon points="80,0 80,80 100,50 100,-30" fill="rgba(139,92,246,0.25)" stroke="#8b5cf6" stroke-width="2"/>
+      </g>
+      
+      <!-- Scattered points representing images -->
+      <circle cx="25" cy="20" r="4" fill="#ec4899"/>
+      <circle cx="55" cy="35" r="4" fill="#f59e0b"/>
+      <circle cx="40" cy="55" r="4" fill="#10b981"/>
+      <circle cx="70" cy="15" r="4" fill="#3b82f6"/>
+      <circle cx="30" cy="45" r="4" fill="#f472b6"/>
+      <circle cx="60" cy="60" r="4" fill="#fbbf24"/>
+      <circle cx="45" cy="10" r="4" fill="#34d399"/>
+      <circle cx="20" cy="65" r="4" fill="#06b6d4"/>
+      
+      <text x="50" y="120" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#a855f7">Image Space</text>
+      <text x="50" y="140" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.5)">512×512×3</text>
+      <text x="50" y="158" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.4)">786,432 dims</text>
+    </g>
+    
+    <!-- Encoder Arrow -->
+    <g transform="translate(240, 200)">
+      <path d="M 0,30 C 40,30 60,30 100,30" stroke="url(#purpleGrad)" stroke-width="3" fill="none" marker-end="url(#arrowPurple)"/>
+      <rect x="25" y="5" width="50" height="50" rx="8" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="50" y="35" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#a855f7">ε(x)</text>
+      <text x="50" y="75" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)">Encoder</text>
+    </g>
+    
+    <!-- Center: Latent Space (Main Focus) -->
+    <g transform="translate(400, 120)">
+      <!-- Latent space boundary -->
+      <ellipse cx="100" cy="110" rx="130" ry="100" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,3"/>
+      
+      <!-- Gaussian distribution visualization -->
+      <ellipse cx="100" cy="110" rx="90" ry="70" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" stroke-width="1" opacity="0.8"/>
+      <ellipse cx="100" cy="110" rx="60" ry="45" fill="rgba(6,182,212,0.2)" stroke="#06b6d4" stroke-width="1" opacity="0.7"/>
+      <ellipse cx="100" cy="110" rx="30" ry="22" fill="rgba(6,182,212,0.3)" stroke="#06b6d4" stroke-width="1" opacity="0.6"/>
+      
+      <!-- Clustered points representing latent codes -->
+      <!-- Cluster 1: Faces -->
+      <g>
+        <circle cx="70" cy="90" r="5" fill="#ec4899" filter="url(#softGlow)"/>
+        <circle cx="85" cy="85" r="5" fill="#f472b6" filter="url(#softGlow)"/>
+        <circle cx="75" cy="100" r="5" fill="#db2777" filter="url(#softGlow)"/>
+        <text x="77" cy="75" font-family="system-ui" font-size="9" fill="#f9a8d4">faces</text>
+      </g>
+      
+      <!-- Cluster 2: Landscapes -->
+      <g>
+        <circle cx="130" cy="100" r="5" fill="#10b981" filter="url(#softGlow)"/>
+        <circle cx="140" cy="115" r="5" fill="#34d399" filter="url(#softGlow)"/>
+        <circle cx="125" cy="120" r="5" fill="#059669" filter="url(#softGlow)"/>
+        <text x="133" cy="90" font-family="system-ui" font-size="9" fill="#6ee7b7">nature</text>
+      </g>
+      
+      <!-- Cluster 3: Objects -->
+      <g>
+        <circle cx="100" cy="135" r="5" fill="#f59e0b" filter="url(#softGlow)"/>
+        <circle cx="90" cy="145" r="5" fill="#fbbf24" filter="url(#softGlow)"/>
+        <circle cx="110" cy="150" r="5" fill="#d97706" filter="url(#softGlow)"/>
+        <text x="100" y="170" text-anchor="middle" font-family="system-ui" font-size="9" fill="#fcd34d">objects</text>
+      </g>
+      
+      <!-- μ = 0 center point -->
+      <circle cx="100" cy="110" r="3" fill="white"/>
+      <text x="100" y="100" text-anchor="middle" font-family="serif" font-size="12" font-style="italic" fill="white">μ=0</text>
+      
+      <text x="100" y="240" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#06b6d4">Latent Space</text>
+      <text x="100" y="258" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.5)">64×64×4</text>
+      <text x="100" y="276" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.4)">16,384 dims (48× smaller!)</text>
+    </g>
+    
+    <!-- Decoder Arrow -->
+    <g transform="translate(660, 200)">
+      <path d="M 0,30 C 40,30 60,30 100,30" stroke="url(#greenGrad)" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+      <rect x="25" y="5" width="50" height="50" rx="8" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2"/>
+      <text x="50" y="35" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#34d399">D(z)</text>
+      <text x="50" y="75" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)">Decoder</text>
+    </g>
+    
+    <!-- Right: Reconstructed Image Space -->
+    <g transform="translate(780, 180)">
+      <!-- 3D cube representing reconstructed space -->
+      <g filter="url(#softGlow)">
+        <polygon points="0,0 80,0 100,-30 20,-30" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="2"/>
+        <polygon points="0,0 0,80 20,50 20,-30" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2"/>
+        <polygon points="0,80 80,80 100,50 20,50" fill="rgba(16,185,129,0.4)" stroke="#10b981" stroke-width="2"/>
+        <polygon points="80,0 80,80 100,50 100,-30" fill="rgba(16,185,129,0.25)" stroke="#10b981" stroke-width="2"/>
+      </g>
+      
+      <!-- Reconstructed points -->
+      <circle cx="25" cy="20" r="4" fill="#ec4899"/>
+      <circle cx="55" cy="35" r="4" fill="#f59e0b"/>
+      <circle cx="40" cy="55" r="4" fill="#10b981"/>
+      <circle cx="70" cy="15" r="4" fill="#3b82f6"/>
+      <circle cx="30" cy="45" r="4" fill="#f472b6"/>
+      <circle cx="60" cy="60" r="4" fill="#fbbf24"/>
+      <circle cx="45" cy="10" r="4" fill="#34d399"/>
+      <circle cx="20" cy="65" r="4" fill="#06b6d4"/>
+      
+      <text x="50" y="120" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#34d399">Reconstructed</text>
+      <text x="50" y="140" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.5)">512×512×3</text>
+      <text x="50" y="158" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.4)">x ≈ x̂</text>
+    </g>
+  </g>
+  
+  <!-- Bottom: Key Properties -->
+  <g transform="translate(0, 420)">
+    <rect x="30" y="0" width="940" height="65" rx="12" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    
+    <!-- Property 1 -->
+    <g transform="translate(80, 35)">
+      <circle r="15" fill="url(#purpleGrad)" opacity="0.3"/>
+      <text x="0" y="5" text-anchor="middle" font-family="system-ui" font-size="14" fill="#a855f7">📐</text>
+      <text x="70" y="0" font-family="system-ui" font-size="12" font-weight="600" fill="white">48× Compression</text>
+      <text x="70" y="16" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Efficient representation</text>
+    </g>
+    
+    <!-- Property 2 -->
+    <g transform="translate(280, 35)">
+      <circle r="15" fill="url(#blueGrad)" opacity="0.3"/>
+      <text x="0" y="5" text-anchor="middle" font-family="system-ui" font-size="14" fill="#06b6d4">🎯</text>
+      <text x="70" y="0" font-family="system-ui" font-size="12" font-weight="600" fill="white">Semantic Structure</text>
+      <text x="70" y="16" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Similar images cluster</text>
+    </g>
+    
+    <!-- Property 3 -->
+    <g transform="translate(500, 35)">
+      <circle r="15" fill="url(#greenGrad)" opacity="0.3"/>
+      <text x="0" y="5" text-anchor="middle" font-family="system-ui" font-size="14" fill="#34d399">📊</text>
+      <text x="70" y="0" font-family="system-ui" font-size="12" font-weight="600" fill="white">Gaussian Prior</text>
+      <text x="70" y="16" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">KL regularization to N(0,I)</text>
+    </g>
+    
+    <!-- Property 4 -->
+    <g transform="translate(720, 35)">
+      <circle r="15" fill="url(#pinkGrad)" opacity="0.3"/>
+      <text x="0" y="5" text-anchor="middle" font-family="system-ui" font-size="14" fill="#f472b6">⚡</text>
+      <text x="70" y="0" font-family="system-ui" font-size="12" font-weight="600" fill="white">Diffusion-Ready</text>
+      <text x="70" y="16" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Perfect for LDMs</text>
+    </g>
+  </g>
+</svg>

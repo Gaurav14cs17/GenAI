@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340">
+  <defs>
+    <linearGradient id="timeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#EAB308"/>
+    </linearGradient>
+    <linearGradient id="encGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+    <linearGradient id="decGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="340" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="300" y="22" font-family="system-ui, sans-serif" font-size="14" fill="#F1F5F9" text-anchor="middle" font-weight="bold">U-Net Architecture for DDPM</text>
+  
+  <!-- Input -->
+  <rect x="200" y="35" width="200" height="25" rx="5" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="300" y="52" font-family="system-ui, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Input: x_t [B, C, H, W] + t</text>
+  
+  <!-- Arrow -->
+  <line x1="300" y1="65" x2="300" y2="75" stroke="#64748B" stroke-width="2"/>
+  <polygon points="300,75 295,68 305,68" fill="#64748B"/>
+  
+  <!-- Time Embedding -->
+  <rect x="220" y="80" width="160" height="35" rx="6" fill="url(#timeGrad)"/>
+  <text x="300" y="98" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Time Embedding</text>
+  <text x="300" y="110" font-family="system-ui, sans-serif" font-size="8" fill="#FEF3C7" text-anchor="middle">Sinusoidal + MLP</text>
+  
+  <!-- Arrow -->
+  <line x1="300" y1="120" x2="300" y2="130" stroke="#64748B" stroke-width="2"/>
+  <polygon points="300,130 295,123 305,123" fill="#64748B"/>
+  
+  <!-- Encoder block -->
+  <rect x="80" y="135" width="440" height="70" rx="8" fill="url(#encGrad2)" opacity="0.2"/>
+  <rect x="80" y="135" width="440" height="70" rx="8" fill="none" stroke="#3B82F6" stroke-width="2"/>
+  <text x="300" y="152" font-family="system-ui, sans-serif" font-size="11" fill="#3B82F6" text-anchor="middle" font-weight="bold">ENCODER</text>
+  
+  <!-- Down blocks -->
+  <rect x="100" y="165" width="60" height="30" rx="4" fill="#3B82F6"/>
+  <text x="130" y="185" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="bold">Down 256</text>
+  
+  <rect x="200" y="165" width="60" height="30" rx="4" fill="#3B82F6"/>
+  <text x="230" y="185" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="bold">Down 128</text>
+  
+  <rect x="300" y="165" width="60" height="30" rx="4" fill="#3B82F6"/>
+  <text x="330" y="185" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="bold">Down 64</text>
+  
+  <!-- Middle -->
+  <rect x="400" y="165" width="100" height="30" rx="4" fill="#8B5CF6"/>
+  <text x="450" y="185" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="bold">Middle Block</text>
+  
+  <!-- Arrows between encoder blocks -->
+  <line x1="165" y1="180" x2="195" y2="180" stroke="#64748B" stroke-width="1"/>
+  <polygon points="195,180 188,175 188,185" fill="#64748B"/>
+  <line x1="265" y1="180" x2="295" y2="180" stroke="#64748B" stroke-width="1"/>
+  <polygon points="295,180 288,175 288,185" fill="#64748B"/>
+  <line x1="365" y1="180" x2="395" y2="180" stroke="#64748B" stroke-width="1"/>
+  <polygon points="395,180 388,175 388,185" fill="#64748B"/>
+  
+  <!-- Skip connections -->
+  <line x1="130" y1="200" x2="130" y2="230" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4,2"/>
+  <line x1="230" y1="200" x2="230" y2="230" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4,2"/>
+  <line x1="330" y1="200" x2="330" y2="230" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="180" y="220" font-family="system-ui, sans-serif" font-size="7" fill="#F59E0B">skip</text>
+  <text x="280" y="220" font-family="system-ui, sans-serif" font-size="7" fill="#F59E0B">skip</text>
+  <text x="370" y="220" font-family="system-ui, sans-serif" font-size="7" fill="#F59E0B">skip</text>
+  
+  <!-- Decoder block -->
+  <rect x="80" y="235" width="440" height="70" rx="8" fill="url(#decGrad2)" opacity="0.2"/>
+  <rect x="80" y="235" width="440" height="70" rx="8" fill="none" stroke="#10B981" stroke-width="2"/>
+  <text x="300" y="252" font-family="system-ui, sans-serif" font-size="11" fill="#10B981" text-anchor="middle" font-weight="bold">DECODER</text>
+  
+  <!-- Up blocks -->
+  <rect x="100" y="265" width="60" height="30" rx="4" fill="#10B981"/>
+  <text x="130" y="285" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="bold">Up 256</text>
+  
+  <rect x="200" y="265" width="60" height="30" rx="4" fill="#10B981"/>
+  <text x="230" y="285" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="bold">Up 128</text>
+  
+  <rect x="300" y="265" width="60" height="30" rx="4" fill="#10B981"/>
+  <text x="330" y="285" font-family="system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="bold">Up 64</text>
+  
+  <!-- Arrows between decoder blocks (reversed) -->
+  <line x1="195" y1="280" x2="165" y2="280" stroke="#64748B" stroke-width="1"/>
+  <polygon points="165,280 172,275 172,285" fill="#64748B"/>
+  <line x1="295" y1="280" x2="265" y2="280" stroke="#64748B" stroke-width="1"/>
+  <polygon points="265,280 272,275 272,285" fill="#64748B"/>
+  <line x1="395" y1="280" x2="365" y2="280" stroke="#64748B" stroke-width="1"/>
+  <polygon points="365,280 372,275 372,285" fill="#64748B"/>
+  
+  <!-- Output -->
+  <line x1="300" y1="310" x2="300" y2="320" stroke="#64748B" stroke-width="2"/>
+  <polygon points="300,320 295,313 305,313" fill="#64748B"/>
+  <rect x="200" y="320" width="200" height="20" rx="4" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+  <text x="300" y="334" font-family="system-ui, sans-serif" font-size="9" fill="#10B981" text-anchor="middle">Output: ε_pred [B, C, H, W]</text>
+</svg>
+

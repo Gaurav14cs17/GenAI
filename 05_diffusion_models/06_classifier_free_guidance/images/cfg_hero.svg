@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <defs>
+    <linearGradient id="bgCFG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#1a0a18"/>
+      <stop offset="100%" style="stop-color:#0a0a1a"/>
+    </linearGradient>
+    
+    <linearGradient id="redCFG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#f87171"/>
+    </linearGradient>
+    
+    <linearGradient id="greenCFG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <linearGradient id="purpleCFG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    
+    <linearGradient id="cyanCFG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#22d3ee"/>
+    </linearGradient>
+    
+    <filter id="glowCFG">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    
+    <filter id="shadowCFG">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="rgba(0,0,0,0.5)"/>
+    </filter>
+    
+    <pattern id="gridCFG" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="500" fill="url(#bgCFG)"/>
+  <rect width="1000" height="500" fill="url(#gridCFG)"/>
+  
+  <!-- Decorative -->
+  <ellipse cx="150" cy="250" rx="200" ry="200" fill="rgba(239,68,68,0.06)"/>
+  <ellipse cx="850" cy="250" rx="200" ry="200" fill="rgba(16,185,129,0.06)"/>
+  
+  <!-- Title -->
+  <text x="500" y="50" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="40" font-weight="700" fill="white" filter="url(#glowCFG)">
+    🆓 Classifier-Free Guidance
+  </text>
+  <text x="500" y="85" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" fill="rgba(255,255,255,0.6)">
+    The Secret Behind Stable Diffusion, DALL-E, and Midjourney's Quality
+  </text>
+  
+  <!-- Main equation -->
+  <g transform="translate(500, 180)">
+    <rect x="-400" y="-50" width="800" height="100" rx="20" fill="rgba(239,68,68,0.1)" stroke="url(#redCFG)" stroke-width="3" filter="url(#shadowCFG)"/>
+    <text x="0" y="-15" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="url(#redCFG)">🎯 The CFG Formula</text>
+    <text x="0" y="25" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="22" fill="white">ε̃ = εθ(xₜ,∅) + w · [εθ(xₜ,y) - εθ(xₜ,∅)]</text>
+  </g>
+  
+  <!-- Key advantages -->
+  <g transform="translate(500, 320)">
+    <!-- No classifier card -->
+    <g transform="translate(-320, 0)">
+      <rect x="-140" y="-70" width="280" height="140" rx="16" fill="rgba(16,185,129,0.1)" stroke="url(#greenCFG)" stroke-width="2" filter="url(#shadowCFG)"/>
+      <text y="-35" text-anchor="middle" font-family="'Inter', sans-serif" font-size="28">✅</text>
+      <text y="0" text-anchor="middle" font-family="'Inter', sans-serif" font-size="15" font-weight="600" fill="white">No Separate Classifier</text>
+      <text y="25" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">Single model learns both</text>
+      <text y="45" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">conditional &amp; unconditional</text>
+    </g>
+    
+    <!-- Training card -->
+    <g transform="translate(0, 0)">
+      <rect x="-140" y="-70" width="280" height="140" rx="16" fill="rgba(139,92,246,0.1)" stroke="url(#purpleCFG)" stroke-width="2" filter="url(#shadowCFG)"/>
+      <text y="-35" text-anchor="middle" font-family="'Inter', sans-serif" font-size="28">🎲</text>
+      <text y="0" text-anchor="middle" font-family="'Inter', sans-serif" font-size="15" font-weight="600" fill="white">Simple Training</text>
+      <text y="25" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">Randomly drop condition</text>
+      <text y="45" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">with probability p=0.1</text>
+    </g>
+    
+    <!-- Flexibility card -->
+    <g transform="translate(320, 0)">
+      <rect x="-140" y="-70" width="280" height="140" rx="16" fill="rgba(6,182,212,0.1)" stroke="url(#cyanCFG)" stroke-width="2" filter="url(#shadowCFG)"/>
+      <text y="-35" text-anchor="middle" font-family="'Inter', sans-serif" font-size="28">🎨</text>
+      <text y="0" text-anchor="middle" font-family="'Inter', sans-serif" font-size="15" font-weight="600" fill="white">Any Conditioning</text>
+      <text y="25" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">Text, class, image, audio</text>
+      <text y="45" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">Works with anything!</text>
+    </g>
+  </g>
+  
+  <!-- Guidance scale info -->
+  <g transform="translate(500, 450)">
+    <rect x="-400" y="-30" width="800" height="60" rx="12" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+    <text x="-250" y="5" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#fcd34d">📈 Guidance Scale w:</text>
+    <text x="-50" y="5" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(255,255,255,0.5)">Stable Diffusion: 7.5</text>
+    <text x="100" y="5" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(255,255,255,0.5)">DALL-E: ~7</text>
+    <text x="230" y="5" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(255,255,255,0.5)">Midjourney: ~6</text>
+  </g>
+</svg>

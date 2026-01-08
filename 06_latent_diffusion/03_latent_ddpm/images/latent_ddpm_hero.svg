@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0a1d"/>
+      <stop offset="50%" style="stop-color:#1a0a2e"/>
+      <stop offset="100%" style="stop-color:#0f1629"/>
+    </linearGradient>
+    
+    <linearGradient id="noiseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="50%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#84cc16"/>
+    </linearGradient>
+    
+    <linearGradient id="cleanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+    
+    <linearGradient id="unetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    
+    <marker id="arrowWhite" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="white"/>
+    </marker>
+    
+    <marker id="arrowPurple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#a855f7"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="520" fill="url(#bgGrad)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="200" fill="url(#noiseGrad)" opacity="0.03"/>
+  <circle cx="900" cy="420" r="250" fill="url(#cleanGrad)" opacity="0.03"/>
+  
+  <!-- Title -->
+  <text x="500" y="45" text-anchor="middle" font-family="system-ui" font-size="32" font-weight="800" fill="white" filter="url(#glow)">
+    Latent DDPM
+  </text>
+  <text x="500" y="75" text-anchor="middle" font-family="system-ui" font-size="14" fill="rgba(255,255,255,0.6)">
+    Denoising Diffusion Probabilistic Models in Compressed Latent Space — 48× More Efficient
+  </text>
+  
+  <!-- Main Diffusion Process Visualization -->
+  <g transform="translate(50, 110)">
+    
+    <!-- Forward Process Arrow (top) -->
+    <g transform="translate(150, 10)">
+      <path d="M 0,0 L 600,0" stroke="url(#noiseGrad)" stroke-width="4" marker-end="url(#arrowWhite)"/>
+      <text x="300" y="-15" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#fbbf24">
+        Forward Process q(z_t | z_0): Add Noise Gradually
+      </text>
+    </g>
+    
+    <!-- Timestep boxes -->
+    <g transform="translate(0, 50)">
+      <!-- z_0 (clean latent) -->
+      <g transform="translate(50, 0)">
+        <rect x="-45" y="-45" width="90" height="90" rx="12" fill="rgba(6,182,212,0.2)" stroke="#06b6d4" stroke-width="2"/>
+        <!-- Clean image representation -->
+        <rect x="-30" y="-30" width="60" height="45" rx="4" fill="rgba(6,182,212,0.4)"/>
+        <circle cx="-10" cy="20" r="8" fill="#22d3ee"/>
+        <rect x="5" y="12" width="20" height="12" rx="2" fill="#22d3ee"/>
+        <text x="0" y="65" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#67e8f9">z₀</text>
+        <text x="0" y="82" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.4)">t=0</text>
+      </g>
+      
+      <!-- Intermediate noisy states -->
+      <g transform="translate(200, 0)">
+        <rect x="-45" y="-45" width="90" height="90" rx="12" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="2"/>
+        <!-- Slightly noisy -->
+        <rect x="-30" y="-30" width="60" height="45" rx="4" fill="rgba(34,197,94,0.35)">
+        </rect>
+        <!-- Noise dots -->
+        <circle cx="-20" cy="-15" r="2" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="15" cy="-5" r="2" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="-5" cy="5" r="2" fill="rgba(255,255,255,0.3)"/>
+        <text x="0" y="65" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#4ade80">z_t</text>
+        <text x="0" y="82" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.4)">t=250</text>
+      </g>
+      
+      <g transform="translate(350, 0)">
+        <rect x="-45" y="-45" width="90" height="90" rx="12" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2"/>
+        <!-- More noisy -->
+        <rect x="-30" y="-30" width="60" height="45" rx="4" fill="rgba(245,158,11,0.3)">
+        </rect>
+        <!-- More noise dots -->
+        <circle cx="-25" cy="-20" r="2" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="0" cy="-10" r="2" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="20" cy="-25" r="2" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="-10" cy="5" r="2" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="15" cy="0" r="2" fill="rgba(255,255,255,0.4)"/>
+        <text x="0" y="65" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#fbbf24">z_t</text>
+        <text x="0" y="82" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.4)">t=500</text>
+      </g>
+      
+      <g transform="translate(500, 0)">
+        <rect x="-45" y="-45" width="90" height="90" rx="12" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="2"/>
+        <!-- Very noisy -->
+        <rect x="-30" y="-30" width="60" height="45" rx="4" fill="rgba(249,115,22,0.25)"/>
+        <!-- Many noise dots -->
+        <g fill="rgba(255,255,255,0.5)">
+          <circle cx="-20" cy="-20" r="2"/><circle cx="0" cy="-15" r="2"/><circle cx="20" cy="-20" r="2"/>
+          <circle cx="-15" cy="-5" r="2"/><circle cx="10" cy="-8" r="2"/><circle cx="-5" cy="0" r="2"/>
+          <circle cx="15" cy="5" r="2"/><circle cx="-20" cy="5" r="2"/><circle cx="5" cy="10" r="2"/>
+        </g>
+        <text x="0" y="65" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#fb923c">z_t</text>
+        <text x="0" y="82" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.4)">t=750</text>
+      </g>
+      
+      <!-- z_T (pure noise) -->
+      <g transform="translate(650, 0)">
+        <rect x="-45" y="-45" width="90" height="90" rx="12" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+        <!-- Pure noise -->
+        <rect x="-30" y="-30" width="60" height="45" rx="4" fill="rgba(239,68,68,0.2)"/>
+        <!-- Dense noise -->
+        <g fill="rgba(255,255,255,0.6)">
+          <circle cx="-25" cy="-25" r="1.5"/><circle cx="-15" cy="-20" r="1.5"/><circle cx="-5" cy="-25" r="1.5"/>
+          <circle cx="5" cy="-20" r="1.5"/><circle cx="15" cy="-25" r="1.5"/><circle cx="25" cy="-20" r="1.5"/>
+          <circle cx="-20" cy="-10" r="1.5"/><circle cx="-10" cy="-15" r="1.5"/><circle cx="0" cy="-10" r="1.5"/>
+          <circle cx="10" cy="-15" r="1.5"/><circle cx="20" cy="-10" r="1.5"/><circle cx="-25" cy="0" r="1.5"/>
+          <circle cx="-15" cy="-5" r="1.5"/><circle cx="-5" cy="0" r="1.5"/><circle cx="5" cy="-5" r="1.5"/>
+          <circle cx="15" cy="0" r="1.5"/><circle cx="25" cy="-5" r="1.5"/><circle cx="-20" cy="10" r="1.5"/>
+          <circle cx="-10" cy="5" r="1.5"/><circle cx="0" cy="10" r="1.5"/><circle cx="10" cy="5" r="1.5"/>
+          <circle cx="20" cy="10" r="1.5"/>
+        </g>
+        <text x="0" y="65" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="#f87171">z_T</text>
+        <text x="0" y="82" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.4)">t=1000</text>
+      </g>
+      
+      <!-- Connecting arrows -->
+      <path d="M 110,0 L 140,0" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+      <path d="M 260,0 L 290,0" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+      <path d="M 410,0 L 440,0" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+      <path d="M 560,0 L 590,0" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+    </g>
+    
+    <!-- Reverse Process (bottom) -->
+    <g transform="translate(150, 180)">
+      <path d="M 600,0 L 0,0" stroke="url(#unetGrad)" stroke-width="4" marker-end="url(#arrowPurple)"/>
+      <text x="300" y="25" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#c4b5fd">
+        Reverse Process p_θ(z_{t-1} | z_t): U-Net Predicts Noise → Denoise
+      </text>
+    </g>
+    
+    <!-- U-Net Denoiser -->
+    <g transform="translate(730, 50)">
+      <rect x="-30" y="-70" width="160" height="140" rx="15" fill="rgba(139,92,246,0.15)" stroke="url(#unetGrad)" stroke-width="2"/>
+      <text x="50" y="-45" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="700" fill="#c4b5fd">U-Net</text>
+      <text x="50" y="-25" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">ε_θ(z_t, t)</text>
+      
+      <!-- U-shape visualization -->
+      <g transform="translate(20, -5)">
+        <path d="M 0,0 L 0,40 L 60,40 L 60,0" stroke="#a855f7" stroke-width="3" fill="none"/>
+        <circle cx="0" cy="0" r="6" fill="#8b5cf6"/>
+        <circle cx="0" cy="20" r="5" fill="#7c3aed"/>
+        <circle cx="0" cy="40" r="4" fill="#6d28d9"/>
+        <circle cx="60" cy="0" r="6" fill="#8b5cf6"/>
+        <circle cx="60" cy="20" r="5" fill="#7c3aed"/>
+        <circle cx="60" cy="40" r="4" fill="#6d28d9"/>
+        <circle cx="30" cy="40" r="3" fill="#5b21b6"/>
+      </g>
+      
+      <text x="50" y="75" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Predicts ε</text>
+    </g>
+  </g>
+  
+  <!-- Formula Section -->
+  <g transform="translate(50, 350)">
+    <rect width="900" height="150" rx="15" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    
+    <text x="450" y="30" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="white">Key Equations</text>
+    
+    <!-- Forward process -->
+    <g transform="translate(40, 55)">
+      <rect width="250" height="75" rx="8" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" stroke-width="1"/>
+      <text x="125" y="22" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fcd34d">Forward (Add Noise)</text>
+      <text x="125" y="50" text-anchor="middle" font-family="serif" font-size="15" fill="white">z_t = √ᾱ_t · z₀ + √(1-ᾱ_t) · ε</text>
+      <text x="125" y="68" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">ε ~ N(0, I)</text>
+    </g>
+    
+    <!-- Training objective -->
+    <g transform="translate(320, 55)">
+      <rect width="280" height="75" rx="8" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1"/>
+      <text x="140" y="22" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#c4b5fd">Training Loss</text>
+      <text x="140" y="50" text-anchor="middle" font-family="serif" font-size="15" fill="white">L = E[ ‖ε - ε_θ(z_t, t)‖² ]</text>
+      <text x="140" y="68" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">Simple MSE loss on noise prediction</text>
+    </g>
+    
+    <!-- Sampling -->
+    <g transform="translate(630, 55)">
+      <rect width="250" height="75" rx="8" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="1"/>
+      <text x="125" y="22" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#67e8f9">Reverse (Denoise)</text>
+      <text x="125" y="50" text-anchor="middle" font-family="serif" font-size="14" fill="white">z_{t-1} = μ_θ(z_t, t) + σ_t · η</text>
+      <text x="125" y="68" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">η ~ N(0, I), iterative denoising</text>
+    </g>
+  </g>
+</svg>

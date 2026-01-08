@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a18"/>
+      <stop offset="100%" style="stop-color:#151528"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <marker id="arrowWhite" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.6)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="450" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui" font-size="24" font-weight="700" fill="white" filter="url(#glow)">
+    Stable Diffusion Inference Pipeline
+  </text>
+  <text x="450" y="65" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">
+    Step-by-step flow from text prompt to generated image
+  </text>
+  
+  <!-- Pipeline Steps -->
+  <g transform="translate(50, 100)">
+    
+    <!-- Step 1: Text Input -->
+    <g transform="translate(0, 0)">
+      <circle cx="40" cy="0" r="18" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="2"/>
+      <text x="40" y="5" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="700" fill="#fcd34d">1</text>
+      
+      <rect y="25" width="100" height="80" rx="10" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="50" y="50" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fcd34d">Text</text>
+      <text x="50" y="70" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">"prompt"</text>
+      <text x="50" y="85" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">"neg_prompt"</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 110,65 L 140,65" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowWhite)"/>
+    
+    <!-- Step 2: CLIP Encoding -->
+    <g transform="translate(150, 0)">
+      <circle cx="40" cy="0" r="18" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="2"/>
+      <text x="40" y="5" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="700" fill="#fcd34d">2</text>
+      
+      <rect y="25" width="100" height="80" rx="10" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="50" y="45" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fcd34d">CLIP</text>
+      <text x="50" y="65" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">Tokenize +</text>
+      <text x="50" y="80" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">Encode</text>
+      <text x="50" y="120" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.4)">[B,77,768]</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 260,65 L 290,65" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowWhite)"/>
+    
+    <!-- Step 3: Initialize Noise -->
+    <g transform="translate(300, 0)">
+      <circle cx="40" cy="0" r="18" fill="rgba(239,68,68,0.3)" stroke="#ef4444" stroke-width="2"/>
+      <text x="40" y="5" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="700" fill="#fca5a5">3</text>
+      
+      <rect y="25" width="100" height="80" rx="10" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="50" y="45" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fca5a5">Init Noise</text>
+      <text x="50" y="65" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">z_T ~ N(0,I)</text>
+      <text x="50" y="80" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">Random seed</text>
+      <text x="50" y="120" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.4)">[1,4,64,64]</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 410,65 L 440,65" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowWhite)"/>
+    
+    <!-- Step 4: Denoising Loop -->
+    <g transform="translate(450, -30)">
+      <circle cx="80" cy="30" r="18" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="80" y="35" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="700" fill="#c4b5fd">4</text>
+      
+      <rect y="55" width="160" height="140" rx="12" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="80" y="80" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#c4b5fd">Denoising Loop</text>
+      <text x="80" y="100" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.6)">for t in timesteps:</text>
+      <text x="80" y="118" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">• CFG: concat latents</text>
+      <text x="80" y="133" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">• U-Net: predict ε</text>
+      <text x="80" y="148" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">• Apply guidance</text>
+      <text x="80" y="163" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">• Scheduler step</text>
+      <text x="80" y="185" text-anchor="middle" font-family="monospace" font-size="8" fill="#a855f7">×50 iterations</text>
+      
+      <!-- Loop arrow -->
+      <path d="M 160,130 Q 180,130 180,100 Q 180,70 160,70" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 620,65 L 650,65" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowWhite)"/>
+    
+    <!-- Step 5: VAE Decode -->
+    <g transform="translate(660, 0)">
+      <circle cx="40" cy="0" r="18" fill="rgba(6,182,212,0.3)" stroke="#06b6d4" stroke-width="2"/>
+      <text x="40" y="5" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="700" fill="#67e8f9">5</text>
+      
+      <rect y="25" width="100" height="80" rx="10" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="50" y="45" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#67e8f9">VAE</text>
+      <text x="50" y="65" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">Decode z_0</text>
+      <text x="50" y="80" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">64→512</text>
+      <text x="50" y="120" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.4)">[1,3,512,512]</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 770,65 L 800,65" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowWhite)"/>
+    
+    <!-- Step 6: Output -->
+    <g transform="translate(810, 0)">
+      <circle cx="30" cy="0" r="18" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="2"/>
+      <text x="30" y="5" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="700" fill="#6ee7b7">6</text>
+      
+      <rect y="25" width="70" height="80" rx="10" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="1.5"/>
+      <text x="35" y="50" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#6ee7b7">🖼️</text>
+      <text x="35" y="70" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Image!</text>
+      <text x="35" y="120" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.4)">512×512</text>
+    </g>
+  </g>
+  
+  <!-- CFG Explanation -->
+  <g transform="translate(50, 280)">
+    <rect width="400" height="140" rx="12" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="200" y="25" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#c4b5fd">Classifier-Free Guidance (CFG)</text>
+    
+    <text x="20" y="55" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">Enhance text adherence during inference:</text>
+    <text x="200" y="85" text-anchor="middle" font-family="serif" font-size="14" fill="white">
+      ε_guided = ε_uncond + s · (ε_cond - ε_uncond)
+    </text>
+    <text x="20" y="115" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">• s = guidance scale (typically 7.5)</text>
+    <text x="20" y="132" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">• Higher s → stronger text adherence, less diversity</text>
+  </g>
+  
+  <!-- Timing Info -->
+  <g transform="translate(480, 280)">
+    <rect width="370" height="140" rx="12" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1"/>
+    <text x="185" y="25" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="600" fill="#6ee7b7">Typical Performance</text>
+    
+    <g transform="translate(20, 45)">
+      <text y="15" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">50 steps @ 512×512:</text>
+      <text y="40" font-family="monospace" font-size="11" fill="#6ee7b7">• RTX 3090: ~5 seconds</text>
+      <text y="60" font-family="monospace" font-size="11" fill="#fbbf24">• RTX 3060: ~12 seconds</text>
+      <text y="80" font-family="monospace" font-size="11" fill="#fca5a5">• CPU only: ~5 minutes</text>
+    </g>
+  </g>
+</svg>
+

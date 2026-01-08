@@ -1,0 +1,252 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <defs>
+    <!-- Main background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="25%" style="stop-color:#0f1628"/>
+      <stop offset="50%" style="stop-color:#1a1040"/>
+      <stop offset="75%" style="stop-color:#1e0a3c"/>
+      <stop offset="100%" style="stop-color:#0a0a1a"/>
+    </linearGradient>
+    
+    <!-- Accent gradients -->
+    <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#c084fc"/>
+    </linearGradient>
+    
+    <linearGradient id="pinkGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="50%" style="stop-color:#f472b6"/>
+      <stop offset="100%" style="stop-color:#fb7185"/>
+    </linearGradient>
+    
+    <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="50%" style="stop-color:#22d3ee"/>
+      <stop offset="100%" style="stop-color:#67e8f9"/>
+    </linearGradient>
+    
+    <linearGradient id="emeraldGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="50%" style="stop-color:#34d399"/>
+      <stop offset="100%" style="stop-color:#6ee7b7"/>
+    </linearGradient>
+    
+    <linearGradient id="amberGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="50%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#fcd34d"/>
+    </linearGradient>
+    
+    <linearGradient id="processArrow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    
+    <linearGradient id="reverseArrow" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="rgba(0,0,0,0.5)"/>
+    </filter>
+    
+    <!-- Pattern for grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+    
+    <!-- Animated noise pattern -->
+    <pattern id="noisePattern" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.5" fill="rgba(255,255,255,0.4)"/>
+    </pattern>
+    
+    <!-- Arrow markers -->
+    <marker id="arrowPurple" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,1 L0,11 L12,6 Z" fill="url(#purpleGlow)"/>
+    </marker>
+    
+    <marker id="arrowCyan" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,1 L0,11 L12,6 Z" fill="url(#cyanGlow)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background layers -->
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  <rect width="1200" height="700" fill="url(#grid)"/>
+  
+  <!-- Decorative orbs -->
+  <ellipse cx="150" cy="120" rx="200" ry="180" fill="rgba(124,58,237,0.08)"/>
+  <ellipse cx="1050" cy="580" rx="220" ry="200" fill="rgba(236,72,153,0.08)"/>
+  <ellipse cx="600" cy="350" rx="350" ry="300" fill="rgba(6,182,212,0.04)"/>
+  <ellipse cx="300" cy="550" rx="150" ry="120" fill="rgba(245,158,11,0.06)"/>
+  <ellipse cx="900" cy="180" rx="180" ry="140" fill="rgba(16,185,129,0.06)"/>
+  
+  <!-- Main Title Section -->
+  <g transform="translate(600, 60)">
+    <text x="0" y="0" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="58" font-weight="700" fill="white" filter="url(#glow)">
+      Diffusion Models
+    </text>
+    <text x="0" y="45" text-anchor="middle" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="22" fill="rgba(255,255,255,0.7)" letter-spacing="2">
+      THE FOUNDATION OF MODERN GENERATIVE AI
+    </text>
+    <text x="0" y="80" text-anchor="middle" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="16" fill="rgba(255,255,255,0.5)">
+      Learn to generate by learning to denoise — From pure noise to photorealistic images
+    </text>
+  </g>
+  
+  <!-- Main Process Visualization -->
+  <g transform="translate(600, 300)">
+    
+    <!-- Forward Process Section -->
+    <g transform="translate(0, -80)">
+      <rect x="-520" y="-80" width="1040" height="160" rx="24" fill="rgba(124,58,237,0.08)" stroke="rgba(124,58,237,0.4)" stroke-width="2" filter="url(#shadow)"/>
+      
+      <!-- Section Title -->
+      <text x="-480" y="-45" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="20" font-weight="700" fill="url(#purpleGlow)">
+        Forward Diffusion: Data → Noise
+      </text>
+      <text x="-480" y="-22" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">
+        Gradually destroy information with Gaussian noise over T timesteps
+      </text>
+      
+      <!-- Clean Image -->
+      <g transform="translate(-380, 30)">
+        <rect x="-55" y="-55" width="110" height="110" rx="16" fill="rgba(124,58,237,0.25)" stroke="#a855f7" stroke-width="2"/>
+        <!-- Simple face/image icon -->
+        <circle cx="0" cy="-8" r="28" fill="rgba(251,191,36,0.8)"/>
+        <circle cx="-10" cy="-12" r="5" fill="#1e1e2e"/>
+        <circle cx="10" cy="-12" r="5" fill="#1e1e2e"/>
+        <path d="M -8,5 Q 0,14 8,5" fill="none" stroke="#1e1e2e" stroke-width="3" stroke-linecap="round"/>
+        <rect x="-20" y="25" width="40" height="20" rx="6" fill="rgba(147,51,234,0.7)"/>
+        <text y="80" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" fill="#c4b5fd" font-weight="600">x₀</text>
+        <text y="95" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.4)">Clean Data</text>
+      </g>
+      
+      <!-- Process Arrow with equation -->
+      <g>
+        <path d="M -270,30 L 270,30" stroke="url(#processArrow)" stroke-width="4" stroke-linecap="round" stroke-dasharray="16,8" marker-end="url(#arrowPurple)" filter="url(#softGlow)"/>
+        <rect x="-140" y="0" width="280" height="60" rx="12" fill="rgba(0,0,0,0.6)"/>
+        <text x="0" y="20" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" fill="#e9d5ff">q(xₜ|xₜ₋₁) = 𝒩(√(1-βₜ)xₜ₋₁, βₜI)</text>
+        <text x="0" y="45" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="#a78bfa">xₜ = √ᾱₜ·x₀ + √(1-ᾱₜ)·ε</text>
+      </g>
+      
+      <!-- Pure Noise -->
+      <g transform="translate(380, 30)">
+        <rect x="-55" y="-55" width="110" height="110" rx="16" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+        <!-- Noise visualization -->
+        <g fill="rgba(255,255,255,0.6)">
+          <circle cx="-30" cy="-30" r="5"/><circle cx="25" cy="-35" r="5"/>
+          <circle cx="-35" cy="20" r="5"/><circle cx="30" cy="30" r="5"/>
+          <circle cx="8" cy="-40" r="4"/><circle cx="-40" cy="0" r="5"/>
+          <circle cx="40" cy="-8" r="4"/><circle cx="0" cy="40" r="5"/>
+          <circle cx="-18" cy="-12" r="5"/><circle cx="18" cy="12" r="5"/>
+          <circle cx="-12" cy="28" r="4"/><circle cx="35" cy="0" r="4"/>
+          <circle cx="0" cy="0" r="6"/><circle cx="-25" cy="10" r="4"/>
+          <circle cx="5" cy="-18" r="4"/><circle cx="-8" cy="15" r="3"/>
+        </g>
+        <text y="80" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" fill="rgba(255,255,255,0.6)" font-weight="600">xₜ</text>
+        <text y="95" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.4)">≈ 𝒩(0, I)</text>
+      </g>
+    </g>
+    
+    <!-- Reverse Process Section -->
+    <g transform="translate(0, 100)">
+      <rect x="-520" y="-80" width="1040" height="160" rx="24" fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.4)" stroke-width="2" filter="url(#shadow)"/>
+      
+      <!-- Section Title -->
+      <text x="-480" y="-45" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="20" font-weight="700" fill="url(#cyanGlow)">
+        Reverse Diffusion: Noise → Data (Generation!)
+      </text>
+      <text x="-480" y="-22" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">
+        Neural network learns to predict and remove noise step by step
+      </text>
+      
+      <!-- Neural Network -->
+      <g transform="translate(0, 30)">
+        <rect x="-100" y="-40" width="200" height="80" rx="16" fill="rgba(16,185,129,0.25)" stroke="#34d399" stroke-width="2"/>
+        <text y="-8" text-anchor="middle" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="18" font-weight="700" fill="white">U-Net εθ</text>
+        <text y="15" text-anchor="middle" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)">Noise Predictor</text>
+      </g>
+      
+      <!-- Reverse Arrow with equation -->
+      <path d="M 270,30 L -270,30" stroke="url(#reverseArrow)" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowCyan)" filter="url(#softGlow)"/>
+      
+      <rect x="-140" y="55" width="280" height="35" rx="10" fill="rgba(0,0,0,0.6)"/>
+      <text x="0" y="77" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="#a5f3fc">pθ(xₜ₋₁|xₜ) = 𝒩(xₜ₋₁; μθ(xₜ,t), σₜ²I)</text>
+    </g>
+  </g>
+  
+  <!-- Key Equations Panel -->
+  <g transform="translate(600, 520)">
+    <rect x="-520" y="-45" width="1040" height="90" rx="16" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+    
+    <!-- Training Loss -->
+    <g transform="translate(-340, 0)">
+      <rect x="-130" y="-35" width="260" height="70" rx="12" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+      <text x="0" y="-12" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="url(#amberGlow)">🎯 Training Objective</text>
+      <text x="0" y="12" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" fill="white">ℒ = 𝔼‖ε - εθ(xₜ, t)‖²</text>
+      <text x="0" y="28" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Predict the noise!</text>
+    </g>
+    
+    <!-- Sampling -->
+    <g transform="translate(0, 0)">
+      <rect x="-130" y="-35" width="260" height="70" rx="12" fill="rgba(124,58,237,0.1)" stroke="rgba(124,58,237,0.3)" stroke-width="1"/>
+      <text x="0" y="-12" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="url(#purpleGlow)">🔄 Sampling Step</text>
+      <text x="0" y="12" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="15" fill="white">xₜ₋₁ = μθ(xₜ,t) + σₜ·z</text>
+      <text x="0" y="28" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Iteratively denoise</text>
+    </g>
+    
+    <!-- Score Connection -->
+    <g transform="translate(340, 0)">
+      <rect x="-130" y="-35" width="260" height="70" rx="12" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.3)" stroke-width="1"/>
+      <text x="0" y="-12" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="url(#cyanGlow)">📈 Score Connection</text>
+      <text x="0" y="12" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="15" fill="white">∇ log p(x) ≈ -ε/σ</text>
+      <text x="0" y="28" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Unified with score matching</text>
+    </g>
+  </g>
+  
+  <!-- Applications Footer -->
+  <g transform="translate(600, 640)">
+    <g transform="translate(-420, 0)">
+      <rect x="-90" y="-28" width="180" height="56" rx="14" fill="rgba(124,58,237,0.15)" stroke="rgba(124,58,237,0.4)" stroke-width="1"/>
+      <text y="-5" text-anchor="middle" font-family="'Inter', sans-serif" font-size="20">🖼️</text>
+      <text y="18" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#c4b5fd" font-weight="600">DALL-E 3 • Midjourney</text>
+    </g>
+    <g transform="translate(-140, 0)">
+      <rect x="-90" y="-28" width="180" height="56" rx="14" fill="rgba(236,72,153,0.15)" stroke="rgba(236,72,153,0.4)" stroke-width="1"/>
+      <text y="-5" text-anchor="middle" font-family="'Inter', sans-serif" font-size="20">🎨</text>
+      <text y="18" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#f9a8d4" font-weight="600">Stable Diffusion</text>
+    </g>
+    <g transform="translate(140, 0)">
+      <rect x="-90" y="-28" width="180" height="56" rx="14" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.4)" stroke-width="1"/>
+      <text y="-5" text-anchor="middle" font-family="'Inter', sans-serif" font-size="20">🎬</text>
+      <text y="18" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#86efac" font-weight="600">Sora • Runway Gen-3</text>
+    </g>
+    <g transform="translate(420, 0)">
+      <rect x="-90" y="-28" width="180" height="56" rx="14" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.4)" stroke-width="1"/>
+      <text y="-5" text-anchor="middle" font-family="'Inter', sans-serif" font-size="20">🔊</text>
+      <text y="18" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#fcd34d" font-weight="600">AudioLDM • MusicGen</text>
+    </g>
+  </g>
+</svg>

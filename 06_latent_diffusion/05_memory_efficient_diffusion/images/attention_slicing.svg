@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a18"/>
+      <stop offset="100%" style="stop-color:#141428"/>
+    </linearGradient>
+    
+    <linearGradient id="fullGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    
+    <linearGradient id="slicedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="480" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui" font-size="24" font-weight="700" fill="white" filter="url(#glow)">
+    Attention Slicing
+  </text>
+  <text x="450" y="65" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">
+    Process attention in chunks to reduce peak memory usage
+  </text>
+  
+  <!-- Standard Attention (Left) -->
+  <g transform="translate(50, 100)">
+    <text x="170" y="0" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="#fca5a5">
+      Standard Attention
+    </text>
+    <text x="170" y="20" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">
+      Full N×N matrix in memory
+    </text>
+    
+    <!-- Full attention matrix -->
+    <g transform="translate(20, 40)">
+      <rect width="300" height="200" rx="8" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+      
+      <!-- Grid visualization -->
+      <g fill="rgba(239,68,68,0.4)">
+        <rect x="10" y="10" width="280" height="180" rx="4"/>
+      </g>
+      
+      <!-- Grid lines -->
+      <g stroke="rgba(239,68,68,0.6)" stroke-width="1">
+        <line x1="80" y1="10" x2="80" y2="190"/>
+        <line x1="150" y1="10" x2="150" y2="190"/>
+        <line x1="220" y1="10" x2="220" y2="190"/>
+        <line x1="10" y1="55" x2="290" y2="55"/>
+        <line x1="10" y1="100" x2="290" y2="100"/>
+        <line x1="10" y1="145" x2="290" y2="145"/>
+      </g>
+      
+      <!-- Dimension labels -->
+      <text x="150" y="220" text-anchor="middle" font-family="monospace" font-size="11" fill="#fca5a5">4096 queries (N)</text>
+      <text x="-10" y="100" text-anchor="middle" font-family="monospace" font-size="11" fill="#fca5a5" transform="rotate(-90, -10, 100)">4096 keys</text>
+    </g>
+    
+    <!-- Memory usage indicator -->
+    <g transform="translate(20, 270)">
+      <rect width="300" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1"/>
+      <text x="150" y="25" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fca5a5">Peak Memory Usage</text>
+      <text x="150" y="45" text-anchor="middle" font-family="system-ui" font-size="14" fill="#f87171">
+        ~8 GB for 64×64 latent
+      </text>
+    </g>
+  </g>
+  
+  <!-- Arrow -->
+  <g transform="translate(400, 200)">
+    <path d="M 0,0 L 80,0" stroke="white" stroke-width="3" marker-end="url(#arrowWhite)"/>
+    <text x="40" y="-15" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.6)">Slice it!</text>
+  </g>
+  
+  <!-- Sliced Attention (Right) -->
+  <g transform="translate(500, 100)">
+    <text x="170" y="0" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="#6ee7b7">
+      Sliced Attention
+    </text>
+    <text x="170" y="20" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">
+      Process slice_size×N at a time
+    </text>
+    
+    <!-- Sliced attention matrix -->
+    <g transform="translate(20, 40)">
+      <rect width="300" height="200" rx="8" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="2" stroke-dasharray="5,3"/>
+      
+      <!-- Active slice (highlighted) -->
+      <rect x="10" y="10" width="280" height="45" rx="4" fill="rgba(16,185,129,0.5)" stroke="#10b981" stroke-width="2"/>
+      <text x="150" y="38" text-anchor="middle" font-family="system-ui" font-size="10" fill="white">Processing slice 1</text>
+      
+      <!-- Pending slices (dimmed) -->
+      <rect x="10" y="60" width="280" height="40" rx="4" fill="rgba(16,185,129,0.15)"/>
+      <rect x="10" y="105" width="280" height="40" rx="4" fill="rgba(16,185,129,0.15)"/>
+      <rect x="10" y="150" width="280" height="40" rx="4" fill="rgba(16,185,129,0.15)"/>
+      
+      <!-- Dimension labels -->
+      <text x="150" y="220" text-anchor="middle" font-family="monospace" font-size="11" fill="#6ee7b7">4096 keys (full)</text>
+      <text x="-10" y="35" text-anchor="middle" font-family="monospace" font-size="10" fill="#6ee7b7" transform="rotate(-90, -10, 35)">1024</text>
+    </g>
+    
+    <!-- Memory usage indicator -->
+    <g transform="translate(20, 270)">
+      <rect width="300" height="60" rx="8" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1"/>
+      <text x="150" y="25" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#6ee7b7">Peak Memory Usage</text>
+      <text x="150" y="45" text-anchor="middle" font-family="system-ui" font-size="14" fill="#34d399">
+        ~2 GB (75% reduction!)
+      </text>
+    </g>
+  </g>
+  
+  <!-- Algorithm explanation -->
+  <g transform="translate(100, 380)">
+    <rect width="700" height="80" rx="12" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="350" y="25" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="white">How Attention Slicing Works</text>
+    <text x="350" y="48" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">
+      Instead of computing full [N × N] attention, process [slice_size × N] chunks sequentially
+    </text>
+    <text x="350" y="68" text-anchor="middle" font-family="monospace" font-size="10" fill="#6ee7b7">
+      for i in range(0, N, slice_size): attn[i:i+slice_size] = softmax(Q[i:i+slice_size] @ K.T) @ V
+    </text>
+  </g>
+  
+  <defs>
+    <marker id="arrowWhite" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="white"/>
+    </marker>
+  </defs>
+</svg>

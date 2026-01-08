@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450">
+  <defs>
+    <linearGradient id="bgRev" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#0a1a28"/>
+      <stop offset="100%" style="stop-color:#0a2e1a"/>
+    </linearGradient>
+    
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#22d3ee"/>
+    </linearGradient>
+    
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#f472b6"/>
+    </linearGradient>
+    
+    <linearGradient id="revArrowGrad" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.2)"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <filter id="glowRev">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    
+    <filter id="shadowRev">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.4)"/>
+    </filter>
+    
+    <pattern id="gridRev" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+    </pattern>
+    
+    <marker id="arrowRev" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="url(#greenGrad)"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="450" fill="url(#bgRev)"/>
+  <rect width="1000" height="450" fill="url(#gridRev)"/>
+  
+  <!-- Decorative -->
+  <ellipse cx="900" cy="225" rx="200" ry="200" fill="rgba(16,185,129,0.08)"/>
+  <ellipse cx="100" cy="225" rx="150" ry="180" fill="rgba(255,255,255,0.02)"/>
+  
+  <!-- Title -->
+  <text x="500" y="45" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="36" font-weight="700" fill="white" filter="url(#glowRev)">
+    📈 Reverse Diffusion Process
+  </text>
+  <text x="500" y="75" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.6)">
+    The generative heart of diffusion — Learning to create by learning to denoise
+  </text>
+  
+  <!-- Main visualization: Denoising sequence -->
+  <g transform="translate(500, 200)">
+    <!-- Connection line (reversed) -->
+    <path d="M 380,0 L -380,0" stroke="url(#revArrowGrad)" stroke-width="4" stroke-dasharray="10,5" marker-end="url(#arrowRev)" filter="url(#glowRev)"/>
+    
+    <!-- t=T: Pure noise (start) -->
+    <g transform="translate(350, 0)">
+      <rect x="-55" y="-55" width="110" height="110" rx="14" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.3)" stroke-width="2" filter="url(#shadowRev)"/>
+      <g fill="rgba(255,255,255,0.6)">
+        <circle cx="-28" cy="-28" r="5"/><circle cx="25" cy="-30" r="5"/>
+        <circle cx="-32" cy="25" r="5"/><circle cx="28" cy="28" r="5"/>
+        <circle cx="-10" cy="-15" r="5"/><circle cx="12" cy="10" r="5"/>
+        <circle cx="5" cy="-32" r="4"/><circle cx="-35" cy="5" r="5"/>
+        <circle cx="0" cy="0" r="6"/><circle cx="-15" cy="8" r="5"/>
+        <circle cx="20" cy="-5" r="5"/><circle cx="8" cy="22" r="5"/>
+      </g>
+      <text y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" fill="rgba(255,255,255,0.7)">xₜ</text>
+      <text y="102" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.4)">Pure noise</text>
+    </g>
+    
+    <!-- t=3T/4 -->
+    <g transform="translate(175, 0)">
+      <rect x="-55" y="-55" width="110" height="110" rx="14" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.3)" stroke-width="2" filter="url(#shadowRev)"/>
+      <circle cy="-5" r="30" fill="rgba(251,191,36,0.15)"/>
+      <g fill="rgba(255,255,255,0.5)">
+        <circle cx="-30" cy="-30" r="4"/><circle cx="28" cy="-28" r="4"/>
+        <circle cx="-25" cy="28" r="4"/><circle cx="30" cy="32" r="4"/>
+        <circle cx="-12" cy="-18" r="4"/><circle cx="15" cy="12" r="4"/>
+        <circle cx="8" cy="-35" r="4"/><circle cx="-35" cy="8" r="4"/>
+      </g>
+      <text y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" fill="#86efac">x_{3T/4}</text>
+    </g>
+    
+    <!-- t=T/2 -->
+    <g transform="translate(0, 0)">
+      <rect x="-55" y="-55" width="110" height="110" rx="14" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.4)" stroke-width="2" filter="url(#shadowRev)"/>
+      <circle cy="-5" r="30" fill="rgba(251,191,36,0.4)"/>
+      <circle cx="-10" cy="-10" r="5" fill="rgba(30,30,46,0.5)"/>
+      <circle cx="10" cy="-10" r="5" fill="rgba(30,30,46,0.5)"/>
+      <g fill="rgba(255,255,255,0.5)">
+        <circle cx="-35" cy="-35" r="4"/><circle cx="30" cy="-32" r="3"/>
+        <circle cx="-28" cy="32" r="4"/><circle cx="35" cy="25" r="3"/>
+      </g>
+      <text y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" fill="#6ee7b7">x_{T/2}</text>
+    </g>
+    
+    <!-- t=T/4 -->
+    <g transform="translate(-175, 0)">
+      <rect x="-55" y="-55" width="110" height="110" rx="14" fill="rgba(16,185,129,0.2)" stroke="rgba(16,185,129,0.5)" stroke-width="2" filter="url(#shadowRev)"/>
+      <circle cy="-5" r="30" fill="rgba(251,191,36,0.7)"/>
+      <circle cx="-10" cy="-10" r="5" fill="rgba(30,30,46,0.8)"/>
+      <circle cx="10" cy="-10" r="5" fill="rgba(30,30,46,0.8)"/>
+      <path d="M -8,8 Q 0,14 8,8" fill="none" stroke="rgba(30,30,46,0.6)" stroke-width="3"/>
+      <rect x="-22" y="28" width="44" height="18" rx="4" fill="rgba(16,185,129,0.5)"/>
+      <text y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" fill="#a7f3d0">x_{T/4}</text>
+    </g>
+    
+    <!-- t=0: Clean image (result) -->
+    <g transform="translate(-350, 0)">
+      <rect x="-55" y="-55" width="110" height="110" rx="14" fill="rgba(16,185,129,0.3)" stroke="#34d399" stroke-width="3" filter="url(#shadowRev)"/>
+      <circle cy="-5" r="30" fill="rgba(251,191,36,0.9)"/>
+      <circle cx="-10" cy="-10" r="5" fill="#1e1e2e"/>
+      <circle cx="10" cy="-10" r="5" fill="#1e1e2e"/>
+      <path d="M -8,8 Q 0,16 8,8" fill="none" stroke="#1e1e2e" stroke-width="3" stroke-linecap="round"/>
+      <rect x="-22" y="28" width="44" height="18" rx="4" fill="rgba(16,185,129,0.8)"/>
+      <text y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="#34d399">x₀</text>
+      <text y="102" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Generated!</text>
+    </g>
+    
+    <!-- Neural network indicator -->
+    <g transform="translate(0, -75)">
+      <rect x="-60" y="-20" width="120" height="40" rx="10" fill="rgba(236,72,153,0.2)" stroke="#f472b6" stroke-width="2"/>
+      <text y="5" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="white">U-Net εθ</text>
+    </g>
+  </g>
+  
+  <!-- Key equations -->
+  <g transform="translate(500, 370)">
+    <rect x="-400" y="-35" width="380" height="70" rx="12" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+    <text x="-210" y="-12" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="url(#greenGrad)">🎯 Learned Reverse Process</text>
+    <text x="-210" y="12" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" fill="white">pθ(xₜ₋₁|xₜ) = 𝒩(μθ(xₜ,t), σₜ²I)</text>
+    <text x="-210" y="28" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Gaussian with learned mean</text>
+    
+    <rect x="20" y="-35" width="380" height="70" rx="12" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.3)" stroke-width="1"/>
+    <text x="210" y="-12" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="url(#cyanGrad)">🔑 Mean via Noise Prediction</text>
+    <text x="210" y="12" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="white">μθ = (xₜ - βₜ/√(1-ᾱₜ)·εθ)/√αₜ</text>
+    <text x="210" y="28" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="rgba(255,255,255,0.5)">Remove predicted noise</text>
+  </g>
+</svg>

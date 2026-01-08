@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+  <defs>
+    <linearGradient id="bgSC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="100%" style="stop-color:#1a0a2e"/>
+    </linearGradient>
+    
+    <linearGradient id="purpleSC" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    
+    <linearGradient id="greenSC" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <linearGradient id="amberSC" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    
+    <filter id="shadowSC">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.4)"/>
+    </filter>
+    
+    <pattern id="gridSC" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="550" fill="url(#bgSC)"/>
+  <rect width="900" height="550" fill="url(#gridSC)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="'Inter', sans-serif" font-size="28" font-weight="700" fill="white">
+    Schedule Comparison &amp; Use Cases
+  </text>
+  
+  <!-- Linear Schedule Card -->
+  <g transform="translate(150, 180)">
+    <rect x="-130" y="-130" width="260" height="260" rx="20" fill="rgba(124,58,237,0.1)" stroke="url(#purpleSC)" stroke-width="2" filter="url(#shadowSC)"/>
+    
+    <!-- Header -->
+    <rect x="-130" y="-130" width="260" height="50" rx="20" fill="rgba(124,58,237,0.2)"/>
+    <text y="-100" text-anchor="middle" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="white">📈 Linear</text>
+    
+    <!-- Formula -->
+    <text y="-55" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#c4b5fd">βₜ = β₁ + (t-1)/(T-1)·(βₜ-β₁)</text>
+    
+    <!-- Properties -->
+    <text x="-110" y="-20" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">✅ Simple &amp; interpretable</text>
+    <text x="-110" y="5" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">✅ Works well at high-res</text>
+    <text x="-110" y="30" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">⚠️ Fast info loss at start</text>
+    
+    <!-- Use case -->
+    <rect x="-110" y="55" width="220" height="55" rx="10" fill="rgba(124,58,237,0.15)"/>
+    <text y="80" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#c4b5fd">Best For</text>
+    <text y="98" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">256×256+ images</text>
+  </g>
+  
+  <!-- Cosine Schedule Card -->
+  <g transform="translate(450, 180)">
+    <rect x="-130" y="-130" width="260" height="260" rx="20" fill="rgba(16,185,129,0.1)" stroke="url(#greenSC)" stroke-width="2" filter="url(#shadowSC)"/>
+    
+    <!-- Header -->
+    <rect x="-130" y="-130" width="260" height="50" rx="20" fill="rgba(16,185,129,0.2)"/>
+    <text y="-100" text-anchor="middle" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="white">🌊 Cosine</text>
+    
+    <!-- Formula -->
+    <text y="-55" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#86efac">ᾱₜ = cos²((t/T+s)/(1+s)·π/2)</text>
+    
+    <!-- Properties -->
+    <text x="-110" y="-20" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">✅ Slower initial noise</text>
+    <text x="-110" y="5" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">✅ Uniform log-SNR</text>
+    <text x="-110" y="30" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">✅ Better for low-res</text>
+    
+    <!-- Use case -->
+    <rect x="-110" y="55" width="220" height="55" rx="10" fill="rgba(16,185,129,0.15)"/>
+    <text y="80" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#86efac">Best For</text>
+    <text y="98" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">32×32 to 128×128 images</text>
+  </g>
+  
+  <!-- Sigmoid Schedule Card -->
+  <g transform="translate(750, 180)">
+    <rect x="-130" y="-130" width="260" height="260" rx="20" fill="rgba(245,158,11,0.1)" stroke="url(#amberSC)" stroke-width="2" filter="url(#shadowSC)"/>
+    
+    <!-- Header -->
+    <rect x="-130" y="-130" width="260" height="50" rx="20" fill="rgba(245,158,11,0.2)"/>
+    <text y="-100" text-anchor="middle" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="white">📐 Sigmoid</text>
+    
+    <!-- Formula -->
+    <text y="-55" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#fcd34d">ᾱₜ = σ(-a + 2a·t/T)</text>
+    
+    <!-- Properties -->
+    <text x="-110" y="-20" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">✅ S-curve transition</text>
+    <text x="-110" y="5" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">✅ Configurable steepness</text>
+    <text x="-110" y="30" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">⚠️ Less standard</text>
+    
+    <!-- Use case -->
+    <rect x="-110" y="55" width="220" height="55" rx="10" fill="rgba(245,158,11,0.15)"/>
+    <text y="80" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#fcd34d">Best For</text>
+    <text y="98" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Custom applications</text>
+  </g>
+  
+  <!-- Resolution guidelines -->
+  <g transform="translate(450, 420)">
+    <rect x="-380" y="-50" width="760" height="100" rx="14" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.3)" stroke-width="1"/>
+    <text x="0" y="-25" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#22d3ee">📋 Resolution Guidelines</text>
+    <text x="-280" y="10" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.6)">32×32:</text>
+    <text x="-200" y="10" font-family="'Inter', sans-serif" font-size="12" fill="#86efac">Cosine</text>
+    <text x="-90" y="10" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.6)">64×64:</text>
+    <text x="-20" y="10" font-family="'Inter', sans-serif" font-size="12" fill="#86efac">Cosine/Linear</text>
+    <text x="110" y="10" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.6)">256×256+:</text>
+    <text x="200" y="10" font-family="'Inter', sans-serif" font-size="12" fill="#c4b5fd">Linear</text>
+    <text x="0" y="35" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.4)">Higher resolution = more redundancy = can use faster schedules</text>
+  </g>
+</svg>

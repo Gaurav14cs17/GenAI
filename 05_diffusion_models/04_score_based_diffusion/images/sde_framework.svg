@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bgFW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="100%" style="stop-color:#0a1a28"/>
+    </linearGradient>
+    
+    <linearGradient id="blueFW" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+    
+    <linearGradient id="greenFW" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <linearGradient id="amberFW" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    
+    <filter id="shadowFW">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.4)"/>
+    </filter>
+    
+    <pattern id="gridFW" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgFW)"/>
+  <rect width="900" height="500" fill="url(#gridFW)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="'Inter', sans-serif" font-size="28" font-weight="700" fill="white">
+    SDE Framework: Types Comparison
+  </text>
+  
+  <!-- VP-SDE Card -->
+  <g transform="translate(225, 200)">
+    <rect x="-180" y="-130" width="360" height="260" rx="20" fill="rgba(59,130,246,0.1)" stroke="url(#blueFW)" stroke-width="2" filter="url(#shadowFW)"/>
+    <text y="-95" text-anchor="middle" font-family="'Inter', sans-serif" font-size="20" font-weight="700" fill="url(#blueFW)">VP-SDE</text>
+    <text y="-70" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">Variance Preserving (DDPM)</text>
+    
+    <rect x="-160" y="-50" width="320" height="80" rx="10" fill="rgba(59,130,246,0.1)"/>
+    <text y="-25" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#93c5fd">Forward SDE</text>
+    <text y="0" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="white">dx = -½β(t)x dt + √β(t) dw</text>
+    
+    <rect x="-160" y="45" width="320" height="70" rx="10" fill="rgba(59,130,246,0.15)"/>
+    <text y="65" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#93c5fd">Properties</text>
+    <text y="90" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Variance ≈ 1 • Better for images</text>
+  </g>
+  
+  <!-- VE-SDE Card -->
+  <g transform="translate(675, 200)">
+    <rect x="-180" y="-130" width="360" height="260" rx="20" fill="rgba(245,158,11,0.1)" stroke="url(#amberFW)" stroke-width="2" filter="url(#shadowFW)"/>
+    <text y="-95" text-anchor="middle" font-family="'Inter', sans-serif" font-size="20" font-weight="700" fill="url(#amberFW)">VE-SDE</text>
+    <text y="-70" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">Variance Exploding (NCSN)</text>
+    
+    <rect x="-160" y="-50" width="320" height="80" rx="10" fill="rgba(245,158,11,0.1)"/>
+    <text y="-25" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#fcd34d">Forward SDE</text>
+    <text y="0" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="white">dx = √(dσ²/dt) dw</text>
+    
+    <rect x="-160" y="45" width="320" height="70" rx="10" fill="rgba(245,158,11,0.15)"/>
+    <text y="65" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#fcd34d">Properties</text>
+    <text y="90" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">No drift • Simpler math</text>
+  </g>
+  
+  <!-- Reverse SDE (shared) -->
+  <g transform="translate(450, 410)">
+    <rect x="-380" y="-50" width="760" height="100" rx="16" fill="rgba(16,185,129,0.1)" stroke="url(#greenFW)" stroke-width="2"/>
+    <text x="0" y="-25" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="url(#greenFW)">🔄 Universal Reverse SDE</text>
+    <text x="0" y="5" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" fill="white">dx = [f(x,t) - g(t)² ∇ₓ log pₜ(x)] dt + g(t) dw̄</text>
+    <text x="0" y="30" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">Replace true score with learned sθ(x,t) for generation</text>
+  </g>
+</svg>

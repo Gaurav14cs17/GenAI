@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1f"/>
+      <stop offset="100%" style="stop-color:#141428"/>
+    </linearGradient>
+    
+    <linearGradient id="downGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+    
+    <linearGradient id="upGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#6366f1"/>
+    </marker>
+    
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#10b981"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="450" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui" font-size="24" font-weight="700" fill="white" filter="url(#glow)">
+    Downsampling &amp; Upsampling Operations
+  </text>
+  <text x="450" y="65" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">
+    How the autoencoder changes spatial resolution while preserving information
+  </text>
+  
+  <!-- Downsample Section -->
+  <g transform="translate(50, 100)">
+    <text x="180" y="0" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="#93c5fd">
+      DOWNSAMPLE (Encoder)
+    </text>
+    
+    <!-- Large input grid -->
+    <g transform="translate(40, 30)">
+      <rect width="120" height="120" rx="4" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="2"/>
+      <!-- Grid lines -->
+      <g stroke="rgba(59,130,246,0.4)" stroke-width="1">
+        <line x1="30" y1="0" x2="30" y2="120"/>
+        <line x1="60" y1="0" x2="60" y2="120"/>
+        <line x1="90" y1="0" x2="90" y2="120"/>
+        <line x1="0" y1="30" x2="120" y2="30"/>
+        <line x1="0" y1="60" x2="120" y2="60"/>
+        <line x1="0" y1="90" x2="120" y2="90"/>
+      </g>
+      <!-- Sample values -->
+      <text x="15" y="20" text-anchor="middle" font-family="monospace" font-size="8" fill="#93c5fd">a</text>
+      <text x="45" y="20" text-anchor="middle" font-family="monospace" font-size="8" fill="#93c5fd">b</text>
+      <text x="75" y="20" text-anchor="middle" font-family="monospace" font-size="8" fill="#93c5fd">c</text>
+      <text x="105" y="20" text-anchor="middle" font-family="monospace" font-size="8" fill="#93c5fd">d</text>
+      <text x="60" y="145" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.5)">H × W</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 180,90 L 220,90" stroke="url(#downGrad)" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    
+    <!-- Conv stride=2 box -->
+    <g transform="translate(230, 60)">
+      <rect width="100" height="60" rx="8" fill="rgba(99,102,241,0.2)" stroke="#6366f1" stroke-width="2"/>
+      <text x="50" y="25" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#a5b4fc">Conv 3×3</text>
+      <text x="50" y="45" text-anchor="middle" font-family="monospace" font-size="10" fill="#c7d2fe">stride=2</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 340,90 L 370,90" stroke="url(#downGrad)" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    
+    <!-- Small output grid -->
+    <g transform="translate(380, 50)">
+      <rect width="60" height="60" rx="4" fill="rgba(99,102,241,0.25)" stroke="#6366f1" stroke-width="2"/>
+      <!-- Grid lines -->
+      <g stroke="rgba(99,102,241,0.5)" stroke-width="1">
+        <line x1="30" y1="0" x2="30" y2="60"/>
+        <line x1="0" y1="30" x2="60" y2="30"/>
+      </g>
+      <text x="30" y="135" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.5)">H/2 × W/2</text>
+    </g>
+    
+    <!-- Explanation -->
+    <g transform="translate(40, 200)">
+      <rect width="400" height="55" rx="8" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="1"/>
+      <text x="200" y="22" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#93c5fd">Strided Convolution</text>
+      <text x="200" y="42" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.6)">Halves spatial dims while learning to extract features</text>
+    </g>
+  </g>
+  
+  <!-- Upsample Section -->
+  <g transform="translate(480, 100)">
+    <text x="180" y="0" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="#6ee7b7">
+      UPSAMPLE (Decoder)
+    </text>
+    
+    <!-- Small input grid -->
+    <g transform="translate(40, 50)">
+      <rect width="60" height="60" rx="4" fill="rgba(16,185,129,0.25)" stroke="#10b981" stroke-width="2"/>
+      <!-- Grid lines -->
+      <g stroke="rgba(16,185,129,0.5)" stroke-width="1">
+        <line x1="30" y1="0" x2="30" y2="60"/>
+        <line x1="0" y1="30" x2="60" y2="30"/>
+      </g>
+      <text x="30" y="85" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.5)">H × W</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 110,80 L 140,80" stroke="url(#upGrad)" stroke-width="3" marker-end="url(#arrowGreen)"/>
+    
+    <!-- Nearest + Conv box -->
+    <g transform="translate(150, 45)">
+      <rect width="120" height="70" rx="8" fill="rgba(6,182,212,0.2)" stroke="#06b6d4" stroke-width="2"/>
+      <text x="60" y="25" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#67e8f9">Nearest ↑2×</text>
+      <text x="60" y="45" text-anchor="middle" font-family="system-ui" font-size="10" fill="#67e8f9">+</text>
+      <text x="60" y="60" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="600" fill="#67e8f9">Conv 3×3</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 280,80 L 310,80" stroke="url(#upGrad)" stroke-width="3" marker-end="url(#arrowGreen)"/>
+    
+    <!-- Large output grid -->
+    <g transform="translate(320, 20)">
+      <rect width="120" height="120" rx="4" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2"/>
+      <!-- Grid lines -->
+      <g stroke="rgba(16,185,129,0.4)" stroke-width="1">
+        <line x1="30" y1="0" x2="30" y2="120"/>
+        <line x1="60" y1="0" x2="60" y2="120"/>
+        <line x1="90" y1="0" x2="90" y2="120"/>
+        <line x1="0" y1="30" x2="120" y2="30"/>
+        <line x1="0" y1="60" x2="120" y2="60"/>
+        <line x1="0" y1="90" x2="120" y2="90"/>
+      </g>
+      <text x="60" y="145" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.5)">2H × 2W</text>
+    </g>
+    
+    <!-- Explanation -->
+    <g transform="translate(0, 200)">
+      <rect width="400" height="55" rx="8" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1"/>
+      <text x="200" y="22" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#6ee7b7">Nearest-Neighbor + Convolution</text>
+      <text x="200" y="42" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.6)">Doubles spatial dims, conv refines the upsampled features</text>
+    </g>
+  </g>
+  
+  <!-- Resolution Pipeline -->
+  <g transform="translate(100, 360)">
+    <rect width="700" height="70" rx="10" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="350" y="25" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="white">Full Pipeline Resolution Flow</text>
+    
+    <g transform="translate(30, 45)">
+      <text font-family="monospace" font-size="11" fill="#93c5fd">512</text>
+      <text x="50" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">→</text>
+      <text x="70" font-family="monospace" font-size="11" fill="#a5b4fc">256</text>
+      <text x="120" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">→</text>
+      <text x="140" font-family="monospace" font-size="11" fill="#c7d2fe">128</text>
+      <text x="190" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">→</text>
+      <text x="210" font-family="monospace" font-size="11" font-weight="700" fill="#fcd34d">64</text>
+      <text x="250" font-family="system-ui" font-size="10" fill="#fcd34d">(latent)</text>
+      <text x="320" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">→</text>
+      <text x="340" font-family="monospace" font-size="11" fill="#a7f3d0">128</text>
+      <text x="390" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">→</text>
+      <text x="410" font-family="monospace" font-size="11" fill="#6ee7b7">256</text>
+      <text x="460" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.4)">→</text>
+      <text x="480" font-family="monospace" font-size="11" fill="#34d399">512</text>
+    </g>
+  </g>
+</svg>
+

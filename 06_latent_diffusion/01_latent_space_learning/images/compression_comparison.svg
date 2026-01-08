@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    
+    <linearGradient id="pixelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#f87171"/>
+    </linearGradient>
+    
+    <linearGradient id="latentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#4ade80"/>
+    </linearGradient>
+    
+    <linearGradient id="barPixel" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    
+    <linearGradient id="barLatent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+  <rect width="900" height="500" fill="url(#gridPattern)"/>
+  
+  <!-- Title -->
+  <text x="450" y="45" text-anchor="middle" font-family="system-ui" font-size="26" font-weight="700" fill="white" filter="url(#glow)">
+    Compression Comparison: Pixel vs Latent Space
+  </text>
+  <text x="450" y="72" text-anchor="middle" font-family="system-ui" font-size="13" fill="rgba(255,255,255,0.6)">
+    Why latent diffusion is 48× more efficient than pixel diffusion
+  </text>
+  
+  <!-- Left Side: Pixel Space -->
+  <g transform="translate(100, 120)">
+    <text x="150" y="0" text-anchor="middle" font-family="system-ui" font-size="18" font-weight="700" fill="#f87171">
+      Pixel Space Diffusion
+    </text>
+    <text x="150" y="22" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.5)">
+      (DDPM, Imagen)
+    </text>
+    
+    <!-- Large cube representing pixel space -->
+    <g transform="translate(50, 50)">
+      <g filter="url(#glow)">
+        <!-- Front face -->
+        <rect width="150" height="150" rx="4" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+        <!-- Top face -->
+        <polygon points="0,0 150,0 180,-40 30,-40" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="2"/>
+        <!-- Right face -->
+        <polygon points="150,0 150,150 180,110 180,-40" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="2"/>
+      </g>
+      
+      <!-- Grid inside to show many pixels -->
+      <g stroke="rgba(239,68,68,0.3)" stroke-width="0.5">
+        <line x1="30" y1="0" x2="30" y2="150"/>
+        <line x1="60" y1="0" x2="60" y2="150"/>
+        <line x1="90" y1="0" x2="90" y2="150"/>
+        <line x1="120" y1="0" x2="120" y2="150"/>
+        <line x1="0" y1="30" x2="150" y2="30"/>
+        <line x1="0" y1="60" x2="150" y2="60"/>
+        <line x1="0" y1="90" x2="150" y2="90"/>
+        <line x1="0" y1="120" x2="150" y2="120"/>
+      </g>
+      
+      <!-- Dimensions label -->
+      <text x="75" y="175" text-anchor="middle" font-family="monospace" font-size="14" font-weight="600" fill="#fca5a5">512 × 512 × 3</text>
+      <text x="75" y="195" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.5)">= 786,432 values</text>
+    </g>
+    
+    <!-- Problems list -->
+    <g transform="translate(0, 270)">
+      <rect width="300" height="100" rx="8" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1"/>
+      <text x="15" y="25" font-family="system-ui" font-size="12" font-weight="600" fill="#fca5a5">⚠️ Challenges:</text>
+      <text x="15" y="48" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">• 24+ GB VRAM required</text>
+      <text x="15" y="66" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">• Slow training (weeks on TPUs)</text>
+      <text x="15" y="84" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">• Limited to low resolutions</text>
+    </g>
+  </g>
+  
+  <!-- Center: Arrow showing 48× compression -->
+  <g transform="translate(430, 200)">
+    <path d="M 0,60 L 80,60" stroke="white" stroke-width="3" marker-end="url(#arrowWhite)"/>
+    <rect x="10" y="20" width="60" height="80" rx="12" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+    <text x="40" y="55" text-anchor="middle" font-family="system-ui" font-size="20" font-weight="800" fill="white">48×</text>
+    <text x="40" y="75" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.7)">smaller</text>
+  </g>
+  
+  <!-- Right Side: Latent Space -->
+  <g transform="translate(540, 120)">
+    <text x="150" y="0" text-anchor="middle" font-family="system-ui" font-size="18" font-weight="700" fill="#4ade80">
+      Latent Space Diffusion
+    </text>
+    <text x="150" y="22" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.5)">
+      (Stable Diffusion, DALL-E 2)
+    </text>
+    
+    <!-- Smaller cube representing latent space -->
+    <g transform="translate(90, 90)">
+      <g filter="url(#glow)">
+        <!-- Front face -->
+        <rect width="70" height="70" rx="4" fill="rgba(34,197,94,0.2)" stroke="#22c55e" stroke-width="2"/>
+        <!-- Top face -->
+        <polygon points="0,0 70,0 90,-25 20,-25" fill="rgba(34,197,94,0.25)" stroke="#22c55e" stroke-width="2"/>
+        <!-- Right face -->
+        <polygon points="70,0 70,70 90,45 90,-25" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="2"/>
+      </g>
+      
+      <!-- Grid inside (fewer cells) -->
+      <g stroke="rgba(34,197,94,0.4)" stroke-width="0.5">
+        <line x1="17" y1="0" x2="17" y2="70"/>
+        <line x1="35" y1="0" x2="35" y2="70"/>
+        <line x1="52" y1="0" x2="52" y2="70"/>
+        <line x1="0" y1="17" x2="70" y2="17"/>
+        <line x1="0" y1="35" x2="70" y2="35"/>
+        <line x1="0" y1="52" x2="70" y2="52"/>
+      </g>
+      
+      <!-- Dimensions label -->
+      <text x="35" y="95" text-anchor="middle" font-family="monospace" font-size="14" font-weight="600" fill="#86efac">64 × 64 × 4</text>
+      <text x="35" y="115" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.5)">= 16,384 values</text>
+    </g>
+    
+    <!-- Benefits list -->
+    <g transform="translate(0, 270)">
+      <rect width="300" height="100" rx="8" fill="rgba(34,197,94,0.1)" stroke="#22c55e" stroke-width="1"/>
+      <text x="15" y="25" font-family="system-ui" font-size="12" font-weight="600" fill="#86efac">✓ Benefits:</text>
+      <text x="15" y="48" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">• Only 6-8 GB VRAM</text>
+      <text x="15" y="66" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">• Fast training (days on GPUs)</text>
+      <text x="15" y="84" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">• 512px, 768px, 1024px+ output</text>
+    </g>
+  </g>
+  
+  <!-- Bottom: Comparison Bars -->
+  <g transform="translate(100, 420)">
+    <text x="350" y="0" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="white">
+      Memory &amp; Compute Comparison
+    </text>
+    
+    <!-- Memory bar -->
+    <g transform="translate(0, 20)">
+      <text x="0" y="15" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">Memory:</text>
+      
+      <!-- Pixel bar -->
+      <rect x="80" y="0" width="500" height="20" rx="4" fill="url(#barPixel)"/>
+      <text x="590" y="15" font-family="monospace" font-size="11" fill="#fca5a5">24 GB</text>
+      
+      <!-- Latent bar (much smaller) -->
+      <rect x="80" y="25" width="125" height="20" rx="4" fill="url(#barLatent)"/>
+      <text x="215" y="40" font-family="monospace" font-size="11" fill="#86efac">6 GB</text>
+    </g>
+    
+    <!-- Speed bar -->
+    <g transform="translate(0, 75)">
+      <text x="0" y="15" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.7)">Time/Step:</text>
+      
+      <!-- Pixel bar -->
+      <rect x="80" y="0" width="400" height="20" rx="4" fill="url(#barPixel)"/>
+      <text x="490" y="15" font-family="monospace" font-size="11" fill="#fca5a5">~800ms</text>
+      
+      <!-- Latent bar -->
+      <rect x="80" y="25" width="25" height="20" rx="4" fill="url(#barLatent)"/>
+      <text x="115" y="40" font-family="monospace" font-size="11" fill="#86efac">~50ms</text>
+    </g>
+  </g>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowWhite" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="white"/>
+    </marker>
+  </defs>
+</svg>

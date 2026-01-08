@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 280">
+  <defs>
+    <linearGradient id="vaeEncGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+    <linearGradient id="diffGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#EC4899"/>
+    </linearGradient>
+    <linearGradient id="vaeDecGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#34D399"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="850" height="280" fill="#0F172A"/>
+  
+  <!-- Title -->
+  <text x="425" y="25" font-family="system-ui, sans-serif" font-size="16" fill="#F1F5F9" text-anchor="middle" font-weight="bold">Latent Diffusion Architecture (Stable Diffusion)</text>
+  
+  <!-- Pixel Space Label -->
+  <rect x="30" y="50" width="100" height="25" rx="4" fill="#1E293B"/>
+  <text x="80" y="67" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">Pixel Space</text>
+  
+  <!-- Input Image -->
+  <rect x="45" y="90" width="70" height="70" rx="6" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+  <text x="80" y="125" font-family="system-ui, sans-serif" font-size="20" fill="#94A3B8" text-anchor="middle">🖼️</text>
+  <text x="80" y="145" font-family="system-ui, sans-serif" font-size="8" fill="#64748B" text-anchor="middle">512×512×3</text>
+  
+  <!-- VAE Encoder -->
+  <rect x="150" y="80" width="80" height="90" rx="8" fill="url(#vaeEncGrad)"/>
+  <text x="190" y="110" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">VAE</text>
+  <text x="190" y="125" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Encoder</text>
+  <text x="190" y="145" font-family="system-ui, sans-serif" font-size="8" fill="#BFDBFE" text-anchor="middle">E(x)</text>
+  <text x="190" y="160" font-family="system-ui, sans-serif" font-size="7" fill="#93C5FD" text-anchor="middle">compress 8×</text>
+  
+  <!-- Arrow -->
+  <line x1="120" y1="125" x2="145" y2="125" stroke="#64748B" stroke-width="2"/>
+  <polygon points="145,125 138,120 138,130" fill="#64748B"/>
+  
+  <!-- Latent Space Box -->
+  <rect x="250" y="45" width="350" height="165" rx="10" fill="#1E293B" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="425" y="65" font-family="system-ui, sans-serif" font-size="11" fill="#A78BFA" text-anchor="middle" font-weight="bold">✨ Latent Space (64×64×4) ✨</text>
+  
+  <!-- Latent z -->
+  <rect x="270" y="95" width="50" height="50" rx="6" fill="#4C1D95"/>
+  <text x="295" y="125" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">z</text>
+  
+  <!-- Arrow to latent -->
+  <line x1="235" y1="125" x2="265" y2="120" stroke="#64748B" stroke-width="2"/>
+  <polygon points="265,120 258,118 258,125" fill="#64748B"/>
+  
+  <!-- U-Net -->
+  <rect x="350" y="85" width="120" height="70" rx="10" fill="url(#diffGrad)"/>
+  <text x="410" y="112" font-family="system-ui, sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="bold">U-Net</text>
+  <text x="410" y="128" font-family="system-ui, sans-serif" font-size="9" fill="#F5D0FE" text-anchor="middle">εθ(zₜ, t, c)</text>
+  <text x="410" y="145" font-family="system-ui, sans-serif" font-size="8" fill="#E9D5FF" text-anchor="middle">+ attention</text>
+  
+  <!-- Arrows around U-Net -->
+  <path d="M 325 120 L 345 120" stroke="#64748B" stroke-width="2"/>
+  <polygon points="345,120 338,115 338,125" fill="#64748B"/>
+  <path d="M 475 120 L 495 120" stroke="#64748B" stroke-width="2"/>
+  <polygon points="495,120 488,115 488,125" fill="#64748B"/>
+  
+  <!-- Denoised latent -->
+  <rect x="500" y="95" width="50" height="50" rx="6" fill="#4C1D95"/>
+  <text x="525" y="125" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="bold">z₀</text>
+  
+  <!-- Conditioning -->
+  <rect x="350" y="170" width="120" height="30" rx="5" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+  <text x="410" y="190" font-family="system-ui, sans-serif" font-size="9" fill="#F59E0B" text-anchor="middle">Text Embedding c</text>
+  <line x1="410" y1="165" x2="410" y2="158" stroke="#F59E0B" stroke-width="1"/>
+  <polygon points="410,158 405,165 415,165" fill="#F59E0B"/>
+  
+  <!-- VAE Decoder -->
+  <rect x="620" y="80" width="80" height="90" rx="8" fill="url(#vaeDecGrad)"/>
+  <text x="660" y="110" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">VAE</text>
+  <text x="660" y="125" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Decoder</text>
+  <text x="660" y="145" font-family="system-ui, sans-serif" font-size="8" fill="#D1FAE5" text-anchor="middle">D(z)</text>
+  <text x="660" y="160" font-family="system-ui, sans-serif" font-size="7" fill="#A7F3D0" text-anchor="middle">expand 8×</text>
+  
+  <!-- Arrow to decoder -->
+  <line x1="555" y1="120" x2="580" y2="120" stroke="#64748B" stroke-width="2"/>
+  <line x1="580" y1="120" x2="615" y2="125" stroke="#64748B" stroke-width="2"/>
+  <polygon points="615,125 608,120 608,128" fill="#64748B"/>
+  
+  <!-- Output Image -->
+  <rect x="735" y="90" width="70" height="70" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+  <text x="770" y="125" font-family="system-ui, sans-serif" font-size="20" fill="#10B981" text-anchor="middle">🎨</text>
+  <text x="770" y="145" font-family="system-ui, sans-serif" font-size="8" fill="#64748B" text-anchor="middle">512×512×3</text>
+  
+  <!-- Arrow to output -->
+  <line x1="705" y1="125" x2="730" y2="125" stroke="#64748B" stroke-width="2"/>
+  <polygon points="730,125 723,120 723,130" fill="#64748B"/>
+  
+  <!-- Output label -->
+  <rect x="720" y="50" width="100" height="25" rx="4" fill="#1E293B"/>
+  <text x="770" y="67" font-family="system-ui, sans-serif" font-size="10" fill="#10B981" text-anchor="middle">Pixel Space</text>
+  
+  <!-- Bottom note -->
+  <text x="425" y="250" font-family="system-ui, sans-serif" font-size="10" fill="#64748B" text-anchor="middle" font-style="italic">Diffusion happens in compressed latent space → 64× less compute than pixel diffusion</text>
+</svg>
+

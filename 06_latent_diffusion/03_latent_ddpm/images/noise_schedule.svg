@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0a1a"/>
+      <stop offset="100%" style="stop-color:#1a1028"/>
+    </linearGradient>
+    
+    <linearGradient id="linearGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+    
+    <linearGradient id="cosineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="450" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui" font-size="24" font-weight="700" fill="white" filter="url(#glow)">
+    Noise Schedules: Linear vs Cosine
+  </text>
+  <text x="450" y="65" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">
+    How noise is added over time — α̅_t (signal remaining) across timesteps
+  </text>
+  
+  <!-- Graph Area -->
+  <g transform="translate(100, 100)">
+    <!-- Axes -->
+    <line x1="50" y1="250" x2="700" y2="250" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+    <line x1="50" y1="250" x2="50" y2="20" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+    
+    <!-- Y-axis labels -->
+    <text x="40" y="255" text-anchor="end" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">0</text>
+    <text x="40" y="140" text-anchor="end" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">0.5</text>
+    <text x="40" y="30" text-anchor="end" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">1.0</text>
+    <text x="20" y="140" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)" transform="rotate(-90, 20, 140)">α̅_t (signal)</text>
+    
+    <!-- X-axis labels -->
+    <text x="50" y="275" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">0</text>
+    <text x="212" y="275" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">250</text>
+    <text x="375" y="275" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">500</text>
+    <text x="537" y="275" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">750</text>
+    <text x="700" y="275" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">1000</text>
+    <text x="375" y="300" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.6)">Timestep t</text>
+    
+    <!-- Grid lines -->
+    <g stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4,4">
+      <line x1="50" y1="140" x2="700" y2="140"/>
+      <line x1="212" y1="20" x2="212" y2="250"/>
+      <line x1="375" y1="20" x2="375" y2="250"/>
+      <line x1="537" y1="20" x2="537" y2="250"/>
+    </g>
+    
+    <!-- Linear schedule curve (faster decay) -->
+    <path d="M 50,30 
+             Q 150,40 212,80
+             Q 300,140 375,180
+             Q 450,210 537,230
+             Q 620,245 700,248" 
+          stroke="url(#linearGrad)" stroke-width="3" fill="none" filter="url(#glow)"/>
+    
+    <!-- Cosine schedule curve (gentler S-curve) -->
+    <path d="M 50,30 
+             Q 180,35 280,50
+             Q 380,80 450,140
+             Q 520,200 600,235
+             Q 650,245 700,248" 
+          stroke="url(#cosineGrad)" stroke-width="3" fill="none" filter="url(#glow)"/>
+    
+    <!-- Legend -->
+    <g transform="translate(520, 50)">
+      <rect width="170" height="80" rx="8" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+      
+      <line x1="15" y1="25" x2="45" y2="25" stroke="#60a5fa" stroke-width="3"/>
+      <text x="55" y="30" font-family="system-ui" font-size="11" fill="#93c5fd">Linear Schedule</text>
+      
+      <line x1="15" y1="55" x2="45" y2="55" stroke="#34d399" stroke-width="3"/>
+      <text x="55" y="60" font-family="system-ui" font-size="11" fill="#6ee7b7">Cosine Schedule</text>
+    </g>
+    
+    <!-- Annotation: where signal matters -->
+    <g transform="translate(150, 45)">
+      <rect x="-60" y="-15" width="120" height="30" rx="6" fill="rgba(34,197,94,0.2)" stroke="#22c55e" stroke-width="1"/>
+      <text text-anchor="middle" y="5" font-family="system-ui" font-size="10" fill="#6ee7b7">High signal region</text>
+    </g>
+    
+    <g transform="translate(600, 220)">
+      <rect x="-50" y="-15" width="100" height="30" rx="6" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"/>
+      <text text-anchor="middle" y="5" font-family="system-ui" font-size="10" fill="#fca5a5">Pure noise</text>
+    </g>
+  </g>
+  
+  <!-- Formulas -->
+  <g transform="translate(100, 370)">
+    <rect width="300" height="60" rx="8" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="150" y="22" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#93c5fd">Linear Schedule</text>
+    <text x="150" y="45" text-anchor="middle" font-family="serif" font-size="13" fill="white">β_t = β_start + (t/T)(β_end - β_start)</text>
+  </g>
+  
+  <g transform="translate(500, 370)">
+    <rect width="300" height="60" rx="8" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1"/>
+    <text x="150" y="22" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#6ee7b7">Cosine Schedule</text>
+    <text x="150" y="45" text-anchor="middle" font-family="serif" font-size="13" fill="white">α̅_t = cos²((t/T + s)/(1+s) · π/2)</text>
+  </g>
+</svg>
+

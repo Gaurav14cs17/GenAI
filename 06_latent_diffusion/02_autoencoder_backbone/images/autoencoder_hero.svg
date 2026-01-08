@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 550">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e1b4b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    
+    <linearGradient id="encoderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+    
+    <linearGradient id="decoderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+    
+    <linearGradient id="latentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+    </pattern>
+    
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/>
+    </marker>
+    
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="550" fill="url(#bgGrad)"/>
+  <rect width="1000" height="550" fill="url(#grid)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="150" fill="url(#encoderGrad)" opacity="0.05"/>
+  <circle cx="900" cy="450" r="180" fill="url(#decoderGrad)" opacity="0.05"/>
+  
+  <!-- Title -->
+  <text x="500" y="45" text-anchor="middle" font-family="system-ui" font-size="30" font-weight="800" fill="white" filter="url(#glow)">
+    Autoencoder Backbone Architecture
+  </text>
+  <text x="500" y="75" text-anchor="middle" font-family="system-ui" font-size="14" fill="rgba(255,255,255,0.6)">
+    The Compression Engine — Encoder (34M) + Decoder (49M) = 83M Parameters
+  </text>
+  
+  <!-- Main Architecture Visualization -->
+  <g transform="translate(50, 110)">
+    
+    <!-- Input Image -->
+    <g transform="translate(0, 150)">
+      <rect width="100" height="100" rx="10" fill="rgba(59,130,246,0.2)" stroke="#3b82f6" stroke-width="2"/>
+      <!-- Image content representation -->
+      <rect x="15" y="15" width="70" height="50" rx="4" fill="rgba(59,130,246,0.4)"/>
+      <circle cx="35" cy="70" r="10" fill="#60a5fa"/>
+      <rect x="55" y="60" width="30" height="20" rx="3" fill="#60a5fa"/>
+      <text x="50" y="125" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#93c5fd">Input</text>
+      <text x="50" y="142" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">512×512×3</text>
+    </g>
+    
+    <!-- Arrow to Encoder -->
+    <path d="M 110,200 L 140,200" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowBlue)"/>
+    
+    <!-- ENCODER Section -->
+    <g transform="translate(150, 50)">
+      <!-- Encoder container -->
+      <rect width="280" height="300" rx="15" fill="rgba(59,130,246,0.1)" stroke="url(#encoderGrad)" stroke-width="2"/>
+      <text x="140" y="30" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="#93c5fd">ENCODER ε(x)</text>
+      <text x="140" y="50" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.4)">~34M parameters</text>
+      
+      <!-- Downsampling blocks -->
+      <g transform="translate(20, 70)">
+        <!-- Block 1: 512 → 256 -->
+        <rect width="240" height="45" rx="8" fill="rgba(59,130,246,0.3)" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="120" y="20" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#bfdbfe">ResBlock + ↓2</text>
+        <text x="120" y="35" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">3→128 ch | 512→256</text>
+        
+        <!-- Block 2: 256 → 128 -->
+        <rect y="55" width="200" height="45" rx="8" fill="rgba(99,102,241,0.35)" stroke="#6366f1" stroke-width="1.5" x="20"/>
+        <text x="120" y="75" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#c7d2fe">ResBlock + ↓2</text>
+        <text x="120" y="90" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">128→256 ch | 256→128</text>
+        
+        <!-- Block 3: 128 → 64 -->
+        <rect y="110" width="160" height="45" rx="8" fill="rgba(139,92,246,0.4)" stroke="#8b5cf6" stroke-width="1.5" x="40"/>
+        <text x="120" y="130" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#ddd6fe">ResBlock + ↓2</text>
+        <text x="120" y="145" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">256→512 ch | 128→64</text>
+        
+        <!-- Middle Block with Attention -->
+        <rect y="165" width="120" height="45" rx="8" fill="rgba(168,85,247,0.45)" stroke="#a855f7" stroke-width="1.5" x="60"/>
+        <text x="120" y="185" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#e9d5ff">Attention + Res</text>
+        <text x="120" y="200" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">512→512 ch | 64×64</text>
+      </g>
+    </g>
+    
+    <!-- Arrow to Latent -->
+    <path d="M 440,200 L 470,200" stroke="#f59e0b" stroke-width="2"/>
+    
+    <!-- LATENT SPACE -->
+    <g transform="translate(480, 120)">
+      <rect width="120" height="160" rx="12" fill="rgba(245,158,11,0.15)" stroke="url(#latentGrad)" stroke-width="2" stroke-dasharray="5,3"/>
+      
+      <!-- Latent cube visualization -->
+      <g transform="translate(60, 50)">
+        <polygon points="-25,-20 25,-20 35,-35 -15,-35" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="1"/>
+        <polygon points="-25,-20 -25,30 -15,15 -15,-35" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" stroke-width="1"/>
+        <polygon points="-25,30 25,30 35,15 -15,15" fill="rgba(245,158,11,0.4)" stroke="#f59e0b" stroke-width="1"/>
+        <polygon points="25,-20 25,30 35,15 35,-35" fill="rgba(245,158,11,0.25)" stroke="#f59e0b" stroke-width="1"/>
+      </g>
+      
+      <text x="60" y="110" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="700" fill="#fcd34d">Latent</text>
+      <text x="60" y="130" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.6)">64×64×4</text>
+      <text x="60" y="148" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.4)">16,384 values</text>
+    </g>
+    
+    <!-- Arrow to Decoder -->
+    <path d="M 610,200 L 640,200" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+    
+    <!-- DECODER Section -->
+    <g transform="translate(650, 50)">
+      <!-- Decoder container -->
+      <rect width="280" height="300" rx="15" fill="rgba(16,185,129,0.1)" stroke="url(#decoderGrad)" stroke-width="2"/>
+      <text x="140" y="30" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="#6ee7b7">DECODER D(z)</text>
+      <text x="140" y="50" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.4)">~49M parameters</text>
+      
+      <!-- Upsampling blocks (reversed) -->
+      <g transform="translate(20, 70)">
+        <!-- Block 1: Start from latent -->
+        <rect width="120" height="45" rx="8" fill="rgba(16,185,129,0.45)" stroke="#10b981" stroke-width="1.5" x="60"/>
+        <text x="120" y="20" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#a7f3d0">Attention + Res</text>
+        <text x="120" y="35" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">512 ch | 64×64</text>
+        
+        <!-- Block 2: 64 → 128 -->
+        <rect y="55" width="160" height="45" rx="8" fill="rgba(20,184,166,0.4)" stroke="#14b8a6" stroke-width="1.5" x="40"/>
+        <text x="120" y="75" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#99f6e4">ResBlock + ↑2</text>
+        <text x="120" y="90" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">512→256 ch | 64→128</text>
+        
+        <!-- Block 3: 128 → 256 -->
+        <rect y="110" width="200" height="45" rx="8" fill="rgba(6,182,212,0.35)" stroke="#06b6d4" stroke-width="1.5" x="20"/>
+        <text x="120" y="130" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#a5f3fc">ResBlock + ↑2</text>
+        <text x="120" y="145" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">256→128 ch | 128→256</text>
+        
+        <!-- Block 4: 256 → 512 -->
+        <rect y="165" width="240" height="45" rx="8" fill="rgba(34,211,238,0.3)" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="120" y="185" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#cffafe">ResBlock + ↑2</text>
+        <text x="120" y="200" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">128→3 ch | 256→512</text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Bottom: Key Stats -->
+  <g transform="translate(50, 480)">
+    <rect width="900" height="55" rx="10" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    
+    <g transform="translate(80, 30)">
+      <circle r="12" fill="url(#encoderGrad)" opacity="0.4"/>
+      <text x="25" y="5" font-family="system-ui" font-size="11" font-weight="600" fill="white">Compression: 8×</text>
+      <text x="25" y="18" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">spatial downsampling</text>
+    </g>
+    
+    <g transform="translate(280, 30)">
+      <circle r="12" fill="url(#latentGrad)" opacity="0.4"/>
+      <text x="25" y="5" font-family="system-ui" font-size="11" font-weight="600" fill="white">48× Total Compression</text>
+      <text x="25" y="18" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">786K → 16K values</text>
+    </g>
+    
+    <g transform="translate(500, 30)">
+      <circle r="12" fill="url(#decoderGrad)" opacity="0.4"/>
+      <text x="25" y="5" font-family="system-ui" font-size="11" font-weight="600" fill="white">Attention @ 64×64</text>
+      <text x="25" y="18" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">global context modeling</text>
+    </g>
+    
+    <g transform="translate(720, 30)">
+      <circle r="12" fill="#a855f7" opacity="0.4"/>
+      <text x="25" y="5" font-family="system-ui" font-size="11" font-weight="600" fill="white">PSNR > 30dB</text>
+      <text x="25" y="18" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.5)">reconstruction quality</text>
+    </g>
+  </g>
+</svg>

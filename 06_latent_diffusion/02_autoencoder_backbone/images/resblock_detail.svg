@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    
+    <linearGradient id="convGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    
+    <linearGradient id="normGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#22d3ee"/>
+    </linearGradient>
+    
+    <linearGradient id="actGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    
+    <linearGradient id="skipGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <marker id="arrowPurple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa"/>
+    </marker>
+    
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34d399"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui" font-size="26" font-weight="700" fill="white" filter="url(#glow)">
+    ResNet Block Architecture
+  </text>
+  <text x="450" y="65" text-anchor="middle" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">
+    Pre-activation design with GroupNorm — The building block of the autoencoder
+  </text>
+  
+  <!-- Main ResBlock Diagram -->
+  <g transform="translate(200, 100)">
+    
+    <!-- Input -->
+    <g transform="translate(0, 150)">
+      <rect x="-30" y="-25" width="60" height="50" rx="8" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="0" y="5" text-anchor="middle" font-family="monospace" font-size="14" font-weight="600" fill="#c4b5fd">x</text>
+      <text x="0" y="45" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Input</text>
+    </g>
+    
+    <!-- Main path arrow start -->
+    <path d="M 40,150 L 80,150" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrowPurple)"/>
+    
+    <!-- GroupNorm 1 -->
+    <g transform="translate(100, 130)">
+      <rect width="80" height="40" rx="6" fill="rgba(6,182,212,0.2)" stroke="url(#normGrad)" stroke-width="2"/>
+      <text x="40" y="25" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#67e8f9">GroupNorm</text>
+    </g>
+    
+    <path d="M 190,150 L 210,150" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrowPurple)"/>
+    
+    <!-- SiLU 1 -->
+    <g transform="translate(220, 130)">
+      <rect width="60" height="40" rx="6" fill="rgba(245,158,11,0.2)" stroke="url(#actGrad)" stroke-width="2"/>
+      <text x="30" y="25" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fcd34d">SiLU</text>
+    </g>
+    
+    <path d="M 290,150 L 310,150" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrowPurple)"/>
+    
+    <!-- Conv 1 -->
+    <g transform="translate(320, 120)">
+      <rect width="80" height="60" rx="8" fill="rgba(139,92,246,0.25)" stroke="url(#convGrad)" stroke-width="2"/>
+      <text x="40" y="25" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#c4b5fd">Conv 3×3</text>
+      <text x="40" y="45" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">in → out</text>
+    </g>
+    
+    <path d="M 410,150 L 430,150" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrowPurple)"/>
+    
+    <!-- GroupNorm 2 -->
+    <g transform="translate(440, 130)">
+      <rect width="80" height="40" rx="6" fill="rgba(6,182,212,0.2)" stroke="url(#normGrad)" stroke-width="2"/>
+      <text x="40" y="25" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#67e8f9">GroupNorm</text>
+    </g>
+    
+    <path d="M 530,150 L 550,150" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrowPurple)"/>
+    
+    <!-- SiLU 2 -->
+    <g transform="translate(560, 130)">
+      <rect width="60" height="40" rx="6" fill="rgba(245,158,11,0.2)" stroke="url(#actGrad)" stroke-width="2"/>
+      <text x="30" y="25" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#fcd34d">SiLU</text>
+    </g>
+    
+    <path d="M 630,150 L 650,150" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrowPurple)"/>
+    
+    <!-- Conv 2 -->
+    <g transform="translate(660, 120)">
+      <rect width="80" height="60" rx="8" fill="rgba(139,92,246,0.25)" stroke="url(#convGrad)" stroke-width="2"/>
+      <text x="40" y="25" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#c4b5fd">Conv 3×3</text>
+      <text x="40" y="45" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)">out → out</text>
+    </g>
+    
+    <!-- Skip Connection -->
+    <g>
+      <!-- Start from input, go up -->
+      <path d="M 0,115 L 0,60 L 700,60 L 700,115" stroke="url(#skipGrad)" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+      
+      <!-- Skip label -->
+      <rect x="300" y="40" width="100" height="28" rx="6" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="1"/>
+      <text x="350" y="60" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#6ee7b7">Skip (1×1)</text>
+    </g>
+    
+    <!-- Addition symbol -->
+    <g transform="translate(750, 125)">
+      <circle r="25" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2"/>
+      <text x="0" y="8" text-anchor="middle" font-family="system-ui" font-size="24" fill="#6ee7b7">+</text>
+    </g>
+    
+    <!-- Arrow from conv2 to add -->
+    <path d="M 750,150 L 718,150" stroke="#a78bfa" stroke-width="2"/>
+    
+    <!-- Arrow from skip to add -->
+    <path d="M 700,115 L 750,115 L 750,90" stroke="#34d399" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+    
+    <!-- Output -->
+    <g transform="translate(790, 150)">
+      <rect x="-30" y="-25" width="60" height="50" rx="8" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2"/>
+      <text x="0" y="5" text-anchor="middle" font-family="monospace" font-size="14" font-weight="600" fill="#6ee7b7">h</text>
+      <text x="0" y="45" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,0.5)">Output</text>
+    </g>
+    
+    <!-- Arrow from add to output -->
+    <path d="M 785,150 L 750,150" stroke="#34d399" stroke-width="2"/>
+  </g>
+  
+  <!-- Formula Box -->
+  <g transform="translate(100, 320)">
+    <rect width="700" height="70" rx="12" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="350" y="25" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="white">ResNet Block Formula</text>
+    <text x="350" y="55" text-anchor="middle" font-family="serif" font-size="18" fill="rgba(255,255,255,0.9)">
+      h = Conv(SiLU(GN(Conv(SiLU(GN(x)))))) + Skip(x)
+    </text>
+  </g>
+  
+  <!-- Component Legend -->
+  <g transform="translate(100, 410)">
+    <rect width="700" height="70" rx="12" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="350" y="22" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="rgba(255,255,255,0.8)">Component Functions</text>
+    
+    <g transform="translate(40, 40)">
+      <rect width="15" height="15" rx="3" fill="rgba(6,182,212,0.3)" stroke="#06b6d4" stroke-width="1"/>
+      <text x="25" y="12" font-family="system-ui" font-size="10" fill="#67e8f9">GroupNorm: Normalizes channels in groups of 32</text>
+    </g>
+    
+    <g transform="translate(280, 40)">
+      <rect width="15" height="15" rx="3" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="1"/>
+      <text x="25" y="12" font-family="system-ui" font-size="10" fill="#fcd34d">SiLU: Smooth activation x·σ(x)</text>
+    </g>
+    
+    <g transform="translate(500, 40)">
+      <rect width="15" height="15" rx="3" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="1"/>
+      <text x="25" y="12" font-family="system-ui" font-size="10" fill="#6ee7b7">Skip: Identity or 1×1 conv if dims change</text>
+    </g>
+  </g>
+</svg>
