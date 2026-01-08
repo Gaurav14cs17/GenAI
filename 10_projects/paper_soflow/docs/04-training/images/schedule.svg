@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200">
+  <!-- Background -->
+  <rect width="500" height="200" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="250" y="25" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Arial">
+    Training Schedule: r(k, K)
+  </text>
+  
+  <!-- Timeline -->
+  <line x1="50" y1="120" x2="450" y2="120" stroke="#444" stroke-width="2"/>
+  
+  <!-- Markers -->
+  <line x1="50" y1="115" x2="50" y2="125" stroke="#fff" stroke-width="2"/>
+  <text x="50" y="145" text-anchor="middle" fill="#ccc" font-size="10" font-family="Arial">k=0</text>
+  <text x="50" y="160" text-anchor="middle" fill="#51cf66" font-size="9" font-family="Arial">l ≈ t</text>
+  <text x="50" y="175" text-anchor="middle" fill="#888" font-size="8" font-family="Arial">(easy)</text>
+  
+  <line x1="250" y1="115" x2="250" y2="125" stroke="#fff" stroke-width="2"/>
+  <text x="250" y="145" text-anchor="middle" fill="#ccc" font-size="10" font-family="Arial">k=K/2</text>
+  <text x="250" y="160" text-anchor="middle" fill="#ffd43b" font-size="9" font-family="Arial">l ≈ t/2</text>
+  <text x="250" y="175" text-anchor="middle" fill="#888" font-size="8" font-family="Arial">(medium)</text>
+  
+  <line x1="450" y1="115" x2="450" y2="125" stroke="#fff" stroke-width="2"/>
+  <text x="450" y="145" text-anchor="middle" fill="#ccc" font-size="10" font-family="Arial">k=K</text>
+  <text x="450" y="160" text-anchor="middle" fill="#f5576c" font-size="9" font-family="Arial">l ≈ 0</text>
+  <text x="450" y="175" text-anchor="middle" fill="#888" font-size="8" font-family="Arial">(hard)</text>
+  
+  <!-- Curve showing decrease -->
+  <path d="M 50 70 Q 150 75, 250 90 Q 350 105, 450 115" stroke="#4facfe" stroke-width="3" fill="none"/>
+  
+  <!-- Label -->
+  <text x="150" y="60" fill="#4facfe" font-size="10" font-family="Arial">r(k,K) = max(ε, 1 - k/K)</text>
+  
+  <!-- Arrow showing direction -->
+  <text x="250" y="195" text-anchor="middle" fill="#888" font-size="10" font-family="Arial">
+    Training Progress →
+  </text>
+</svg>
+

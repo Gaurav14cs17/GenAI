@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 500">
+  <defs>
+    <linearGradient id="trajGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <marker id="solArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00f2fe"/>
+    </marker>
+    <marker id="velArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ffd43b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="850" height="500" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="425" y="30" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="Arial">
+    Solution Function f(x_t, t, s): Direct State Mapping
+  </text>
+  
+  <!-- Main trajectory -->
+  <path d="M 100 250 L 750 250" stroke="url(#trajGrad2)" stroke-width="4" fill="none"/>
+  
+  <!-- Time axis labels -->
+  <text x="100" y="290" text-anchor="middle" fill="#667eea" font-size="12" font-weight="bold" font-family="Arial">t = 0</text>
+  <text x="100" y="305" text-anchor="middle" fill="#888" font-size="10" font-family="Arial">Data</text>
+  
+  <text x="300" y="290" text-anchor="middle" fill="#888" font-size="12" font-family="Arial">t = 0.3</text>
+  
+  <text x="500" y="290" text-anchor="middle" fill="#888" font-size="12" font-family="Arial">t = 0.7</text>
+  
+  <text x="750" y="290" text-anchor="middle" fill="#f5576c" font-size="12" font-weight="bold" font-family="Arial">t = 1</text>
+  <text x="750" y="305" text-anchor="middle" fill="#888" font-size="10" font-family="Arial">Noise</text>
+  
+  <!-- Points on trajectory -->
+  <circle cx="100" cy="250" r="12" fill="#667eea"/>
+  <text x="100" y="255" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold" font-family="Arial">x₀</text>
+  
+  <circle cx="300" cy="250" r="10" fill="#8854a2"/>
+  <text x="300" y="255" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial">x_0.3</text>
+  
+  <circle cx="500" cy="250" r="10" fill="#c46690"/>
+  <text x="500" y="255" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial">x_0.7</text>
+  
+  <circle cx="750" cy="250" r="12" fill="#f5576c"/>
+  <text x="750" y="255" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold" font-family="Arial">x₁</text>
+  
+  <!-- Solution function arrows -->
+  <!-- f(x₁, 1, 0) - Main one-step -->
+  <path d="M 750 200 Q 425 100, 100 200" stroke="#00f2fe" stroke-width="3" fill="none" marker-end="url(#solArrow)"/>
+  <rect x="350" y="90" width="150" height="40" rx="8" fill="#16213e" stroke="#00f2fe" stroke-width="2"/>
+  <text x="425" y="110" text-anchor="middle" fill="#00f2fe" font-size="12" font-weight="bold" font-family="Arial">f(x₁, 1, 0) = x₀</text>
+  <text x="425" y="125" text-anchor="middle" fill="#51cf66" font-size="10" font-family="Arial">ONE STEP!</text>
+  
+  <!-- f(x₁, 1, 0.3) -->
+  <path d="M 750 220 Q 525 180, 300 220" stroke="#4facfe" stroke-width="2" fill="none" stroke-dasharray="5,3" marker-end="url(#solArrow)"/>
+  <text x="525" y="175" text-anchor="middle" fill="#4facfe" font-size="10" font-family="Arial">f(x₁, 1, 0.3)</text>
+  
+  <!-- f(x_0.7, 0.7, 0) -->
+  <path d="M 500 220 Q 300 170, 100 220" stroke="#4facfe" stroke-width="2" fill="none" stroke-dasharray="5,3" marker-end="url(#solArrow)"/>
+  <text x="300" y="165" text-anchor="middle" fill="#4facfe" font-size="10" font-family="Arial">f(x_0.7, 0.7, 0)</text>
+  
+  <!-- Explanation boxes -->
+  <!-- Left box: What is f -->
+  <rect x="50" y="340" width="230" height="140" rx="10" fill="#16213e" stroke="#667eea" stroke-width="1"/>
+  <text x="165" y="365" text-anchor="middle" fill="#667eea" font-size="13" font-weight="bold" font-family="Arial">What is f(x_t, t, s)?</text>
+  <text x="70" y="390" fill="#ccc" font-size="11" font-family="Arial">• Input: state x_t at time t</text>
+  <text x="70" y="410" fill="#ccc" font-size="11" font-family="Arial">• Input: target time s</text>
+  <text x="70" y="430" fill="#ccc" font-size="11" font-family="Arial">• Output: state x_s at time s</text>
+  <text x="70" y="455" fill="#51cf66" font-size="11" font-family="Arial">Direct mapping, no ODE!</text>
+  
+  <!-- Middle box: Key property -->
+  <rect x="310" y="340" width="230" height="140" rx="10" fill="#16213e" stroke="#00f2fe" stroke-width="1"/>
+  <text x="425" y="365" text-anchor="middle" fill="#00f2fe" font-size="13" font-weight="bold" font-family="Arial">Key Properties</text>
+  <text x="330" y="390" fill="#ccc" font-size="11" font-family="Arial">• f(x_t, t, t) = x_t</text>
+  <text x="340" y="405" fill="#888" font-size="9" font-family="Arial">(identity)</text>
+  <text x="330" y="430" fill="#ccc" font-size="11" font-family="Arial">• f(f(x,t,l), l, s) = f(x,t,s)</text>
+  <text x="340" y="445" fill="#888" font-size="9" font-family="Arial">(composition)</text>
+  <text x="330" y="470" fill="#ccc" font-size="11" font-family="Arial">• ∂f/∂s = v(f, s)</text>
+  <text x="340" y="485" fill="#888" font-size="9" font-family="Arial">(ODE consistency)</text>
+  
+  <!-- Right box: Generation -->
+  <rect x="570" y="340" width="230" height="140" rx="10" fill="#16213e" stroke="#f5576c" stroke-width="1"/>
+  <text x="685" y="365" text-anchor="middle" fill="#f5576c" font-size="13" font-weight="bold" font-family="Arial">One-Step Generation</text>
+  <text x="590" y="395" fill="#ccc" font-size="11" font-family="Arial">x₁ ~ N(0, I)  (sample noise)</text>
+  <text x="590" y="425" fill="#ccc" font-size="11" font-family="Arial">x₀ = f_θ(x₁, 1, 0)</text>
+  <text x="590" y="455" fill="#51cf66" font-size="12" font-weight="bold" font-family="Arial">That's it! Just ONE</text>
+  <text x="590" y="475" fill="#51cf66" font-size="12" font-weight="bold" font-family="Arial">forward pass!</text>
+</svg>
+

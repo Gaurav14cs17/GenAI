@@ -1,0 +1,16 @@
+# DiT-B/2 Model Configuration
+# Base model with 12 layers, 768 hidden size
+
+model:
+  name: "DiT-B/2"
+  input_size: 32  # Latent size (256/8 for VAE with 8x downsampling)
+  patch_size: 2
+  in_channels: 4  # VAE latent channels
+  hidden_size: 768
+  depth: 12
+  num_heads: 12
+  mlp_ratio: 4.0
+  num_classes: 1000
+  class_dropout_prob: 0.1
+  learn_sigma: false
+

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 250">
+  <defs>
+    <marker id="trajArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4facfe"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="250" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="350" y="25" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Arial">
+    Solution Function in Action
+  </text>
+  
+  <!-- Time labels -->
+  <text x="100" y="55" text-anchor="middle" fill="#f5576c" font-size="11" font-family="Arial">t = 1</text>
+  <text x="350" y="55" text-anchor="middle" fill="#9b59b6" font-size="11" font-family="Arial">t = 0.5</text>
+  <text x="600" y="55" text-anchor="middle" fill="#667eea" font-size="11" font-family="Arial">t = 0</text>
+  
+  <!-- Boxes -->
+  <rect x="50" y="70" width="100" height="60" rx="8" fill="#f5576c"/>
+  <text x="100" y="100" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial">Noise</text>
+  <text x="100" y="118" text-anchor="middle" fill="#fff" font-size="10" font-family="Arial">x₁</text>
+  
+  <rect x="300" y="70" width="100" height="60" rx="8" fill="#9b59b6"/>
+  <text x="350" y="100" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial">Mid</text>
+  <text x="350" y="118" text-anchor="middle" fill="#fff" font-size="10" font-family="Arial">x₀.₅</text>
+  
+  <rect x="550" y="70" width="100" height="60" rx="8" fill="#667eea"/>
+  <text x="600" y="100" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial">Image</text>
+  <text x="600" y="118" text-anchor="middle" fill="#fff" font-size="10" font-family="Arial">x₀</text>
+  
+  <!-- Arrows -->
+  <line x1="150" y1="100" x2="290" y2="100" stroke="#4facfe" stroke-width="2" marker-end="url(#trajArrow)"/>
+  <line x1="400" y1="100" x2="540" y2="100" stroke="#4facfe" stroke-width="2" marker-end="url(#trajArrow)"/>
+  
+  <!-- Solution function queries -->
+  <rect x="50" y="150" width="600" height="90" rx="8" fill="#16213e" stroke="#51cf66" stroke-width="1"/>
+  <text x="350" y="175" text-anchor="middle" fill="#51cf66" font-size="12" font-weight="bold" font-family="Arial">Solution Function Queries:</text>
+  
+  <text x="80" y="200" fill="#ccc" font-size="10" font-family="Arial">• f(x₁, 1, 0.5) = x₀.₅</text>
+  <text x="280" y="200" fill="#888" font-size="9" font-family="Arial">(half-step)</text>
+  
+  <text x="80" y="218" fill="#51cf66" font-size="10" font-weight="bold" font-family="Arial">• f(x₁, 1, 0) = x₀</text>
+  <text x="280" y="218" fill="#51cf66" font-size="9" font-weight="bold" font-family="Arial">(ONE STEP - Full generation!)</text>
+  
+  <text x="400" y="200" fill="#ccc" font-size="10" font-family="Arial">• f(x₀.₅, 0.5, 0) = x₀</text>
+  <text x="560" y="200" fill="#888" font-size="9" font-family="Arial">(from midpoint)</text>
+  
+  <text x="400" y="218" fill="#ccc" font-size="10" font-family="Arial">• Composition: f(f(x₁,1,0.5), 0.5, 0) = f(x₁,1,0)</text>
+</svg>
+

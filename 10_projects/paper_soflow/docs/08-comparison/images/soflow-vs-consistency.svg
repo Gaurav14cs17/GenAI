@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350">
+  <!-- Background -->
+  <rect width="800" height="350" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="400" y="25" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="Arial">
+    SoFlow vs Consistency Models
+  </text>
+  
+  <!-- Consistency Models Box -->
+  <rect x="30" y="50" width="360" height="280" rx="10" fill="#16213e" stroke="#f5576c" stroke-width="2"/>
+  <text x="210" y="75" text-anchor="middle" fill="#f5576c" font-size="14" font-weight="bold" font-family="Arial">Consistency Models</text>
+  
+  <text x="50" y="105" fill="#ccc" font-size="11" font-family="Arial">Idea:</text>
+  <text x="50" y="125" fill="#fff" font-size="10" font-family="Arial">Learn f(x_t, t) → x₀</text>
+  <text x="50" y="145" fill="#888" font-size="9" font-family="Arial">(direct mapping to clean data)</text>
+  
+  <text x="50" y="175" fill="#ccc" font-size="11" font-family="Arial">Training:</text>
+  <text x="50" y="195" fill="#fff" font-size="10" font-family="Arial">f(x_t, t) should match f(x_s, s)</text>
+  
+  <text x="50" y="225" fill="#ccc" font-size="11" font-family="Arial">Problems:</text>
+  <text x="50" y="245" fill="#ff6b6b" font-size="10" font-family="Arial">✗ No velocity → Difficult CFG</text>
+  <text x="50" y="265" fill="#ff6b6b" font-size="10" font-family="Arial">✗ Changing targets → Instability</text>
+  <text x="50" y="285" fill="#ff6b6b" font-size="10" font-family="Arial">✗ JVP needed for some variants</text>
+  
+  <!-- SoFlow Box -->
+  <rect x="410" y="50" width="360" height="280" rx="10" fill="#16213e" stroke="#51cf66" stroke-width="2"/>
+  <text x="590" y="75" text-anchor="middle" fill="#51cf66" font-size="14" font-weight="bold" font-family="Arial">SoFlow</text>
+  
+  <text x="430" y="105" fill="#ccc" font-size="11" font-family="Arial">Idea:</text>
+  <text x="430" y="125" fill="#fff" font-size="10" font-family="Arial">Learn f(x_t, t, s) → x_s</text>
+  <text x="430" y="145" fill="#888" font-size="9" font-family="Arial">(solution function)</text>
+  
+  <text x="430" y="175" fill="#ccc" font-size="11" font-family="Arial">Training:</text>
+  <text x="430" y="195" fill="#fff" font-size="10" font-family="Arial">L_FM: Denoising supervision</text>
+  <text x="430" y="215" fill="#fff" font-size="10" font-family="Arial">L_cons: Self-consistency (stop-grad)</text>
+  
+  <text x="430" y="245" fill="#ccc" font-size="11" font-family="Arial">Advantages:</text>
+  <text x="430" y="265" fill="#51cf66" font-size="10" font-family="Arial">✓ Velocity extraction → Natural CFG</text>
+  <text x="430" y="285" fill="#51cf66" font-size="10" font-family="Arial">✓ Stop-gradient → Stable training</text>
+  <text x="430" y="305" fill="#51cf66" font-size="10" font-family="Arial">✓ No JVP needed → Efficient</text>
+</svg>
+

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+  <defs>
+    <marker id="lossArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4facfe"/>
+    </marker>
+    <marker id="consArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f5576c"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="550" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold" font-family="Arial">
+    SoFlow Training: Two Complementary Losses
+  </text>
+  
+  <!-- ========== LOSS 1: Flow Matching ========== -->
+  <rect x="30" y="60" width="400" height="220" rx="15" fill="#16213e" stroke="#4facfe" stroke-width="2"/>
+  <text x="230" y="90" text-anchor="middle" fill="#4facfe" font-size="16" font-weight="bold" font-family="Arial">
+    Loss 1: Flow Matching (L_FM)
+  </text>
+  
+  <!-- Timeline for FM -->
+  <line x1="60" y1="160" x2="400" y2="160" stroke="#444" stroke-width="2"/>
+  
+  <!-- Points -->
+  <circle cx="80" cy="160" r="15" fill="#667eea"/>
+  <text x="80" y="165" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold" font-family="Arial">x₀</text>
+  <text x="80" y="190" text-anchor="middle" fill="#667eea" font-size="10" font-family="Arial">t=0</text>
+  
+  <circle cx="240" cy="160" r="12" fill="#9b59b6"/>
+  <text x="240" y="165" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial">x_t</text>
+  <text x="240" y="190" text-anchor="middle" fill="#888" font-size="10" font-family="Arial">t (random)</text>
+  
+  <circle cx="380" cy="160" r="12" fill="#f5576c" opacity="0.5"/>
+  <text x="380" y="165" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial">x₁</text>
+  <text x="380" y="190" text-anchor="middle" fill="#888" font-size="10" font-family="Arial">t=1</text>
+  
+  <!-- Arrow from x_t to x_0 prediction -->
+  <path d="M 240 140 Q 160 100, 80 140" stroke="#4facfe" stroke-width="3" fill="none" marker-end="url(#lossArrow)"/>
+  <text x="160" y="95" text-anchor="middle" fill="#4facfe" font-size="11" font-family="Arial">f_θ(x_t, t, 0)</text>
+  
+  <!-- Loss formula -->
+  <text x="230" y="230" text-anchor="middle" fill="#fff" font-size="12" font-family="Arial">
+    L_FM = || f_θ(x_t, t, 0) - x₀ ||²
+  </text>
+  <text x="230" y="255" text-anchor="middle" fill="#51cf66" font-size="11" font-family="Arial">
+    "Predict clean data from noisy input"
+  </text>
+  
+  <!-- ========== LOSS 2: Consistency ========== -->
+  <rect x="470" y="60" width="400" height="220" rx="15" fill="#16213e" stroke="#f5576c" stroke-width="2"/>
+  <text x="670" y="90" text-anchor="middle" fill="#f5576c" font-size="16" font-weight="bold" font-family="Arial">
+    Loss 2: Consistency (L_cons)
+  </text>
+  
+  <!-- Timeline for Cons -->
+  <line x1="500" y1="160" x2="840" y2="160" stroke="#444" stroke-width="2"/>
+  
+  <!-- Points -->
+  <circle cx="520" cy="160" r="15" fill="#667eea"/>
+  <text x="520" y="165" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold" font-family="Arial">x_s</text>
+  <text x="520" y="190" text-anchor="middle" fill="#667eea" font-size="10" font-family="Arial">s</text>
+  
+  <circle cx="640" cy="160" r="12" fill="#9b59b6"/>
+  <text x="640" y="165" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial">x_l</text>
+  <text x="640" y="190" text-anchor="middle" fill="#888" font-size="10" font-family="Arial">l</text>
+  
+  <circle cx="800" cy="160" r="12" fill="#c0392b"/>
+  <text x="800" y="165" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial">x_t</text>
+  <text x="800" y="190" text-anchor="middle" fill="#888" font-size="10" font-family="Arial">t</text>
+  
+  <!-- Direct arrow from x_t to x_s -->
+  <path d="M 800 140 Q 660 80, 520 140" stroke="#4facfe" stroke-width="3" fill="none" marker-end="url(#lossArrow)"/>
+  <text x="660" y="75" text-anchor="middle" fill="#4facfe" font-size="10" font-family="Arial">f_θ(x_t, t, s) [Direct]</text>
+  
+  <!-- Indirect arrow from x_l to x_s -->
+  <path d="M 640 145 Q 580 120, 520 145" stroke="#f5576c" stroke-width="2" fill="none" stroke-dasharray="5,3" marker-end="url(#consArrow)"/>
+  <text x="580" y="115" text-anchor="middle" fill="#f5576c" font-size="9" font-family="Arial">f_θ(x_l, l, s)</text>
+  <text x="580" y="130" text-anchor="middle" fill="#888" font-size="8" font-family="Arial">[stop_grad]</text>
+  
+  <!-- Loss formula -->
+  <text x="670" y="230" text-anchor="middle" fill="#fff" font-size="12" font-family="Arial">
+    L_cons = || f_θ(x_t,t,s) - sg[f_θ(x_l,l,s)] ||²
+  </text>
+  <text x="670" y="255" text-anchor="middle" fill="#51cf66" font-size="11" font-family="Arial">
+    "Direct = Indirect (self-consistency)"
+  </text>
+  
+  <!-- ========== COMBINED LOSS ========== -->
+  <rect x="200" y="310" width="500" height="100" rx="15" fill="#16213e" stroke="#51cf66" stroke-width="3"/>
+  <text x="450" y="345" text-anchor="middle" fill="#51cf66" font-size="18" font-weight="bold" font-family="Arial">
+    Combined Loss
+  </text>
+  <text x="450" y="380" text-anchor="middle" fill="#fff" font-size="16" font-family="Arial">
+    L_total = L_FM + λ · L_cons
+  </text>
+  
+  <!-- Arrows pointing to combined -->
+  <line x1="230" y1="280" x2="350" y2="310" stroke="#4facfe" stroke-width="2"/>
+  <line x1="670" y1="280" x2="550" y2="310" stroke="#f5576c" stroke-width="2"/>
+  
+  <!-- ========== WHY EACH LOSS ========== -->
+  <rect x="50" y="430" width="250" height="100" rx="10" fill="#16213e" stroke="#4facfe" stroke-width="1"/>
+  <text x="175" y="455" text-anchor="middle" fill="#4facfe" font-size="12" font-weight="bold" font-family="Arial">Why L_FM?</text>
+  <text x="70" y="480" fill="#ccc" font-size="10" font-family="Arial">✓ Ground truth supervision</text>
+  <text x="70" y="500" fill="#ccc" font-size="10" font-family="Arial">✓ Learns denoising direction</text>
+  <text x="70" y="520" fill="#ccc" font-size="10" font-family="Arial">✓ Works with real data x₀</text>
+  
+  <rect x="325" y="430" width="250" height="100" rx="10" fill="#16213e" stroke="#f5576c" stroke-width="1"/>
+  <text x="450" y="455" text-anchor="middle" fill="#f5576c" font-size="12" font-weight="bold" font-family="Arial">Why L_cons?</text>
+  <text x="345" y="480" fill="#ccc" font-size="10" font-family="Arial">✓ Self-consistency on trajectory</text>
+  <text x="345" y="500" fill="#ccc" font-size="10" font-family="Arial">✓ Regularizes solution function</text>
+  <text x="345" y="520" fill="#ccc" font-size="10" font-family="Arial">✓ Improves generalization</text>
+  
+  <rect x="600" y="430" width="250" height="100" rx="10" fill="#16213e" stroke="#51cf66" stroke-width="1"/>
+  <text x="725" y="455" text-anchor="middle" fill="#51cf66" font-size="12" font-weight="bold" font-family="Arial">Together</text>
+  <text x="620" y="480" fill="#ccc" font-size="10" font-family="Arial">✓ Correct + Consistent</text>
+  <text x="620" y="500" fill="#ccc" font-size="10" font-family="Arial">✓ Better one-step quality</text>
+  <text x="620" y="520" fill="#ccc" font-size="10" font-family="Arial">✓ No JVP needed!</text>
+</svg>
+

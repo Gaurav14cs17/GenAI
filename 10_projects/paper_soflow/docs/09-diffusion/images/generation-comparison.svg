@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <marker id="genArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f5576c"/>
+    </marker>
+    <marker id="soflowGenArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#51cf66"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="400" y="25" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="Arial">
+    Generation Process Comparison
+  </text>
+  
+  <!-- DDPM Section -->
+  <text x="100" y="60" fill="#f5576c" font-size="12" font-weight="bold" font-family="Arial">DDPM (1000 steps):</text>
+  
+  <circle cx="60" cy="100" r="20" fill="#f5576c"/>
+  <text x="60" y="105" text-anchor="middle" fill="#fff" font-size="8" font-family="Arial">x_T</text>
+  
+  <line x1="85" y1="100" x2="115" y2="100" stroke="#f5576c" stroke-width="1" marker-end="url(#genArrow)"/>
+  <circle cx="130" cy="100" r="12" fill="#c0392b" opacity="0.8"/>
+  
+  <line x1="147" y1="100" x2="177" y2="100" stroke="#f5576c" stroke-width="1" marker-end="url(#genArrow)"/>
+  <circle cx="192" cy="100" r="12" fill="#c0392b" opacity="0.7"/>
+  
+  <line x1="209" y1="100" x2="239" y2="100" stroke="#f5576c" stroke-width="1" marker-end="url(#genArrow)"/>
+  <text x="280" y="105" fill="#888" font-size="12" font-family="Arial">· · ·</text>
+  <text x="280" y="125" fill="#888" font-size="8" font-family="Arial">997 more</text>
+  
+  <line x1="320" y1="100" x2="350" y2="100" stroke="#f5576c" stroke-width="1" marker-end="url(#genArrow)"/>
+  <circle cx="365" cy="100" r="12" fill="#667eea" opacity="0.8"/>
+  
+  <line x1="382" y1="100" x2="412" y2="100" stroke="#f5576c" stroke-width="1" marker-end="url(#genArrow)"/>
+  <circle cx="440" cy="100" r="20" fill="#667eea"/>
+  <text x="440" y="105" text-anchor="middle" fill="#fff" font-size="8" font-family="Arial">x₀</text>
+  
+  <rect x="480" y="85" width="80" height="30" rx="5" fill="#f5576c" opacity="0.3"/>
+  <text x="520" y="105" text-anchor="middle" fill="#f5576c" font-size="11" font-weight="bold" font-family="Arial">1000 NFE</text>
+  
+  <!-- DDIM Section -->
+  <text x="100" y="170" fill="#ffd43b" font-size="12" font-weight="bold" font-family="Arial">DDIM (50 steps):</text>
+  
+  <circle cx="60" cy="210" r="20" fill="#f5576c"/>
+  <text x="60" y="215" text-anchor="middle" fill="#fff" font-size="8" font-family="Arial">x_T</text>
+  
+  <line x1="85" y1="210" x2="135" y2="210" stroke="#ffd43b" stroke-width="2" marker-end="url(#genArrow)"/>
+  <circle cx="155" cy="210" r="15" fill="#c0392b" opacity="0.8"/>
+  
+  <line x1="175" y1="210" x2="225" y2="210" stroke="#ffd43b" stroke-width="2" marker-end="url(#genArrow)"/>
+  <circle cx="245" cy="210" r="15" fill="#9b59b6" opacity="0.7"/>
+  
+  <text x="300" y="215" fill="#888" font-size="12" font-family="Arial">· · ·</text>
+  <text x="300" y="235" fill="#888" font-size="8" font-family="Arial">~47 more</text>
+  
+  <line x1="340" y1="210" x2="390" y2="210" stroke="#ffd43b" stroke-width="2" marker-end="url(#genArrow)"/>
+  <circle cx="440" cy="210" r="20" fill="#667eea"/>
+  <text x="440" y="215" text-anchor="middle" fill="#fff" font-size="8" font-family="Arial">x₀</text>
+  
+  <rect x="480" y="195" width="80" height="30" rx="5" fill="#ffd43b" opacity="0.3"/>
+  <text x="520" y="215" text-anchor="middle" fill="#ffd43b" font-size="11" font-weight="bold" font-family="Arial">50 NFE</text>
+  
+  <!-- SoFlow Section -->
+  <text x="100" y="280" fill="#51cf66" font-size="12" font-weight="bold" font-family="Arial">SoFlow (1 step):</text>
+  
+  <circle cx="60" cy="320" r="25" fill="#f5576c"/>
+  <text x="60" y="325" text-anchor="middle" fill="#fff" font-size="10" font-family="Arial">x₁</text>
+  
+  <line x1="95" y1="320" x2="405" y2="320" stroke="#51cf66" stroke-width="4" marker-end="url(#soflowGenArrow)"/>
+  
+  <rect x="180" y="295" width="140" height="50" rx="8" fill="#16213e" stroke="#51cf66" stroke-width="2"/>
+  <text x="250" y="315" text-anchor="middle" fill="#51cf66" font-size="11" font-weight="bold" font-family="Arial">f_θ(x₁, 1, 0)</text>
+  <text x="250" y="335" text-anchor="middle" fill="#00f2fe" font-size="9" font-family="Arial">Solution Function</text>
+  
+  <circle cx="440" cy="320" r="25" fill="#667eea"/>
+  <text x="440" y="325" text-anchor="middle" fill="#fff" font-size="10" font-family="Arial">x₀</text>
+  
+  <rect x="480" y="305" width="80" height="30" rx="5" fill="#51cf66" opacity="0.3"/>
+  <text x="520" y="325" text-anchor="middle" fill="#51cf66" font-size="14" font-weight="bold" font-family="Arial">1 NFE!</text>
+  
+  <!-- Speedup -->
+  <rect x="600" y="150" width="180" height="80" rx="10" fill="#16213e" stroke="#ffd43b" stroke-width="2"/>
+  <text x="690" y="180" text-anchor="middle" fill="#ffd43b" font-size="12" font-weight="bold" font-family="Arial">Speedup</text>
+  <text x="690" y="210" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold" font-family="Arial">1000×</text>
+</svg>
+
